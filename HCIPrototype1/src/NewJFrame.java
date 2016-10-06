@@ -28,51 +28,845 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jScrollBar1 = new javax.swing.JScrollBar();
         jScrollBar2 = new javax.swing.JScrollBar();
-        jButton1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenu10 = new javax.swing.JMenu();
+        jMenuItem20 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItem6 = new javax.swing.JMenuItem();
+        jMenuItem7 = new javax.swing.JMenuItem();
+        jMenuItem8 = new javax.swing.JMenuItem();
+        jMenuItem9 = new javax.swing.JMenuItem();
+        jMenu11 = new javax.swing.JMenu();
+        jMenuItem21 = new javax.swing.JMenuItem();
+        jMenuItem22 = new javax.swing.JMenuItem();
+        jMenuItem23 = new javax.swing.JMenuItem();
+        jMenuItem24 = new javax.swing.JMenuItem();
+        jMenuItem10 = new javax.swing.JMenuItem();
+        jMenuItem11 = new javax.swing.JMenuItem();
+        jMenuItem12 = new javax.swing.JMenuItem();
+        jMenuItem13 = new javax.swing.JMenuItem();
+        jMenuItem14 = new javax.swing.JMenuItem();
+        jMenuItem15 = new javax.swing.JMenuItem();
+        jMenuItem16 = new javax.swing.JMenuItem();
+        jMenuItem17 = new javax.swing.JMenuItem();
+        jMenuItem18 = new javax.swing.JMenuItem();
+        jMenuItem19 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        jMenuItem25 = new javax.swing.JMenuItem();
+        jMenuItem26 = new javax.swing.JMenuItem();
+        jMenuItem27 = new javax.swing.JMenuItem();
+        jMenuItem28 = new javax.swing.JMenuItem();
+        jMenuItem29 = new javax.swing.JMenuItem();
+        jMenuItem30 = new javax.swing.JMenuItem();
+        jMenuItem31 = new javax.swing.JMenuItem();
+        jMenu12 = new javax.swing.JMenu();
+        jMenuItem37 = new javax.swing.JMenuItem();
+        jMenuItem38 = new javax.swing.JMenuItem();
+        jMenuItem39 = new javax.swing.JMenuItem();
+        jMenuItem40 = new javax.swing.JMenuItem();
+        jMenuItem32 = new javax.swing.JMenuItem();
+        jMenu13 = new javax.swing.JMenu();
+        jMenuItem41 = new javax.swing.JMenuItem();
+        jMenuItem42 = new javax.swing.JMenuItem();
+        jMenuItem43 = new javax.swing.JMenuItem();
+        jMenuItem44 = new javax.swing.JMenuItem();
+        jMenu14 = new javax.swing.JMenu();
+        jMenuItem45 = new javax.swing.JMenuItem();
+        jMenuItem46 = new javax.swing.JMenuItem();
+        jMenuItem47 = new javax.swing.JMenuItem();
+        jMenuItem48 = new javax.swing.JMenuItem();
+        jMenuItem49 = new javax.swing.JMenuItem();
+        jMenuItem50 = new javax.swing.JMenuItem();
+        jMenuItem51 = new javax.swing.JMenuItem();
+        jMenuItem52 = new javax.swing.JMenuItem();
+        jMenuItem53 = new javax.swing.JMenuItem();
+        jMenu15 = new javax.swing.JMenu();
+        jMenuItem54 = new javax.swing.JMenuItem();
+        jMenuItem55 = new javax.swing.JMenuItem();
+        jMenu18 = new javax.swing.JMenu();
+        jMenuItem56 = new javax.swing.JMenuItem();
+        jMenuItem57 = new javax.swing.JMenuItem();
+        jMenuItem58 = new javax.swing.JMenuItem();
+        jMenuItem59 = new javax.swing.JMenuItem();
+        jMenuItem60 = new javax.swing.JMenuItem();
+        jMenuItem61 = new javax.swing.JMenuItem();
+        jMenuItem33 = new javax.swing.JMenuItem();
+        jMenu16 = new javax.swing.JMenu();
+        jMenuItem62 = new javax.swing.JMenuItem();
+        jMenuItem63 = new javax.swing.JMenuItem();
+        jMenuItem64 = new javax.swing.JMenuItem();
+        jMenuItem65 = new javax.swing.JMenuItem();
+        jMenuItem34 = new javax.swing.JMenuItem();
+        jMenuItem35 = new javax.swing.JMenuItem();
+        jMenu17 = new javax.swing.JMenu();
+        jMenuItem66 = new javax.swing.JMenuItem();
+        jMenuItem67 = new javax.swing.JMenuItem();
+        jMenuItem36 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
+        jMenuItem68 = new javax.swing.JMenuItem();
+        jMenuItem69 = new javax.swing.JMenuItem();
+        jMenuItem70 = new javax.swing.JMenuItem();
+        jMenuItem71 = new javax.swing.JMenuItem();
+        jMenuItem72 = new javax.swing.JMenuItem();
+        jMenuItem73 = new javax.swing.JMenuItem();
+        jMenuItem74 = new javax.swing.JMenuItem();
+        jMenuItem75 = new javax.swing.JMenuItem();
+        jMenuItem76 = new javax.swing.JMenuItem();
+        jMenuItem77 = new javax.swing.JMenuItem();
+        jMenuItem78 = new javax.swing.JMenuItem();
+        jMenuItem79 = new javax.swing.JMenuItem();
+        jMenuItem80 = new javax.swing.JMenuItem();
+        jMenuItem81 = new javax.swing.JMenuItem();
+        jMenu19 = new javax.swing.JMenu();
+        jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
+        jCheckBoxMenuItem2 = new javax.swing.JCheckBoxMenuItem();
+        jCheckBoxMenuItem3 = new javax.swing.JCheckBoxMenuItem();
+        jCheckBoxMenuItem4 = new javax.swing.JCheckBoxMenuItem();
+        jCheckBoxMenuItem5 = new javax.swing.JCheckBoxMenuItem();
+        jCheckBoxMenuItem6 = new javax.swing.JCheckBoxMenuItem();
+        jCheckBoxMenuItem7 = new javax.swing.JCheckBoxMenuItem();
+        jCheckBoxMenuItem8 = new javax.swing.JCheckBoxMenuItem();
+        jCheckBoxMenuItem9 = new javax.swing.JCheckBoxMenuItem();
+        jCheckBoxMenuItem10 = new javax.swing.JCheckBoxMenuItem();
+        jCheckBoxMenuItem11 = new javax.swing.JCheckBoxMenuItem();
+        jMenuItem82 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem83 = new javax.swing.JMenuItem();
+        jMenuItem84 = new javax.swing.JMenuItem();
+        jMenuItem85 = new javax.swing.JMenuItem();
+        jMenuItem86 = new javax.swing.JMenuItem();
+        jMenuItem87 = new javax.swing.JMenuItem();
+        jMenuItem88 = new javax.swing.JMenuItem();
+        jMenuItem89 = new javax.swing.JMenuItem();
+        jMenuItem90 = new javax.swing.JMenuItem();
+        jCheckBoxMenuItem12 = new javax.swing.JCheckBoxMenuItem();
+        jCheckBoxMenuItem13 = new javax.swing.JCheckBoxMenuItem();
+        jCheckBoxMenuItem14 = new javax.swing.JCheckBoxMenuItem();
+        jMenuItem91 = new javax.swing.JMenuItem();
+        jMenuItem92 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
+        jMenu20 = new javax.swing.JMenu();
+        jMenuItem104 = new javax.swing.JMenuItem();
+        jMenuItem105 = new javax.swing.JMenuItem();
+        jMenuItem106 = new javax.swing.JMenuItem();
+        jMenuItem107 = new javax.swing.JMenuItem();
+        jMenuItem93 = new javax.swing.JMenuItem();
+        jMenuItem94 = new javax.swing.JMenuItem();
+        jMenuItem95 = new javax.swing.JMenuItem();
+        jMenuItem96 = new javax.swing.JMenuItem();
+        jMenuItem97 = new javax.swing.JMenuItem();
+        jMenuItem98 = new javax.swing.JMenuItem();
+        jMenuItem99 = new javax.swing.JMenuItem();
+        jMenu21 = new javax.swing.JMenu();
+        jMenuItem108 = new javax.swing.JMenuItem();
+        jMenuItem109 = new javax.swing.JMenuItem();
+        jMenuItem110 = new javax.swing.JMenuItem();
+        jMenuItem111 = new javax.swing.JMenuItem();
+        jMenuItem112 = new javax.swing.JMenuItem();
+        jMenuItem113 = new javax.swing.JMenuItem();
+        jMenuItem114 = new javax.swing.JMenuItem();
+        jMenu22 = new javax.swing.JMenu();
+        jMenuItem115 = new javax.swing.JMenuItem();
+        jMenuItem116 = new javax.swing.JMenuItem();
+        jMenuItem117 = new javax.swing.JMenuItem();
+        jMenuItem118 = new javax.swing.JMenuItem();
+        jMenuItem119 = new javax.swing.JMenuItem();
+        jMenuItem100 = new javax.swing.JMenuItem();
+        jMenuItem101 = new javax.swing.JMenuItem();
+        jMenuItem102 = new javax.swing.JMenuItem();
+        jMenuItem103 = new javax.swing.JMenuItem();
+        jMenu23 = new javax.swing.JMenu();
+        jMenuItem120 = new javax.swing.JMenuItem();
+        jMenuItem121 = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
+        jMenuItem122 = new javax.swing.JMenuItem();
+        jMenuItem123 = new javax.swing.JMenuItem();
+        jMenuItem124 = new javax.swing.JMenuItem();
+        jMenuItem125 = new javax.swing.JMenuItem();
+        jMenuItem126 = new javax.swing.JMenuItem();
+        jMenuItem127 = new javax.swing.JMenuItem();
+        jMenuItem128 = new javax.swing.JMenuItem();
+        jMenuItem129 = new javax.swing.JMenuItem();
+        jMenuItem130 = new javax.swing.JMenuItem();
         jMenu7 = new javax.swing.JMenu();
+        jMenuItem131 = new javax.swing.JMenuItem();
+        jMenu24 = new javax.swing.JMenu();
+        jMenu25 = new javax.swing.JMenu();
+        jMenu26 = new javax.swing.JMenu();
+        jMenu27 = new javax.swing.JMenu();
+        jMenu28 = new javax.swing.JMenu();
+        jMenu29 = new javax.swing.JMenu();
+        jMenu30 = new javax.swing.JMenu();
+        jMenu31 = new javax.swing.JMenu();
         jMenu8 = new javax.swing.JMenu();
+        jMenuItem132 = new javax.swing.JMenuItem();
+        jMenuItem133 = new javax.swing.JMenuItem();
+        jMenuItem134 = new javax.swing.JMenuItem();
+        jMenuItem135 = new javax.swing.JMenuItem();
+        jMenuItem136 = new javax.swing.JMenuItem();
+        jMenuItem137 = new javax.swing.JMenuItem();
+        jMenuItem138 = new javax.swing.JMenuItem();
+        jMenuItem139 = new javax.swing.JMenuItem();
+        jMenuItem140 = new javax.swing.JMenuItem();
         jMenu9 = new javax.swing.JMenu();
+        jMenuItem141 = new javax.swing.JMenuItem();
+        jMenuItem142 = new javax.swing.JMenuItem();
+        jMenuItem143 = new javax.swing.JMenuItem();
+        jMenuItem144 = new javax.swing.JMenuItem();
+        jMenuItem145 = new javax.swing.JMenuItem();
+        jMenuItem146 = new javax.swing.JMenuItem();
+        jMenuItem147 = new javax.swing.JMenuItem();
+        jMenuItem148 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 204));
 
         jScrollBar2.setOrientation(javax.swing.JScrollBar.HORIZONTAL);
 
-        jButton1.setText("jButton1");
-
         jMenu1.setBackground(new java.awt.Color(204, 204, 204));
         jMenu1.setText("File");
+
+        jMenuItem2.setText("New");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem2);
+
+        jMenuItem3.setText("Open...");
+        jMenu1.add(jMenuItem3);
+
+        jMenu10.setText("Recent Files");
+
+        jMenuItem20.setText("Clear");
+        jMenu10.add(jMenuItem20);
+
+        jMenu1.add(jMenu10);
+
+        jMenuItem5.setText("Close");
+        jMenu1.add(jMenuItem5);
+
+        jMenuItem4.setText("Save Project");
+        jMenu1.add(jMenuItem4);
+
+        jMenuItem6.setText("Save Project As...");
+        jMenu1.add(jMenuItem6);
+
+        jMenuItem7.setText("Save Compressed Copy of Project...");
+        jMenu1.add(jMenuItem7);
+
+        jMenuItem8.setText("Check Dependencies...");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem8ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem8);
+
+        jMenuItem9.setText("Edit Metadata...");
+        jMenu1.add(jMenuItem9);
+
+        jMenu11.setText("Import");
+
+        jMenuItem21.setText("Audio...");
+        jMenu11.add(jMenuItem21);
+
+        jMenuItem22.setText("Labels...");
+        jMenu11.add(jMenuItem22);
+
+        jMenuItem23.setText("MIDI...");
+        jMenu11.add(jMenuItem23);
+
+        jMenuItem24.setText("Raw Data...");
+        jMenu11.add(jMenuItem24);
+
+        jMenu1.add(jMenu11);
+
+        jMenuItem10.setText("Export Audio...");
+        jMenu1.add(jMenuItem10);
+
+        jMenuItem11.setText("Export Selected Audio...");
+        jMenu1.add(jMenuItem11);
+
+        jMenuItem12.setText("Export Labels...");
+        jMenu1.add(jMenuItem12);
+
+        jMenuItem13.setText("Export Multiple...");
+        jMenuItem13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem13ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem13);
+
+        jMenuItem14.setText("Export MIDI...");
+        jMenu1.add(jMenuItem14);
+
+        jMenuItem15.setText("Apply Chain...");
+        jMenu1.add(jMenuItem15);
+
+        jMenuItem16.setText("Edit Chains...");
+        jMenu1.add(jMenuItem16);
+
+        jMenuItem17.setText("Page Setup...");
+        jMenu1.add(jMenuItem17);
+
+        jMenuItem18.setText("Print...");
+        jMenu1.add(jMenuItem18);
+
+        jMenuItem19.setText("Exit");
+        jMenu1.add(jMenuItem19);
+
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Edit");
+
+        jMenuItem25.setText("Undo");
+        jMenu2.add(jMenuItem25);
+
+        jMenuItem26.setText("Redo");
+        jMenu2.add(jMenuItem26);
+
+        jMenuItem27.setText("Cut");
+        jMenu2.add(jMenuItem27);
+
+        jMenuItem28.setText("Delete");
+        jMenu2.add(jMenuItem28);
+
+        jMenuItem29.setText("Copy");
+        jMenu2.add(jMenuItem29);
+
+        jMenuItem30.setText("Paste");
+        jMenu2.add(jMenuItem30);
+
+        jMenuItem31.setText("Duplicate");
+        jMenu2.add(jMenuItem31);
+
+        jMenu12.setText("Remove Special");
+
+        jMenuItem37.setText("Split Cut");
+        jMenu12.add(jMenuItem37);
+
+        jMenuItem38.setText("Split Delete");
+        jMenu12.add(jMenuItem38);
+
+        jMenuItem39.setText("Silence Audio");
+        jMenu12.add(jMenuItem39);
+
+        jMenuItem40.setText("Trim Audio");
+        jMenu12.add(jMenuItem40);
+
+        jMenu2.add(jMenu12);
+
+        jMenuItem32.setText("Paste Text to New Label");
+        jMenu2.add(jMenuItem32);
+
+        jMenu13.setText("Clip Boundaries");
+
+        jMenuItem41.setText("Split");
+        jMenu13.add(jMenuItem41);
+
+        jMenuItem42.setText("Split New");
+        jMenu13.add(jMenuItem42);
+
+        jMenuItem43.setText("Join");
+        jMenu13.add(jMenuItem43);
+
+        jMenuItem44.setText("Detach at Silences");
+        jMenu13.add(jMenuItem44);
+
+        jMenu2.add(jMenu13);
+
+        jMenu14.setText("Labeled Audio");
+
+        jMenuItem45.setText("Cut");
+        jMenu14.add(jMenuItem45);
+
+        jMenuItem46.setText("Delete");
+        jMenu14.add(jMenuItem46);
+
+        jMenuItem47.setText("Split Cut");
+        jMenu14.add(jMenuItem47);
+
+        jMenuItem48.setText("Split Delete");
+        jMenu14.add(jMenuItem48);
+
+        jMenuItem49.setText("Silence Audio");
+        jMenu14.add(jMenuItem49);
+
+        jMenuItem50.setText("Copy");
+        jMenu14.add(jMenuItem50);
+
+        jMenuItem51.setText("Split");
+        jMenu14.add(jMenuItem51);
+
+        jMenuItem52.setText("Join");
+        jMenu14.add(jMenuItem52);
+
+        jMenuItem53.setText("Detach at Silences");
+        jMenu14.add(jMenuItem53);
+
+        jMenu2.add(jMenu14);
+
+        jMenu15.setText("Select");
+
+        jMenuItem54.setText("Add");
+        jMenu15.add(jMenuItem54);
+
+        jMenuItem55.setText("None");
+        jMenu15.add(jMenuItem55);
+
+        jMenu18.setText("Spectral");
+        jMenu15.add(jMenu18);
+
+        jMenuItem56.setText("Left at Playback Position");
+        jMenu15.add(jMenuItem56);
+
+        jMenuItem57.setText("Right at Playback Position");
+        jMenu15.add(jMenuItem57);
+
+        jMenuItem58.setText("Track Start to Cursor");
+        jMenu15.add(jMenuItem58);
+
+        jMenuItem59.setText("Cursor to Track End");
+        jMenu15.add(jMenuItem59);
+
+        jMenuItem60.setText("In All Tracks");
+        jMenu15.add(jMenuItem60);
+
+        jMenuItem61.setText("In All Sync-Locked Tracks");
+        jMenu15.add(jMenuItem61);
+
+        jMenu2.add(jMenu15);
+
+        jMenuItem33.setText("Find Zero Crossings");
+        jMenu2.add(jMenuItem33);
+
+        jMenu16.setText("Move Cursor");
+
+        jMenuItem62.setText("to Selection Start");
+        jMenu16.add(jMenuItem62);
+
+        jMenuItem63.setText("to Selection End");
+        jMenu16.add(jMenuItem63);
+
+        jMenuItem64.setText("to Track Start");
+        jMenu16.add(jMenuItem64);
+
+        jMenuItem65.setText("to Track End");
+        jMenu16.add(jMenuItem65);
+
+        jMenu2.add(jMenu16);
+
+        jMenuItem34.setText("Region Save");
+        jMenu2.add(jMenuItem34);
+
+        jMenuItem35.setText("Region Restore");
+        jMenu2.add(jMenuItem35);
+
+        jMenu17.setText("Play Region");
+
+        jMenuItem66.setText("Lock");
+        jMenu17.add(jMenuItem66);
+
+        jMenuItem67.setText("Unlock");
+        jMenu17.add(jMenuItem67);
+
+        jMenu2.add(jMenu17);
+
+        jMenuItem36.setText("Preferences...");
+        jMenu2.add(jMenuItem36);
+
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("View");
+
+        jMenuItem68.setText("Zoom In");
+        jMenu3.add(jMenuItem68);
+
+        jMenuItem69.setText("Zoom Normal");
+        jMenu3.add(jMenuItem69);
+
+        jMenuItem70.setText("Zoom Out");
+        jMenu3.add(jMenuItem70);
+
+        jMenuItem71.setText("Zoom to Selection");
+        jMenu3.add(jMenuItem71);
+
+        jMenuItem72.setText("Fit in Window");
+        jMenu3.add(jMenuItem72);
+
+        jMenuItem73.setText("Fit Vertically");
+        jMenu3.add(jMenuItem73);
+
+        jMenuItem74.setText("Go to Selection Start");
+        jMenu3.add(jMenuItem74);
+
+        jMenuItem75.setText("Go to Selection End");
+        jMenu3.add(jMenuItem75);
+
+        jMenuItem76.setText("Collapse All Tracks");
+        jMenu3.add(jMenuItem76);
+
+        jMenuItem77.setText("Expand All Tracks");
+        jMenu3.add(jMenuItem77);
+
+        jMenuItem78.setText("Show Clipping");
+        jMenu3.add(jMenuItem78);
+
+        jMenuItem79.setText("History...");
+        jMenu3.add(jMenuItem79);
+
+        jMenuItem80.setText("Karaoke...");
+        jMenu3.add(jMenuItem80);
+
+        jMenuItem81.setText("Mixer Board...");
+        jMenu3.add(jMenuItem81);
+
+        jMenu19.setText("Toolbars");
+
+        jCheckBoxMenuItem1.setSelected(true);
+        jCheckBoxMenuItem1.setText("Device Toolbar");
+        jMenu19.add(jCheckBoxMenuItem1);
+
+        jCheckBoxMenuItem2.setSelected(true);
+        jCheckBoxMenuItem2.setText("Edit Toolbar");
+        jMenu19.add(jCheckBoxMenuItem2);
+
+        jCheckBoxMenuItem3.setSelected(true);
+        jCheckBoxMenuItem3.setText("Combined Meter Toolbar");
+        jMenu19.add(jCheckBoxMenuItem3);
+
+        jCheckBoxMenuItem4.setSelected(true);
+        jCheckBoxMenuItem4.setText("Recording Meter Toolbar");
+        jMenu19.add(jCheckBoxMenuItem4);
+
+        jCheckBoxMenuItem5.setSelected(true);
+        jCheckBoxMenuItem5.setText("Playback Meter Toolbar");
+        jMenu19.add(jCheckBoxMenuItem5);
+
+        jCheckBoxMenuItem6.setSelected(true);
+        jCheckBoxMenuItem6.setText("Mixer Toolbar");
+        jMenu19.add(jCheckBoxMenuItem6);
+
+        jCheckBoxMenuItem7.setSelected(true);
+        jCheckBoxMenuItem7.setText("Selection Toolbar");
+        jMenu19.add(jCheckBoxMenuItem7);
+
+        jCheckBoxMenuItem8.setSelected(true);
+        jCheckBoxMenuItem8.setText("Spectral Selection Toolbar");
+        jMenu19.add(jCheckBoxMenuItem8);
+
+        jCheckBoxMenuItem9.setSelected(true);
+        jCheckBoxMenuItem9.setText("Tools Toolbar");
+        jMenu19.add(jCheckBoxMenuItem9);
+
+        jCheckBoxMenuItem10.setSelected(true);
+        jCheckBoxMenuItem10.setText("Transcription Toolbar");
+        jMenu19.add(jCheckBoxMenuItem10);
+
+        jCheckBoxMenuItem11.setSelected(true);
+        jCheckBoxMenuItem11.setText("Transport Toolbar");
+        jMenu19.add(jCheckBoxMenuItem11);
+
+        jMenuItem82.setText("Reset Toolbars");
+        jMenu19.add(jMenuItem82);
+
+        jMenu3.add(jMenu19);
+
         jMenuBar1.add(jMenu3);
 
         jMenu4.setText("Transport");
+
+        jMenuItem1.setText("Play/Stop");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItem1);
+
+        jMenuItem83.setText("Play/Stop and Set Cursor");
+        jMenu4.add(jMenuItem83);
+
+        jMenuItem84.setText("Loop Play");
+        jMenu4.add(jMenuItem84);
+
+        jMenuItem85.setText("Pause");
+        jMenu4.add(jMenuItem85);
+
+        jMenuItem86.setText("Skip to Start");
+        jMenu4.add(jMenuItem86);
+
+        jMenuItem87.setText("Skip to End");
+        jMenu4.add(jMenuItem87);
+
+        jMenuItem88.setText("Record");
+        jMenu4.add(jMenuItem88);
+
+        jMenuItem89.setText("Timer Record...");
+        jMenu4.add(jMenuItem89);
+
+        jMenuItem90.setText("Append Record");
+        jMenu4.add(jMenuItem90);
+
+        jCheckBoxMenuItem12.setSelected(true);
+        jCheckBoxMenuItem12.setText("Overdub (on/off)");
+        jMenu4.add(jCheckBoxMenuItem12);
+
+        jCheckBoxMenuItem13.setSelected(true);
+        jCheckBoxMenuItem13.setText("Software Playthrough (on/off)");
+        jMenu4.add(jCheckBoxMenuItem13);
+
+        jCheckBoxMenuItem14.setSelected(true);
+        jCheckBoxMenuItem14.setText("Sound Activated Recording (on/off)");
+        jMenu4.add(jCheckBoxMenuItem14);
+
+        jMenuItem91.setText("Sound Activation Level...");
+        jMenu4.add(jMenuItem91);
+
+        jMenuItem92.setText("Rescan Audio Devices");
+        jMenu4.add(jMenuItem92);
+
         jMenuBar1.add(jMenu4);
 
         jMenu5.setText("Tracks");
+
+        jMenu20.setText("Add New");
+
+        jMenuItem104.setText("Mono Track");
+        jMenu20.add(jMenuItem104);
+
+        jMenuItem105.setText("Stereo Track");
+        jMenu20.add(jMenuItem105);
+
+        jMenuItem106.setText("Label Track");
+        jMenu20.add(jMenuItem106);
+
+        jMenuItem107.setText("Time Track");
+        jMenu20.add(jMenuItem107);
+
+        jMenu5.add(jMenu20);
+
+        jMenuItem93.setText("Stereo Track to Mono");
+        jMenu5.add(jMenuItem93);
+
+        jMenuItem94.setText("Mix and Render");
+        jMenu5.add(jMenuItem94);
+
+        jMenuItem95.setText("Mix and Render to New Track");
+        jMenu5.add(jMenuItem95);
+
+        jMenuItem96.setText("Resample...");
+        jMenu5.add(jMenuItem96);
+
+        jMenuItem97.setText("Remove Tracks");
+        jMenu5.add(jMenuItem97);
+
+        jMenuItem98.setText("Mute All Tracks");
+        jMenu5.add(jMenuItem98);
+
+        jMenuItem99.setText("Unmute All Tracks");
+        jMenu5.add(jMenuItem99);
+
+        jMenu21.setText("Align Tracks");
+
+        jMenuItem108.setText("Align End to End");
+        jMenu21.add(jMenuItem108);
+
+        jMenuItem109.setText("Align Together");
+        jMenu21.add(jMenuItem109);
+
+        jMenuItem110.setText("Start to Zero");
+        jMenu21.add(jMenuItem110);
+
+        jMenuItem111.setText("Start to Cursor/Selection Start");
+        jMenu21.add(jMenuItem111);
+
+        jMenuItem112.setText("Start to Selection End");
+        jMenu21.add(jMenuItem112);
+
+        jMenuItem113.setText("End to Cursor/Selection Start");
+        jMenu21.add(jMenuItem113);
+
+        jMenuItem114.setText("End to Selection End");
+        jMenu21.add(jMenuItem114);
+
+        jMenu5.add(jMenu21);
+
+        jMenu22.setText("Move Selection when Aligning");
+
+        jMenuItem115.setText("Start to Zero");
+        jMenu22.add(jMenuItem115);
+
+        jMenuItem116.setText("Start to Cursor/Selection Start");
+        jMenu22.add(jMenuItem116);
+
+        jMenuItem117.setText("Start to Selection End");
+        jMenu22.add(jMenuItem117);
+
+        jMenuItem118.setText("End to Cursor/Selection Start");
+        jMenu22.add(jMenuItem118);
+
+        jMenuItem119.setText("End to Selection End");
+        jMenu22.add(jMenuItem119);
+
+        jMenu5.add(jMenu22);
+
+        jMenuItem100.setText("Sync-Lock Tracks");
+        jMenu5.add(jMenuItem100);
+
+        jMenuItem101.setText("Add Label at Selection");
+        jMenu5.add(jMenuItem101);
+
+        jMenuItem102.setText("Add Labal at Playback Position");
+        jMenu5.add(jMenuItem102);
+
+        jMenuItem103.setText("Edit Labels...");
+        jMenu5.add(jMenuItem103);
+
+        jMenu23.setText("Sort Tracks");
+
+        jMenuItem120.setText("by Start Time");
+        jMenu23.add(jMenuItem120);
+
+        jMenuItem121.setText("by Name");
+        jMenu23.add(jMenuItem121);
+
+        jMenu5.add(jMenu23);
+
         jMenuBar1.add(jMenu5);
 
         jMenu6.setText("Generate");
+
+        jMenuItem122.setText("Add/Remove Plugins...");
+        jMenu6.add(jMenuItem122);
+
+        jMenuItem123.setText("Chirp...");
+        jMenu6.add(jMenuItem123);
+
+        jMenuItem124.setText("DTMF Tones...");
+        jMenu6.add(jMenuItem124);
+
+        jMenuItem125.setText("Noise...");
+        jMenu6.add(jMenuItem125);
+
+        jMenuItem126.setText("Silence...");
+        jMenu6.add(jMenuItem126);
+
+        jMenuItem127.setText("Tone...");
+        jMenu6.add(jMenuItem127);
+
+        jMenuItem128.setText("Click Track...");
+        jMenu6.add(jMenuItem128);
+
+        jMenuItem129.setText("Pluck...");
+        jMenu6.add(jMenuItem129);
+
+        jMenuItem130.setText("Risset Drum...");
+        jMenu6.add(jMenuItem130);
+
         jMenuBar1.add(jMenu6);
 
         jMenu7.setText("Effect");
+
+        jMenuItem131.setText("Add/Remove Plugins...");
+        jMenu7.add(jMenuItem131);
+
+        jMenu24.setText("EQ");
+        jMenu7.add(jMenu24);
+
+        jMenu25.setText("Dynamics");
+        jMenu7.add(jMenu25);
+
+        jMenu26.setText("Pitch Shift");
+        jMenu7.add(jMenu26);
+
+        jMenu27.setText("Reverb");
+        jMenu7.add(jMenu27);
+
+        jMenu28.setText("Delay");
+        jMenu7.add(jMenu28);
+
+        jMenu29.setText("Modulation");
+        jMenu7.add(jMenu29);
+
+        jMenu30.setText("Harmonies");
+        jMenu7.add(jMenu30);
+
+        jMenu31.setText("Other");
+        jMenu7.add(jMenu31);
+
         jMenuBar1.add(jMenu7);
 
         jMenu8.setText("Analyse");
+
+        jMenuItem132.setText("Add/Remove Plugins...");
+        jMenu8.add(jMenuItem132);
+
+        jMenuItem133.setText("Contrast...");
+        jMenu8.add(jMenuItem133);
+
+        jMenuItem134.setText("Plot Spectrum...");
+        jMenu8.add(jMenuItem134);
+
+        jMenuItem135.setText("Find Clipping...");
+        jMenuItem135.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem135ActionPerformed(evt);
+            }
+        });
+        jMenu8.add(jMenuItem135);
+
+        jMenuItem136.setText("Beat Finder...");
+        jMenu8.add(jMenuItem136);
+
+        jMenuItem137.setText("Regular Interval Labels...");
+        jMenu8.add(jMenuItem137);
+
+        jMenuItem138.setText("Sample Data Export...");
+        jMenu8.add(jMenuItem138);
+
+        jMenuItem139.setText("Silence Finder...");
+        jMenu8.add(jMenuItem139);
+
+        jMenuItem140.setText("Sound Finder...");
+        jMenu8.add(jMenuItem140);
+
         jMenuBar1.add(jMenu8);
 
         jMenu9.setText("Help");
+
+        jMenuItem141.setText("Quick Help");
+        jMenu9.add(jMenuItem141);
+
+        jMenuItem142.setText("Manual");
+        jMenu9.add(jMenuItem142);
+
+        jMenuItem143.setText("Screenshot Tools...");
+        jMenu9.add(jMenuItem143);
+
+        jMenuItem144.setText("Check for Updates...");
+        jMenu9.add(jMenuItem144);
+
+        jMenuItem145.setText("Audio Device Info...");
+        jMenu9.add(jMenuItem145);
+
+        jMenuItem146.setText("Show Log...");
+        jMenu9.add(jMenuItem146);
+
+        jMenuItem147.setText("Generate Support Data...");
+        jMenu9.add(jMenuItem147);
+
+        jMenuItem148.setText("About Audacity...");
+        jMenu9.add(jMenuItem148);
+
         jMenuBar1.add(jMenu9);
 
         setJMenuBar(jMenuBar1);
@@ -82,15 +876,9 @@ public class NewJFrame extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(145, Short.MAX_VALUE)
-                        .addComponent(jScrollBar2, javax.swing.GroupLayout.PREFERRED_SIZE, 720, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(329, 329, 329)
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(211, Short.MAX_VALUE)
+                .addComponent(jScrollBar2, javax.swing.GroupLayout.PREFERRED_SIZE, 720, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
@@ -98,18 +886,36 @@ public class NewJFrame extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(85, Short.MAX_VALUE)
+                        .addContainerGap(189, Short.MAX_VALUE)
                         .addComponent(jScrollBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(163, 163, 163)
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(163, 507, Short.MAX_VALUE)
                         .addComponent(jScrollBar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(74, 74, 74))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
+
+    private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem13ActionPerformed
+
+    private void jMenuItem135ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem135ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem135ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -147,10 +953,45 @@ public class NewJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem10;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem11;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem12;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem13;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem14;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem2;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem3;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem4;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem5;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem6;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem7;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem8;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem9;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu10;
+    private javax.swing.JMenu jMenu11;
+    private javax.swing.JMenu jMenu12;
+    private javax.swing.JMenu jMenu13;
+    private javax.swing.JMenu jMenu14;
+    private javax.swing.JMenu jMenu15;
+    private javax.swing.JMenu jMenu16;
+    private javax.swing.JMenu jMenu17;
+    private javax.swing.JMenu jMenu18;
+    private javax.swing.JMenu jMenu19;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu20;
+    private javax.swing.JMenu jMenu21;
+    private javax.swing.JMenu jMenu22;
+    private javax.swing.JMenu jMenu23;
+    private javax.swing.JMenu jMenu24;
+    private javax.swing.JMenu jMenu25;
+    private javax.swing.JMenu jMenu26;
+    private javax.swing.JMenu jMenu27;
+    private javax.swing.JMenu jMenu28;
+    private javax.swing.JMenu jMenu29;
     private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu30;
+    private javax.swing.JMenu jMenu31;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
@@ -158,6 +999,154 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu8;
     private javax.swing.JMenu jMenu9;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem10;
+    private javax.swing.JMenuItem jMenuItem100;
+    private javax.swing.JMenuItem jMenuItem101;
+    private javax.swing.JMenuItem jMenuItem102;
+    private javax.swing.JMenuItem jMenuItem103;
+    private javax.swing.JMenuItem jMenuItem104;
+    private javax.swing.JMenuItem jMenuItem105;
+    private javax.swing.JMenuItem jMenuItem106;
+    private javax.swing.JMenuItem jMenuItem107;
+    private javax.swing.JMenuItem jMenuItem108;
+    private javax.swing.JMenuItem jMenuItem109;
+    private javax.swing.JMenuItem jMenuItem11;
+    private javax.swing.JMenuItem jMenuItem110;
+    private javax.swing.JMenuItem jMenuItem111;
+    private javax.swing.JMenuItem jMenuItem112;
+    private javax.swing.JMenuItem jMenuItem113;
+    private javax.swing.JMenuItem jMenuItem114;
+    private javax.swing.JMenuItem jMenuItem115;
+    private javax.swing.JMenuItem jMenuItem116;
+    private javax.swing.JMenuItem jMenuItem117;
+    private javax.swing.JMenuItem jMenuItem118;
+    private javax.swing.JMenuItem jMenuItem119;
+    private javax.swing.JMenuItem jMenuItem12;
+    private javax.swing.JMenuItem jMenuItem120;
+    private javax.swing.JMenuItem jMenuItem121;
+    private javax.swing.JMenuItem jMenuItem122;
+    private javax.swing.JMenuItem jMenuItem123;
+    private javax.swing.JMenuItem jMenuItem124;
+    private javax.swing.JMenuItem jMenuItem125;
+    private javax.swing.JMenuItem jMenuItem126;
+    private javax.swing.JMenuItem jMenuItem127;
+    private javax.swing.JMenuItem jMenuItem128;
+    private javax.swing.JMenuItem jMenuItem129;
+    private javax.swing.JMenuItem jMenuItem13;
+    private javax.swing.JMenuItem jMenuItem130;
+    private javax.swing.JMenuItem jMenuItem131;
+    private javax.swing.JMenuItem jMenuItem132;
+    private javax.swing.JMenuItem jMenuItem133;
+    private javax.swing.JMenuItem jMenuItem134;
+    private javax.swing.JMenuItem jMenuItem135;
+    private javax.swing.JMenuItem jMenuItem136;
+    private javax.swing.JMenuItem jMenuItem137;
+    private javax.swing.JMenuItem jMenuItem138;
+    private javax.swing.JMenuItem jMenuItem139;
+    private javax.swing.JMenuItem jMenuItem14;
+    private javax.swing.JMenuItem jMenuItem140;
+    private javax.swing.JMenuItem jMenuItem141;
+    private javax.swing.JMenuItem jMenuItem142;
+    private javax.swing.JMenuItem jMenuItem143;
+    private javax.swing.JMenuItem jMenuItem144;
+    private javax.swing.JMenuItem jMenuItem145;
+    private javax.swing.JMenuItem jMenuItem146;
+    private javax.swing.JMenuItem jMenuItem147;
+    private javax.swing.JMenuItem jMenuItem148;
+    private javax.swing.JMenuItem jMenuItem15;
+    private javax.swing.JMenuItem jMenuItem16;
+    private javax.swing.JMenuItem jMenuItem17;
+    private javax.swing.JMenuItem jMenuItem18;
+    private javax.swing.JMenuItem jMenuItem19;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem20;
+    private javax.swing.JMenuItem jMenuItem21;
+    private javax.swing.JMenuItem jMenuItem22;
+    private javax.swing.JMenuItem jMenuItem23;
+    private javax.swing.JMenuItem jMenuItem24;
+    private javax.swing.JMenuItem jMenuItem25;
+    private javax.swing.JMenuItem jMenuItem26;
+    private javax.swing.JMenuItem jMenuItem27;
+    private javax.swing.JMenuItem jMenuItem28;
+    private javax.swing.JMenuItem jMenuItem29;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem30;
+    private javax.swing.JMenuItem jMenuItem31;
+    private javax.swing.JMenuItem jMenuItem32;
+    private javax.swing.JMenuItem jMenuItem33;
+    private javax.swing.JMenuItem jMenuItem34;
+    private javax.swing.JMenuItem jMenuItem35;
+    private javax.swing.JMenuItem jMenuItem36;
+    private javax.swing.JMenuItem jMenuItem37;
+    private javax.swing.JMenuItem jMenuItem38;
+    private javax.swing.JMenuItem jMenuItem39;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem40;
+    private javax.swing.JMenuItem jMenuItem41;
+    private javax.swing.JMenuItem jMenuItem42;
+    private javax.swing.JMenuItem jMenuItem43;
+    private javax.swing.JMenuItem jMenuItem44;
+    private javax.swing.JMenuItem jMenuItem45;
+    private javax.swing.JMenuItem jMenuItem46;
+    private javax.swing.JMenuItem jMenuItem47;
+    private javax.swing.JMenuItem jMenuItem48;
+    private javax.swing.JMenuItem jMenuItem49;
+    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem50;
+    private javax.swing.JMenuItem jMenuItem51;
+    private javax.swing.JMenuItem jMenuItem52;
+    private javax.swing.JMenuItem jMenuItem53;
+    private javax.swing.JMenuItem jMenuItem54;
+    private javax.swing.JMenuItem jMenuItem55;
+    private javax.swing.JMenuItem jMenuItem56;
+    private javax.swing.JMenuItem jMenuItem57;
+    private javax.swing.JMenuItem jMenuItem58;
+    private javax.swing.JMenuItem jMenuItem59;
+    private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem60;
+    private javax.swing.JMenuItem jMenuItem61;
+    private javax.swing.JMenuItem jMenuItem62;
+    private javax.swing.JMenuItem jMenuItem63;
+    private javax.swing.JMenuItem jMenuItem64;
+    private javax.swing.JMenuItem jMenuItem65;
+    private javax.swing.JMenuItem jMenuItem66;
+    private javax.swing.JMenuItem jMenuItem67;
+    private javax.swing.JMenuItem jMenuItem68;
+    private javax.swing.JMenuItem jMenuItem69;
+    private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem jMenuItem70;
+    private javax.swing.JMenuItem jMenuItem71;
+    private javax.swing.JMenuItem jMenuItem72;
+    private javax.swing.JMenuItem jMenuItem73;
+    private javax.swing.JMenuItem jMenuItem74;
+    private javax.swing.JMenuItem jMenuItem75;
+    private javax.swing.JMenuItem jMenuItem76;
+    private javax.swing.JMenuItem jMenuItem77;
+    private javax.swing.JMenuItem jMenuItem78;
+    private javax.swing.JMenuItem jMenuItem79;
+    private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenuItem jMenuItem80;
+    private javax.swing.JMenuItem jMenuItem81;
+    private javax.swing.JMenuItem jMenuItem82;
+    private javax.swing.JMenuItem jMenuItem83;
+    private javax.swing.JMenuItem jMenuItem84;
+    private javax.swing.JMenuItem jMenuItem85;
+    private javax.swing.JMenuItem jMenuItem86;
+    private javax.swing.JMenuItem jMenuItem87;
+    private javax.swing.JMenuItem jMenuItem88;
+    private javax.swing.JMenuItem jMenuItem89;
+    private javax.swing.JMenuItem jMenuItem9;
+    private javax.swing.JMenuItem jMenuItem90;
+    private javax.swing.JMenuItem jMenuItem91;
+    private javax.swing.JMenuItem jMenuItem92;
+    private javax.swing.JMenuItem jMenuItem93;
+    private javax.swing.JMenuItem jMenuItem94;
+    private javax.swing.JMenuItem jMenuItem95;
+    private javax.swing.JMenuItem jMenuItem96;
+    private javax.swing.JMenuItem jMenuItem97;
+    private javax.swing.JMenuItem jMenuItem98;
+    private javax.swing.JMenuItem jMenuItem99;
     private javax.swing.JScrollBar jScrollBar1;
     private javax.swing.JScrollBar jScrollBar2;
     // End of variables declaration//GEN-END:variables
