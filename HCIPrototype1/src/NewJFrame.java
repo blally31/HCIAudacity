@@ -3,7 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.AudioInputStream;
+import java.awt.GridLayout;
+import java.awt.BorderLayout;
+import java.io.*;
 /**
  *
  * @author Fiddler
@@ -26,8 +32,7 @@ public class NewJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDialog1 = new javax.swing.JDialog();
-        jLabel3 = new javax.swing.JLabel();
+        fileOpen = new javax.swing.JFileChooser();
         jScrollBar1 = new javax.swing.JScrollBar();
         jScrollBar2 = new javax.swing.JScrollBar();
         buttonPanel = new javax.swing.JPanel();
@@ -253,25 +258,6 @@ public class NewJFrame extends javax.swing.JFrame {
         jMenuItem146 = new javax.swing.JMenuItem();
         jMenuItem147 = new javax.swing.JMenuItem();
         jMenuItem148 = new javax.swing.JMenuItem();
-
-        jLabel3.setText("DOPE WINDOW");
-
-        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
-        jDialog1.getContentPane().setLayout(jDialog1Layout);
-        jDialog1Layout.setHorizontalGroup(
-            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDialog1Layout.createSequentialGroup()
-                .addGap(88, 88, 88)
-                .addComponent(jLabel3)
-                .addContainerGap(236, Short.MAX_VALUE))
-        );
-        jDialog1Layout.setVerticalGroup(
-            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDialog1Layout.createSequentialGroup()
-                .addGap(121, 121, 121)
-                .addComponent(jLabel3)
-                .addContainerGap(165, Short.MAX_VALUE))
-        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 204));
@@ -529,6 +515,11 @@ public class NewJFrame extends javax.swing.JFrame {
         jMenu1.add(jMenuItem2);
 
         jMenuItem3.setText("Open...");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem3);
 
         jMenu10.setText("Recent Files");
@@ -1256,7 +1247,7 @@ public class NewJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem136ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        System.out.println("BUTTON PRESSED");
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -1283,6 +1274,49 @@ public class NewJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton17ActionPerformed
 
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        FileFilter filter1 = new FileNameExtensionFilter("Audacity Projects", "aup");
+        FileFilter filter2 = new FileNameExtensionFilter("FLAC Files", "flac");
+        FileFilter filter3 = new FileNameExtensionFilter("MP3 Files", "mp3");
+        FileFilter filter4 = new FileNameExtensionFilter("WAV Files", "wav");
+
+        fileOpen.addChoosableFileFilter(filter1);
+        fileOpen.addChoosableFileFilter(filter2);
+        fileOpen.addChoosableFileFilter(filter3);
+        fileOpen.addChoosableFileFilter(filter4);
+        
+        int returnVal = fileOpen.showOpenDialog(this);
+        try {
+        //Checks if the user has selected OK and then gets the file and stores it
+        //in a FILE object
+        if (returnVal == javax.swing.JFileChooser.APPROVE_OPTION) {
+            java.io.File file = fileOpen.getSelectedFile( );
+            String filename = file.toString();
+            
+            FileInputStream fIn = new FileInputStream(filename);
+            InputStream bufferedIn = new BufferedInputStream(fIn);
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(bufferedIn);
+            
+            javax.swing.JFrame frame = new javax.swing.JFrame("Waveform Display Simulator"); 
+            frame.setBounds(200,200, 500, 350);
+                        
+            TrackFrame track = new TrackFrame();
+            track.setAudioToDisplay(audioInputStream);
+            
+            frame.getContentPane().setLayout(new BorderLayout());		
+            frame.getContentPane().add(track, BorderLayout.CENTER);
+		
+            frame.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
+       
+            frame.show();
+            frame.validate();
+            frame.repaint();
+        }
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+    }
     /**
      * @param args the command line arguments
      */
@@ -1320,6 +1354,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel buttonPanel;
+    private javax.swing.JFileChooser fileOpen;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
@@ -1352,10 +1387,8 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem8;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem9;
     private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu10;
     private javax.swing.JMenu jMenu11;
