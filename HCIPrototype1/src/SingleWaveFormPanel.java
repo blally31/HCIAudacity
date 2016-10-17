@@ -11,7 +11,7 @@ import java.awt.*;
 public class SingleWaveformPanel extends JPanel {
     protected static final Color BACKGROUND_COLOR = Color.white;
     protected static final Color REFERENCE_LINE_COLOR = Color.black;
-    protected static final Color WAVEFORM_COLOR = Color.red;
+    protected static final Color WAVEFORM_COLOR = Color.blue;
 
 
     private AudioInfo helper;

@@ -16,11 +16,16 @@ import java.io.*;
  */
 public class NewJFrame extends javax.swing.JFrame {
 
+    //Keeps track of the number of tracks loaded in
+    static int trackCount = 0;
+    javax.swing.JPanel p = new javax.swing.JPanel(new GridLayout(4,0));
+    PlayAudio audioObject;
     /**
      * Creates new form NewJFrame
      */
     public NewJFrame() {
         initComponents();
+        audioObject = new PlayAudio();
     }
 
     /**
@@ -31,22 +36,34 @@ public class NewJFrame extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         fileOpen = new javax.swing.JFileChooser();
-        jScrollBar1 = new javax.swing.JScrollBar();
-        jScrollBar2 = new javax.swing.JScrollBar();
-        buttonPanel = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
-        jButton12 = new javax.swing.JButton();
+        controlPanel = new javax.swing.JPanel();
+        jButton18 = new javax.swing.JButton();
+        jButton19 = new javax.swing.JButton();
+        jButton20 = new javax.swing.JButton();
+        jButton21 = new javax.swing.JButton();
+        jButton22 = new javax.swing.JButton();
+        jButton23 = new javax.swing.JButton();
+        jButton24 = new javax.swing.JButton();
+        jButton25 = new javax.swing.JButton();
+        jButton26 = new javax.swing.JButton();
+        jButton27 = new javax.swing.JButton();
+        jButton28 = new javax.swing.JButton();
+        windowPanel = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
+        jToggleButton2 = new javax.swing.JToggleButton();
+        jToggleButton1 = new javax.swing.JToggleButton();
+        jSlider1 = new javax.swing.JSlider();
+        jLabel4 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane(p);
+        jPanel4 = new javax.swing.JPanel();
         transportPanel = new javax.swing.JPanel();
         jButton9 = new javax.swing.JButton();
         jButton13 = new javax.swing.JButton();
@@ -54,16 +71,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jButton15 = new javax.swing.JButton();
         jButton16 = new javax.swing.JButton();
         jButton17 = new javax.swing.JButton();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jLabel1 = new javax.swing.JLabel();
-        windowPanel = new javax.swing.JPanel();
-        jToggleButton1 = new javax.swing.JToggleButton();
-        jToggleButton2 = new javax.swing.JToggleButton();
-        jLabel2 = new javax.swing.JLabel();
-        track1Panel = new javax.swing.JPanel();
-        jToggleButton4 = new javax.swing.JToggleButton();
-        track2Panel = new javax.swing.JPanel();
-        jToggleButton3 = new javax.swing.JToggleButton();
+        jProgressBar1 = new javax.swing.JProgressBar();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -262,246 +270,461 @@ public class NewJFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 204));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setMaximumSize(new java.awt.Dimension(1900, 1200));
+        setMinimumSize(new java.awt.Dimension(1500, 750));
+        setPreferredSize(new java.awt.Dimension(1900, 1200));
+        java.awt.GridBagLayout layout = new java.awt.GridBagLayout();
+        layout.columnWidths = new int[] {50};
+        getContentPane().setLayout(layout);
 
-        jScrollBar2.setOrientation(javax.swing.JScrollBar.HORIZONTAL);
+        controlPanel.setMaximumSize(new java.awt.Dimension(700, 500));
+        controlPanel.setMinimumSize(new java.awt.Dimension(700, 100));
+        controlPanel.setPreferredSize(new java.awt.Dimension(700, 275));
+        controlPanel.setLayout(new java.awt.GridBagLayout());
 
-        jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Brendan\\Documents\\Uni\\HCI\\HCIAudacity\\HCIPrototype1\\Capture2.PNG")); // NOI18N
-        jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jButton1.setIconTextGap(1);
-        jButton1.setMaximumSize(new java.awt.Dimension(60, 60));
-        jButton1.setMinimumSize(new java.awt.Dimension(15, 15));
-        jButton1.setPreferredSize(new java.awt.Dimension(60, 60));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+        jButton18.setIcon(new javax.swing.ImageIcon("C:\\Users\\Brendan\\Documents\\Uni\\HCI\\HCIAudacity\\HCIPrototype1\\Icons\\85512-200.png")); // NOI18N
+        jButton18.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton18.setMaximumSize(new java.awt.Dimension(50, 50));
+        jButton18.setMinimumSize(new java.awt.Dimension(50, 50));
+        jButton18.setPreferredSize(new java.awt.Dimension(50, 50));
+        jButton18.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton18MouseEntered(evt);
             }
         });
-
-        jButton2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Brendan\\Documents\\Uni\\HCI\\HCIAudacity\\HCIPrototype1\\Capture1.PNG")); // NOI18N
-        jButton2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton2.setMaximumSize(new java.awt.Dimension(60, 60));
-        jButton2.setMinimumSize(new java.awt.Dimension(15, 15));
-        jButton2.setPreferredSize(new java.awt.Dimension(60, 60));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jButton18.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButton18ActionPerformed(evt);
             }
         });
+        controlPanel.add(jButton18, new java.awt.GridBagConstraints());
 
-        jButton3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Brendan\\Documents\\Uni\\HCI\\HCIAudacity\\HCIPrototype1\\4.PNG")); // NOI18N
-        jButton3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton3.setMaximumSize(new java.awt.Dimension(60, 60));
-        jButton3.setMinimumSize(new java.awt.Dimension(15, 15));
-        jButton3.setPreferredSize(new java.awt.Dimension(60, 60));
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+        jButton19.setIcon(new javax.swing.ImageIcon("C:\\Users\\Brendan\\Documents\\Uni\\HCI\\HCIAudacity\\HCIPrototype1\\Icons\\glyphicons-237-zoom-in.png")); // NOI18N
+        jButton19.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton19.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton19.setMaximumSize(new java.awt.Dimension(50, 50));
+        jButton19.setMinimumSize(new java.awt.Dimension(50, 50));
+        jButton19.setPreferredSize(new java.awt.Dimension(50, 50));
+        jButton19.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton19MouseEntered(evt);
             }
         });
+        controlPanel.add(jButton19, new java.awt.GridBagConstraints());
 
-        jButton4.setIcon(new javax.swing.ImageIcon("C:\\Users\\Brendan\\Documents\\Uni\\HCI\\HCIAudacity\\HCIPrototype1\\Capture3.PNG")); // NOI18N
-        jButton4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton4.setMaximumSize(new java.awt.Dimension(60, 60));
-        jButton4.setMinimumSize(new java.awt.Dimension(15, 15));
-        jButton4.setPreferredSize(new java.awt.Dimension(60, 60));
-
-        jButton5.setIcon(new javax.swing.ImageIcon("C:\\Users\\Brendan\\Documents\\Uni\\HCI\\HCIAudacity\\HCIPrototype1\\Capture5.PNG")); // NOI18N
-        jButton5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton5.setMaximumSize(new java.awt.Dimension(60, 60));
-        jButton5.setMinimumSize(new java.awt.Dimension(15, 15));
-        jButton5.setPreferredSize(new java.awt.Dimension(60, 60));
-
-        jButton6.setIcon(new javax.swing.ImageIcon("C:\\Users\\Brendan\\Documents\\Uni\\HCI\\HCIAudacity\\HCIPrototype1\\Capture6.PNG")); // NOI18N
-        jButton6.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton6.setMaximumSize(new java.awt.Dimension(60, 60));
-        jButton6.setMinimumSize(new java.awt.Dimension(15, 15));
-        jButton6.setPreferredSize(new java.awt.Dimension(60, 60));
-
-        jButton7.setIcon(new javax.swing.ImageIcon("C:\\Users\\Brendan\\Documents\\Uni\\HCI\\HCIAudacity\\HCIPrototype1\\Capture7.PNG")); // NOI18N
-        jButton7.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton7.setMaximumSize(new java.awt.Dimension(60, 60));
-        jButton7.setMinimumSize(new java.awt.Dimension(15, 15));
-        jButton7.setPreferredSize(new java.awt.Dimension(60, 60));
-
-        jButton8.setIcon(new javax.swing.ImageIcon("C:\\Users\\Brendan\\Documents\\Uni\\HCI\\HCIAudacity\\HCIPrototype1\\Capture8.PNG")); // NOI18N
-        jButton8.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton8.setMaximumSize(new java.awt.Dimension(60, 60));
-        jButton8.setMinimumSize(new java.awt.Dimension(15, 15));
-        jButton8.setPreferredSize(new java.awt.Dimension(60, 60));
-
-        jButton10.setIcon(new javax.swing.ImageIcon("C:\\Users\\Brendan\\Documents\\Uni\\HCI\\HCIAudacity\\HCIPrototype1\\Capture9.PNG")); // NOI18N
-        jButton10.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton10.setMaximumSize(new java.awt.Dimension(60, 60));
-        jButton10.setMinimumSize(new java.awt.Dimension(15, 15));
-        jButton10.setPreferredSize(new java.awt.Dimension(60, 60));
-
-        jButton11.setIcon(new javax.swing.ImageIcon("C:\\Users\\Brendan\\Documents\\Uni\\HCI\\HCIAudacity\\HCIPrototype1\\Capture10.PNG")); // NOI18N
-        jButton11.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton11.setMaximumSize(new java.awt.Dimension(60, 60));
-        jButton11.setMinimumSize(new java.awt.Dimension(15, 15));
-        jButton11.setPreferredSize(new java.awt.Dimension(60, 60));
-
-        jButton12.setIcon(new javax.swing.ImageIcon("C:\\Users\\Brendan\\Documents\\Uni\\HCI\\HCIAudacity\\HCIPrototype1\\Capture11.PNG")); // NOI18N
-        jButton12.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton12.setMaximumSize(new java.awt.Dimension(60, 60));
-        jButton12.setMinimumSize(new java.awt.Dimension(15, 15));
-        jButton12.setPreferredSize(new java.awt.Dimension(60, 60));
-
-        javax.swing.GroupLayout buttonPanelLayout = new javax.swing.GroupLayout(buttonPanel);
-        buttonPanel.setLayout(buttonPanelLayout);
-        buttonPanelLayout.setHorizontalGroup(
-            buttonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(buttonPanelLayout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton10, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton11, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton12, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        buttonPanelLayout.setVerticalGroup(
-            buttonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)
-            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-            .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-            .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-            .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-            .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-            .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-            .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-            .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-        );
-
-        transportPanel.setLayout(null);
-
-        jButton9.setText("REWIND");
-        jButton9.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
+        jButton20.setIcon(new javax.swing.ImageIcon("C:\\Users\\Brendan\\Documents\\Uni\\HCI\\HCIAudacity\\HCIPrototype1\\Icons\\glyphicons-31-pencil.png")); // NOI18N
+        jButton20.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton20.setMaximumSize(new java.awt.Dimension(50, 50));
+        jButton20.setMinimumSize(new java.awt.Dimension(50, 50));
+        jButton20.setPreferredSize(new java.awt.Dimension(50, 50));
+        jButton20.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton20MouseEntered(evt);
             }
         });
-        transportPanel.add(jButton9);
-        jButton9.setBounds(180, 30, 60, 19);
-
-        jButton13.setText("PAUSE");
-        jButton13.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        transportPanel.add(jButton13);
-        jButton13.setBounds(240, 30, 70, 19);
-
-        jButton14.setText("PLAY");
-        jButton14.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        transportPanel.add(jButton14);
-        jButton14.setBounds(310, 30, 70, 19);
-
-        jButton15.setText("STOP");
-        jButton15.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton15.addActionListener(new java.awt.event.ActionListener() {
+        jButton20.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton15ActionPerformed(evt);
+                jButton20ActionPerformed(evt);
             }
         });
-        transportPanel.add(jButton15);
-        jButton15.setBounds(380, 30, 70, 19);
+        controlPanel.add(jButton20, new java.awt.GridBagConstraints());
 
-        jButton16.setText("FORWARD");
-        jButton16.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        transportPanel.add(jButton16);
-        jButton16.setBounds(450, 30, 70, 19);
-
-        jButton17.setText("RECORD");
-        jButton17.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton17.setMaximumSize(new java.awt.Dimension(57, 19));
-        jButton17.setMinimumSize(new java.awt.Dimension(57, 19));
-        jButton17.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton17ActionPerformed(evt);
+        jButton21.setIcon(new javax.swing.ImageIcon("C:\\Users\\Brendan\\Documents\\Uni\\HCI\\HCIAudacity\\HCIPrototype1\\Icons\\glyphicons-left-right.png")); // NOI18N
+        jButton21.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton21.setMaximumSize(new java.awt.Dimension(50, 50));
+        jButton21.setMinimumSize(new java.awt.Dimension(50, 50));
+        jButton21.setPreferredSize(new java.awt.Dimension(50, 50));
+        jButton21.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton21MouseEntered(evt);
             }
         });
-        transportPanel.add(jButton17);
-        jButton17.setBounds(520, 30, 79, 19);
+        jButton21.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton21ActionPerformed(evt);
+            }
+        });
+        controlPanel.add(jButton21, new java.awt.GridBagConstraints());
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jButton22.setIcon(new javax.swing.ImageIcon("C:\\Users\\Brendan\\Documents\\Uni\\HCI\\HCIAudacity\\HCIPrototype1\\Icons\\glyphicons-238-zoom-out.png")); // NOI18N
+        jButton22.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton22.setMaximumSize(new java.awt.Dimension(50, 50));
+        jButton22.setMinimumSize(new java.awt.Dimension(50, 50));
+        jButton22.setPreferredSize(new java.awt.Dimension(50, 50));
+        jButton22.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton22MouseEntered(evt);
+            }
+        });
+        controlPanel.add(jButton22, new java.awt.GridBagConstraints());
 
-        jLabel1.setText("Output Device");
+        jButton23.setIcon(new javax.swing.ImageIcon("C:\\Users\\Brendan\\Documents\\Uni\\HCI\\HCIAudacity\\HCIPrototype1\\Icons\\glyphicons-137-cogwheel.png")); // NOI18N
+        jButton23.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton23.setMaximumSize(new java.awt.Dimension(50, 50));
+        jButton23.setMinimumSize(new java.awt.Dimension(50, 50));
+        jButton23.setPreferredSize(new java.awt.Dimension(50, 50));
+        jButton23.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton23MouseEntered(evt);
+            }
+        });
+        jButton23.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton23ActionPerformed(evt);
+            }
+        });
+        controlPanel.add(jButton23, new java.awt.GridBagConstraints());
+
+        jButton24.setIcon(new javax.swing.ImageIcon("C:\\Users\\Brendan\\Documents\\Uni\\HCI\\HCIAudacity\\HCIPrototype1\\Icons\\glyphicons-513-paste.png")); // NOI18N
+        jButton24.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton24.setMaximumSize(new java.awt.Dimension(50, 50));
+        jButton24.setMinimumSize(new java.awt.Dimension(50, 50));
+        jButton24.setPreferredSize(new java.awt.Dimension(50, 50));
+        jButton24.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton24MouseEntered(evt);
+            }
+        });
+        jButton24.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton24ActionPerformed(evt);
+            }
+        });
+        controlPanel.add(jButton24, new java.awt.GridBagConstraints());
+
+        jButton25.setIcon(new javax.swing.ImageIcon("C:\\Users\\Brendan\\Documents\\Uni\\HCI\\HCIAudacity\\HCIPrototype1\\Icons\\glyphicons-511-duplicate.png")); // NOI18N
+        jButton25.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton25.setMaximumSize(new java.awt.Dimension(50, 50));
+        jButton25.setMinimumSize(new java.awt.Dimension(50, 50));
+        jButton25.setPreferredSize(new java.awt.Dimension(50, 50));
+        jButton25.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton25MouseEntered(evt);
+            }
+        });
+        controlPanel.add(jButton25, new java.awt.GridBagConstraints());
+
+        jButton26.setIcon(new javax.swing.ImageIcon("C:\\Users\\Brendan\\Documents\\Uni\\HCI\\HCIAudacity\\HCIPrototype1\\Icons\\glyphicons-289-scissors.png")); // NOI18N
+        jButton26.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton26.setMaximumSize(new java.awt.Dimension(50, 50));
+        jButton26.setMinimumSize(new java.awt.Dimension(50, 50));
+        jButton26.setPreferredSize(new java.awt.Dimension(50, 50));
+        jButton26.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton26MouseEntered(evt);
+            }
+        });
+        jButton26.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton26ActionPerformed(evt);
+            }
+        });
+        controlPanel.add(jButton26, new java.awt.GridBagConstraints());
+
+        jButton27.setIcon(new javax.swing.ImageIcon("C:\\Users\\Brendan\\Documents\\Uni\\HCI\\HCIAudacity\\HCIPrototype1\\Icons\\glyphicons-222-unshare.png")); // NOI18N
+        jButton27.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton27.setMaximumSize(new java.awt.Dimension(50, 50));
+        jButton27.setMinimumSize(new java.awt.Dimension(50, 50));
+        jButton27.setPreferredSize(new java.awt.Dimension(50, 50));
+        jButton27.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton27MouseEntered(evt);
+            }
+        });
+        controlPanel.add(jButton27, new java.awt.GridBagConstraints());
+
+        jButton28.setIcon(new javax.swing.ImageIcon("C:\\Users\\Brendan\\Documents\\Uni\\HCI\\HCIAudacity\\HCIPrototype1\\Icons\\glyphicons-223-share.png")); // NOI18N
+        jButton28.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton28.setMaximumSize(new java.awt.Dimension(50, 50));
+        jButton28.setMinimumSize(new java.awt.Dimension(50, 50));
+        jButton28.setPreferredSize(new java.awt.Dimension(50, 50));
+        jButton28.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton28MouseEntered(evt);
+            }
+        });
+        jButton28.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton28ActionPerformed(evt);
+            }
+        });
+        controlPanel.add(jButton28, new java.awt.GridBagConstraints());
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        getContentPane().add(controlPanel, gridBagConstraints);
 
         windowPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        windowPanel.setLayout(null);
+        windowPanel.setMaximumSize(new java.awt.Dimension(550, 150));
+        windowPanel.setMinimumSize(new java.awt.Dimension(520, 160));
+        windowPanel.setPreferredSize(new java.awt.Dimension(375, 152));
+        windowPanel.setLayout(new java.awt.GridBagLayout());
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel2.setText("TIME :");
+
+        jLabel3.setText("1:00:35");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 3;
+        windowPanel.add(jPanel3, gridBagConstraints);
+
+        jPanel6.setPreferredSize(new java.awt.Dimension(215, 104));
+
+        jToggleButton2.setText("Beats");
+        jToggleButton2.setToolTipText("Beats");
+        jToggleButton2.setMaximumSize(new java.awt.Dimension(25, 25));
+        jToggleButton2.setMinimumSize(new java.awt.Dimension(20, 20));
+        jToggleButton2.setPreferredSize(new java.awt.Dimension(20, 20));
+        jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton2ActionPerformed(evt);
+            }
+        });
 
         jToggleButton1.setText("Time");
+        jToggleButton1.setToolTipText("Seconds/Minutes");
+        jToggleButton1.setMaximumSize(new java.awt.Dimension(25, 25));
+        jToggleButton1.setMinimumSize(new java.awt.Dimension(20, 20));
+        jToggleButton1.setPreferredSize(new java.awt.Dimension(20, 20));
         jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jToggleButton1ActionPerformed(evt);
             }
         });
-        windowPanel.add(jToggleButton1);
-        jToggleButton1.setBounds(217, 30, 55, 23);
 
-        jToggleButton2.setText("Beats");
-        windowPanel.add(jToggleButton2);
-        jToggleButton2.setBounds(278, 30, 59, 23);
-
-        jLabel2.setText("TIME :");
-        windowPanel.add(jLabel2);
-        jLabel2.setBounds(28, 34, 31, 14);
-
-        jToggleButton4.setText("jToggleButton4");
-
-        javax.swing.GroupLayout track1PanelLayout = new javax.swing.GroupLayout(track1Panel);
-        track1Panel.setLayout(track1PanelLayout);
-        track1PanelLayout.setHorizontalGroup(
-            track1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(track1PanelLayout.createSequentialGroup()
-                .addGap(253, 253, 253)
-                .addComponent(jToggleButton4)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jToggleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
-        track1PanelLayout.setVerticalGroup(
-            track1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(track1PanelLayout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(jToggleButton4)
-                .addContainerGap(42, Short.MAX_VALUE))
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20))
         );
 
-        jToggleButton3.setText("jToggleButton3");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 4;
+        windowPanel.add(jPanel6, gridBagConstraints);
 
-        javax.swing.GroupLayout track2PanelLayout = new javax.swing.GroupLayout(track2Panel);
-        track2Panel.setLayout(track2PanelLayout);
-        track2PanelLayout.setHorizontalGroup(
-            track2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(track2PanelLayout.createSequentialGroup()
-                .addGap(254, 254, 254)
-                .addComponent(jToggleButton3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        jSlider1.setMajorTickSpacing(1);
+        jSlider1.setMaximum(3);
+        jSlider1.setPaintLabels(true);
+        jSlider1.setPaintTicks(true);
+        jSlider1.setToolTipText("Playback Speed");
+        jSlider1.setMaximumSize(new java.awt.Dimension(200, 35));
+        jSlider1.setMinimumSize(new java.awt.Dimension(150, 35));
+        jSlider1.setPreferredSize(new java.awt.Dimension(275, 40));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 8;
+        gridBagConstraints.gridheight = 2;
+        windowPanel.add(jSlider1, gridBagConstraints);
+
+        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\Brendan\\Documents\\Uni\\HCI\\HCIAudacity\\HCIPrototype1\\Icons\\glyphicons-174-play.png")); // NOI18N
+        jLabel4.setText("Speed");
+        jLabel4.setToolTipText("Playback Speed");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridheight = 2;
+        windowPanel.add(jLabel4, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 0;
+        getContentPane().add(windowPanel, gridBagConstraints);
+
+        jPanel2.setMaximumSize(new java.awt.Dimension(700, 100));
+        jPanel2.setMinimumSize(new java.awt.Dimension(700, 100));
+        jPanel2.setPreferredSize(new java.awt.Dimension(1500, 275));
+
+        jLabel1.setText("jLabel1");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel1)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
-        track2PanelLayout.setVerticalGroup(
-            track2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(track2PanelLayout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addComponent(jToggleButton3)
-                .addContainerGap(38, Short.MAX_VALUE))
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel1)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 0;
+        getContentPane().add(jPanel2, gridBagConstraints);
+
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        jScrollPane1.setMaximumSize(new java.awt.Dimension(1900, 1200));
+        jScrollPane1.setMinimumSize(new java.awt.Dimension(1900, 700));
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(1500, 500));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 3;
+        getContentPane().add(jScrollPane1, gridBagConstraints);
+
+        jPanel4.setMaximumSize(new java.awt.Dimension(1500, 500));
+        jPanel4.setMinimumSize(new java.awt.Dimension(816, 100));
+        jPanel4.setPreferredSize(new java.awt.Dimension(1500, 275));
+        jPanel4.setLayout(new java.awt.GridLayout(1, 3));
+
+        transportPanel.setMaximumSize(new java.awt.Dimension(500, 500));
+        transportPanel.setMinimumSize(new java.awt.Dimension(272, 100));
+        transportPanel.setPreferredSize(new java.awt.Dimension(500, 275));
+        transportPanel.setLayout(new java.awt.GridBagLayout());
+
+        jButton9.setIcon(new javax.swing.ImageIcon("C:\\Users\\Brendan\\Documents\\Uni\\HCI\\HCIAudacity\\HCIPrototype1\\Icons\\glyphicons-173-rewind.png")); // NOI18N
+        jButton9.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton9.setPreferredSize(new java.awt.Dimension(65, 65));
+        jButton9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton9MouseEntered(evt);
+            }
+        });
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
+        transportPanel.add(jButton9, new java.awt.GridBagConstraints());
+
+        jButton13.setIcon(new javax.swing.ImageIcon("C:\\Users\\Brendan\\Documents\\Uni\\HCI\\HCIAudacity\\HCIPrototype1\\Icons\\glyphicons-175-pause.png")); // NOI18N
+        jButton13.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton13.setPreferredSize(new java.awt.Dimension(65, 65));
+        jButton13.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton13MouseEntered(evt);
+            }
+        });
+        jButton13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton13ActionPerformed(evt);
+            }
+        });
+        transportPanel.add(jButton13, new java.awt.GridBagConstraints());
+
+        jButton14.setIcon(new javax.swing.ImageIcon("C:\\Users\\Brendan\\Documents\\Uni\\HCI\\HCIAudacity\\HCIPrototype1\\Icons\\glyphicons-174-play.png")); // NOI18N
+        jButton14.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton14.setPreferredSize(new java.awt.Dimension(65, 65));
+        jButton14.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton14MouseEntered(evt);
+            }
+        });
+        jButton14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton14ActionPerformed(evt);
+            }
+        });
+        transportPanel.add(jButton14, new java.awt.GridBagConstraints());
+
+        jButton15.setIcon(new javax.swing.ImageIcon("C:\\Users\\Brendan\\Documents\\Uni\\HCI\\HCIAudacity\\HCIPrototype1\\Icons\\glyphicons-176-stop.png")); // NOI18N
+        jButton15.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton15.setPreferredSize(new java.awt.Dimension(65, 65));
+        jButton15.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton15MouseEntered(evt);
+            }
+        });
+        jButton15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton15ActionPerformed(evt);
+            }
+        });
+        transportPanel.add(jButton15, new java.awt.GridBagConstraints());
+
+        jButton16.setIcon(new javax.swing.ImageIcon("C:\\Users\\Brendan\\Documents\\Uni\\HCI\\HCIAudacity\\HCIPrototype1\\Icons\\glyphicons-177-forward.png")); // NOI18N
+        jButton16.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton16.setPreferredSize(new java.awt.Dimension(65, 65));
+        jButton16.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton16MouseEntered(evt);
+            }
+        });
+        transportPanel.add(jButton16, new java.awt.GridBagConstraints());
+
+        jButton17.setIcon(new javax.swing.ImageIcon("C:\\Users\\Brendan\\Documents\\Uni\\HCI\\HCIAudacity\\HCIPrototype1\\Icons\\glyphicons-170-record.png")); // NOI18N
+        jButton17.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton17.setMaximumSize(new java.awt.Dimension(57, 19));
+        jButton17.setMinimumSize(new java.awt.Dimension(57, 19));
+        jButton17.setPreferredSize(new java.awt.Dimension(65, 65));
+        jButton17.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton17MouseEntered(evt);
+            }
+        });
+        jButton17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton17ActionPerformed(evt);
+            }
+        });
+        transportPanel.add(jButton17, new java.awt.GridBagConstraints());
+
+        jPanel4.add(transportPanel);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 4;
+        getContentPane().add(jPanel4, gridBagConstraints);
+
+        jProgressBar1.setPreferredSize(new java.awt.Dimension(1000, 20));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 3;
+        getContentPane().add(jProgressBar1, gridBagConstraints);
 
         jMenu1.setBackground(new java.awt.Color(204, 204, 204));
         jMenu1.setText("File");
@@ -1156,69 +1379,6 @@ public class NewJFrame extends javax.swing.JFrame {
 
         setJMenuBar(jMenuBar1);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollBar2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(track2Panel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(track1Panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(buttonPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
-                        .addComponent(windowPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 526, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(192, 192, 192)
-                                .addComponent(jLabel1)
-                                .addGap(64, 64, 64))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(49, 49, 49)))))
-                .addGap(59, 59, 59)
-                .addComponent(jScrollBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(300, 300, 300)
-                .addComponent(transportPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 702, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(buttonPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(2, 2, 2)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE)
-                        .addComponent(track1Panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(track2Panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(400, 400, 400))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(windowPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(688, 688, 688))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jScrollBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 603, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                .addComponent(jScrollBar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(transportPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -1246,24 +1406,15 @@ public class NewJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem136ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
-
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
-        // TODO add your handling code here:
+        try {
+            audioObject.setPlayback(true);
+            jButton14.setEnabled(true);
+            audioObject.getAudioStream().reset();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_jButton15ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
@@ -1275,6 +1426,7 @@ public class NewJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton17ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        /* Event action for opening an audio track (WAV File)*/
         FileFilter filter1 = new FileNameExtensionFilter("Audacity Projects", "aup");
         FileFilter filter2 = new FileNameExtensionFilter("FLAC Files", "flac");
         FileFilter filter3 = new FileNameExtensionFilter("MP3 Files", "mp3");
@@ -1285,38 +1437,204 @@ public class NewJFrame extends javax.swing.JFrame {
         fileOpen.addChoosableFileFilter(filter3);
         fileOpen.addChoosableFileFilter(filter4);
         
+        
         int returnVal = fileOpen.showOpenDialog(this);
         try {
-        //Checks if the user has selected OK and then gets the file and stores it
-        //in a FILE object
-        if (returnVal == javax.swing.JFileChooser.APPROVE_OPTION) {
-            java.io.File file = fileOpen.getSelectedFile( );
-            String filename = file.toString();
-            
-            FileInputStream fIn = new FileInputStream(filename);
-            InputStream bufferedIn = new BufferedInputStream(fIn);
-            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(bufferedIn);
-            
-            javax.swing.JFrame frame = new javax.swing.JFrame("Waveform Display Simulator"); 
-            frame.setBounds(200,200, 500, 350);
-                        
-            TrackFrame track = new TrackFrame();
-            track.setAudioToDisplay(audioInputStream);
-            
-            frame.getContentPane().setLayout(new BorderLayout());		
-            frame.getContentPane().add(track, BorderLayout.CENTER);
-		
-            frame.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
-       
-            frame.show();
-            frame.validate();
-            frame.repaint();
-        }
+            //Checks if the user has selected OK and then gets the file and stores it
+            //in a FILE object
+            if (returnVal == javax.swing.JFileChooser.APPROVE_OPTION) {
+                java.io.File file = fileOpen.getSelectedFile();
+                String filename = file.toString();
+                System.out.println(filename);
+                //Create an audio stream from the target file
+                FileInputStream fIn = new FileInputStream(filename);
+                InputStream bufferedIn = new BufferedInputStream(fIn);
+                audioObject.setAudioStream(AudioSystem.getAudioInputStream(bufferedIn));
+
+                audioObject.setLoaded(true);
+                //Creates new frame to display the waveforms
+                //javax.swing.JInternalFrame frame = new javax.swing.JInternalFrame(filename); 
+                //frame.setBounds(200,200, 500, 350);
+
+                TrackFrame track = new TrackFrame();
+                track.setAudioToDisplay(audioObject.getAudioStream());
+                
+                p.add(track, trackCount);
+                    
+                //frame.getContentPane().setLayout(new BorderLayout());		
+                //frame.getContentPane().add(track, BorderLayout.CENTER);
+                
+                //jScrollPane1.setViewportView(p);		
+                jScrollPane1.add(p);
+                //jScrollPane1.setPreferredSize(new java.awt.Dimension(600, 400));
+               // jScrollPane1.setMaximumSize(jScrollPane1.getPreferredSize()); 
+                //jScrollPane1.setMinimumSize(jScrollPane1.getPreferredSize());
+
+                //frame.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
+            }
+                trackCount++;
+                setVisible(true);
+                audioObject.getAudioStream().reset();
         }
         catch (Exception e) {
             e.printStackTrace();
+        }
     }//GEN-LAST:event_jMenuItem3ActionPerformed
-    }
+       
+    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
+        //Create an audio stream from the target file
+        try {
+                //FileInputStream fIn = new FileInputStream("C:\\Users\\Brendan\\Downloads\\test.wav");
+                //InputStream bufferedIn = new BufferedInputStream(fIn);
+                //audioObject.setAudioStream(AudioSystem.getAudioInputStream(bufferedIn));
+                //audioObject.setLoaded(true);
+                
+            //Make sure a track is loaded and it is at the start   
+            if (audioObject.isLoaded()) {
+                jButton15.setEnabled(true);
+                jButton14.setEnabled(false);
+                audioObject.playAudio(); 
+            }
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_jButton14ActionPerformed
+
+    private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton18ActionPerformed
+
+    private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton20ActionPerformed
+
+    private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton21ActionPerformed
+
+    private void jButton23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton23ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton23ActionPerformed
+
+    private void jButton24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton24ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton24ActionPerformed
+
+    private void jButton26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton26ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton26ActionPerformed
+
+    private void jButton28ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton28ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton28ActionPerformed
+
+    private void jButton19MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton19MouseEntered
+
+        jButton19.setToolTipText("Zoom-In");
+    }//GEN-LAST:event_jButton19MouseEntered
+
+    private void jButton22MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton22MouseEntered
+
+        jButton22.setToolTipText("Zoom-Out");
+    }//GEN-LAST:event_jButton22MouseEntered
+
+    private void jButton27MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton27MouseEntered
+
+        jButton27.setToolTipText("Undo");
+    }//GEN-LAST:event_jButton27MouseEntered
+
+    private void jButton28MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton28MouseEntered
+
+        jButton28.setToolTipText("Redo");
+    }//GEN-LAST:event_jButton28MouseEntered
+
+    private void jButton24MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton24MouseEntered
+
+        jButton24.setToolTipText("Paste");
+    }//GEN-LAST:event_jButton24MouseEntered
+
+    private void jButton25MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton25MouseEntered
+
+        jButton25.setToolTipText("Copy");
+    }//GEN-LAST:event_jButton25MouseEntered
+
+    private void jButton26MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton26MouseEntered
+
+        jButton26.setToolTipText("Cut");
+    }//GEN-LAST:event_jButton26MouseEntered
+
+    private void jButton20MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton20MouseEntered
+
+        jButton20.setToolTipText("Draw Tool");
+    }//GEN-LAST:event_jButton20MouseEntered
+
+    private void jButton18MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton18MouseEntered
+
+        jButton18.setToolTipText("Select Tool");
+    }//GEN-LAST:event_jButton18MouseEntered
+
+    private void jButton23MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton23MouseEntered
+
+        jButton23.setToolTipText("Multi-Tool Mode");
+    }//GEN-LAST:event_jButton23MouseEntered
+
+    private void jButton21MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton21MouseEntered
+
+        jButton21.setToolTipText("Time-Shift Tool");
+    }//GEN-LAST:event_jButton21MouseEntered
+
+    private void jButton14MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton14MouseEntered
+        jButton14.setToolTipText("Play");
+    }//GEN-LAST:event_jButton14MouseEntered
+
+    private void jButton15MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton15MouseEntered
+        jButton15.setToolTipText("Stop");
+    }//GEN-LAST:event_jButton15MouseEntered
+
+    private void jButton17MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton17MouseEntered
+        jButton17.setToolTipText("Record");
+    }//GEN-LAST:event_jButton17MouseEntered
+
+    private void jButton16MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton16MouseEntered
+        jButton16.setToolTipText("Forward");
+    }//GEN-LAST:event_jButton16MouseEntered
+
+    private void jButton13MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton13MouseEntered
+        jButton13.setToolTipText("Pause");
+    }//GEN-LAST:event_jButton13MouseEntered
+
+    private void jButton9MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton9MouseEntered
+        jButton9.setToolTipText("Previous");
+    }//GEN-LAST:event_jButton9MouseEntered
+
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+        jLabel3.setText("1:00:20");
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
+
+    private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
+        jLabel3.setText("4 | 1 | 1");
+    }//GEN-LAST:event_jToggleButton2ActionPerformed
+
+    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
+        try {
+                //FileInputStream fIn = new FileInputStream("C:\\Users\\Brendan\\Downloads\\test.wav");
+                //InputStream bufferedIn = new BufferedInputStream(fIn);
+                //audioObject.setAudioStream(AudioSystem.getAudioInputStream(bufferedIn));
+                //audioObject.setLoaded(true);
+             audioObject.getAudioStream().mark(audioObject.getAudioStream().available());   
+                
+            if (audioObject.isLoaded()) {
+                jButton15.setEnabled(true);
+                jButton14.setEnabled(false);
+                audioObject.playAudio(); 
+            }
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_jButton13ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1347,30 +1665,33 @@ public class NewJFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new NewJFrame().setVisible(true);
+                NewJFrame frame = new NewJFrame();
+
+                frame.setExtendedState(MAXIMIZED_BOTH);
+                frame.setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel buttonPanel;
+    private javax.swing.JPanel controlPanel;
     private javax.swing.JFileChooser fileOpen;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton16;
     private javax.swing.JButton jButton17;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton18;
+    private javax.swing.JButton jButton19;
+    private javax.swing.JButton jButton20;
+    private javax.swing.JButton jButton21;
+    private javax.swing.JButton jButton22;
+    private javax.swing.JButton jButton23;
+    private javax.swing.JButton jButton24;
+    private javax.swing.JButton jButton25;
+    private javax.swing.JButton jButton26;
+    private javax.swing.JButton jButton27;
+    private javax.swing.JButton jButton28;
     private javax.swing.JButton jButton9;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem10;
@@ -1386,9 +1707,10 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem7;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem8;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem9;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu10;
     private javax.swing.JMenu jMenu11;
@@ -1569,14 +1891,15 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem97;
     private javax.swing.JMenuItem jMenuItem98;
     private javax.swing.JMenuItem jMenuItem99;
-    private javax.swing.JScrollBar jScrollBar1;
-    private javax.swing.JScrollBar jScrollBar2;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JProgressBar jProgressBar1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSlider jSlider1;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JToggleButton jToggleButton2;
-    private javax.swing.JToggleButton jToggleButton3;
-    private javax.swing.JToggleButton jToggleButton4;
-    private javax.swing.JPanel track1Panel;
-    private javax.swing.JPanel track2Panel;
     private javax.swing.JPanel transportPanel;
     private javax.swing.JPanel windowPanel;
     // End of variables declaration//GEN-END:variables

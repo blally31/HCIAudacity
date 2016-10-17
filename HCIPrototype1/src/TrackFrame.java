@@ -14,32 +14,36 @@ import java.awt.BorderLayout;
  */
 public class TrackFrame extends JPanel {
     private ArrayList singleChannelWaveformPanels = new ArrayList();
-	private AudioInfo audioInfo = null;
+    private AudioInfo audioInfo = null;
    
-	public TrackFrame() {
-		setLayout(new GridLayout(0,1));
-	}
+    public TrackFrame() {
+        setLayout(new GridLayout(0,1));
+    }
 
-	public void setAudioToDisplay(AudioInputStream audioInputStream){
-		singleChannelWaveformPanels = new ArrayList();
-		audioInfo = new AudioInfo(audioInputStream);
-		for (int t=0; t<audioInfo.getNumberOfChannels(); t++){
-			SingleWaveformPanel waveformPanel
-				= new SingleWaveformPanel(audioInfo, t);
-			singleChannelWaveformPanels.add(waveformPanel);
-			add(createChannelDisplay(waveformPanel, t));
-		}
-	}
-	private JComponent createChannelDisplay(
-			SingleWaveformPanel waveformPanel,
-			int index) {
+    public void setAudioToDisplay(AudioInputStream audioInputStream) {
+        //Initiate the class fields
+        singleChannelWaveformPanels = new ArrayList();
+        audioInfo = new AudioInfo(audioInputStream);
+        //Creating a channel display for each channel
+        for (int t = 0; t < audioInfo.getNumberOfChannels(); t++){
+                SingleWaveformPanel waveformPanel
+                        = new SingleWaveformPanel(audioInfo, t);
+                singleChannelWaveformPanels.add(waveformPanel);
+                javax.swing.JComponent p = createChannelDisplay(waveformPanel, t);
+                p.setSize(new java.awt.Dimension(2000, 100));
+                add(p);
+        }
+    }
+    //Creates each display for a channel
+    private JComponent createChannelDisplay(SingleWaveformPanel waveformPanel,
+                    int index) {
 
-       JPanel panel = new JPanel(new BorderLayout());
-	   panel.add(waveformPanel, BorderLayout.CENTER);
+        JPanel panel = new JPanel(new BorderLayout());
+        panel.add(waveformPanel, BorderLayout.CENTER);
 
-	   JLabel label = new JLabel("Channel " + ++index);
-	   panel.add(label, BorderLayout.NORTH);
+        JLabel label = new JLabel("Channel " + ++index);
+        panel.add(label, BorderLayout.NORTH);
 
-	   return panel; 
-	}
+        return panel; 
+    }
 }
