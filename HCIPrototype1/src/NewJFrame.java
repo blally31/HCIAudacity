@@ -10,6 +10,7 @@ import javax.sound.sampled.AudioInputStream;
 import java.awt.GridLayout;
 import java.awt.BorderLayout;
 import java.io.*;
+import javax.swing.JInternalFrame;
 /**
  *
  * @author Fiddler
@@ -18,7 +19,9 @@ public class NewJFrame extends javax.swing.JFrame {
 
     //Keeps track of the number of tracks loaded in
     static int trackCount = 0;
-    javax.swing.JPanel p = new javax.swing.JPanel(new GridLayout(4,0));
+    javax.swing.JInternalFrame[] trackArray;
+    javax.swing.JPanel[] waveArray;
+    javax.swing.JLabel[] labelArray;
     PlayAudio audioObject;
     /**
      * Creates new form NewJFrame
@@ -26,8 +29,44 @@ public class NewJFrame extends javax.swing.JFrame {
     public NewJFrame() {
         initComponents();
         audioObject = new PlayAudio();
+        setExtendedState(MAXIMIZED_BOTH);
+        initTracks();  
+        this.setVisible(true);
+        jDialog1.setVisible(true);
     }
-
+    
+    //Initialises the track frames to be invisiible and remove the frame titlebars
+    private void initTracks() {
+        ((javax.swing.plaf.basic.BasicInternalFrameUI)jInternalFrame1.getUI()).setNorthPane(null);
+        jInternalFrame1.setVisible(false);
+        ((javax.swing.plaf.basic.BasicInternalFrameUI)jInternalFrame2.getUI()).setNorthPane(null);
+        jInternalFrame2.setVisible(false);
+        ((javax.swing.plaf.basic.BasicInternalFrameUI)jInternalFrame3.getUI()).setNorthPane(null);
+        jInternalFrame3.setVisible(false);
+        ((javax.swing.plaf.basic.BasicInternalFrameUI)jInternalFrame4.getUI()).setNorthPane(null);
+        jInternalFrame4.setVisible(false);
+        
+        //Creates the track array
+        trackArray = new javax.swing.JInternalFrame[4];
+        trackArray[0] = jInternalFrame1;
+        trackArray[1] = jInternalFrame2;
+        trackArray[2] = jInternalFrame3;
+        trackArray[3] = jInternalFrame4;
+        
+        //Creates the waveforme array
+        waveArray = new javax.swing.JPanel[4];
+        waveArray[0] = track1Wave;
+        waveArray[1] = track2Wave;
+        waveArray[2] = track3Wave;
+        waveArray[3] = track4Wave;
+        
+        //Creates tracklabel array
+        labelArray = new javax.swing.JLabel[4];
+        labelArray[0] = jLabel18;
+        labelArray[1] = jLabel19;
+        labelArray[2] = jLabel17;
+        labelArray[3] = jLabel20;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -39,6 +78,15 @@ public class NewJFrame extends javax.swing.JFrame {
         java.awt.GridBagConstraints gridBagConstraints;
 
         fileOpen = new javax.swing.JFileChooser();
+        jDialog1 = new javax.swing.JDialog();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jList2 = new javax.swing.JList<>();
+        jRadioButton4 = new javax.swing.JRadioButton();
+        jRadioButton5 = new javax.swing.JRadioButton();
+        jRadioButton6 = new javax.swing.JRadioButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         controlPanel = new javax.swing.JPanel();
         jButton18 = new javax.swing.JButton();
         jButton19 = new javax.swing.JButton();
@@ -60,9 +108,58 @@ public class NewJFrame extends javax.swing.JFrame {
         jToggleButton1 = new javax.swing.JToggleButton();
         jSlider1 = new javax.swing.JSlider();
         jLabel4 = new javax.swing.JLabel();
+        trackPanel = new javax.swing.JPanel();
+        jInternalFrame1 = new javax.swing.JInternalFrame();
+        track1Info = new javax.swing.JPanel();
+        jButton4 = new javax.swing.JButton();
+        jToggleButton3 = new javax.swing.JToggleButton();
+        jToggleButton4 = new javax.swing.JToggleButton();
+        panSlider1 = new javax.swing.JSlider();
+        volSlider1 = new javax.swing.JSlider();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        track1Wave = new javax.swing.JPanel();
+        jInternalFrame2 = new javax.swing.JInternalFrame();
+        track2Info = new javax.swing.JPanel();
+        jButton5 = new javax.swing.JButton();
+        jToggleButton5 = new javax.swing.JToggleButton();
+        jToggleButton6 = new javax.swing.JToggleButton();
+        panSlider2 = new javax.swing.JSlider();
+        volSlider2 = new javax.swing.JSlider();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        track2Wave = new javax.swing.JPanel();
+        jInternalFrame3 = new javax.swing.JInternalFrame();
+        track3Info = new javax.swing.JPanel();
+        jButton6 = new javax.swing.JButton();
+        jToggleButton7 = new javax.swing.JToggleButton();
+        jToggleButton8 = new javax.swing.JToggleButton();
+        panSlider3 = new javax.swing.JSlider();
+        volSlider3 = new javax.swing.JSlider();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        track3Wave = new javax.swing.JPanel();
+        jInternalFrame4 = new javax.swing.JInternalFrame();
+        track4Info = new javax.swing.JPanel();
+        jButton7 = new javax.swing.JButton();
+        jToggleButton9 = new javax.swing.JToggleButton();
+        jToggleButton10 = new javax.swing.JToggleButton();
+        panSlider4 = new javax.swing.JSlider();
+        volSlider4 = new javax.swing.JSlider();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        track4Wave = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane(p);
+        jComboBox1 = new javax.swing.JComboBox<>();
         jPanel4 = new javax.swing.JPanel();
         transportPanel = new javax.swing.JPanel();
         jButton9 = new javax.swing.JButton();
@@ -267,12 +364,86 @@ public class NewJFrame extends javax.swing.JFrame {
         jMenuItem147 = new javax.swing.JMenuItem();
         jMenuItem148 = new javax.swing.JMenuItem();
 
+        jDialog1.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        jDialog1.setTitle("Audacity Quick Start");
+        jDialog1.setAlwaysOnTop(true);
+        jDialog1.setBounds(new java.awt.Rectangle(800, 400, 0, 0));
+        jDialog1.setMinimumSize(new java.awt.Dimension(400, 400));
+        jDialog1.setModal(true);
+        jDialog1.setPreferredSize(new java.awt.Dimension(500, 500));
+        jDialog1.getContentPane().setLayout(new java.awt.GridBagLayout());
+
+        jScrollPane3.setMinimumSize(new java.awt.Dimension(100, 23));
+        jScrollPane3.setPreferredSize(new java.awt.Dimension(200, 150));
+
+        jList2.setPreferredSize(new java.awt.Dimension(150, 150));
+        jScrollPane3.setViewportView(jList2);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.gridheight = 6;
+        jDialog1.getContentPane().add(jScrollPane3, gridBagConstraints);
+
+        jRadioButton4.setText("Create Blank Project");
+        jRadioButton4.setMaximumSize(new java.awt.Dimension(100, 23));
+        jRadioButton4.setMinimumSize(new java.awt.Dimension(100, 23));
+        jRadioButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton4ActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 2;
+        jDialog1.getContentPane().add(jRadioButton4, gridBagConstraints);
+
+        jRadioButton5.setText("Load Recent Project");
+        jRadioButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton5ActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 2;
+        jDialog1.getContentPane().add(jRadioButton5, gridBagConstraints);
+
+        jRadioButton6.setText("Load Project");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        jDialog1.getContentPane().add(jRadioButton6, gridBagConstraints);
+
+        jButton2.setText("OK");
+        jButton2.setMaximumSize(new java.awt.Dimension(65, 23));
+        jButton2.setMinimumSize(new java.awt.Dimension(65, 23));
+        jButton2.setPreferredSize(new java.awt.Dimension(65, 23));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 10;
+        jDialog1.getContentPane().add(jButton2, gridBagConstraints);
+
+        jButton3.setText("Cancel");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 6;
+        gridBagConstraints.gridy = 10;
+        jDialog1.getContentPane().add(jButton3, gridBagConstraints);
+
+        jButton1.setText("jButton1");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 204));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        setMaximumSize(new java.awt.Dimension(1900, 1200));
         setMinimumSize(new java.awt.Dimension(1500, 750));
-        setPreferredSize(new java.awt.Dimension(1900, 1200));
         java.awt.GridBagLayout layout = new java.awt.GridBagLayout();
         layout.columnWidths = new int[] {50};
         getContentPane().setLayout(layout);
@@ -283,7 +454,6 @@ public class NewJFrame extends javax.swing.JFrame {
         controlPanel.setLayout(new java.awt.GridBagLayout());
 
         jButton18.setIcon(new javax.swing.ImageIcon("C:\\Users\\Brendan\\Documents\\Uni\\HCI\\HCIAudacity\\HCIPrototype1\\Icons\\85512-200.png")); // NOI18N
-        jButton18.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton18.setMaximumSize(new java.awt.Dimension(50, 50));
         jButton18.setMinimumSize(new java.awt.Dimension(50, 50));
         jButton18.setPreferredSize(new java.awt.Dimension(50, 50));
@@ -300,7 +470,6 @@ public class NewJFrame extends javax.swing.JFrame {
         controlPanel.add(jButton18, new java.awt.GridBagConstraints());
 
         jButton19.setIcon(new javax.swing.ImageIcon("C:\\Users\\Brendan\\Documents\\Uni\\HCI\\HCIAudacity\\HCIPrototype1\\Icons\\glyphicons-237-zoom-in.png")); // NOI18N
-        jButton19.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton19.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton19.setMaximumSize(new java.awt.Dimension(50, 50));
         jButton19.setMinimumSize(new java.awt.Dimension(50, 50));
@@ -313,7 +482,6 @@ public class NewJFrame extends javax.swing.JFrame {
         controlPanel.add(jButton19, new java.awt.GridBagConstraints());
 
         jButton20.setIcon(new javax.swing.ImageIcon("C:\\Users\\Brendan\\Documents\\Uni\\HCI\\HCIAudacity\\HCIPrototype1\\Icons\\glyphicons-31-pencil.png")); // NOI18N
-        jButton20.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton20.setMaximumSize(new java.awt.Dimension(50, 50));
         jButton20.setMinimumSize(new java.awt.Dimension(50, 50));
         jButton20.setPreferredSize(new java.awt.Dimension(50, 50));
@@ -330,7 +498,6 @@ public class NewJFrame extends javax.swing.JFrame {
         controlPanel.add(jButton20, new java.awt.GridBagConstraints());
 
         jButton21.setIcon(new javax.swing.ImageIcon("C:\\Users\\Brendan\\Documents\\Uni\\HCI\\HCIAudacity\\HCIPrototype1\\Icons\\glyphicons-left-right.png")); // NOI18N
-        jButton21.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton21.setMaximumSize(new java.awt.Dimension(50, 50));
         jButton21.setMinimumSize(new java.awt.Dimension(50, 50));
         jButton21.setPreferredSize(new java.awt.Dimension(50, 50));
@@ -347,7 +514,6 @@ public class NewJFrame extends javax.swing.JFrame {
         controlPanel.add(jButton21, new java.awt.GridBagConstraints());
 
         jButton22.setIcon(new javax.swing.ImageIcon("C:\\Users\\Brendan\\Documents\\Uni\\HCI\\HCIAudacity\\HCIPrototype1\\Icons\\glyphicons-238-zoom-out.png")); // NOI18N
-        jButton22.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton22.setMaximumSize(new java.awt.Dimension(50, 50));
         jButton22.setMinimumSize(new java.awt.Dimension(50, 50));
         jButton22.setPreferredSize(new java.awt.Dimension(50, 50));
@@ -359,7 +525,6 @@ public class NewJFrame extends javax.swing.JFrame {
         controlPanel.add(jButton22, new java.awt.GridBagConstraints());
 
         jButton23.setIcon(new javax.swing.ImageIcon("C:\\Users\\Brendan\\Documents\\Uni\\HCI\\HCIAudacity\\HCIPrototype1\\Icons\\glyphicons-137-cogwheel.png")); // NOI18N
-        jButton23.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton23.setMaximumSize(new java.awt.Dimension(50, 50));
         jButton23.setMinimumSize(new java.awt.Dimension(50, 50));
         jButton23.setPreferredSize(new java.awt.Dimension(50, 50));
@@ -376,7 +541,6 @@ public class NewJFrame extends javax.swing.JFrame {
         controlPanel.add(jButton23, new java.awt.GridBagConstraints());
 
         jButton24.setIcon(new javax.swing.ImageIcon("C:\\Users\\Brendan\\Documents\\Uni\\HCI\\HCIAudacity\\HCIPrototype1\\Icons\\glyphicons-513-paste.png")); // NOI18N
-        jButton24.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton24.setMaximumSize(new java.awt.Dimension(50, 50));
         jButton24.setMinimumSize(new java.awt.Dimension(50, 50));
         jButton24.setPreferredSize(new java.awt.Dimension(50, 50));
@@ -393,7 +557,6 @@ public class NewJFrame extends javax.swing.JFrame {
         controlPanel.add(jButton24, new java.awt.GridBagConstraints());
 
         jButton25.setIcon(new javax.swing.ImageIcon("C:\\Users\\Brendan\\Documents\\Uni\\HCI\\HCIAudacity\\HCIPrototype1\\Icons\\glyphicons-511-duplicate.png")); // NOI18N
-        jButton25.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton25.setMaximumSize(new java.awt.Dimension(50, 50));
         jButton25.setMinimumSize(new java.awt.Dimension(50, 50));
         jButton25.setPreferredSize(new java.awt.Dimension(50, 50));
@@ -405,7 +568,6 @@ public class NewJFrame extends javax.swing.JFrame {
         controlPanel.add(jButton25, new java.awt.GridBagConstraints());
 
         jButton26.setIcon(new javax.swing.ImageIcon("C:\\Users\\Brendan\\Documents\\Uni\\HCI\\HCIAudacity\\HCIPrototype1\\Icons\\glyphicons-289-scissors.png")); // NOI18N
-        jButton26.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton26.setMaximumSize(new java.awt.Dimension(50, 50));
         jButton26.setMinimumSize(new java.awt.Dimension(50, 50));
         jButton26.setPreferredSize(new java.awt.Dimension(50, 50));
@@ -422,7 +584,6 @@ public class NewJFrame extends javax.swing.JFrame {
         controlPanel.add(jButton26, new java.awt.GridBagConstraints());
 
         jButton27.setIcon(new javax.swing.ImageIcon("C:\\Users\\Brendan\\Documents\\Uni\\HCI\\HCIAudacity\\HCIPrototype1\\Icons\\glyphicons-222-unshare.png")); // NOI18N
-        jButton27.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton27.setMaximumSize(new java.awt.Dimension(50, 50));
         jButton27.setMinimumSize(new java.awt.Dimension(50, 50));
         jButton27.setPreferredSize(new java.awt.Dimension(50, 50));
@@ -434,7 +595,6 @@ public class NewJFrame extends javax.swing.JFrame {
         controlPanel.add(jButton27, new java.awt.GridBagConstraints());
 
         jButton28.setIcon(new javax.swing.ImageIcon("C:\\Users\\Brendan\\Documents\\Uni\\HCI\\HCIAudacity\\HCIPrototype1\\Icons\\glyphicons-223-share.png")); // NOI18N
-        jButton28.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton28.setMaximumSize(new java.awt.Dimension(50, 50));
         jButton28.setMinimumSize(new java.awt.Dimension(50, 50));
         jButton28.setPreferredSize(new java.awt.Dimension(50, 50));
@@ -548,6 +708,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jSlider1.setPaintLabels(true);
         jSlider1.setPaintTicks(true);
         jSlider1.setToolTipText("Playback Speed");
+        jSlider1.setValue(1);
         jSlider1.setMaximumSize(new java.awt.Dimension(200, 35));
         jSlider1.setMinimumSize(new java.awt.Dimension(150, 35));
         jSlider1.setPreferredSize(new java.awt.Dimension(275, 40));
@@ -572,48 +733,491 @@ public class NewJFrame extends javax.swing.JFrame {
         gridBagConstraints.gridy = 0;
         getContentPane().add(windowPanel, gridBagConstraints);
 
+        trackPanel.setMinimumSize(new java.awt.Dimension(1900, 700));
+        trackPanel.setPreferredSize(new java.awt.Dimension(1500, 500));
+        trackPanel.setLayout(new java.awt.GridLayout(4, 0, 1, 0));
+
+        jInternalFrame1.setVisible(true);
+        java.awt.GridBagLayout jInternalFrame1Layout = new java.awt.GridBagLayout();
+        jInternalFrame1Layout.rowWeights = new double[] {150.0, 0.0};
+        jInternalFrame1.getContentPane().setLayout(jInternalFrame1Layout);
+
+        track1Info.setPreferredSize(new java.awt.Dimension(150, 150));
+
+        jButton4.setIcon(new javax.swing.ImageIcon("C:\\Users\\Brendan\\Documents\\Uni\\HCI\\HCIAudacity\\HCIPrototype1\\Icons\\close.png")); // NOI18N
+        jButton4.setToolTipText("Close");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton3.setText("S");
+        jToggleButton3.setToolTipText("Solo");
+        jToggleButton3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jToggleButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton3ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton4.setText("M");
+        jToggleButton4.setToolTipText("Mute");
+        jToggleButton4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        volSlider1.setOrientation(javax.swing.JSlider.VERTICAL);
+
+        jLabel5.setText("Vol");
+
+        jLabel6.setText("L");
+
+        jLabel7.setText("R");
+        jLabel7.setPreferredSize(new java.awt.Dimension(5, 14));
+
+        jLabel18.setText("jLabel18");
+        jLabel18.setMaximumSize(new java.awt.Dimension(45, 14));
+        jLabel18.setMinimumSize(new java.awt.Dimension(45, 14));
+        jLabel18.setPreferredSize(new java.awt.Dimension(45, 14));
+
+        javax.swing.GroupLayout track1InfoLayout = new javax.swing.GroupLayout(track1Info);
+        track1Info.setLayout(track1InfoLayout);
+        track1InfoLayout.setHorizontalGroup(
+            track1InfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(track1InfoLayout.createSequentialGroup()
+                .addGroup(track1InfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(volSlider1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 7, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addGroup(track1InfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(track1InfoLayout.createSequentialGroup()
+                        .addComponent(jToggleButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jToggleButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(panSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 7, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(track1InfoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37))
+        );
+        track1InfoLayout.setVerticalGroup(
+            track1InfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, track1InfoLayout.createSequentialGroup()
+                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 28, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(track1InfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(track1InfoLayout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addGap(1, 1, 1)
+                        .addGroup(track1InfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(volSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(track1InfoLayout.createSequentialGroup()
+                                .addGap(33, 33, 33)
+                                .addGroup(track1InfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jToggleButton4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jToggleButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(track1InfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(panSlider1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                    .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24))
+        );
+
+        jInternalFrame1.getContentPane().add(track1Info, new java.awt.GridBagConstraints());
+
+        track1Wave.setMinimumSize(new java.awt.Dimension(1750, 150));
+        track1Wave.setPreferredSize(new java.awt.Dimension(1750, 150));
+        track1Wave.setLayout(new java.awt.GridLayout());
+        jInternalFrame1.getContentPane().add(track1Wave, new java.awt.GridBagConstraints());
+
+        trackPanel.add(jInternalFrame1);
+        try {
+            jInternalFrame1.setMaximum(true);
+        } catch (java.beans.PropertyVetoException e1) {
+            e1.printStackTrace();
+        }
+
+        jInternalFrame2.setVisible(true);
+        java.awt.GridBagLayout jInternalFrame2Layout = new java.awt.GridBagLayout();
+        jInternalFrame2Layout.rowWeights = new double[] {150.0, 0.0};
+        jInternalFrame2.getContentPane().setLayout(jInternalFrame2Layout);
+
+        track2Info.setPreferredSize(new java.awt.Dimension(150, 150));
+
+        jButton5.setIcon(new javax.swing.ImageIcon("C:\\Users\\Brendan\\Documents\\Uni\\HCI\\HCIAudacity\\HCIPrototype1\\Icons\\close.png")); // NOI18N
+        jButton5.setToolTipText("Close");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton5.setText("S");
+        jToggleButton5.setToolTipText("Solo");
+        jToggleButton5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jToggleButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton5ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton6.setText("M");
+        jToggleButton6.setToolTipText("Mute");
+        jToggleButton6.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        volSlider2.setOrientation(javax.swing.JSlider.VERTICAL);
+
+        jLabel8.setText("Vol");
+
+        jLabel9.setText("L");
+
+        jLabel10.setText("R");
+        jLabel10.setPreferredSize(new java.awt.Dimension(5, 14));
+
+        jLabel19.setText("jLabel19");
+        jLabel19.setMaximumSize(new java.awt.Dimension(45, 14));
+        jLabel19.setMinimumSize(new java.awt.Dimension(45, 14));
+        jLabel19.setPreferredSize(new java.awt.Dimension(45, 14));
+
+        javax.swing.GroupLayout track2InfoLayout = new javax.swing.GroupLayout(track2Info);
+        track2Info.setLayout(track2InfoLayout);
+        track2InfoLayout.setHorizontalGroup(
+            track2InfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(track2InfoLayout.createSequentialGroup()
+                .addGroup(track2InfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(track2InfoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel8)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(track2InfoLayout.createSequentialGroup()
+                        .addGroup(track2InfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(volSlider2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(track2InfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(track2InfoLayout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 7, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, 0)
+                                .addGroup(track2InfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(track2InfoLayout.createSequentialGroup()
+                                        .addComponent(jToggleButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jToggleButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(panSlider2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, 7, Short.MAX_VALUE))
+                            .addGroup(track2InfoLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))))
+                .addContainerGap())
+        );
+        track2InfoLayout.setVerticalGroup(
+            track2InfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, track2InfoLayout.createSequentialGroup()
+                .addGroup(track2InfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(track2InfoLayout.createSequentialGroup()
+                        .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                    .addGroup(track2InfoLayout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addComponent(jLabel8)
+                .addGap(1, 1, 1)
+                .addGroup(track2InfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(volSlider2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(track2InfoLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(track2InfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jToggleButton6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jToggleButton5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(track2InfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(panSlider2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(24, 24, 24))
+        );
+
+        jInternalFrame2.getContentPane().add(track2Info, new java.awt.GridBagConstraints());
+
+        track2Wave.setMinimumSize(new java.awt.Dimension(1750, 150));
+        track2Wave.setPreferredSize(new java.awt.Dimension(1750, 150));
+        track2Wave.setLayout(new java.awt.GridLayout());
+        jInternalFrame2.getContentPane().add(track2Wave, new java.awt.GridBagConstraints());
+
+        trackPanel.add(jInternalFrame2);
+
+        jInternalFrame3.setVisible(true);
+        java.awt.GridBagLayout jInternalFrame3Layout = new java.awt.GridBagLayout();
+        jInternalFrame3Layout.rowWeights = new double[] {150.0, 0.0};
+        jInternalFrame3.getContentPane().setLayout(jInternalFrame3Layout);
+
+        track3Info.setPreferredSize(new java.awt.Dimension(150, 150));
+
+        jButton6.setIcon(new javax.swing.ImageIcon("C:\\Users\\Brendan\\Documents\\Uni\\HCI\\HCIAudacity\\HCIPrototype1\\Icons\\close.png")); // NOI18N
+        jButton6.setToolTipText("Close");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton7.setText("S");
+        jToggleButton7.setToolTipText("Solo");
+        jToggleButton7.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jToggleButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton7ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton8.setText("M");
+        jToggleButton8.setToolTipText("Mute");
+        jToggleButton8.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        volSlider3.setOrientation(javax.swing.JSlider.VERTICAL);
+
+        jLabel11.setText("Vol");
+
+        jLabel12.setText("L");
+
+        jLabel13.setText("R");
+        jLabel13.setPreferredSize(new java.awt.Dimension(5, 14));
+
+        jLabel17.setText("jLabel17");
+        jLabel17.setMaximumSize(new java.awt.Dimension(45, 14));
+        jLabel17.setMinimumSize(new java.awt.Dimension(45, 14));
+        jLabel17.setPreferredSize(new java.awt.Dimension(45, 14));
+
+        javax.swing.GroupLayout track3InfoLayout = new javax.swing.GroupLayout(track3Info);
+        track3Info.setLayout(track3InfoLayout);
+        track3InfoLayout.setHorizontalGroup(
+            track3InfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(track3InfoLayout.createSequentialGroup()
+                .addGroup(track3InfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(track3InfoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel11)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(track3InfoLayout.createSequentialGroup()
+                        .addGroup(track3InfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(volSlider3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(track3InfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(track3InfoLayout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 7, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, 0)
+                                .addGroup(track3InfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(track3InfoLayout.createSequentialGroup()
+                                        .addComponent(jToggleButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jToggleButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(panSlider3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, 7, Short.MAX_VALUE))
+                            .addGroup(track3InfoLayout.createSequentialGroup()
+                                .addGap(28, 28, 28)
+                                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))))
+                .addContainerGap())
+        );
+        track3InfoLayout.setVerticalGroup(
+            track3InfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, track3InfoLayout.createSequentialGroup()
+                .addGroup(track3InfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(track3InfoLayout.createSequentialGroup()
+                        .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                    .addGroup(track3InfoLayout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addComponent(jLabel11)
+                .addGap(1, 1, 1)
+                .addGroup(track3InfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(volSlider3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(track3InfoLayout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addGroup(track3InfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jToggleButton8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jToggleButton7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(track3InfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(panSlider3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(24, 24, 24))
+        );
+
+        jInternalFrame3.getContentPane().add(track3Info, new java.awt.GridBagConstraints());
+
+        track3Wave.setMinimumSize(new java.awt.Dimension(1750, 150));
+        track3Wave.setPreferredSize(new java.awt.Dimension(1750, 150));
+        track3Wave.setLayout(new java.awt.GridLayout());
+        jInternalFrame3.getContentPane().add(track3Wave, new java.awt.GridBagConstraints());
+
+        trackPanel.add(jInternalFrame3);
+
+        jInternalFrame4.setVisible(true);
+        java.awt.GridBagLayout jInternalFrame4Layout = new java.awt.GridBagLayout();
+        jInternalFrame4Layout.rowWeights = new double[] {150.0, 0.0};
+        jInternalFrame4.getContentPane().setLayout(jInternalFrame4Layout);
+
+        track4Info.setPreferredSize(new java.awt.Dimension(150, 150));
+
+        jButton7.setIcon(new javax.swing.ImageIcon("C:\\Users\\Brendan\\Documents\\Uni\\HCI\\HCIAudacity\\HCIPrototype1\\Icons\\close.png")); // NOI18N
+        jButton7.setToolTipText("Close");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton9.setText("S");
+        jToggleButton9.setToolTipText("Solo");
+        jToggleButton9.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jToggleButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton9ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton10.setText("M");
+        jToggleButton10.setToolTipText("Mute");
+        jToggleButton10.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        volSlider4.setOrientation(javax.swing.JSlider.VERTICAL);
+
+        jLabel14.setText("Vol");
+
+        jLabel15.setText("L");
+
+        jLabel16.setText("R");
+        jLabel16.setPreferredSize(new java.awt.Dimension(5, 14));
+
+        jLabel20.setText("jLabel20");
+        jLabel20.setMaximumSize(new java.awt.Dimension(45, 14));
+        jLabel20.setMinimumSize(new java.awt.Dimension(45, 14));
+        jLabel20.setPreferredSize(new java.awt.Dimension(45, 14));
+
+        javax.swing.GroupLayout track4InfoLayout = new javax.swing.GroupLayout(track4Info);
+        track4Info.setLayout(track4InfoLayout);
+        track4InfoLayout.setHorizontalGroup(
+            track4InfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(track4InfoLayout.createSequentialGroup()
+                .addGroup(track4InfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(track4InfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(volSlider4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(track4InfoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel14)))
+                .addGroup(track4InfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(track4InfoLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 7, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addGroup(track4InfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(track4InfoLayout.createSequentialGroup()
+                                .addComponent(jToggleButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jToggleButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(panSlider4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, 7, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(track4InfoLayout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+        );
+        track4InfoLayout.setVerticalGroup(
+            track4InfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, track4InfoLayout.createSequentialGroup()
+                .addGroup(track4InfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(track4InfoLayout.createSequentialGroup()
+                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 28, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel14)
+                        .addGap(1, 1, 1))
+                    .addGroup(track4InfoLayout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(track4InfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(volSlider4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(track4InfoLayout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addGroup(track4InfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jToggleButton10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jToggleButton9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(track4InfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(panSlider4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(24, 24, 24))
+        );
+
+        jInternalFrame4.getContentPane().add(track4Info, new java.awt.GridBagConstraints());
+
+        track4Wave.setMinimumSize(new java.awt.Dimension(1750, 150));
+        track4Wave.setPreferredSize(new java.awt.Dimension(1750, 150));
+        track4Wave.setLayout(new java.awt.GridLayout());
+        jInternalFrame4.getContentPane().add(track4Wave, new java.awt.GridBagConstraints());
+
+        trackPanel.add(jInternalFrame4);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 3;
+        getContentPane().add(trackPanel, gridBagConstraints);
+
         jPanel2.setMaximumSize(new java.awt.Dimension(700, 100));
         jPanel2.setMinimumSize(new java.awt.Dimension(700, 100));
         jPanel2.setPreferredSize(new java.awt.Dimension(1500, 275));
 
-        jLabel1.setText("jLabel1");
+        jLabel1.setText("Output Devices");
+
+        jComboBox1.setToolTipText("");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel2Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jLabel1)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(246, 246, 246)
+                .addComponent(jLabel1)
+                .addGap(45, 45, 45)
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(1046, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel2Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(218, Short.MAX_VALUE))
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 0;
         getContentPane().add(jPanel2, gridBagConstraints);
-
-        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-        jScrollPane1.setMaximumSize(new java.awt.Dimension(1900, 1200));
-        jScrollPane1.setMinimumSize(new java.awt.Dimension(1900, 700));
-        jScrollPane1.setPreferredSize(new java.awt.Dimension(1500, 500));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.gridwidth = 3;
-        getContentPane().add(jScrollPane1, gridBagConstraints);
 
         jPanel4.setMaximumSize(new java.awt.Dimension(1500, 500));
         jPanel4.setMinimumSize(new java.awt.Dimension(816, 100));
@@ -626,7 +1230,6 @@ public class NewJFrame extends javax.swing.JFrame {
         transportPanel.setLayout(new java.awt.GridBagLayout());
 
         jButton9.setIcon(new javax.swing.ImageIcon("C:\\Users\\Brendan\\Documents\\Uni\\HCI\\HCIAudacity\\HCIPrototype1\\Icons\\glyphicons-173-rewind.png")); // NOI18N
-        jButton9.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton9.setPreferredSize(new java.awt.Dimension(65, 65));
         jButton9.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -641,7 +1244,6 @@ public class NewJFrame extends javax.swing.JFrame {
         transportPanel.add(jButton9, new java.awt.GridBagConstraints());
 
         jButton13.setIcon(new javax.swing.ImageIcon("C:\\Users\\Brendan\\Documents\\Uni\\HCI\\HCIAudacity\\HCIPrototype1\\Icons\\glyphicons-175-pause.png")); // NOI18N
-        jButton13.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton13.setPreferredSize(new java.awt.Dimension(65, 65));
         jButton13.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -656,7 +1258,6 @@ public class NewJFrame extends javax.swing.JFrame {
         transportPanel.add(jButton13, new java.awt.GridBagConstraints());
 
         jButton14.setIcon(new javax.swing.ImageIcon("C:\\Users\\Brendan\\Documents\\Uni\\HCI\\HCIAudacity\\HCIPrototype1\\Icons\\glyphicons-174-play.png")); // NOI18N
-        jButton14.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton14.setPreferredSize(new java.awt.Dimension(65, 65));
         jButton14.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -671,7 +1272,6 @@ public class NewJFrame extends javax.swing.JFrame {
         transportPanel.add(jButton14, new java.awt.GridBagConstraints());
 
         jButton15.setIcon(new javax.swing.ImageIcon("C:\\Users\\Brendan\\Documents\\Uni\\HCI\\HCIAudacity\\HCIPrototype1\\Icons\\glyphicons-176-stop.png")); // NOI18N
-        jButton15.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton15.setPreferredSize(new java.awt.Dimension(65, 65));
         jButton15.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -686,7 +1286,6 @@ public class NewJFrame extends javax.swing.JFrame {
         transportPanel.add(jButton15, new java.awt.GridBagConstraints());
 
         jButton16.setIcon(new javax.swing.ImageIcon("C:\\Users\\Brendan\\Documents\\Uni\\HCI\\HCIAudacity\\HCIPrototype1\\Icons\\glyphicons-177-forward.png")); // NOI18N
-        jButton16.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton16.setPreferredSize(new java.awt.Dimension(65, 65));
         jButton16.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -696,7 +1295,6 @@ public class NewJFrame extends javax.swing.JFrame {
         transportPanel.add(jButton16, new java.awt.GridBagConstraints());
 
         jButton17.setIcon(new javax.swing.ImageIcon("C:\\Users\\Brendan\\Documents\\Uni\\HCI\\HCIAudacity\\HCIPrototype1\\Icons\\glyphicons-170-record.png")); // NOI18N
-        jButton17.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton17.setMaximumSize(new java.awt.Dimension(57, 19));
         jButton17.setMinimumSize(new java.awt.Dimension(57, 19));
         jButton17.setPreferredSize(new java.awt.Dimension(65, 65));
@@ -824,6 +1422,11 @@ public class NewJFrame extends javax.swing.JFrame {
         jMenu1.add(jMenuItem18);
 
         jMenuItem19.setText("Exit");
+        jMenuItem19.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem19ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem19);
 
         jMenuBar1.add(jMenu1);
@@ -1382,6 +1985,7 @@ public class NewJFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem1ActionPerformed
@@ -1445,49 +2049,63 @@ public class NewJFrame extends javax.swing.JFrame {
             if (returnVal == javax.swing.JFileChooser.APPROVE_OPTION) {
                 java.io.File file = fileOpen.getSelectedFile();
                 String filename = file.toString();
-                System.out.println(filename);
+                String trackname = file.getName();
                 //Create an audio stream from the target file
                 FileInputStream fIn = new FileInputStream(filename);
                 InputStream bufferedIn = new BufferedInputStream(fIn);
                 audioObject.setAudioStream(AudioSystem.getAudioInputStream(bufferedIn));
-
                 audioObject.setLoaded(true);
-                //Creates new frame to display the waveforms
-                //javax.swing.JInternalFrame frame = new javax.swing.JInternalFrame(filename); 
-                //frame.setBounds(200,200, 500, 350);
-
+               
                 TrackFrame track = new TrackFrame();
                 track.setAudioToDisplay(audioObject.getAudioStream());
+                    	
+                waveArray[trackCount].add(track, 0);
+                labelArray[trackCount].setText(trackname);
+                labelArray[trackCount].setToolTipText(trackname);
+                trackArray[trackCount].setVisible(true);
+                waveArray[trackCount].setVisible(true);
                 
-                p.add(track, trackCount);
-                    
-                //frame.getContentPane().setLayout(new BorderLayout());		
-                //frame.getContentPane().add(track, BorderLayout.CENTER);
-                
-                //jScrollPane1.setViewportView(p);		
-                jScrollPane1.add(p);
-                //jScrollPane1.setPreferredSize(new java.awt.Dimension(600, 400));
-               // jScrollPane1.setMaximumSize(jScrollPane1.getPreferredSize()); 
-                //jScrollPane1.setMinimumSize(jScrollPane1.getPreferredSize());
-
-                //frame.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
+                trackArray[trackCount].pack();
+                //Add File to recently used
+                javax.swing.JMenuItem recent = new javax.swing.JMenuItem(filename);
+                jMenu10.add(recent);
+                recent.addActionListener(new java.awt.event.ActionListener() {
+                    public void actionPerformed(java.awt.event.ActionEvent evt) {
+                        subMenuActionPerformed(evt,filename);
+                    }
+                });
             }
-                trackCount++;
-                setVisible(true);
-                audioObject.getAudioStream().reset();
+            trackCount++;
+                
+            audioObject.getAudioStream().reset();
         }
         catch (Exception e) {
             e.printStackTrace();
         }
     }//GEN-LAST:event_jMenuItem3ActionPerformed
-       
+    
+    private void subMenuActionPerformed(java.awt.event.ActionEvent evt, String file) {
+        try {
+            FileInputStream fIn = new FileInputStream(file);
+            InputStream bufferedIn = new BufferedInputStream(fIn);
+            audioObject.setAudioStream(AudioSystem.getAudioInputStream(bufferedIn));
+            audioObject.setLoaded(true);
+
+            TrackFrame track = new TrackFrame();
+            track.setAudioToDisplay(audioObject.getAudioStream());
+
+            track1Wave.add(track);
+            
+            trackCount++;
+            setVisible(true);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
         //Create an audio stream from the target file
         try {
-                //FileInputStream fIn = new FileInputStream("C:\\Users\\Brendan\\Downloads\\test.wav");
-                //InputStream bufferedIn = new BufferedInputStream(fIn);
-                //audioObject.setAudioStream(AudioSystem.getAudioInputStream(bufferedIn));
-                //audioObject.setLoaded(true);
                 
             //Make sure a track is loaded and it is at the start   
             if (audioObject.isLoaded()) {
@@ -1502,7 +2120,8 @@ public class NewJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton14ActionPerformed
 
     private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
-        // TODO add your handling code here:
+        java.awt.Cursor timeShift = new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR);
+        setCursor(timeShift);
     }//GEN-LAST:event_jButton18ActionPerformed
 
     private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
@@ -1510,7 +2129,8 @@ public class NewJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton20ActionPerformed
 
     private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
-        // TODO add your handling code here:
+        java.awt.Cursor timeShift = new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR);
+        setCursor(timeShift);
     }//GEN-LAST:event_jButton21ActionPerformed
 
     private void jButton23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton23ActionPerformed
@@ -1615,13 +2235,10 @@ public class NewJFrame extends javax.swing.JFrame {
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
         jLabel3.setText("4 | 1 | 1");
     }//GEN-LAST:event_jToggleButton2ActionPerformed
-
+    
+    //PLAY BUTTON
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
         try {
-                //FileInputStream fIn = new FileInputStream("C:\\Users\\Brendan\\Downloads\\test.wav");
-                //InputStream bufferedIn = new BufferedInputStream(fIn);
-                //audioObject.setAudioStream(AudioSystem.getAudioInputStream(bufferedIn));
-                //audioObject.setLoaded(true);
              audioObject.getAudioStream().mark(audioObject.getAudioStream().available());   
                 
             if (audioObject.isLoaded()) {
@@ -1634,7 +2251,71 @@ public class NewJFrame extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }//GEN-LAST:event_jButton13ActionPerformed
+    
+    private void jMenuItem19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem19ActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_jMenuItem19ActionPerformed
 
+    private void jRadioButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButton5ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jRadioButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton4ActionPerformed
+        //Create new Project
+        jDialog1.dispose();
+    }//GEN-LAST:event_jRadioButton4ActionPerformed
+
+    private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // Close Track window
+        javax.swing.JOptionPane warning = new javax.swing.JOptionPane();
+        //Custom button text
+        Object[] options = {"Yes", "No"};
+        int n = javax.swing.JOptionPane.showOptionDialog(null, "Do you wish to close the track? ",
+        "Close Track Warning", javax.swing.JOptionPane.YES_NO_CANCEL_OPTION, javax.swing.JOptionPane.QUESTION_MESSAGE,
+        null, options, options[2]);
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jToggleButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton5ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jToggleButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton7ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jToggleButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton9ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton9ActionPerformed
+
+    //Method that 
+    private static java.util.ArrayList<Object> getMixers() {
+        
+        java.util.ArrayList<Object> list = new java.util.ArrayList<Object>();
+        for (javax.sound.sampled.Mixer.Info mi : AudioSystem.getMixerInfo()) {
+            list.add(mi.getName());
+        }
+        return list;
+    }
     /**
      * @param args the command line arguments
      */
@@ -1669,13 +2350,16 @@ public class NewJFrame extends javax.swing.JFrame {
 
                 frame.setExtendedState(MAXIMIZED_BOTH);
                 frame.setVisible(true);
+                
             }
+            //
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel controlPanel;
     private javax.swing.JFileChooser fileOpen;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton15;
@@ -1683,6 +2367,7 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton18;
     private javax.swing.JButton jButton19;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton20;
     private javax.swing.JButton jButton21;
     private javax.swing.JButton jButton22;
@@ -1692,6 +2377,11 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton26;
     private javax.swing.JButton jButton27;
     private javax.swing.JButton jButton28;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton9;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem10;
@@ -1707,10 +2397,33 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem7;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem8;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem9;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JDialog jDialog1;
+    private javax.swing.JInternalFrame jInternalFrame1;
+    private javax.swing.JInternalFrame jInternalFrame2;
+    private javax.swing.JInternalFrame jInternalFrame3;
+    private javax.swing.JInternalFrame jInternalFrame4;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JList<String> jList2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu10;
     private javax.swing.JMenu jMenu11;
@@ -1896,11 +2609,39 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JProgressBar jProgressBar1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JRadioButton jRadioButton4;
+    private javax.swing.JRadioButton jRadioButton5;
+    private javax.swing.JRadioButton jRadioButton6;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSlider jSlider1;
     private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JToggleButton jToggleButton10;
     private javax.swing.JToggleButton jToggleButton2;
+    private javax.swing.JToggleButton jToggleButton3;
+    private javax.swing.JToggleButton jToggleButton4;
+    private javax.swing.JToggleButton jToggleButton5;
+    private javax.swing.JToggleButton jToggleButton6;
+    private javax.swing.JToggleButton jToggleButton7;
+    private javax.swing.JToggleButton jToggleButton8;
+    private javax.swing.JToggleButton jToggleButton9;
+    private javax.swing.JSlider panSlider1;
+    private javax.swing.JSlider panSlider2;
+    private javax.swing.JSlider panSlider3;
+    private javax.swing.JSlider panSlider4;
+    private javax.swing.JPanel track1Info;
+    private javax.swing.JPanel track1Wave;
+    private javax.swing.JPanel track2Info;
+    private javax.swing.JPanel track2Wave;
+    private javax.swing.JPanel track3Info;
+    private javax.swing.JPanel track3Wave;
+    private javax.swing.JPanel track4Info;
+    private javax.swing.JPanel track4Wave;
+    private javax.swing.JPanel trackPanel;
     private javax.swing.JPanel transportPanel;
+    private javax.swing.JSlider volSlider1;
+    private javax.swing.JSlider volSlider2;
+    private javax.swing.JSlider volSlider3;
+    private javax.swing.JSlider volSlider4;
     private javax.swing.JPanel windowPanel;
     // End of variables declaration//GEN-END:variables
 }

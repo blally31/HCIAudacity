@@ -92,7 +92,7 @@ class PlayThread extends Thread{
         catch (Exception e) {
             e.printStackTrace();
             System.exit(0);
-        }//end catch
-    }//end run
-}//end inner class PlayThread
+        }
+    }
+}
 }
