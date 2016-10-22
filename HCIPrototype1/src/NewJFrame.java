@@ -87,6 +87,14 @@ public class NewJFrame extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        effectDialog = new javax.swing.JDialog();
+        effectNameLabel = new javax.swing.JLabel();
+        jButton8 = new javax.swing.JButton();
+        jLabel55 = new javax.swing.JLabel();
+        jSlider3 = new javax.swing.JSlider();
+        jLabel56 = new javax.swing.JLabel();
+        jButton10 = new javax.swing.JButton();
+        jLabel21 = new javax.swing.JLabel();
         controlPanel = new javax.swing.JPanel();
         jButton18 = new javax.swing.JButton();
         jButton19 = new javax.swing.JButton();
@@ -370,7 +378,6 @@ public class NewJFrame extends javax.swing.JFrame {
         jDialog1.setBounds(new java.awt.Rectangle(800, 400, 0, 0));
         jDialog1.setMinimumSize(new java.awt.Dimension(400, 400));
         jDialog1.setModal(true);
-        jDialog1.setPreferredSize(new java.awt.Dimension(500, 500));
         jDialog1.getContentPane().setLayout(new java.awt.GridBagLayout());
 
         jScrollPane3.setMinimumSize(new java.awt.Dimension(100, 23));
@@ -433,12 +440,88 @@ public class NewJFrame extends javax.swing.JFrame {
         jDialog1.getContentPane().add(jButton2, gridBagConstraints);
 
         jButton3.setText("Cancel");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 6;
         gridBagConstraints.gridy = 10;
         jDialog1.getContentPane().add(jButton3, gridBagConstraints);
 
         jButton1.setText("jButton1");
+
+        effectDialog.setMinimumSize(new java.awt.Dimension(600, 550));
+        effectDialog.setResizable(false);
+
+        effectNameLabel.setText("Effect Name: ");
+
+        jButton8.setText("Close");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+
+        jLabel55.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel55.setText("Value");
+
+        jLabel56.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Graph.png"))); // NOI18N
+        jLabel56.setText("Effect Name");
+
+        jButton10.setText("Okay");
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout effectDialogLayout = new javax.swing.GroupLayout(effectDialog.getContentPane());
+        effectDialog.getContentPane().setLayout(effectDialogLayout);
+        effectDialogLayout.setHorizontalGroup(
+            effectDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(effectDialogLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(effectDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(effectDialogLayout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jLabel56, javax.swing.GroupLayout.PREFERRED_SIZE, 549, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(effectDialogLayout.createSequentialGroup()
+                        .addGroup(effectDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel55, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(effectDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(effectDialogLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jSlider3, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(effectDialogLayout.createSequentialGroup()
+                                .addGap(173, 173, 173)
+                                .addComponent(effectNameLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel21)
+                                .addGap(0, 0, Short.MAX_VALUE)))))
+                .addContainerGap())
+        );
+        effectDialogLayout.setVerticalGroup(
+            effectDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(effectDialogLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(effectDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(effectNameLabel)
+                    .addComponent(jButton8)
+                    .addComponent(jLabel21))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel56, javax.swing.GroupLayout.PREFERRED_SIZE, 455, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(effectDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(effectDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jSlider3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel55, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton10)))
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 204));
@@ -453,7 +536,7 @@ public class NewJFrame extends javax.swing.JFrame {
         controlPanel.setPreferredSize(new java.awt.Dimension(700, 275));
         controlPanel.setLayout(new java.awt.GridBagLayout());
 
-        jButton18.setIcon(new javax.swing.ImageIcon("C:\\Users\\Brendan\\Documents\\Uni\\HCI\\HCIAudacity\\HCIPrototype1\\Icons\\85512-200.png")); // NOI18N
+        jButton18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/85512-200.png"))); // NOI18N
         jButton18.setMaximumSize(new java.awt.Dimension(50, 50));
         jButton18.setMinimumSize(new java.awt.Dimension(50, 50));
         jButton18.setPreferredSize(new java.awt.Dimension(50, 50));
@@ -469,7 +552,7 @@ public class NewJFrame extends javax.swing.JFrame {
         });
         controlPanel.add(jButton18, new java.awt.GridBagConstraints());
 
-        jButton19.setIcon(new javax.swing.ImageIcon("C:\\Users\\Brendan\\Documents\\Uni\\HCI\\HCIAudacity\\HCIPrototype1\\Icons\\glyphicons-237-zoom-in.png")); // NOI18N
+        jButton19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/glyphicons-237-zoom-in.png"))); // NOI18N
         jButton19.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton19.setMaximumSize(new java.awt.Dimension(50, 50));
         jButton19.setMinimumSize(new java.awt.Dimension(50, 50));
@@ -481,7 +564,7 @@ public class NewJFrame extends javax.swing.JFrame {
         });
         controlPanel.add(jButton19, new java.awt.GridBagConstraints());
 
-        jButton20.setIcon(new javax.swing.ImageIcon("C:\\Users\\Brendan\\Documents\\Uni\\HCI\\HCIAudacity\\HCIPrototype1\\Icons\\glyphicons-31-pencil.png")); // NOI18N
+        jButton20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/glyphicons-31-pencil.png"))); // NOI18N
         jButton20.setMaximumSize(new java.awt.Dimension(50, 50));
         jButton20.setMinimumSize(new java.awt.Dimension(50, 50));
         jButton20.setPreferredSize(new java.awt.Dimension(50, 50));
@@ -497,7 +580,7 @@ public class NewJFrame extends javax.swing.JFrame {
         });
         controlPanel.add(jButton20, new java.awt.GridBagConstraints());
 
-        jButton21.setIcon(new javax.swing.ImageIcon("C:\\Users\\Brendan\\Documents\\Uni\\HCI\\HCIAudacity\\HCIPrototype1\\Icons\\glyphicons-left-right.png")); // NOI18N
+        jButton21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/glyphicons-left-right.png"))); // NOI18N
         jButton21.setMaximumSize(new java.awt.Dimension(50, 50));
         jButton21.setMinimumSize(new java.awt.Dimension(50, 50));
         jButton21.setPreferredSize(new java.awt.Dimension(50, 50));
@@ -513,7 +596,7 @@ public class NewJFrame extends javax.swing.JFrame {
         });
         controlPanel.add(jButton21, new java.awt.GridBagConstraints());
 
-        jButton22.setIcon(new javax.swing.ImageIcon("C:\\Users\\Brendan\\Documents\\Uni\\HCI\\HCIAudacity\\HCIPrototype1\\Icons\\glyphicons-238-zoom-out.png")); // NOI18N
+        jButton22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/glyphicons-238-zoom-out.png"))); // NOI18N
         jButton22.setMaximumSize(new java.awt.Dimension(50, 50));
         jButton22.setMinimumSize(new java.awt.Dimension(50, 50));
         jButton22.setPreferredSize(new java.awt.Dimension(50, 50));
@@ -524,7 +607,7 @@ public class NewJFrame extends javax.swing.JFrame {
         });
         controlPanel.add(jButton22, new java.awt.GridBagConstraints());
 
-        jButton23.setIcon(new javax.swing.ImageIcon("C:\\Users\\Brendan\\Documents\\Uni\\HCI\\HCIAudacity\\HCIPrototype1\\Icons\\glyphicons-137-cogwheel.png")); // NOI18N
+        jButton23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/glyphicons-137-cogwheel.png"))); // NOI18N
         jButton23.setMaximumSize(new java.awt.Dimension(50, 50));
         jButton23.setMinimumSize(new java.awt.Dimension(50, 50));
         jButton23.setPreferredSize(new java.awt.Dimension(50, 50));
@@ -540,7 +623,7 @@ public class NewJFrame extends javax.swing.JFrame {
         });
         controlPanel.add(jButton23, new java.awt.GridBagConstraints());
 
-        jButton24.setIcon(new javax.swing.ImageIcon("C:\\Users\\Brendan\\Documents\\Uni\\HCI\\HCIAudacity\\HCIPrototype1\\Icons\\glyphicons-513-paste.png")); // NOI18N
+        jButton24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/glyphicons-513-paste.png"))); // NOI18N
         jButton24.setMaximumSize(new java.awt.Dimension(50, 50));
         jButton24.setMinimumSize(new java.awt.Dimension(50, 50));
         jButton24.setPreferredSize(new java.awt.Dimension(50, 50));
@@ -556,7 +639,7 @@ public class NewJFrame extends javax.swing.JFrame {
         });
         controlPanel.add(jButton24, new java.awt.GridBagConstraints());
 
-        jButton25.setIcon(new javax.swing.ImageIcon("C:\\Users\\Brendan\\Documents\\Uni\\HCI\\HCIAudacity\\HCIPrototype1\\Icons\\glyphicons-511-duplicate.png")); // NOI18N
+        jButton25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/glyphicons-511-duplicate.png"))); // NOI18N
         jButton25.setMaximumSize(new java.awt.Dimension(50, 50));
         jButton25.setMinimumSize(new java.awt.Dimension(50, 50));
         jButton25.setPreferredSize(new java.awt.Dimension(50, 50));
@@ -567,7 +650,7 @@ public class NewJFrame extends javax.swing.JFrame {
         });
         controlPanel.add(jButton25, new java.awt.GridBagConstraints());
 
-        jButton26.setIcon(new javax.swing.ImageIcon("C:\\Users\\Brendan\\Documents\\Uni\\HCI\\HCIAudacity\\HCIPrototype1\\Icons\\glyphicons-289-scissors.png")); // NOI18N
+        jButton26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/glyphicons-289-scissors.png"))); // NOI18N
         jButton26.setMaximumSize(new java.awt.Dimension(50, 50));
         jButton26.setMinimumSize(new java.awt.Dimension(50, 50));
         jButton26.setPreferredSize(new java.awt.Dimension(50, 50));
@@ -583,7 +666,7 @@ public class NewJFrame extends javax.swing.JFrame {
         });
         controlPanel.add(jButton26, new java.awt.GridBagConstraints());
 
-        jButton27.setIcon(new javax.swing.ImageIcon("C:\\Users\\Brendan\\Documents\\Uni\\HCI\\HCIAudacity\\HCIPrototype1\\Icons\\glyphicons-222-unshare.png")); // NOI18N
+        jButton27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/glyphicons-222-unshare.png"))); // NOI18N
         jButton27.setMaximumSize(new java.awt.Dimension(50, 50));
         jButton27.setMinimumSize(new java.awt.Dimension(50, 50));
         jButton27.setPreferredSize(new java.awt.Dimension(50, 50));
@@ -594,7 +677,7 @@ public class NewJFrame extends javax.swing.JFrame {
         });
         controlPanel.add(jButton27, new java.awt.GridBagConstraints());
 
-        jButton28.setIcon(new javax.swing.ImageIcon("C:\\Users\\Brendan\\Documents\\Uni\\HCI\\HCIAudacity\\HCIPrototype1\\Icons\\glyphicons-223-share.png")); // NOI18N
+        jButton28.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/glyphicons-223-share.png"))); // NOI18N
         jButton28.setMaximumSize(new java.awt.Dimension(50, 50));
         jButton28.setMinimumSize(new java.awt.Dimension(50, 50));
         jButton28.setPreferredSize(new java.awt.Dimension(50, 50));
@@ -719,7 +802,7 @@ public class NewJFrame extends javax.swing.JFrame {
         gridBagConstraints.gridheight = 2;
         windowPanel.add(jSlider1, gridBagConstraints);
 
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\Brendan\\Documents\\Uni\\HCI\\HCIAudacity\\HCIPrototype1\\Icons\\glyphicons-174-play.png")); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/glyphicons-174-play.png"))); // NOI18N
         jLabel4.setText("Speed");
         jLabel4.setToolTipText("Playback Speed");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -733,18 +816,20 @@ public class NewJFrame extends javax.swing.JFrame {
         gridBagConstraints.gridy = 0;
         getContentPane().add(windowPanel, gridBagConstraints);
 
-        trackPanel.setMinimumSize(new java.awt.Dimension(1900, 700));
+        trackPanel.setMinimumSize(new java.awt.Dimension(1850, 700));
         trackPanel.setPreferredSize(new java.awt.Dimension(1500, 500));
         trackPanel.setLayout(new java.awt.GridLayout(4, 0, 1, 0));
 
+        jInternalFrame1.setMinimumSize(new java.awt.Dimension(1850, 30));
         jInternalFrame1.setVisible(true);
         java.awt.GridBagLayout jInternalFrame1Layout = new java.awt.GridBagLayout();
         jInternalFrame1Layout.rowWeights = new double[] {150.0, 0.0};
         jInternalFrame1.getContentPane().setLayout(jInternalFrame1Layout);
 
+        track1Info.setMinimumSize(new java.awt.Dimension(200, 150));
         track1Info.setPreferredSize(new java.awt.Dimension(150, 150));
 
-        jButton4.setIcon(new javax.swing.ImageIcon("C:\\Users\\Brendan\\Documents\\Uni\\HCI\\HCIAudacity\\HCIPrototype1\\Icons\\close.png")); // NOI18N
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/close.png"))); // NOI18N
         jButton4.setToolTipText("Close");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -833,9 +918,9 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jInternalFrame1.getContentPane().add(track1Info, new java.awt.GridBagConstraints());
 
-        track1Wave.setMinimumSize(new java.awt.Dimension(1750, 150));
-        track1Wave.setPreferredSize(new java.awt.Dimension(1750, 150));
-        track1Wave.setLayout(new java.awt.GridLayout());
+        track1Wave.setMinimumSize(new java.awt.Dimension(1550, 150));
+        track1Wave.setPreferredSize(new java.awt.Dimension(1700, 150));
+        track1Wave.setLayout(new java.awt.GridLayout(1, 0));
         jInternalFrame1.getContentPane().add(track1Wave, new java.awt.GridBagConstraints());
 
         trackPanel.add(jInternalFrame1);
@@ -852,7 +937,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
         track2Info.setPreferredSize(new java.awt.Dimension(150, 150));
 
-        jButton5.setIcon(new javax.swing.ImageIcon("C:\\Users\\Brendan\\Documents\\Uni\\HCI\\HCIAudacity\\HCIPrototype1\\Icons\\close.png")); // NOI18N
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/close.png"))); // NOI18N
         jButton5.setToolTipText("Close");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -952,7 +1037,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
         track2Wave.setMinimumSize(new java.awt.Dimension(1750, 150));
         track2Wave.setPreferredSize(new java.awt.Dimension(1750, 150));
-        track2Wave.setLayout(new java.awt.GridLayout());
+        track2Wave.setLayout(new java.awt.GridLayout(1, 0));
         jInternalFrame2.getContentPane().add(track2Wave, new java.awt.GridBagConstraints());
 
         trackPanel.add(jInternalFrame2);
@@ -964,7 +1049,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
         track3Info.setPreferredSize(new java.awt.Dimension(150, 150));
 
-        jButton6.setIcon(new javax.swing.ImageIcon("C:\\Users\\Brendan\\Documents\\Uni\\HCI\\HCIAudacity\\HCIPrototype1\\Icons\\close.png")); // NOI18N
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/close.png"))); // NOI18N
         jButton6.setToolTipText("Close");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1064,7 +1149,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
         track3Wave.setMinimumSize(new java.awt.Dimension(1750, 150));
         track3Wave.setPreferredSize(new java.awt.Dimension(1750, 150));
-        track3Wave.setLayout(new java.awt.GridLayout());
+        track3Wave.setLayout(new java.awt.GridLayout(1, 0));
         jInternalFrame3.getContentPane().add(track3Wave, new java.awt.GridBagConstraints());
 
         trackPanel.add(jInternalFrame3);
@@ -1076,7 +1161,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
         track4Info.setPreferredSize(new java.awt.Dimension(150, 150));
 
-        jButton7.setIcon(new javax.swing.ImageIcon("C:\\Users\\Brendan\\Documents\\Uni\\HCI\\HCIAudacity\\HCIPrototype1\\Icons\\close.png")); // NOI18N
+        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/close.png"))); // NOI18N
         jButton7.setToolTipText("Close");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1174,7 +1259,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
         track4Wave.setMinimumSize(new java.awt.Dimension(1750, 150));
         track4Wave.setPreferredSize(new java.awt.Dimension(1750, 150));
-        track4Wave.setLayout(new java.awt.GridLayout());
+        track4Wave.setLayout(new java.awt.GridLayout(1, 0));
         jInternalFrame4.getContentPane().add(track4Wave, new java.awt.GridBagConstraints());
 
         trackPanel.add(jInternalFrame4);
@@ -1229,7 +1314,7 @@ public class NewJFrame extends javax.swing.JFrame {
         transportPanel.setPreferredSize(new java.awt.Dimension(500, 275));
         transportPanel.setLayout(new java.awt.GridBagLayout());
 
-        jButton9.setIcon(new javax.swing.ImageIcon("C:\\Users\\Brendan\\Documents\\Uni\\HCI\\HCIAudacity\\HCIPrototype1\\Icons\\glyphicons-173-rewind.png")); // NOI18N
+        jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/glyphicons-173-rewind.png"))); // NOI18N
         jButton9.setPreferredSize(new java.awt.Dimension(65, 65));
         jButton9.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -1243,7 +1328,7 @@ public class NewJFrame extends javax.swing.JFrame {
         });
         transportPanel.add(jButton9, new java.awt.GridBagConstraints());
 
-        jButton13.setIcon(new javax.swing.ImageIcon("C:\\Users\\Brendan\\Documents\\Uni\\HCI\\HCIAudacity\\HCIPrototype1\\Icons\\glyphicons-175-pause.png")); // NOI18N
+        jButton13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/glyphicons-175-pause.png"))); // NOI18N
         jButton13.setPreferredSize(new java.awt.Dimension(65, 65));
         jButton13.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -1257,7 +1342,7 @@ public class NewJFrame extends javax.swing.JFrame {
         });
         transportPanel.add(jButton13, new java.awt.GridBagConstraints());
 
-        jButton14.setIcon(new javax.swing.ImageIcon("C:\\Users\\Brendan\\Documents\\Uni\\HCI\\HCIAudacity\\HCIPrototype1\\Icons\\glyphicons-174-play.png")); // NOI18N
+        jButton14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/glyphicons-174-play.png"))); // NOI18N
         jButton14.setPreferredSize(new java.awt.Dimension(65, 65));
         jButton14.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -1271,7 +1356,7 @@ public class NewJFrame extends javax.swing.JFrame {
         });
         transportPanel.add(jButton14, new java.awt.GridBagConstraints());
 
-        jButton15.setIcon(new javax.swing.ImageIcon("C:\\Users\\Brendan\\Documents\\Uni\\HCI\\HCIAudacity\\HCIPrototype1\\Icons\\glyphicons-176-stop.png")); // NOI18N
+        jButton15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/glyphicons-176-stop.png"))); // NOI18N
         jButton15.setPreferredSize(new java.awt.Dimension(65, 65));
         jButton15.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -1285,7 +1370,7 @@ public class NewJFrame extends javax.swing.JFrame {
         });
         transportPanel.add(jButton15, new java.awt.GridBagConstraints());
 
-        jButton16.setIcon(new javax.swing.ImageIcon("C:\\Users\\Brendan\\Documents\\Uni\\HCI\\HCIAudacity\\HCIPrototype1\\Icons\\glyphicons-177-forward.png")); // NOI18N
+        jButton16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/glyphicons-177-forward.png"))); // NOI18N
         jButton16.setPreferredSize(new java.awt.Dimension(65, 65));
         jButton16.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -1294,7 +1379,7 @@ public class NewJFrame extends javax.swing.JFrame {
         });
         transportPanel.add(jButton16, new java.awt.GridBagConstraints());
 
-        jButton17.setIcon(new javax.swing.ImageIcon("C:\\Users\\Brendan\\Documents\\Uni\\HCI\\HCIAudacity\\HCIPrototype1\\Icons\\glyphicons-170-record.png")); // NOI18N
+        jButton17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/glyphicons-170-record.png"))); // NOI18N
         jButton17.setMaximumSize(new java.awt.Dimension(57, 19));
         jButton17.setMinimumSize(new java.awt.Dimension(57, 19));
         jButton17.setPreferredSize(new java.awt.Dimension(65, 65));
@@ -1920,6 +2005,11 @@ public class NewJFrame extends javax.swing.JFrame {
         jMenu8.add(jMenuItem133);
 
         jMenuItem134.setText("Plot Spectrum...");
+        jMenuItem134.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem134ActionPerformed(evt);
+            }
+        });
         jMenu8.add(jMenuItem134);
 
         jMenuItem135.setText("Find Clipping...");
@@ -2236,7 +2326,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel3.setText("4 | 1 | 1");
     }//GEN-LAST:event_jToggleButton2ActionPerformed
     
-    //PLAY BUTTON
+    //Plays the loaded audio track when the play button is pressed
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
         try {
              audioObject.getAudioStream().mark(audioObject.getAudioStream().available());   
@@ -2256,66 +2346,80 @@ public class NewJFrame extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jMenuItem19ActionPerformed
 
-    private void jRadioButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton5ActionPerformed
-
+    //Action Performed for Using the Audacity Quickstart Menu
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        if (jRadioButton4.isSelected()) {
+            jDialog1.dispose();
+        }
+        else if (jRadioButton5.isSelected()) {
+            jDialog1.dispose();
+            jMenuItem3ActionPerformed(evt);
+        }
+        else if (jRadioButton6.isSelected()) {
+            jDialog1.dispose();
+            jMenuItem3ActionPerformed(evt);
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jRadioButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton4ActionPerformed
-        //Create new Project
-        jDialog1.dispose();
-    }//GEN-LAST:event_jRadioButton4ActionPerformed
 
     private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jToggleButton3ActionPerformed
-
+    //Closes Track1 when the close button is pressed
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // Close Track window
-        javax.swing.JOptionPane warning = new javax.swing.JOptionPane();
-        //Custom button text
-        Object[] options = {"Yes", "No"};
-        int n = javax.swing.JOptionPane.showOptionDialog(null, "Do you wish to close the track? ",
-        "Close Track Warning", javax.swing.JOptionPane.YES_NO_CANCEL_OPTION, javax.swing.JOptionPane.QUESTION_MESSAGE,
-        null, options, options[2]);
+        jInternalFrame1.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
-
+    //Closes Track2 when the close button is pressed
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
+        jInternalFrame2.dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jToggleButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jToggleButton5ActionPerformed
-
+    //Closes Track3 when the close button is pressed
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
+        jInternalFrame3.dispose();
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jToggleButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton7ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jToggleButton7ActionPerformed
-
+    //Closes Track4 when the close button is pressed
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        // TODO add your handling code here:
+        jInternalFrame4.dispose();
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jToggleButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton9ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jToggleButton9ActionPerformed
+    //Closes the Audacity quickstart menu when close button is pressed
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        jDialog1.dispose();
+    }//GEN-LAST:event_jButton3ActionPerformed
 
-    //Method that 
-    private static java.util.ArrayList<Object> getMixers() {
-        
-        java.util.ArrayList<Object> list = new java.util.ArrayList<Object>();
-        for (javax.sound.sampled.Mixer.Info mi : AudioSystem.getMixerInfo()) {
-            list.add(mi.getName());
-        }
-        return list;
-    }
+    private void jRadioButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButton5ActionPerformed
+
+    private void jRadioButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton4ActionPerformed
+
+    }//GEN-LAST:event_jRadioButton4ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+
+        effectDialog.setVisible(false);
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        effectDialog.setVisible(false);
+    }//GEN-LAST:event_jButton10ActionPerformed
+    //Shows the pop-up effect/analysis tool
+    private void jMenuItem134ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem134ActionPerformed
+        effectDialog.setVisible(true); 
+        jLabel21.setText("Plot Spectrum");
+    }//GEN-LAST:event_jMenuItem134ActionPerformed
+
+
     /**
      * @param args the command line arguments
      */
@@ -2358,8 +2462,11 @@ public class NewJFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel controlPanel;
+    private javax.swing.JDialog effectDialog;
+    private javax.swing.JLabel effectNameLabel;
     private javax.swing.JFileChooser fileOpen;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton15;
@@ -2382,6 +2489,7 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem10;
@@ -2416,9 +2524,12 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel55;
+    private javax.swing.JLabel jLabel56;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -2614,6 +2725,7 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButton6;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSlider jSlider1;
+    private javax.swing.JSlider jSlider3;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JToggleButton jToggleButton10;
     private javax.swing.JToggleButton jToggleButton2;

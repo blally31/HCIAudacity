@@ -30,7 +30,7 @@ public class TrackFrame extends JPanel {
                         = new SingleWaveformPanel(audioInfo, t);
                 singleChannelWaveformPanels.add(waveformPanel);
                 javax.swing.JComponent p = createChannelDisplay(waveformPanel);
-                p.setSize(new java.awt.Dimension(2000, 100));
+                p.setSize(new java.awt.Dimension(1700, 100));
                 add(p);
         }
     }
