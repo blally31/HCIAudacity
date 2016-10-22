@@ -10,6 +10,7 @@ import javax.sound.sampled.AudioInputStream;
 import java.awt.GridLayout;
 import java.awt.BorderLayout;
 import java.awt.Desktop;
+import java.awt.event.ItemEvent;
 import java.io.*;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -24,6 +25,7 @@ import javax.sound.sampled.Mixer;
 import javax.sound.sampled.Port;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
+import javax.swing.SwingUtilities;
 /**
  *
  * @author Fiddler
@@ -365,6 +367,45 @@ public class NewJFrame extends javax.swing.JFrame {
         jTextPane25 = new javax.swing.JTextPane();
         jButton73 = new javax.swing.JButton();
         jButton74 = new javax.swing.JButton();
+        PluginEffect = new javax.swing.JDialog();
+        jLabel109 = new javax.swing.JLabel();
+        jLabel110 = new javax.swing.JLabel();
+        jCheckBox8 = new javax.swing.JCheckBox();
+        jCheckBox9 = new javax.swing.JCheckBox();
+        jCheckBox10 = new javax.swing.JCheckBox();
+        jCheckBox11 = new javax.swing.JCheckBox();
+        jCheckBox12 = new javax.swing.JCheckBox();
+        jCheckBox13 = new javax.swing.JCheckBox();
+        jCheckBox14 = new javax.swing.JCheckBox();
+        jCheckBox15 = new javax.swing.JCheckBox();
+        jButton75 = new javax.swing.JButton();
+        jButton76 = new javax.swing.JButton();
+        PluginAnalyze = new javax.swing.JDialog();
+        jLabel111 = new javax.swing.JLabel();
+        jLabel112 = new javax.swing.JLabel();
+        jCheckBox16 = new javax.swing.JCheckBox();
+        jCheckBox17 = new javax.swing.JCheckBox();
+        jCheckBox18 = new javax.swing.JCheckBox();
+        jCheckBox19 = new javax.swing.JCheckBox();
+        jCheckBox20 = new javax.swing.JCheckBox();
+        jCheckBox21 = new javax.swing.JCheckBox();
+        jCheckBox22 = new javax.swing.JCheckBox();
+        jCheckBox23 = new javax.swing.JCheckBox();
+        jButton77 = new javax.swing.JButton();
+        jButton78 = new javax.swing.JButton();
+        PluginGenerate = new javax.swing.JDialog();
+        jButton79 = new javax.swing.JButton();
+        jButton80 = new javax.swing.JButton();
+        jCheckBox24 = new javax.swing.JCheckBox();
+        jCheckBox25 = new javax.swing.JCheckBox();
+        jCheckBox26 = new javax.swing.JCheckBox();
+        jCheckBox27 = new javax.swing.JCheckBox();
+        jCheckBox28 = new javax.swing.JCheckBox();
+        jCheckBox29 = new javax.swing.JCheckBox();
+        jCheckBox30 = new javax.swing.JCheckBox();
+        jCheckBox31 = new javax.swing.JCheckBox();
+        jLabel113 = new javax.swing.JLabel();
+        jLabel114 = new javax.swing.JLabel();
         controlPanel = new javax.swing.JPanel();
         jButton18 = new javax.swing.JButton();
         jButton19 = new javax.swing.JButton();
@@ -720,7 +761,6 @@ public class NewJFrame extends javax.swing.JFrame {
 
         ScreenShot.setTitle("Screen Shot Window");
         ScreenShot.setMinimumSize(new java.awt.Dimension(800, 640));
-        ScreenShot.setPreferredSize(new java.awt.Dimension(800, 640));
         ScreenShot.getContentPane().setLayout(null);
 
         jLabel21.setText("Choose location to save files");
@@ -863,7 +903,6 @@ public class NewJFrame extends javax.swing.JFrame {
         About_Audacity.setTitle("About Audacity");
         About_Audacity.setMinimumSize(new java.awt.Dimension(800, 640));
         About_Audacity.setName("About Audacity"); // NOI18N
-        About_Audacity.setPreferredSize(new java.awt.Dimension(1024, 800));
         About_Audacity.getContentPane().setLayout(null);
 
         jTabbedPane2.setMinimumSize(new java.awt.Dimension(640, 480));
@@ -916,7 +955,6 @@ public class NewJFrame extends javax.swing.JFrame {
 
         CheckDependency.setTitle("Dependency Check");
         CheckDependency.setMinimumSize(new java.awt.Dimension(640, 480));
-        CheckDependency.setPreferredSize(new java.awt.Dimension(640, 480));
         CheckDependency.getContentPane().setLayout(null);
 
         jLabel31.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -935,7 +973,6 @@ public class NewJFrame extends javax.swing.JFrame {
 
         EditMetaData.setTitle("Edit Metadata Tags");
         EditMetaData.setMinimumSize(new java.awt.Dimension(800, 640));
-        EditMetaData.setPreferredSize(new java.awt.Dimension(800, 640));
         EditMetaData.setSize(new java.awt.Dimension(800, 640));
         EditMetaData.getContentPane().setLayout(null);
 
@@ -1807,6 +1844,336 @@ public class NewJFrame extends javax.swing.JFrame {
         });
         Debug.getContentPane().add(jButton74);
         jButton74.setBounds(550, 540, 70, 28);
+
+        PluginEffect.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        PluginEffect.setTitle("Add/Remove Plugins");
+        PluginEffect.setMinimumSize(new java.awt.Dimension(300, 300));
+        PluginEffect.getContentPane().setLayout(null);
+
+        jLabel109.setText("Name");
+        PluginEffect.getContentPane().add(jLabel109);
+        jLabel109.setBounds(50, 0, 34, 16);
+
+        jLabel110.setText("State");
+        PluginEffect.getContentPane().add(jLabel110);
+        jLabel110.setBounds(10, 0, 55, 16);
+
+        jCheckBox8.setSelected(true);
+        jCheckBox8.setText("Other");
+        jCheckBox8.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCheckBox8ItemStateChanged(evt);
+            }
+        });
+        PluginEffect.getContentPane().add(jCheckBox8);
+        jCheckBox8.setBounds(20, 170, 87, 18);
+
+        jCheckBox9.setSelected(true);
+        jCheckBox9.setText("EQ");
+        jCheckBox9.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCheckBox9ItemStateChanged(evt);
+            }
+        });
+        PluginEffect.getContentPane().add(jCheckBox9);
+        jCheckBox9.setBounds(20, 30, 39, 18);
+
+        jCheckBox10.setSelected(true);
+        jCheckBox10.setText("Dynamics");
+        jCheckBox10.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCheckBox10ItemStateChanged(evt);
+            }
+        });
+        PluginEffect.getContentPane().add(jCheckBox10);
+        jCheckBox10.setBounds(20, 50, 87, 18);
+
+        jCheckBox11.setSelected(true);
+        jCheckBox11.setText("Pitch Shift");
+        jCheckBox11.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCheckBox11ItemStateChanged(evt);
+            }
+        });
+        PluginEffect.getContentPane().add(jCheckBox11);
+        jCheckBox11.setBounds(20, 70, 87, 18);
+
+        jCheckBox12.setSelected(true);
+        jCheckBox12.setText("Reverb");
+        jCheckBox12.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCheckBox12ItemStateChanged(evt);
+            }
+        });
+        PluginEffect.getContentPane().add(jCheckBox12);
+        jCheckBox12.setBounds(20, 90, 87, 18);
+
+        jCheckBox13.setSelected(true);
+        jCheckBox13.setText("Delay");
+        jCheckBox13.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCheckBox13ItemStateChanged(evt);
+            }
+        });
+        PluginEffect.getContentPane().add(jCheckBox13);
+        jCheckBox13.setBounds(20, 110, 87, 18);
+
+        jCheckBox14.setSelected(true);
+        jCheckBox14.setText("Modulation");
+        jCheckBox14.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCheckBox14ItemStateChanged(evt);
+            }
+        });
+        PluginEffect.getContentPane().add(jCheckBox14);
+        jCheckBox14.setBounds(20, 130, 87, 20);
+
+        jCheckBox15.setSelected(true);
+        jCheckBox15.setText("Harmonies");
+        jCheckBox15.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCheckBox15ItemStateChanged(evt);
+            }
+        });
+        PluginEffect.getContentPane().add(jCheckBox15);
+        jCheckBox15.setBounds(20, 150, 87, 18);
+
+        jButton75.setText("Okay");
+        jButton75.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton75ActionPerformed(evt);
+            }
+        });
+        PluginEffect.getContentPane().add(jButton75);
+        jButton75.setBounds(10, 210, 55, 28);
+
+        jButton76.setText("Cancel");
+        jButton76.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton76ActionPerformed(evt);
+            }
+        });
+        PluginEffect.getContentPane().add(jButton76);
+        jButton76.setBounds(70, 210, 70, 28);
+
+        PluginAnalyze.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        PluginAnalyze.setTitle("Add/Remove Plugins");
+        PluginAnalyze.setMinimumSize(new java.awt.Dimension(300, 300));
+        PluginAnalyze.getContentPane().setLayout(null);
+
+        jLabel111.setText("Name");
+        PluginAnalyze.getContentPane().add(jLabel111);
+        jLabel111.setBounds(50, 0, 34, 16);
+
+        jLabel112.setText("State");
+        PluginAnalyze.getContentPane().add(jLabel112);
+        jLabel112.setBounds(10, 0, 55, 16);
+
+        jCheckBox16.setSelected(true);
+        jCheckBox16.setText("Sound Finder");
+        jCheckBox16.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCheckBox16ItemStateChanged(evt);
+            }
+        });
+        PluginAnalyze.getContentPane().add(jCheckBox16);
+        jCheckBox16.setBounds(20, 170, 130, 18);
+
+        jCheckBox17.setSelected(true);
+        jCheckBox17.setText("Contrast");
+        jCheckBox17.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCheckBox17ItemStateChanged(evt);
+            }
+        });
+        PluginAnalyze.getContentPane().add(jCheckBox17);
+        jCheckBox17.setBounds(20, 30, 80, 18);
+
+        jCheckBox18.setSelected(true);
+        jCheckBox18.setText("Plot Spectrum");
+        jCheckBox18.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCheckBox18ItemStateChanged(evt);
+            }
+        });
+        PluginAnalyze.getContentPane().add(jCheckBox18);
+        jCheckBox18.setBounds(20, 50, 130, 18);
+
+        jCheckBox19.setSelected(true);
+        jCheckBox19.setText("Find Clipping");
+        jCheckBox19.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCheckBox19ItemStateChanged(evt);
+            }
+        });
+        PluginAnalyze.getContentPane().add(jCheckBox19);
+        jCheckBox19.setBounds(20, 70, 130, 18);
+
+        jCheckBox20.setSelected(true);
+        jCheckBox20.setText("Beat Finder");
+        jCheckBox20.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCheckBox20ItemStateChanged(evt);
+            }
+        });
+        PluginAnalyze.getContentPane().add(jCheckBox20);
+        jCheckBox20.setBounds(20, 90, 130, 18);
+
+        jCheckBox21.setSelected(true);
+        jCheckBox21.setText("Regular Interval Labels");
+        jCheckBox21.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCheckBox21ItemStateChanged(evt);
+            }
+        });
+        PluginAnalyze.getContentPane().add(jCheckBox21);
+        jCheckBox21.setBounds(20, 110, 180, 18);
+
+        jCheckBox22.setSelected(true);
+        jCheckBox22.setText("Sample Data Export");
+        jCheckBox22.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCheckBox22ItemStateChanged(evt);
+            }
+        });
+        PluginAnalyze.getContentPane().add(jCheckBox22);
+        jCheckBox22.setBounds(20, 130, 170, 20);
+
+        jCheckBox23.setSelected(true);
+        jCheckBox23.setText("Silence Finder");
+        jCheckBox23.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCheckBox23ItemStateChanged(evt);
+            }
+        });
+        PluginAnalyze.getContentPane().add(jCheckBox23);
+        jCheckBox23.setBounds(20, 150, 170, 18);
+
+        jButton77.setText("Okay");
+        jButton77.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton77ActionPerformed(evt);
+            }
+        });
+        PluginAnalyze.getContentPane().add(jButton77);
+        jButton77.setBounds(10, 210, 55, 28);
+
+        jButton78.setText("Cancel");
+        jButton78.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton78ActionPerformed(evt);
+            }
+        });
+        PluginAnalyze.getContentPane().add(jButton78);
+        jButton78.setBounds(70, 210, 70, 28);
+
+        PluginGenerate.getContentPane().setLayout(null);
+
+        jButton79.setText("Cancel");
+        jButton79.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton79ActionPerformed(evt);
+            }
+        });
+        PluginGenerate.getContentPane().add(jButton79);
+        jButton79.setBounds(70, 210, 70, 28);
+
+        jButton80.setText("Okay");
+        jButton80.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton80ActionPerformed(evt);
+            }
+        });
+        PluginGenerate.getContentPane().add(jButton80);
+        jButton80.setBounds(10, 210, 55, 28);
+
+        jCheckBox24.setSelected(true);
+        jCheckBox24.setText("Pluck");
+        jCheckBox24.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCheckBox24ItemStateChanged(evt);
+            }
+        });
+        PluginGenerate.getContentPane().add(jCheckBox24);
+        jCheckBox24.setBounds(20, 150, 170, 18);
+
+        jCheckBox25.setSelected(true);
+        jCheckBox25.setText("Click Track");
+        jCheckBox25.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCheckBox25ItemStateChanged(evt);
+            }
+        });
+        PluginGenerate.getContentPane().add(jCheckBox25);
+        jCheckBox25.setBounds(20, 130, 170, 20);
+
+        jCheckBox26.setSelected(true);
+        jCheckBox26.setText("Tone");
+        jCheckBox26.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCheckBox26ItemStateChanged(evt);
+            }
+        });
+        PluginGenerate.getContentPane().add(jCheckBox26);
+        jCheckBox26.setBounds(20, 110, 180, 18);
+
+        jCheckBox27.setSelected(true);
+        jCheckBox27.setText("Silence");
+        jCheckBox27.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCheckBox27ItemStateChanged(evt);
+            }
+        });
+        PluginGenerate.getContentPane().add(jCheckBox27);
+        jCheckBox27.setBounds(20, 90, 130, 18);
+
+        jCheckBox28.setSelected(true);
+        jCheckBox28.setText("Noise");
+        jCheckBox28.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCheckBox28ItemStateChanged(evt);
+            }
+        });
+        PluginGenerate.getContentPane().add(jCheckBox28);
+        jCheckBox28.setBounds(20, 70, 130, 18);
+
+        jCheckBox29.setSelected(true);
+        jCheckBox29.setText("DTMF Tones");
+        jCheckBox29.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCheckBox29ItemStateChanged(evt);
+            }
+        });
+        PluginGenerate.getContentPane().add(jCheckBox29);
+        jCheckBox29.setBounds(20, 50, 130, 18);
+
+        jCheckBox30.setSelected(true);
+        jCheckBox30.setText("Chirp");
+        jCheckBox30.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCheckBox30ItemStateChanged(evt);
+            }
+        });
+        PluginGenerate.getContentPane().add(jCheckBox30);
+        jCheckBox30.setBounds(20, 30, 80, 18);
+
+        jCheckBox31.setSelected(true);
+        jCheckBox31.setText("Risset Drum");
+        jCheckBox31.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCheckBox31ItemStateChanged(evt);
+            }
+        });
+        PluginGenerate.getContentPane().add(jCheckBox31);
+        jCheckBox31.setBounds(20, 170, 130, 18);
+
+        jLabel113.setText("State");
+        PluginGenerate.getContentPane().add(jLabel113);
+        jLabel113.setBounds(10, 0, 55, 16);
+
+        jLabel114.setText("Name");
+        PluginGenerate.getContentPane().add(jLabel114);
+        jLabel114.setBounds(50, 0, 34, 16);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Audacity");
@@ -3261,6 +3628,11 @@ public class NewJFrame extends javax.swing.JFrame {
         jMenu6.setText("Generate");
 
         jMenuItem122.setText("Add/Remove Plugins...");
+        jMenuItem122.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem122ActionPerformed(evt);
+            }
+        });
         jMenu6.add(jMenuItem122);
 
         jMenuItem123.setText("Chirp...");
@@ -3332,6 +3704,11 @@ public class NewJFrame extends javax.swing.JFrame {
         jMenu7.setText("Effect");
 
         jMenuItem131.setText("Add/Remove Plugins...");
+        jMenuItem131.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem131ActionPerformed(evt);
+            }
+        });
         jMenu7.add(jMenuItem131);
 
         jMenu24.setText("EQ");
@@ -3363,18 +3740,20 @@ public class NewJFrame extends javax.swing.JFrame {
         jMenu8.setText("Analyse");
 
         jMenuItem132.setText("Add/Remove Plugins...");
+        jMenuItem132.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem132ActionPerformed(evt);
+            }
+        });
         jMenu8.add(jMenuItem132);
 
         jMenuItem133.setText("Contrast...");
-        jMenuItem133.setEnabled(false);
         jMenu8.add(jMenuItem133);
 
         jMenuItem134.setText("Plot Spectrum...");
-        jMenuItem134.setEnabled(false);
         jMenu8.add(jMenuItem134);
 
         jMenuItem135.setText("Find Clipping...");
-        jMenuItem135.setEnabled(false);
         jMenuItem135.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem135ActionPerformed(evt);
@@ -3383,7 +3762,6 @@ public class NewJFrame extends javax.swing.JFrame {
         jMenu8.add(jMenuItem135);
 
         jMenuItem136.setText("Beat Finder...");
-        jMenuItem136.setEnabled(false);
         jMenuItem136.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem136ActionPerformed(evt);
@@ -3392,19 +3770,15 @@ public class NewJFrame extends javax.swing.JFrame {
         jMenu8.add(jMenuItem136);
 
         jMenuItem137.setText("Regular Interval Labels...");
-        jMenuItem137.setEnabled(false);
         jMenu8.add(jMenuItem137);
 
         jMenuItem138.setText("Sample Data Export...");
-        jMenuItem138.setEnabled(false);
         jMenu8.add(jMenuItem138);
 
         jMenuItem139.setText("Silence Finder...");
-        jMenuItem139.setEnabled(false);
         jMenu8.add(jMenuItem139);
 
         jMenuItem140.setText("Sound Finder...");
-        jMenuItem140.setEnabled(false);
         jMenu8.add(jMenuItem140);
 
         jMenuBar1.add(jMenu8);
@@ -4090,6 +4464,361 @@ public class NewJFrame extends javax.swing.JFrame {
         Debug.setVisible(true);
     }//GEN-LAST:event_jMenuItem147ActionPerformed
 
+    private void jButton75ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton75ActionPerformed
+        PluginEffect.dispose();
+    }//GEN-LAST:event_jButton75ActionPerformed
+
+    private void jButton76ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton76ActionPerformed
+        PluginEffect.dispose();
+    }//GEN-LAST:event_jButton76ActionPerformed
+
+    private void jMenuItem131ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem131ActionPerformed
+        PluginEffect.setVisible(true);
+    }//GEN-LAST:event_jMenuItem131ActionPerformed
+
+    /* this event changes the jMenu7, to simulate when we remove plug-ins */
+    private void jCheckBox9ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCheckBox9ItemStateChanged
+        if (evt.getStateChange() == ItemEvent.DESELECTED)
+        {
+            jMenu7.remove(jMenu24);
+            SwingUtilities.updateComponentTreeUI(jMenu7);
+        }
+        else if(evt.getStateChange() == ItemEvent.SELECTED)
+        {
+            jMenu7.add(jMenu24);
+            SwingUtilities.updateComponentTreeUI(jMenu7);
+        }
+    }//GEN-LAST:event_jCheckBox9ItemStateChanged
+
+    /* this event changes the jMenu7, to simulate when we remove plug-ins */
+    private void jCheckBox10ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCheckBox10ItemStateChanged
+        if (evt.getStateChange() == ItemEvent.DESELECTED)
+        {
+            jMenu7.remove(jMenu25);
+            SwingUtilities.updateComponentTreeUI(jMenu7);
+        }
+        else if(evt.getStateChange() == ItemEvent.SELECTED)
+        {
+            jMenu7.add(jMenu25);
+            SwingUtilities.updateComponentTreeUI(jMenu7);
+        }
+    }//GEN-LAST:event_jCheckBox10ItemStateChanged
+
+    /* this event changes the jMenu7, to simulate when we remove plug-ins */
+    private void jCheckBox11ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCheckBox11ItemStateChanged
+        if (evt.getStateChange() == ItemEvent.DESELECTED)
+        {
+            jMenu7.remove(jMenu26);
+            SwingUtilities.updateComponentTreeUI(jMenu7);
+        }
+        else if(evt.getStateChange() == ItemEvent.SELECTED)
+        {
+            jMenu7.add(jMenu26);
+            SwingUtilities.updateComponentTreeUI(jMenu7);
+        }
+    }//GEN-LAST:event_jCheckBox11ItemStateChanged
+
+    /* this event changes the jMenu7, to simulate when we remove plug-ins */
+    private void jCheckBox12ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCheckBox12ItemStateChanged
+        if (evt.getStateChange() == ItemEvent.DESELECTED)
+        {
+            jMenu7.remove(jMenu27);
+            SwingUtilities.updateComponentTreeUI(jMenu7);
+        }
+        else if(evt.getStateChange() == ItemEvent.SELECTED)
+        {
+            jMenu7.add(jMenu27);
+            SwingUtilities.updateComponentTreeUI(jMenu7);
+        }
+    }//GEN-LAST:event_jCheckBox12ItemStateChanged
+
+    /* this event changes the jMenu7, to simulate when we remove plug-ins */
+    private void jCheckBox13ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCheckBox13ItemStateChanged
+        if (evt.getStateChange() == ItemEvent.DESELECTED)
+        {
+            jMenu7.remove(jMenu28);
+            SwingUtilities.updateComponentTreeUI(jMenu7);
+        }
+        else if(evt.getStateChange() == ItemEvent.SELECTED)
+        {
+            jMenu7.add(jMenu28);
+            SwingUtilities.updateComponentTreeUI(jMenu7);
+        }
+    }//GEN-LAST:event_jCheckBox13ItemStateChanged
+
+    /* this event changes the jMenu7, to simulate when we remove plug-ins */
+    private void jCheckBox14ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCheckBox14ItemStateChanged
+        if (evt.getStateChange() == ItemEvent.DESELECTED)
+        {
+            jMenu7.remove(jMenu29);
+            SwingUtilities.updateComponentTreeUI(jMenu7);
+        }
+        else if(evt.getStateChange() == ItemEvent.SELECTED)
+        {
+            jMenu7.add(jMenu29);
+            SwingUtilities.updateComponentTreeUI(jMenu7);
+        }
+    }//GEN-LAST:event_jCheckBox14ItemStateChanged
+
+    /* this event changes the jMenu7, to simulate when we remove plug-ins */
+    private void jCheckBox15ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCheckBox15ItemStateChanged
+        if (evt.getStateChange() == ItemEvent.DESELECTED)
+        {
+            jMenu7.remove(jMenu30);
+            SwingUtilities.updateComponentTreeUI(jMenu7);
+        }
+        else if(evt.getStateChange() == ItemEvent.SELECTED)
+        {
+            jMenu7.add(jMenu30);
+            SwingUtilities.updateComponentTreeUI(jMenu7);
+        }
+    }//GEN-LAST:event_jCheckBox15ItemStateChanged
+
+    private void jCheckBox8ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCheckBox8ItemStateChanged
+        if (evt.getStateChange() == ItemEvent.DESELECTED)
+        {
+            jMenu7.remove(jMenu31);
+            SwingUtilities.updateComponentTreeUI(jMenu7);
+        }
+        else if(evt.getStateChange() == ItemEvent.SELECTED)
+        {
+            jMenu7.add(jMenu31);
+            SwingUtilities.updateComponentTreeUI(jMenu7);
+        }
+    }//GEN-LAST:event_jCheckBox8ItemStateChanged
+
+    private void jCheckBox16ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCheckBox16ItemStateChanged
+        if (evt.getStateChange() == ItemEvent.DESELECTED)
+        {
+            jMenu8.remove(jMenuItem133);
+            SwingUtilities.updateComponentTreeUI(jMenu8);
+        }
+        else if(evt.getStateChange() == ItemEvent.SELECTED)
+        {
+            jMenu8.add(jMenuItem133);
+            SwingUtilities.updateComponentTreeUI(jMenu8);
+        }
+    }//GEN-LAST:event_jCheckBox16ItemStateChanged
+
+    private void jCheckBox17ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCheckBox17ItemStateChanged
+        if (evt.getStateChange() == ItemEvent.DESELECTED)
+        {
+            jMenu8.remove(jMenuItem134);
+            SwingUtilities.updateComponentTreeUI(jMenu8);
+        }
+        else if(evt.getStateChange() == ItemEvent.SELECTED)
+        {
+            jMenu8.add(jMenuItem134);
+            SwingUtilities.updateComponentTreeUI(jMenu8);
+        }
+    }//GEN-LAST:event_jCheckBox17ItemStateChanged
+
+    private void jCheckBox18ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCheckBox18ItemStateChanged
+        if (evt.getStateChange() == ItemEvent.DESELECTED)
+        {
+            jMenu8.remove(jMenuItem135);
+            SwingUtilities.updateComponentTreeUI(jMenu8);
+        }
+        else if(evt.getStateChange() == ItemEvent.SELECTED)
+        {
+            jMenu8.add(jMenuItem135);
+            SwingUtilities.updateComponentTreeUI(jMenu8);
+        }
+    }//GEN-LAST:event_jCheckBox18ItemStateChanged
+
+    private void jCheckBox19ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCheckBox19ItemStateChanged
+        if (evt.getStateChange() == ItemEvent.DESELECTED)
+        {
+            jMenu8.remove(jMenuItem136);
+            SwingUtilities.updateComponentTreeUI(jMenu8);
+        }
+        else if(evt.getStateChange() == ItemEvent.SELECTED)
+        {
+            jMenu8.add(jMenuItem136);
+            SwingUtilities.updateComponentTreeUI(jMenu8);
+        }
+    }//GEN-LAST:event_jCheckBox19ItemStateChanged
+
+    private void jCheckBox20ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCheckBox20ItemStateChanged
+        if (evt.getStateChange() == ItemEvent.DESELECTED)
+        {
+            jMenu8.remove(jMenuItem137);
+            SwingUtilities.updateComponentTreeUI(jMenu8);
+        }
+        else if(evt.getStateChange() == ItemEvent.SELECTED)
+        {
+            jMenu8.add(jMenuItem137);
+            SwingUtilities.updateComponentTreeUI(jMenu8);
+        }
+    }//GEN-LAST:event_jCheckBox20ItemStateChanged
+
+    private void jCheckBox21ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCheckBox21ItemStateChanged
+        if (evt.getStateChange() == ItemEvent.DESELECTED)
+        {
+            jMenu8.remove(jMenuItem138);
+            SwingUtilities.updateComponentTreeUI(jMenu8);
+        }
+        else if(evt.getStateChange() == ItemEvent.SELECTED)
+        {
+            jMenu8.add(jMenuItem138);
+            SwingUtilities.updateComponentTreeUI(jMenu8);
+        }
+    }//GEN-LAST:event_jCheckBox21ItemStateChanged
+
+    private void jCheckBox22ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCheckBox22ItemStateChanged
+        if (evt.getStateChange() == ItemEvent.DESELECTED)
+        {
+            jMenu8.remove(jMenuItem139);
+            SwingUtilities.updateComponentTreeUI(jMenu8);
+        }
+        else if(evt.getStateChange() == ItemEvent.SELECTED)
+        {
+            jMenu8.add(jMenuItem139);
+            SwingUtilities.updateComponentTreeUI(jMenu8);
+        }
+    }//GEN-LAST:event_jCheckBox22ItemStateChanged
+
+    private void jCheckBox23ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCheckBox23ItemStateChanged
+        if (evt.getStateChange() == ItemEvent.DESELECTED)
+        {
+            jMenu8.remove(jMenuItem140);
+            SwingUtilities.updateComponentTreeUI(jMenu8);
+        }
+        else if(evt.getStateChange() == ItemEvent.SELECTED)
+        {
+            jMenu8.add(jMenuItem140);
+            SwingUtilities.updateComponentTreeUI(jMenu8);
+        }
+    }//GEN-LAST:event_jCheckBox23ItemStateChanged
+
+    private void jButton77ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton77ActionPerformed
+        PluginAnalyze.dispose();
+    }//GEN-LAST:event_jButton77ActionPerformed
+
+    private void jButton78ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton78ActionPerformed
+        PluginAnalyze.dispose();
+    }//GEN-LAST:event_jButton78ActionPerformed
+
+    private void jMenuItem132ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem132ActionPerformed
+        PluginAnalyze.setVisible(true);
+    }//GEN-LAST:event_jMenuItem132ActionPerformed
+
+    private void jButton79ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton79ActionPerformed
+        PluginGenerate.dispose();
+    }//GEN-LAST:event_jButton79ActionPerformed
+
+    private void jButton80ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton80ActionPerformed
+        PluginGenerate.dispose();
+    }//GEN-LAST:event_jButton80ActionPerformed
+
+    private void jCheckBox24ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCheckBox24ItemStateChanged
+        if (evt.getStateChange() == ItemEvent.DESELECTED)
+        {
+            jMenu6.remove(jMenuItem123);
+            SwingUtilities.updateComponentTreeUI(jMenu6);
+        }
+        else if(evt.getStateChange() == ItemEvent.SELECTED)
+        {
+            jMenu6.add(jMenuItem123);
+            SwingUtilities.updateComponentTreeUI(jMenu6);
+        }
+    }//GEN-LAST:event_jCheckBox24ItemStateChanged
+
+    private void jCheckBox25ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCheckBox25ItemStateChanged
+        if (evt.getStateChange() == ItemEvent.DESELECTED)
+        {
+            jMenu6.remove(jMenuItem124);
+            SwingUtilities.updateComponentTreeUI(jMenu6);
+        }
+        else if(evt.getStateChange() == ItemEvent.SELECTED)
+        {
+            jMenu6.add(jMenuItem124);
+            SwingUtilities.updateComponentTreeUI(jMenu6);
+        }
+    }//GEN-LAST:event_jCheckBox25ItemStateChanged
+
+    private void jCheckBox26ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCheckBox26ItemStateChanged
+        if (evt.getStateChange() == ItemEvent.DESELECTED)
+        {
+            jMenu6.remove(jMenuItem125);
+            SwingUtilities.updateComponentTreeUI(jMenu6);
+        }
+        else if(evt.getStateChange() == ItemEvent.SELECTED)
+        {
+            jMenu6.add(jMenuItem125);
+            SwingUtilities.updateComponentTreeUI(jMenu6);
+        }
+    }//GEN-LAST:event_jCheckBox26ItemStateChanged
+
+    private void jCheckBox27ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCheckBox27ItemStateChanged
+        if (evt.getStateChange() == ItemEvent.DESELECTED)
+        {
+            jMenu6.remove(jMenuItem126);
+            SwingUtilities.updateComponentTreeUI(jMenu6);
+        }
+        else if(evt.getStateChange() == ItemEvent.SELECTED)
+        {
+            jMenu6.add(jMenuItem126);
+            SwingUtilities.updateComponentTreeUI(jMenu6);
+        }
+    }//GEN-LAST:event_jCheckBox27ItemStateChanged
+
+    private void jCheckBox28ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCheckBox28ItemStateChanged
+        if (evt.getStateChange() == ItemEvent.DESELECTED)
+        {
+            jMenu6.remove(jMenuItem127);
+            SwingUtilities.updateComponentTreeUI(jMenu6);
+        }
+        else if(evt.getStateChange() == ItemEvent.SELECTED)
+        {
+            jMenu6.add(jMenuItem127);
+            SwingUtilities.updateComponentTreeUI(jMenu6);
+        }
+    }//GEN-LAST:event_jCheckBox28ItemStateChanged
+
+    private void jCheckBox29ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCheckBox29ItemStateChanged
+        if (evt.getStateChange() == ItemEvent.DESELECTED)
+        {
+            jMenu6.remove(jMenuItem128);
+            SwingUtilities.updateComponentTreeUI(jMenu6);
+        }
+        else if(evt.getStateChange() == ItemEvent.SELECTED)
+        {
+            jMenu6.add(jMenuItem128);
+            SwingUtilities.updateComponentTreeUI(jMenu6);
+        }
+    }//GEN-LAST:event_jCheckBox29ItemStateChanged
+
+    private void jCheckBox30ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCheckBox30ItemStateChanged
+        if (evt.getStateChange() == ItemEvent.DESELECTED)
+        {
+            jMenu6.remove(jMenuItem129);
+            SwingUtilities.updateComponentTreeUI(jMenu6);
+        }
+        else if(evt.getStateChange() == ItemEvent.SELECTED)
+        {
+            jMenu6.add(jMenuItem129);
+            SwingUtilities.updateComponentTreeUI(jMenu6);
+        }
+    }//GEN-LAST:event_jCheckBox30ItemStateChanged
+
+    private void jCheckBox31ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCheckBox31ItemStateChanged
+        if (evt.getStateChange() == ItemEvent.DESELECTED)
+        {
+            jMenu6.remove(jMenuItem130);
+            SwingUtilities.updateComponentTreeUI(jMenu6);
+        }
+        else if(evt.getStateChange() == ItemEvent.SELECTED)
+        {
+            jMenu6.add(jMenuItem130);
+            SwingUtilities.updateComponentTreeUI(jMenu6);
+        }
+    }//GEN-LAST:event_jCheckBox31ItemStateChanged
+
+    private void jMenuItem122ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem122ActionPerformed
+        PluginGenerate.setVisible(true);
+    }//GEN-LAST:event_jMenuItem122ActionPerformed
+
     private void muteControl(boolean value)
     {
         Mixer.Info[] mixers = AudioSystem.getMixerInfo();
@@ -4234,6 +4963,9 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JDialog EditMetaData;
     private javax.swing.JDialog Noise;
     private javax.swing.JDialog Pluck;
+    private javax.swing.JDialog PluginAnalyze;
+    private javax.swing.JDialog PluginEffect;
+    private javax.swing.JDialog PluginGenerate;
     private javax.swing.JDialog ResetDrum;
     private javax.swing.JFileChooser Save;
     private javax.swing.JDialog ScreenShot;
@@ -4313,15 +5045,45 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton72;
     private javax.swing.JButton jButton73;
     private javax.swing.JButton jButton74;
+    private javax.swing.JButton jButton75;
+    private javax.swing.JButton jButton76;
+    private javax.swing.JButton jButton77;
+    private javax.swing.JButton jButton78;
+    private javax.swing.JButton jButton79;
     private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton80;
     private javax.swing.JButton jButton9;
     private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JCheckBox jCheckBox10;
+    private javax.swing.JCheckBox jCheckBox11;
+    private javax.swing.JCheckBox jCheckBox12;
+    private javax.swing.JCheckBox jCheckBox13;
+    private javax.swing.JCheckBox jCheckBox14;
+    private javax.swing.JCheckBox jCheckBox15;
+    private javax.swing.JCheckBox jCheckBox16;
+    private javax.swing.JCheckBox jCheckBox17;
+    private javax.swing.JCheckBox jCheckBox18;
+    private javax.swing.JCheckBox jCheckBox19;
     private javax.swing.JCheckBox jCheckBox2;
+    private javax.swing.JCheckBox jCheckBox20;
+    private javax.swing.JCheckBox jCheckBox21;
+    private javax.swing.JCheckBox jCheckBox22;
+    private javax.swing.JCheckBox jCheckBox23;
+    private javax.swing.JCheckBox jCheckBox24;
+    private javax.swing.JCheckBox jCheckBox25;
+    private javax.swing.JCheckBox jCheckBox26;
+    private javax.swing.JCheckBox jCheckBox27;
+    private javax.swing.JCheckBox jCheckBox28;
+    private javax.swing.JCheckBox jCheckBox29;
     private javax.swing.JCheckBox jCheckBox3;
+    private javax.swing.JCheckBox jCheckBox30;
+    private javax.swing.JCheckBox jCheckBox31;
     private javax.swing.JCheckBox jCheckBox4;
     private javax.swing.JCheckBox jCheckBox5;
     private javax.swing.JCheckBox jCheckBox6;
     private javax.swing.JCheckBox jCheckBox7;
+    private javax.swing.JCheckBox jCheckBox8;
+    private javax.swing.JCheckBox jCheckBox9;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem10;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem11;
@@ -4366,7 +5128,13 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel105;
     private javax.swing.JLabel jLabel106;
     private javax.swing.JLabel jLabel107;
+    private javax.swing.JLabel jLabel109;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel110;
+    private javax.swing.JLabel jLabel111;
+    private javax.swing.JLabel jLabel112;
+    private javax.swing.JLabel jLabel113;
+    private javax.swing.JLabel jLabel114;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
