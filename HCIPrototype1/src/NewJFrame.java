@@ -2674,6 +2674,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jMenu1.setBackground(new java.awt.Color(204, 204, 204));
         jMenu1.setText("File");
 
+        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem2.setText("New");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2682,6 +2683,7 @@ public class NewJFrame extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem2);
 
+        jMenuItem3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem3.setText("Open...");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2697,6 +2699,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jMenu1.add(jMenu10);
 
+        jMenuItem5.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_W, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem5.setText("Close");
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2705,6 +2708,7 @@ public class NewJFrame extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem5);
 
+        jMenuItem4.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem4.setText("Save Project");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2767,15 +2771,19 @@ public class NewJFrame extends javax.swing.JFrame {
         jMenu1.add(jMenu11);
 
         jMenuItem10.setText("Export Audio...");
+        jMenuItem10.setEnabled(false);
         jMenu1.add(jMenuItem10);
 
         jMenuItem11.setText("Export Selected Audio...");
+        jMenuItem11.setEnabled(false);
         jMenu1.add(jMenuItem11);
 
         jMenuItem12.setText("Export Labels...");
+        jMenuItem12.setEnabled(false);
         jMenu1.add(jMenuItem12);
 
         jMenuItem13.setText("Export Multiple...");
+        jMenuItem13.setEnabled(false);
         jMenuItem13.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem13ActionPerformed(evt);
@@ -2784,6 +2792,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jMenu1.add(jMenuItem13);
 
         jMenuItem14.setText("Export MIDI...");
+        jMenuItem14.setEnabled(false);
         jMenu1.add(jMenuItem14);
 
         jMenuItem15.setText("Apply Chain...");
@@ -2793,11 +2802,14 @@ public class NewJFrame extends javax.swing.JFrame {
         jMenu1.add(jMenuItem16);
 
         jMenuItem17.setText("Page Setup...");
+        jMenuItem17.setEnabled(false);
         jMenu1.add(jMenuItem17);
 
         jMenuItem18.setText("Print...");
+        jMenuItem18.setEnabled(false);
         jMenu1.add(jMenuItem18);
 
+        jMenuItem19.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Q, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem19.setText("Exit");
         jMenuItem19.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -3160,6 +3172,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jMenuItem97.setText("Remove Tracks");
         jMenu5.add(jMenuItem97);
 
+        jMenuItem98.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem98.setText("Mute All Tracks");
         jMenuItem98.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -3168,6 +3181,7 @@ public class NewJFrame extends javax.swing.JFrame {
         });
         jMenu5.add(jMenuItem98);
 
+        jMenuItem99.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem99.setText("Unmute All Tracks");
         jMenuItem99.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -3352,12 +3366,15 @@ public class NewJFrame extends javax.swing.JFrame {
         jMenu8.add(jMenuItem132);
 
         jMenuItem133.setText("Contrast...");
+        jMenuItem133.setEnabled(false);
         jMenu8.add(jMenuItem133);
 
         jMenuItem134.setText("Plot Spectrum...");
+        jMenuItem134.setEnabled(false);
         jMenu8.add(jMenuItem134);
 
         jMenuItem135.setText("Find Clipping...");
+        jMenuItem135.setEnabled(false);
         jMenuItem135.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem135ActionPerformed(evt);
@@ -3366,6 +3383,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jMenu8.add(jMenuItem135);
 
         jMenuItem136.setText("Beat Finder...");
+        jMenuItem136.setEnabled(false);
         jMenuItem136.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem136ActionPerformed(evt);
@@ -3374,15 +3392,19 @@ public class NewJFrame extends javax.swing.JFrame {
         jMenu8.add(jMenuItem136);
 
         jMenuItem137.setText("Regular Interval Labels...");
+        jMenuItem137.setEnabled(false);
         jMenu8.add(jMenuItem137);
 
         jMenuItem138.setText("Sample Data Export...");
+        jMenuItem138.setEnabled(false);
         jMenu8.add(jMenuItem138);
 
         jMenuItem139.setText("Silence Finder...");
+        jMenuItem139.setEnabled(false);
         jMenu8.add(jMenuItem139);
 
         jMenuItem140.setText("Sound Finder...");
+        jMenuItem140.setEnabled(false);
         jMenu8.add(jMenuItem140);
 
         jMenuBar1.add(jMenu8);
@@ -3841,7 +3863,7 @@ public class NewJFrame extends javax.swing.JFrame {
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
        NewJFrame w = new NewJFrame();
        w.setVisible(true);
-       this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+       w.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
        this.dispose();
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
