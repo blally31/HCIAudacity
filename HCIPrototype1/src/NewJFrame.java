@@ -1973,6 +1973,11 @@ public class NewJFrame extends javax.swing.JFrame {
         jMenu9.add(jMenuItem143);
 
         jMenuItem144.setText("Check for Updates...");
+        jMenuItem144.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem144ActionPerformed(evt);
+            }
+        });
         jMenu9.add(jMenuItem144);
 
         jMenuItem145.setText("Audio Device Info...");
@@ -2386,6 +2391,24 @@ public class NewJFrame extends javax.swing.JFrame {
         window.setVisible(true);
     }//GEN-LAST:event_jMenuItem143ActionPerformed
 
+    private void jMenuItem144ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem144ActionPerformed
+     URI uri = null;
+    try {
+            uri = new URI("http://www.audacityteam.org/download/?from_ver=2.1.2");
+        }
+    catch (URISyntaxException ex) {
+            Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
+        if (desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
+            try {
+                desktop.browse(uri);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }//GEN-LAST:event_jMenuItem144ActionPerformed
+
     //Method that 
     private static java.util.ArrayList<Object> getMixers() {
         
@@ -2433,6 +2456,8 @@ public class NewJFrame extends javax.swing.JFrame {
             }
             //
         });
+        
+     
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
