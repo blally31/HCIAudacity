@@ -154,7 +154,6 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel32 = new javax.swing.JLabel();
         EditMetaData = new javax.swing.JDialog();
         jLabel33 = new javax.swing.JLabel();
-        jLabel34 = new javax.swing.JLabel();
         jLabel35 = new javax.swing.JLabel();
         jLabel36 = new javax.swing.JLabel();
         jLabel37 = new javax.swing.JLabel();
@@ -164,17 +163,42 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel41 = new javax.swing.JLabel();
         jLabel42 = new javax.swing.JLabel();
         jLabel43 = new javax.swing.JLabel();
+        jButton46 = new javax.swing.JButton();
+        jButton47 = new javax.swing.JButton();
+        jButton48 = new javax.swing.JButton();
+        jButton49 = new javax.swing.JButton();
+        jButton50 = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
+        jTextField4 = new javax.swing.JTextField();
+        jTextField5 = new javax.swing.JTextField();
+        jTextField6 = new javax.swing.JTextField();
+        jTextField7 = new javax.swing.JTextField();
+        Chirp = new javax.swing.JDialog();
+        jLabel34 = new javax.swing.JLabel();
+        jComboBox2 = new javax.swing.JComboBox<>();
         jLabel44 = new javax.swing.JLabel();
         jLabel45 = new javax.swing.JLabel();
         jLabel46 = new javax.swing.JLabel();
         jLabel47 = new javax.swing.JLabel();
         jLabel48 = new javax.swing.JLabel();
         jLabel49 = new javax.swing.JLabel();
-        jButton46 = new javax.swing.JButton();
-        jButton47 = new javax.swing.JButton();
-        jButton48 = new javax.swing.JButton();
-        jButton49 = new javax.swing.JButton();
-        jButton50 = new javax.swing.JButton();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        jTextPane1 = new javax.swing.JTextPane();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        jTextPane2 = new javax.swing.JTextPane();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        jTextPane3 = new javax.swing.JTextPane();
+        jScrollPane10 = new javax.swing.JScrollPane();
+        jTextPane4 = new javax.swing.JTextPane();
+        jComboBox4 = new javax.swing.JComboBox<>();
+        jComboBox5 = new javax.swing.JComboBox<>();
+        jButton51 = new javax.swing.JButton();
+        jButton52 = new javax.swing.JButton();
+        jButton53 = new javax.swing.JButton();
+        jButton54 = new javax.swing.JButton();
+        Save = new javax.swing.JFileChooser();
         controlPanel = new javax.swing.JPanel();
         jButton18 = new javax.swing.JButton();
         jButton19 = new javax.swing.JButton();
@@ -530,6 +554,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
         ScreenShot.setTitle("Screen Shot Window");
         ScreenShot.setMinimumSize(new java.awt.Dimension(800, 640));
+        ScreenShot.setPreferredSize(new java.awt.Dimension(800, 640));
         ScreenShot.getContentPane().setLayout(null);
 
         jLabel21.setText("Choose location to save files");
@@ -672,6 +697,7 @@ public class NewJFrame extends javax.swing.JFrame {
         About_Audacity.setTitle("About Audacity");
         About_Audacity.setMinimumSize(new java.awt.Dimension(800, 640));
         About_Audacity.setName("About Audacity"); // NOI18N
+        About_Audacity.setPreferredSize(new java.awt.Dimension(1024, 800));
         About_Audacity.getContentPane().setLayout(null);
 
         jTabbedPane2.setMinimumSize(new java.awt.Dimension(640, 480));
@@ -724,6 +750,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
         CheckDependency.setTitle("Dependency Check");
         CheckDependency.setMinimumSize(new java.awt.Dimension(640, 480));
+        CheckDependency.setPreferredSize(new java.awt.Dimension(640, 480));
         CheckDependency.getContentPane().setLayout(null);
 
         jLabel31.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -742,6 +769,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
         EditMetaData.setTitle("Edit Metadata Tags");
         EditMetaData.setMinimumSize(new java.awt.Dimension(800, 640));
+        EditMetaData.setPreferredSize(new java.awt.Dimension(800, 640));
         EditMetaData.setSize(new java.awt.Dimension(800, 640));
         EditMetaData.getContentPane().setLayout(null);
 
@@ -749,16 +777,11 @@ public class NewJFrame extends javax.swing.JFrame {
         EditMetaData.getContentPane().add(jLabel33);
         jLabel33.setBounds(0, 0, 820, 16);
 
-        jLabel34.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel34.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        EditMetaData.getContentPane().add(jLabel34);
-        jLabel34.setBounds(120, 180, 690, 20);
-
         jLabel35.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel35.setText("Comments");
         jLabel35.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         EditMetaData.getContentPane().add(jLabel35);
-        jLabel35.setBounds(0, 180, 120, 20);
+        jLabel35.setBounds(0, 240, 120, 30);
 
         jLabel36.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel36.setText("Tag");
@@ -770,37 +793,37 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel37.setText("Artist Name");
         jLabel37.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         EditMetaData.getContentPane().add(jLabel37);
-        jLabel37.setBounds(0, 60, 120, 20);
+        jLabel37.setBounds(0, 60, 120, 30);
 
         jLabel38.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel38.setText("Track Title");
         jLabel38.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         EditMetaData.getContentPane().add(jLabel38);
-        jLabel38.setBounds(0, 80, 120, 20);
+        jLabel38.setBounds(0, 90, 120, 30);
 
         jLabel39.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel39.setText("Album Title");
         jLabel39.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         EditMetaData.getContentPane().add(jLabel39);
-        jLabel39.setBounds(0, 100, 120, 20);
+        jLabel39.setBounds(0, 120, 120, 30);
 
         jLabel40.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel40.setText("Track Number");
         jLabel40.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         EditMetaData.getContentPane().add(jLabel40);
-        jLabel40.setBounds(0, 120, 120, 20);
+        jLabel40.setBounds(0, 150, 120, 30);
 
         jLabel41.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel41.setText("Year");
         jLabel41.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         EditMetaData.getContentPane().add(jLabel41);
-        jLabel41.setBounds(0, 140, 120, 20);
+        jLabel41.setBounds(0, 180, 120, 30);
 
         jLabel42.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel42.setText("Genre");
         jLabel42.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         EditMetaData.getContentPane().add(jLabel42);
-        jLabel42.setBounds(0, 160, 120, 20);
+        jLabel42.setBounds(0, 210, 120, 30);
 
         jLabel43.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel43.setText("Value");
@@ -808,51 +831,31 @@ public class NewJFrame extends javax.swing.JFrame {
         EditMetaData.getContentPane().add(jLabel43);
         jLabel43.setBounds(120, 40, 690, 20);
 
-        jLabel44.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel44.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        EditMetaData.getContentPane().add(jLabel44);
-        jLabel44.setBounds(120, 60, 690, 20);
-
-        jLabel45.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel45.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        EditMetaData.getContentPane().add(jLabel45);
-        jLabel45.setBounds(120, 80, 690, 20);
-
-        jLabel46.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel46.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        EditMetaData.getContentPane().add(jLabel46);
-        jLabel46.setBounds(120, 100, 690, 20);
-
-        jLabel47.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel47.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        EditMetaData.getContentPane().add(jLabel47);
-        jLabel47.setBounds(120, 120, 690, 20);
-
-        jLabel48.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel48.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        EditMetaData.getContentPane().add(jLabel48);
-        jLabel48.setBounds(120, 140, 690, 20);
-
-        jLabel49.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel49.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        EditMetaData.getContentPane().add(jLabel49);
-        jLabel49.setBounds(120, 160, 690, 20);
-
         jButton46.setText("Cancel");
+        jButton46.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton46ActionPerformed(evt);
+            }
+        });
         EditMetaData.getContentPane().add(jButton46);
-        jButton46.setBounds(650, 290, 80, 28);
+        jButton46.setBounds(710, 360, 80, 28);
 
         jButton47.setText("Add");
         EditMetaData.getContentPane().add(jButton47);
-        jButton47.setBounds(10, 220, 49, 28);
+        jButton47.setBounds(20, 310, 49, 28);
 
         jButton48.setText("Remove");
         EditMetaData.getContentPane().add(jButton48);
-        jButton48.setBounds(60, 220, 80, 28);
+        jButton48.setBounds(70, 310, 80, 28);
 
         jButton49.setText("Clear");
+        jButton49.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton49ActionPerformed(evt);
+            }
+        });
         EditMetaData.getContentPane().add(jButton49);
-        jButton49.setBounds(140, 220, 80, 28);
+        jButton49.setBounds(150, 310, 80, 28);
 
         jButton50.setText("Okay");
         jButton50.addActionListener(new java.awt.event.ActionListener() {
@@ -861,7 +864,108 @@ public class NewJFrame extends javax.swing.JFrame {
             }
         });
         EditMetaData.getContentPane().add(jButton50);
-        jButton50.setBounds(550, 290, 80, 28);
+        jButton50.setBounds(620, 360, 80, 28);
+        EditMetaData.getContentPane().add(jTextField1);
+        jTextField1.setBounds(120, 240, 680, 30);
+        EditMetaData.getContentPane().add(jTextField2);
+        jTextField2.setBounds(120, 60, 680, 30);
+        EditMetaData.getContentPane().add(jTextField3);
+        jTextField3.setBounds(120, 90, 680, 30);
+        EditMetaData.getContentPane().add(jTextField4);
+        jTextField4.setBounds(120, 120, 680, 30);
+        EditMetaData.getContentPane().add(jTextField5);
+        jTextField5.setBounds(120, 150, 680, 30);
+        EditMetaData.getContentPane().add(jTextField6);
+        jTextField6.setBounds(120, 180, 680, 30);
+        EditMetaData.getContentPane().add(jTextField7);
+        jTextField7.setBounds(120, 210, 680, 30);
+
+        Chirp.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        Chirp.setTitle("Chirp");
+        Chirp.setMinimumSize(new java.awt.Dimension(600, 600));
+        Chirp.getContentPane().setLayout(null);
+
+        jLabel34.setText("Waveform:");
+        Chirp.getContentPane().add(jLabel34);
+        jLabel34.setBounds(0, 0, 70, 16);
+
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        Chirp.getContentPane().add(jComboBox2);
+        jComboBox2.setBounds(110, 130, 210, 20);
+
+        jLabel44.setText("Duration:");
+        Chirp.getContentPane().add(jLabel44);
+        jLabel44.setBounds(0, 190, 90, 16);
+
+        jLabel45.setText("Frequency (Hz):");
+        Chirp.getContentPane().add(jLabel45);
+        jLabel45.setBounds(0, 50, 90, 16);
+
+        jLabel46.setText("Amplitude(0-1):");
+        Chirp.getContentPane().add(jLabel46);
+        jLabel46.setBounds(0, 90, 90, 16);
+
+        jLabel47.setText("Interpolation:");
+        Chirp.getContentPane().add(jLabel47);
+        jLabel47.setBounds(0, 130, 90, 16);
+
+        jLabel48.setText("Start");
+        Chirp.getContentPane().add(jLabel48);
+        jLabel48.setBounds(140, 30, 25, 16);
+
+        jLabel49.setText("End");
+        Chirp.getContentPane().add(jLabel49);
+        jLabel49.setBounds(260, 30, 22, 16);
+
+        jScrollPane7.setViewportView(jTextPane1);
+
+        Chirp.getContentPane().add(jScrollPane7);
+        jScrollPane7.setBounds(230, 90, 90, 30);
+
+        jScrollPane8.setViewportView(jTextPane2);
+
+        Chirp.getContentPane().add(jScrollPane8);
+        jScrollPane8.setBounds(110, 50, 90, 30);
+
+        jScrollPane9.setViewportView(jTextPane3);
+
+        Chirp.getContentPane().add(jScrollPane9);
+        jScrollPane9.setBounds(230, 50, 90, 30);
+
+        jScrollPane10.setViewportView(jTextPane4);
+
+        Chirp.getContentPane().add(jScrollPane10);
+        jScrollPane10.setBounds(110, 90, 90, 30);
+
+        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        Chirp.getContentPane().add(jComboBox4);
+        jComboBox4.setBounds(110, 0, 210, 20);
+
+        jComboBox5.setForeground(new java.awt.Color(0, 0, 255));
+        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        Chirp.getContentPane().add(jComboBox5);
+        jComboBox5.setBounds(110, 190, 210, 26);
+
+        jButton51.setText("Cancel");
+        jButton51.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton51ActionPerformed(evt);
+            }
+        });
+        Chirp.getContentPane().add(jButton51);
+        jButton51.setBounds(280, 240, 80, 28);
+
+        jButton52.setText("Manage");
+        Chirp.getContentPane().add(jButton52);
+        jButton52.setBounds(0, 240, 72, 28);
+
+        jButton53.setText("Preview");
+        Chirp.getContentPane().add(jButton53);
+        jButton53.setBounds(80, 240, 80, 28);
+
+        jButton54.setText("Okay");
+        Chirp.getContentPane().add(jButton54);
+        jButton54.setBounds(180, 240, 80, 28);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Audacity");
@@ -1761,12 +1865,27 @@ public class NewJFrame extends javax.swing.JFrame {
         jMenu1.add(jMenuItem5);
 
         jMenuItem4.setText("Save Project");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem4);
 
         jMenuItem6.setText("Save Project As...");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem6);
 
         jMenuItem7.setText("Save Compressed Copy of Project...");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem7);
 
         jMenuItem8.setText("Check Dependencies...");
@@ -2290,6 +2409,11 @@ public class NewJFrame extends javax.swing.JFrame {
         jMenu6.add(jMenuItem122);
 
         jMenuItem123.setText("Chirp...");
+        jMenuItem123.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem123ActionPerformed(evt);
+            }
+        });
         jMenu6.add(jMenuItem123);
 
         jMenuItem124.setText("DTMF Tones...");
@@ -2883,6 +3007,56 @@ public class NewJFrame extends javax.swing.JFrame {
         muteControl(false);
     }//GEN-LAST:event_jMenuItem99ActionPerformed
 
+    private void jButton49ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton49ActionPerformed
+        jTextField1.setText(" ");
+        jTextField2.setText(" ");
+        jTextField3.setText(" ");
+        jTextField4.setText(" ");
+        jTextField5.setText(" ");
+        jTextField6.setText(" ");
+    }//GEN-LAST:event_jButton49ActionPerformed
+
+    private void jButton51ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton51ActionPerformed
+        Chirp.dispose();
+    }//GEN-LAST:event_jButton51ActionPerformed
+
+    private void jMenuItem123ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem123ActionPerformed
+        Chirp.setVisible(true);
+    }//GEN-LAST:event_jMenuItem123ActionPerformed
+
+    private void jButton46ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton46ActionPerformed
+        EditMetaData.dispose();
+    }//GEN-LAST:event_jButton46ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+                                               
+ 
+        FileFilter filter1 = new FileNameExtensionFilter("Audacity Projects", "aup");
+
+        Save.addChoosableFileFilter(filter1);
+        
+        
+        int returnVal = fileOpen.showSaveDialog(this);
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+         FileFilter filter1 = new FileNameExtensionFilter("Audacity Projects", "aup");
+
+        Save.addChoosableFileFilter(filter1);
+        
+        
+        int returnVal = fileOpen.showSaveDialog(this);
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+         FileFilter filter1 = new FileNameExtensionFilter("Audacity Projects", "aup");
+
+        Save.addChoosableFileFilter(filter1);
+        
+        
+        int returnVal = fileOpen.showSaveDialog(this);
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
+
     private void muteControl(boolean value)
     {
         Mixer.Info[] mixers = AudioSystem.getMixerInfo();
@@ -3018,7 +3192,9 @@ public class NewJFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JFrame About_Audacity;
     private javax.swing.JDialog CheckDependency;
+    private javax.swing.JDialog Chirp;
     private javax.swing.JDialog EditMetaData;
+    private javax.swing.JFileChooser Save;
     private javax.swing.JDialog ScreenShot;
     private javax.swing.JPanel controlPanel;
     private javax.swing.JFileChooser fileOpen;
@@ -3068,6 +3244,10 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton49;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton50;
+    private javax.swing.JButton jButton51;
+    private javax.swing.JButton jButton52;
+    private javax.swing.JButton jButton53;
+    private javax.swing.JButton jButton54;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
@@ -3088,6 +3268,9 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem8;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem9;
     private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> jComboBox4;
+    private javax.swing.JComboBox<String> jComboBox5;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JEditorPane jEditorPane1;
     private javax.swing.JEditorPane jEditorPane2;
@@ -3338,17 +3521,32 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButton5;
     private javax.swing.JRadioButton jRadioButton6;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSlider jSlider1;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextArea jTextArea3;
     private javax.swing.JTextArea jTextArea4;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField jTextField7;
+    private javax.swing.JTextPane jTextPane1;
+    private javax.swing.JTextPane jTextPane2;
+    private javax.swing.JTextPane jTextPane3;
+    private javax.swing.JTextPane jTextPane4;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JToggleButton jToggleButton10;
     private javax.swing.JToggleButton jToggleButton2;
