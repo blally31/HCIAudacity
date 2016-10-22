@@ -15,6 +15,12 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.FloatControl;
+import javax.sound.sampled.Line;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.Mixer;
+import javax.sound.sampled.Port;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 /**
@@ -141,6 +147,33 @@ public class NewJFrame extends javax.swing.JFrame {
         jPanel7 = new javax.swing.JPanel();
         jScrollPane6 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
+        CheckDependency = new javax.swing.JDialog();
+        jLabel31 = new javax.swing.JLabel();
+        jLabel30 = new javax.swing.JLabel();
+        jLabel32 = new javax.swing.JLabel();
+        EditMetaData = new javax.swing.JDialog();
+        jLabel33 = new javax.swing.JLabel();
+        jLabel34 = new javax.swing.JLabel();
+        jLabel35 = new javax.swing.JLabel();
+        jLabel36 = new javax.swing.JLabel();
+        jLabel37 = new javax.swing.JLabel();
+        jLabel38 = new javax.swing.JLabel();
+        jLabel39 = new javax.swing.JLabel();
+        jLabel40 = new javax.swing.JLabel();
+        jLabel41 = new javax.swing.JLabel();
+        jLabel42 = new javax.swing.JLabel();
+        jLabel43 = new javax.swing.JLabel();
+        jLabel44 = new javax.swing.JLabel();
+        jLabel45 = new javax.swing.JLabel();
+        jLabel46 = new javax.swing.JLabel();
+        jLabel47 = new javax.swing.JLabel();
+        jLabel48 = new javax.swing.JLabel();
+        jLabel49 = new javax.swing.JLabel();
+        jButton46 = new javax.swing.JButton();
+        jButton47 = new javax.swing.JButton();
+        jButton48 = new javax.swing.JButton();
+        jButton49 = new javax.swing.JButton();
+        jButton50 = new javax.swing.JButton();
         controlPanel = new javax.swing.JPanel();
         jButton18 = new javax.swing.JButton();
         jButton19 = new javax.swing.JButton();
@@ -250,6 +283,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jMenuItem17 = new javax.swing.JMenuItem();
         jMenuItem18 = new javax.swing.JMenuItem();
         jMenuItem19 = new javax.swing.JMenuItem();
+        jMenuItem149 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem25 = new javax.swing.JMenuItem();
         jMenuItem26 = new javax.swing.JMenuItem();
@@ -688,6 +722,149 @@ public class NewJFrame extends javax.swing.JFrame {
 
         About_Audacity.getContentPane().add(jTabbedPane2);
         jTabbedPane2.setBounds(0, 0, 1030, 800);
+
+        CheckDependency.setTitle("Dependency Check");
+        CheckDependency.setMinimumSize(new java.awt.Dimension(640, 480));
+        CheckDependency.setPreferredSize(new java.awt.Dimension(640, 480));
+        CheckDependency.getContentPane().setLayout(null);
+
+        jLabel31.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel31.setForeground(new java.awt.Color(51, 0, 204));
+        jLabel31.setText("Your Project is currently self-contained; it does not depend on any external audio file.");
+        CheckDependency.getContentPane().add(jLabel31);
+        jLabel31.setBounds(0, 0, 740, 30);
+
+        jLabel30.setText("If you change the project to a state that has external dependencies on imported files, it will no longer be self-contained.");
+        CheckDependency.getContentPane().add(jLabel30);
+        jLabel30.setBounds(0, 30, 730, 30);
+
+        jLabel32.setText("If you then Save without copying those files in, you may lose data.");
+        CheckDependency.getContentPane().add(jLabel32);
+        jLabel32.setBounds(0, 60, 740, 16);
+
+        EditMetaData.setTitle("Edit Metadata Tags");
+        EditMetaData.setMinimumSize(new java.awt.Dimension(800, 640));
+        EditMetaData.setPreferredSize(new java.awt.Dimension(800, 640));
+        EditMetaData.setSize(new java.awt.Dimension(800, 640));
+        EditMetaData.getContentPane().setLayout(null);
+
+        jLabel33.setText("Enter value into the following rows");
+        EditMetaData.getContentPane().add(jLabel33);
+        jLabel33.setBounds(0, 0, 820, 16);
+
+        jLabel34.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel34.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        EditMetaData.getContentPane().add(jLabel34);
+        jLabel34.setBounds(120, 180, 690, 20);
+
+        jLabel35.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel35.setText("Comments");
+        jLabel35.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        EditMetaData.getContentPane().add(jLabel35);
+        jLabel35.setBounds(0, 180, 120, 20);
+
+        jLabel36.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel36.setText("Tag");
+        jLabel36.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        EditMetaData.getContentPane().add(jLabel36);
+        jLabel36.setBounds(0, 40, 120, 20);
+
+        jLabel37.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel37.setText("Artist Name");
+        jLabel37.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        EditMetaData.getContentPane().add(jLabel37);
+        jLabel37.setBounds(0, 60, 120, 20);
+
+        jLabel38.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel38.setText("Track Title");
+        jLabel38.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        EditMetaData.getContentPane().add(jLabel38);
+        jLabel38.setBounds(0, 80, 120, 20);
+
+        jLabel39.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel39.setText("Album Title");
+        jLabel39.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        EditMetaData.getContentPane().add(jLabel39);
+        jLabel39.setBounds(0, 100, 120, 20);
+
+        jLabel40.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel40.setText("Track Number");
+        jLabel40.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        EditMetaData.getContentPane().add(jLabel40);
+        jLabel40.setBounds(0, 120, 120, 20);
+
+        jLabel41.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel41.setText("Year");
+        jLabel41.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        EditMetaData.getContentPane().add(jLabel41);
+        jLabel41.setBounds(0, 140, 120, 20);
+
+        jLabel42.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel42.setText("Genre");
+        jLabel42.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        EditMetaData.getContentPane().add(jLabel42);
+        jLabel42.setBounds(0, 160, 120, 20);
+
+        jLabel43.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel43.setText("Value");
+        jLabel43.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        EditMetaData.getContentPane().add(jLabel43);
+        jLabel43.setBounds(120, 40, 690, 20);
+
+        jLabel44.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel44.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        EditMetaData.getContentPane().add(jLabel44);
+        jLabel44.setBounds(120, 60, 690, 20);
+
+        jLabel45.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel45.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        EditMetaData.getContentPane().add(jLabel45);
+        jLabel45.setBounds(120, 80, 690, 20);
+
+        jLabel46.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel46.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        EditMetaData.getContentPane().add(jLabel46);
+        jLabel46.setBounds(120, 100, 690, 20);
+
+        jLabel47.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel47.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        EditMetaData.getContentPane().add(jLabel47);
+        jLabel47.setBounds(120, 120, 690, 20);
+
+        jLabel48.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel48.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        EditMetaData.getContentPane().add(jLabel48);
+        jLabel48.setBounds(120, 140, 690, 20);
+
+        jLabel49.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel49.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        EditMetaData.getContentPane().add(jLabel49);
+        jLabel49.setBounds(120, 160, 690, 20);
+
+        jButton46.setText("Cancel");
+        EditMetaData.getContentPane().add(jButton46);
+        jButton46.setBounds(650, 290, 80, 28);
+
+        jButton47.setText("Add");
+        EditMetaData.getContentPane().add(jButton47);
+        jButton47.setBounds(10, 220, 49, 28);
+
+        jButton48.setText("Remove");
+        EditMetaData.getContentPane().add(jButton48);
+        jButton48.setBounds(60, 220, 80, 28);
+
+        jButton49.setText("Clear");
+        EditMetaData.getContentPane().add(jButton49);
+        jButton49.setBounds(140, 220, 80, 28);
+
+        jButton50.setText("Okay");
+        jButton50.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton50ActionPerformed(evt);
+            }
+        });
+        EditMetaData.getContentPane().add(jButton50);
+        jButton50.setBounds(550, 290, 80, 28);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Audacity");
@@ -1604,11 +1781,21 @@ public class NewJFrame extends javax.swing.JFrame {
         jMenu1.add(jMenuItem8);
 
         jMenuItem9.setText("Edit Metadata...");
+        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem9ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem9);
 
         jMenu11.setText("Import");
 
         jMenuItem21.setText("Audio...");
+        jMenuItem21.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem21ActionPerformed(evt);
+            }
+        });
         jMenu11.add(jMenuItem21);
 
         jMenuItem22.setText("Labels...");
@@ -1661,6 +1848,14 @@ public class NewJFrame extends javax.swing.JFrame {
             }
         });
         jMenu1.add(jMenuItem19);
+
+        jMenuItem149.setText("Testing");
+        jMenuItem149.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem149ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem149);
 
         jMenuBar1.add(jMenu1);
 
@@ -2261,7 +2456,7 @@ public class NewJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
-        // TODO add your handling code here:
+        CheckDependency.setVisible(true);
     }//GEN-LAST:event_jMenuItem8ActionPerformed
 
     private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
@@ -2656,6 +2851,66 @@ public class NewJFrame extends javax.swing.JFrame {
         //newWindow.setVisible(true);
     }//GEN-LAST:event_jButton8ActionPerformed
 
+    private void jButton50ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton50ActionPerformed
+        EditMetaData.dispose();
+    }//GEN-LAST:event_jButton50ActionPerformed
+
+    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+        EditMetaData.setVisible(true);
+    }//GEN-LAST:event_jMenuItem9ActionPerformed
+
+    private void jMenuItem21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem21ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem21ActionPerformed
+
+    private void jMenuItem149ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem149ActionPerformed
+         
+        volumeControl(0.2f);
+    }//GEN-LAST:event_jMenuItem149ActionPerformed
+
+    /* The volume controller, after researching, it seems that I need to account for each possible Platform due to
+        java's cross-platform library, therefore I needed to use the native API control to do those volume changing
+        having the for loop for both mixer and line are to ensure that I successfully change the volume regardless
+        of the platform,be it Windows or MAC OS X etc.
+    */
+    private void volumeControl(float value)
+    {
+        Mixer.Info[] mixers = AudioSystem.getMixerInfo();
+        System.out.println("There are " + mixers.length + " mixer info objects");
+        for (Mixer.Info mixerInfo : mixers) {
+            System.out.println("mixer name: " + mixerInfo.getName());
+            Mixer mixer = AudioSystem.getMixer(mixerInfo);
+            Line.Info[] lineInfos = mixer.getTargetLineInfo(); // target, not source  
+            //changes all the volumes
+            
+            
+            for (Line.Info lineInfo : lineInfos) {
+                System.out.println("  Line.Info: " + lineInfo);
+                Line line = null;
+                boolean opened = true;
+                try {
+                    line = mixer.getLine(lineInfo);
+                    opened = line.isOpen() || line instanceof Clip;
+                    if (!opened) {
+                        line.open();
+                    }
+                    FloatControl volCtrl = (FloatControl) line.getControl(FloatControl.Type.VOLUME);
+                    //System.out.println(volCtrl.getMinimum());
+                    volCtrl.setValue(value);
+                    System.out.println("    volCtrl.getValue() = " + volCtrl.getValue());
+                } catch (LineUnavailableException e) {
+                    e.printStackTrace();
+                } catch (IllegalArgumentException iaEx) {
+                    System.out.println("  -!-  " + iaEx);
+                } finally {
+                    if (line != null && !opened) {
+                        line.close();
+                    }
+                }
+            }
+        }
+     }            
+    
     //Method that 
     private static java.util.ArrayList<Object> getMixers() {
         
@@ -2709,6 +2964,8 @@ public class NewJFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JFrame About_Audacity;
+    private javax.swing.JDialog CheckDependency;
+    private javax.swing.JDialog EditMetaData;
     private javax.swing.JDialog ScreenShot;
     private javax.swing.JPanel controlPanel;
     private javax.swing.JFileChooser fileOpen;
@@ -2752,7 +3009,12 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton43;
     private javax.swing.JButton jButton44;
     private javax.swing.JButton jButton45;
+    private javax.swing.JButton jButton46;
+    private javax.swing.JButton jButton47;
+    private javax.swing.JButton jButton48;
+    private javax.swing.JButton jButton49;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton50;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
@@ -2803,7 +3065,27 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel42;
+    private javax.swing.JLabel jLabel43;
+    private javax.swing.JLabel jLabel44;
+    private javax.swing.JLabel jLabel45;
+    private javax.swing.JLabel jLabel46;
+    private javax.swing.JLabel jLabel47;
+    private javax.swing.JLabel jLabel48;
+    private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -2897,6 +3179,7 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem146;
     private javax.swing.JMenuItem jMenuItem147;
     private javax.swing.JMenuItem jMenuItem148;
+    private javax.swing.JMenuItem jMenuItem149;
     private javax.swing.JMenuItem jMenuItem15;
     private javax.swing.JMenuItem jMenuItem16;
     private javax.swing.JMenuItem jMenuItem17;
