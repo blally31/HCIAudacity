@@ -15,6 +15,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.sound.sampled.BooleanControl;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.FloatControl;
 import javax.sound.sampled.Line;
@@ -529,7 +530,6 @@ public class NewJFrame extends javax.swing.JFrame {
 
         ScreenShot.setTitle("Screen Shot Window");
         ScreenShot.setMinimumSize(new java.awt.Dimension(800, 640));
-        ScreenShot.setPreferredSize(new java.awt.Dimension(800, 640));
         ScreenShot.getContentPane().setLayout(null);
 
         jLabel21.setText("Choose location to save files");
@@ -672,7 +672,6 @@ public class NewJFrame extends javax.swing.JFrame {
         About_Audacity.setTitle("About Audacity");
         About_Audacity.setMinimumSize(new java.awt.Dimension(800, 640));
         About_Audacity.setName("About Audacity"); // NOI18N
-        About_Audacity.setPreferredSize(new java.awt.Dimension(1024, 800));
         About_Audacity.getContentPane().setLayout(null);
 
         jTabbedPane2.setMinimumSize(new java.awt.Dimension(640, 480));
@@ -725,7 +724,6 @@ public class NewJFrame extends javax.swing.JFrame {
 
         CheckDependency.setTitle("Dependency Check");
         CheckDependency.setMinimumSize(new java.awt.Dimension(640, 480));
-        CheckDependency.setPreferredSize(new java.awt.Dimension(640, 480));
         CheckDependency.getContentPane().setLayout(null);
 
         jLabel31.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -744,7 +742,6 @@ public class NewJFrame extends javax.swing.JFrame {
 
         EditMetaData.setTitle("Edit Metadata Tags");
         EditMetaData.setMinimumSize(new java.awt.Dimension(800, 640));
-        EditMetaData.setPreferredSize(new java.awt.Dimension(800, 640));
         EditMetaData.setSize(new java.awt.Dimension(800, 640));
         EditMetaData.getContentPane().setLayout(null);
 
@@ -2204,9 +2201,19 @@ public class NewJFrame extends javax.swing.JFrame {
         jMenu5.add(jMenuItem97);
 
         jMenuItem98.setText("Mute All Tracks");
+        jMenuItem98.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem98ActionPerformed(evt);
+            }
+        });
         jMenu5.add(jMenuItem98);
 
         jMenuItem99.setText("Unmute All Tracks");
+        jMenuItem99.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem99ActionPerformed(evt);
+            }
+        });
         jMenu5.add(jMenuItem99);
 
         jMenu21.setText("Align Tracks");
@@ -2868,6 +2875,52 @@ public class NewJFrame extends javax.swing.JFrame {
         volumeControl(0.2f);
     }//GEN-LAST:event_jMenuItem149ActionPerformed
 
+    private void jMenuItem98ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem98ActionPerformed
+        muteControl(true);
+    }//GEN-LAST:event_jMenuItem98ActionPerformed
+
+    private void jMenuItem99ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem99ActionPerformed
+        muteControl(false);
+    }//GEN-LAST:event_jMenuItem99ActionPerformed
+
+    private void muteControl(boolean value)
+    {
+        Mixer.Info[] mixers = AudioSystem.getMixerInfo();
+        //System.out.println("There are " + mixers.length + " mixer info objects");
+        for (Mixer.Info mixerInfo : mixers) {
+            //System.out.println("mixer name: " + mixerInfo.getName());
+            Mixer mixer = AudioSystem.getMixer(mixerInfo);
+            Line.Info[] lineInfos = mixer.getTargetLineInfo(); // target, not source  
+            //changes all the volumes
+            
+            
+            for (Line.Info lineInfo : lineInfos) {
+                //System.out.println("  Line.Info: " + lineInfo);
+                Line line = null;
+                boolean opened = true;
+                try {
+                    line = mixer.getLine(lineInfo);
+                    opened = line.isOpen() || line instanceof Clip;
+                    if (!opened) {
+                        line.open();
+                    }
+                    BooleanControl volCtrl = (BooleanControl) line.getControl(BooleanControl.Type.MUTE);
+                    //System.out.println(volCtrl.getMinimum());
+                    volCtrl.setValue(value);
+                    //System.out.println("    volCtrl.getValue() = " + volCtrl.getValue());
+                } catch (LineUnavailableException e) {
+                    e.printStackTrace();
+                } catch (IllegalArgumentException iaEx) {
+                    //System.out.println("  -!-  " + iaEx);
+                } finally {
+                    if (line != null && !opened) {
+                        line.close();
+                    }
+                }
+            }
+        }
+    }
+    
     /* The volume controller, after researching, it seems that I need to account for each possible Platform due to
         java's cross-platform library, therefore I needed to use the native API control to do those volume changing
         having the for loop for both mixer and line are to ensure that I successfully change the volume regardless
@@ -2876,16 +2929,16 @@ public class NewJFrame extends javax.swing.JFrame {
     private void volumeControl(float value)
     {
         Mixer.Info[] mixers = AudioSystem.getMixerInfo();
-        System.out.println("There are " + mixers.length + " mixer info objects");
+        //System.out.println("There are " + mixers.length + " mixer info objects");
         for (Mixer.Info mixerInfo : mixers) {
-            System.out.println("mixer name: " + mixerInfo.getName());
+            //System.out.println("mixer name: " + mixerInfo.getName());
             Mixer mixer = AudioSystem.getMixer(mixerInfo);
             Line.Info[] lineInfos = mixer.getTargetLineInfo(); // target, not source  
             //changes all the volumes
             
             
             for (Line.Info lineInfo : lineInfos) {
-                System.out.println("  Line.Info: " + lineInfo);
+                //System.out.println("  Line.Info: " + lineInfo);
                 Line line = null;
                 boolean opened = true;
                 try {
@@ -2897,7 +2950,7 @@ public class NewJFrame extends javax.swing.JFrame {
                     FloatControl volCtrl = (FloatControl) line.getControl(FloatControl.Type.VOLUME);
                     //System.out.println(volCtrl.getMinimum());
                     volCtrl.setValue(value);
-                    System.out.println("    volCtrl.getValue() = " + volCtrl.getValue());
+                    //System.out.println("    volCtrl.getValue() = " + volCtrl.getValue());
                 } catch (LineUnavailableException e) {
                     e.printStackTrace();
                 } catch (IllegalArgumentException iaEx) {
