@@ -15,6 +15,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 /**
  *
@@ -445,6 +446,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Audacity");
         setBackground(new java.awt.Color(204, 204, 204));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setMinimumSize(new java.awt.Dimension(1500, 750));
@@ -1963,6 +1965,11 @@ public class NewJFrame extends javax.swing.JFrame {
         jMenu9.add(jMenuItem142);
 
         jMenuItem143.setText("Screenshot Tools...");
+        jMenuItem143.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem143ActionPerformed(evt);
+            }
+        });
         jMenu9.add(jMenuItem143);
 
         jMenuItem144.setText("Check for Updates...");
@@ -1997,9 +2004,11 @@ public class NewJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
+    // Method that open another NEWJFrame window
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        NewWindow newWindow = new NewWindow();
-        newWindow.setVisible(true);
+       NewJFrame newWindow = new NewJFrame();
+       newWindow.setVisible(true);
+       newWindow.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
@@ -2359,14 +2368,23 @@ public class NewJFrame extends javax.swing.JFrame {
 
     // Method that open the "About Audacity" window
     private void jMenuItem148ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem148ActionPerformed
-        // TODO add your handling code here:
         AboutAudacity aboutAudacity = new AboutAudacity();
         aboutAudacity.setVisible(true);
     }//GEN-LAST:event_jMenuItem148ActionPerformed
 
+    // Method that simulate the "Close" operation of Audacity's "Close"
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-        // TODO add your handling code here:
+       NewJFrame w = new NewJFrame();
+       w.setVisible(true);
+       this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+       this.dispose();
     }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    // Method that open the "Screenshot Tool" window
+    private void jMenuItem143ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem143ActionPerformed
+        ScreenShotWindow window = new ScreenShotWindow();
+        window.setVisible(true);
+    }//GEN-LAST:event_jMenuItem143ActionPerformed
 
     //Method that 
     private static java.util.ArrayList<Object> getMixers() {
