@@ -3,20 +3,86 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.AudioInputStream;
+import java.awt.GridLayout;
+import java.awt.BorderLayout;
+import java.awt.Desktop;
+import java.awt.event.ItemEvent;
+import java.io.*;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.sound.sampled.BooleanControl;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.FloatControl;
+import javax.sound.sampled.Line;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.Mixer;
+import javax.sound.sampled.Port;
+import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
+import javax.swing.JSlider;
+import javax.swing.SwingUtilities;
 /**
  *
  * @author Fiddler
  */
 public class NewJFrame extends javax.swing.JFrame {
 
+    //Keeps track of the number of tracks loaded in
+    static int trackCount = 0;
+    javax.swing.JInternalFrame[] trackArray;
+    javax.swing.JPanel[] waveArray;
+    javax.swing.JLabel[] labelArray;
+    PlayAudio audioObject;
     /**
      * Creates new form NewJFrame
      */
     public NewJFrame() {
         initComponents();
+        audioObject = new PlayAudio();
+        setExtendedState(MAXIMIZED_BOTH);
+        initTracks();  
+        this.setVisible(true);
+        jDialog1.setVisible(true);
     }
-
+    
+    //Initialises the track frames to be invisiible and remove the frame titlebars
+    private void initTracks() {
+        ((javax.swing.plaf.basic.BasicInternalFrameUI)jInternalFrame1.getUI()).setNorthPane(null);
+        jInternalFrame1.setVisible(false);
+        ((javax.swing.plaf.basic.BasicInternalFrameUI)jInternalFrame2.getUI()).setNorthPane(null);
+        jInternalFrame2.setVisible(false);
+        ((javax.swing.plaf.basic.BasicInternalFrameUI)jInternalFrame3.getUI()).setNorthPane(null);
+        jInternalFrame3.setVisible(false);
+        ((javax.swing.plaf.basic.BasicInternalFrameUI)jInternalFrame4.getUI()).setNorthPane(null);
+        jInternalFrame4.setVisible(false);
+        
+        //Creates the track array
+        trackArray = new javax.swing.JInternalFrame[4];
+        trackArray[0] = jInternalFrame1;
+        trackArray[1] = jInternalFrame2;
+        trackArray[2] = jInternalFrame3;
+        trackArray[3] = jInternalFrame4;
+        
+        //Creates the waveforme array
+        waveArray = new javax.swing.JPanel[4];
+        waveArray[0] = track1Wave;
+        waveArray[1] = track2Wave;
+        waveArray[2] = track3Wave;
+        waveArray[3] = track4Wave;
+        
+        //Creates tracklabel array
+        labelArray = new javax.swing.JLabel[4];
+        labelArray[0] = jLabel18;
+        labelArray[1] = jLabel19;
+        labelArray[2] = jLabel17;
+        labelArray[3] = jLabel20;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -25,78 +91,4862 @@ public class NewJFrame extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
-        jScrollBar1 = new javax.swing.JScrollBar();
-        jScrollBar2 = new javax.swing.JScrollBar();
+        fileOpen = new javax.swing.JFileChooser();
+        jDialog1 = new javax.swing.JDialog();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jList2 = new javax.swing.JList<>();
+        jRadioButton4 = new javax.swing.JRadioButton();
+        jRadioButton5 = new javax.swing.JRadioButton();
+        jRadioButton6 = new javax.swing.JRadioButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        ScreenShot = new javax.swing.JDialog();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jEditorPane1 = new javax.swing.JEditorPane();
+        jButton8 = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
+        jLabel23 = new javax.swing.JLabel();
+        jButton10 = new javax.swing.JButton();
+        jButton11 = new javax.swing.JButton();
+        jButton12 = new javax.swing.JButton();
+        jButton29 = new javax.swing.JButton();
+        jLabel24 = new javax.swing.JLabel();
+        jButton30 = new javax.swing.JButton();
+        jButton31 = new javax.swing.JButton();
+        jButton32 = new javax.swing.JButton();
+        jButton33 = new javax.swing.JButton();
+        jCheckBox1 = new javax.swing.JCheckBox();
+        jLabel25 = new javax.swing.JLabel();
+        jButton34 = new javax.swing.JButton();
+        jButton35 = new javax.swing.JButton();
+        jButton36 = new javax.swing.JButton();
+        jButton37 = new javax.swing.JButton();
+        jButton38 = new javax.swing.JButton();
+        jButton39 = new javax.swing.JButton();
+        jButton40 = new javax.swing.JButton();
+        jButton41 = new javax.swing.JButton();
+        jLabel26 = new javax.swing.JLabel();
+        jButton42 = new javax.swing.JButton();
+        jButton43 = new javax.swing.JButton();
+        jButton44 = new javax.swing.JButton();
+        jButton45 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jEditorPane2 = new javax.swing.JEditorPane();
+        jLabel27 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
+        About_Audacity = new javax.swing.JFrame();
+        jTabbedPane2 = new javax.swing.JTabbedPane();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel29 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTextArea4 = new javax.swing.JTextArea();
+        jPanel5 = new javax.swing.JPanel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jTextArea3 = new javax.swing.JTextArea();
+        jPanel7 = new javax.swing.JPanel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        jTextArea2 = new javax.swing.JTextArea();
+        CheckDependency = new javax.swing.JDialog();
+        jLabel31 = new javax.swing.JLabel();
+        jLabel30 = new javax.swing.JLabel();
+        jLabel32 = new javax.swing.JLabel();
+        EditMetaData = new javax.swing.JDialog();
+        jLabel33 = new javax.swing.JLabel();
+        jLabel35 = new javax.swing.JLabel();
+        jLabel36 = new javax.swing.JLabel();
+        jLabel37 = new javax.swing.JLabel();
+        jLabel38 = new javax.swing.JLabel();
+        jLabel39 = new javax.swing.JLabel();
+        jLabel40 = new javax.swing.JLabel();
+        jLabel41 = new javax.swing.JLabel();
+        jLabel42 = new javax.swing.JLabel();
+        jLabel43 = new javax.swing.JLabel();
+        jButton46 = new javax.swing.JButton();
+        jButton47 = new javax.swing.JButton();
+        jButton48 = new javax.swing.JButton();
+        jButton49 = new javax.swing.JButton();
+        jButton50 = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
+        jTextField4 = new javax.swing.JTextField();
+        jTextField5 = new javax.swing.JTextField();
+        jTextField6 = new javax.swing.JTextField();
+        jTextField7 = new javax.swing.JTextField();
+        Chirp = new javax.swing.JDialog();
+        jLabel34 = new javax.swing.JLabel();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        jLabel44 = new javax.swing.JLabel();
+        jLabel45 = new javax.swing.JLabel();
+        jLabel46 = new javax.swing.JLabel();
+        jLabel47 = new javax.swing.JLabel();
+        jLabel48 = new javax.swing.JLabel();
+        jLabel49 = new javax.swing.JLabel();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        jTextPane1 = new javax.swing.JTextPane();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        jTextPane2 = new javax.swing.JTextPane();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        jTextPane3 = new javax.swing.JTextPane();
+        jScrollPane10 = new javax.swing.JScrollPane();
+        jTextPane4 = new javax.swing.JTextPane();
+        jComboBox4 = new javax.swing.JComboBox<>();
+        jComboBox5 = new javax.swing.JComboBox<>();
+        jButton51 = new javax.swing.JButton();
+        jButton52 = new javax.swing.JButton();
+        jButton53 = new javax.swing.JButton();
+        jButton54 = new javax.swing.JButton();
+        Save = new javax.swing.JFileChooser();
+        DTMF = new javax.swing.JDialog();
+        jLabel50 = new javax.swing.JLabel();
+        jFormattedTextField1 = new javax.swing.JFormattedTextField();
+        jLabel51 = new javax.swing.JLabel();
+        jLabel52 = new javax.swing.JLabel();
+        jLabel53 = new javax.swing.JLabel();
+        jSlider2 = new javax.swing.JSlider();
+        jLabel54 = new javax.swing.JLabel();
+        jLabel55 = new javax.swing.JLabel();
+        jLabel56 = new javax.swing.JLabel();
+        jLabel57 = new javax.swing.JLabel();
+        jLabel58 = new javax.swing.JLabel();
+        jLabel59 = new javax.swing.JLabel();
+        jLabel60 = new javax.swing.JLabel();
+        jLabel61 = new javax.swing.JLabel();
+        jButton55 = new javax.swing.JButton();
+        jButton56 = new javax.swing.JButton();
+        Noise = new javax.swing.JDialog();
+        jLabel62 = new javax.swing.JLabel();
+        jLabel63 = new javax.swing.JLabel();
+        jLabel64 = new javax.swing.JLabel();
+        jComboBox3 = new javax.swing.JComboBox<>();
+        jComboBox6 = new javax.swing.JComboBox<>();
+        jScrollPane11 = new javax.swing.JScrollPane();
+        jTextPane5 = new javax.swing.JTextPane();
+        jButton57 = new javax.swing.JButton();
+        jButton58 = new javax.swing.JButton();
+        Silence = new javax.swing.JDialog();
+        jLabel65 = new javax.swing.JLabel();
+        jComboBox7 = new javax.swing.JComboBox<>();
+        jButton59 = new javax.swing.JButton();
+        jButton60 = new javax.swing.JButton();
+        Tone = new javax.swing.JDialog();
+        jLabel66 = new javax.swing.JLabel();
+        jLabel67 = new javax.swing.JLabel();
+        jLabel68 = new javax.swing.JLabel();
+        jLabel69 = new javax.swing.JLabel();
+        jComboBox8 = new javax.swing.JComboBox<>();
+        jComboBox9 = new javax.swing.JComboBox<>();
+        jScrollPane12 = new javax.swing.JScrollPane();
+        jTextPane6 = new javax.swing.JTextPane();
+        jScrollPane13 = new javax.swing.JScrollPane();
+        jTextPane7 = new javax.swing.JTextPane();
+        jButton61 = new javax.swing.JButton();
+        jButton62 = new javax.swing.JButton();
+        ClickTrack = new javax.swing.JDialog();
+        jLabel70 = new javax.swing.JLabel();
+        jLabel71 = new javax.swing.JLabel();
+        jLabel72 = new javax.swing.JLabel();
+        jLabel73 = new javax.swing.JLabel();
+        jLabel74 = new javax.swing.JLabel();
+        jLabel75 = new javax.swing.JLabel();
+        jLabel76 = new javax.swing.JLabel();
+        jLabel77 = new javax.swing.JLabel();
+        jLabel78 = new javax.swing.JLabel();
+        jLabel79 = new javax.swing.JLabel();
+        jLabel80 = new javax.swing.JLabel();
+        jComboBox10 = new javax.swing.JComboBox<>();
+        jScrollPane14 = new javax.swing.JScrollPane();
+        jTextPane8 = new javax.swing.JTextPane();
+        jSlider3 = new javax.swing.JSlider();
+        jScrollPane15 = new javax.swing.JScrollPane();
+        jTextPane9 = new javax.swing.JTextPane();
+        jScrollPane16 = new javax.swing.JScrollPane();
+        jTextPane10 = new javax.swing.JTextPane();
+        jScrollPane17 = new javax.swing.JScrollPane();
+        jTextPane11 = new javax.swing.JTextPane();
+        jScrollPane18 = new javax.swing.JScrollPane();
+        jTextPane12 = new javax.swing.JTextPane();
+        jScrollPane19 = new javax.swing.JScrollPane();
+        jTextPane13 = new javax.swing.JTextPane();
+        jScrollPane20 = new javax.swing.JScrollPane();
+        jTextPane14 = new javax.swing.JTextPane();
+        jScrollPane21 = new javax.swing.JScrollPane();
+        jTextPane15 = new javax.swing.JTextPane();
+        jScrollPane22 = new javax.swing.JScrollPane();
+        jTextPane16 = new javax.swing.JTextPane();
+        jSlider4 = new javax.swing.JSlider();
+        jSlider5 = new javax.swing.JSlider();
+        jSlider6 = new javax.swing.JSlider();
+        jSlider7 = new javax.swing.JSlider();
+        jComboBox11 = new javax.swing.JComboBox<>();
+        jSlider8 = new javax.swing.JSlider();
+        jSlider9 = new javax.swing.JSlider();
+        jSlider10 = new javax.swing.JSlider();
+        jLabel82 = new javax.swing.JLabel();
+        jLabel83 = new javax.swing.JLabel();
+        jLabel84 = new javax.swing.JLabel();
+        jLabel85 = new javax.swing.JLabel();
+        jLabel86 = new javax.swing.JLabel();
+        jLabel87 = new javax.swing.JLabel();
+        jLabel88 = new javax.swing.JLabel();
+        jLabel89 = new javax.swing.JLabel();
+        jLabel90 = new javax.swing.JLabel();
+        jButton63 = new javax.swing.JButton();
+        jButton64 = new javax.swing.JButton();
+        Pluck = new javax.swing.JDialog();
+        jLabel81 = new javax.swing.JLabel();
+        jComboBox12 = new javax.swing.JComboBox<>();
+        jLabel91 = new javax.swing.JLabel();
+        jScrollPane23 = new javax.swing.JScrollPane();
+        jTextPane17 = new javax.swing.JTextPane();
+        jSlider11 = new javax.swing.JSlider();
+        jLabel92 = new javax.swing.JLabel();
+        jScrollPane24 = new javax.swing.JScrollPane();
+        jTextPane18 = new javax.swing.JTextPane();
+        jSlider12 = new javax.swing.JSlider();
+        jButton65 = new javax.swing.JButton();
+        jButton66 = new javax.swing.JButton();
+        ResetDrum = new javax.swing.JDialog();
+        jLabel93 = new javax.swing.JLabel();
+        jScrollPane25 = new javax.swing.JScrollPane();
+        jTextPane19 = new javax.swing.JTextPane();
+        jSlider13 = new javax.swing.JSlider();
+        jSlider14 = new javax.swing.JSlider();
+        jScrollPane26 = new javax.swing.JScrollPane();
+        jTextPane20 = new javax.swing.JTextPane();
+        jLabel94 = new javax.swing.JLabel();
+        jLabel95 = new javax.swing.JLabel();
+        jScrollPane27 = new javax.swing.JScrollPane();
+        jTextPane21 = new javax.swing.JTextPane();
+        jSlider15 = new javax.swing.JSlider();
+        jSlider16 = new javax.swing.JSlider();
+        jScrollPane28 = new javax.swing.JScrollPane();
+        jTextPane22 = new javax.swing.JTextPane();
+        jLabel96 = new javax.swing.JLabel();
+        jLabel97 = new javax.swing.JLabel();
+        jScrollPane29 = new javax.swing.JScrollPane();
+        jTextPane23 = new javax.swing.JTextPane();
+        jSlider17 = new javax.swing.JSlider();
+        jLabel98 = new javax.swing.JLabel();
+        jScrollPane30 = new javax.swing.JScrollPane();
+        jTextPane24 = new javax.swing.JTextPane();
+        jSlider18 = new javax.swing.JSlider();
+        jButton67 = new javax.swing.JButton();
+        jButton68 = new javax.swing.JButton();
+        AudioDeviceInfo = new javax.swing.JDialog();
+        jScrollPane31 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        jButton69 = new javax.swing.JButton();
+        jButton70 = new javax.swing.JButton();
+        AudacityLog = new javax.swing.JDialog();
+        jScrollPane32 = new javax.swing.JScrollPane();
+        jTextArea5 = new javax.swing.JTextArea();
+        jButton71 = new javax.swing.JButton();
+        jButton72 = new javax.swing.JButton();
+        Debug = new javax.swing.JDialog();
+        jLabel99 = new javax.swing.JLabel();
+        jLabel100 = new javax.swing.JLabel();
+        jLabel101 = new javax.swing.JLabel();
+        jLabel102 = new javax.swing.JLabel();
+        jLabel103 = new javax.swing.JLabel();
+        jLabel104 = new javax.swing.JLabel();
+        jLabel105 = new javax.swing.JLabel();
+        jLabel106 = new javax.swing.JLabel();
+        jCheckBox2 = new javax.swing.JCheckBox();
+        jCheckBox3 = new javax.swing.JCheckBox();
+        jCheckBox4 = new javax.swing.JCheckBox();
+        jCheckBox5 = new javax.swing.JCheckBox();
+        jCheckBox6 = new javax.swing.JCheckBox();
+        jCheckBox7 = new javax.swing.JCheckBox();
+        jLabel107 = new javax.swing.JLabel();
+        jScrollPane33 = new javax.swing.JScrollPane();
+        jTextPane25 = new javax.swing.JTextPane();
+        jButton73 = new javax.swing.JButton();
+        jButton74 = new javax.swing.JButton();
+        PluginEffect = new javax.swing.JDialog();
+        jLabel109 = new javax.swing.JLabel();
+        jLabel110 = new javax.swing.JLabel();
+        jCheckBox8 = new javax.swing.JCheckBox();
+        jCheckBox9 = new javax.swing.JCheckBox();
+        jCheckBox10 = new javax.swing.JCheckBox();
+        jCheckBox11 = new javax.swing.JCheckBox();
+        jCheckBox12 = new javax.swing.JCheckBox();
+        jCheckBox13 = new javax.swing.JCheckBox();
+        jCheckBox14 = new javax.swing.JCheckBox();
+        jCheckBox15 = new javax.swing.JCheckBox();
+        jButton75 = new javax.swing.JButton();
+        jButton76 = new javax.swing.JButton();
+        PluginAnalyze = new javax.swing.JDialog();
+        jLabel111 = new javax.swing.JLabel();
+        jLabel112 = new javax.swing.JLabel();
+        jCheckBox16 = new javax.swing.JCheckBox();
+        jCheckBox17 = new javax.swing.JCheckBox();
+        jCheckBox18 = new javax.swing.JCheckBox();
+        jCheckBox19 = new javax.swing.JCheckBox();
+        jCheckBox20 = new javax.swing.JCheckBox();
+        jCheckBox21 = new javax.swing.JCheckBox();
+        jCheckBox22 = new javax.swing.JCheckBox();
+        jCheckBox23 = new javax.swing.JCheckBox();
+        jButton77 = new javax.swing.JButton();
+        jButton78 = new javax.swing.JButton();
+        PluginGenerate = new javax.swing.JDialog();
+        jButton79 = new javax.swing.JButton();
+        jButton80 = new javax.swing.JButton();
+        jCheckBox24 = new javax.swing.JCheckBox();
+        jCheckBox25 = new javax.swing.JCheckBox();
+        jCheckBox26 = new javax.swing.JCheckBox();
+        jCheckBox27 = new javax.swing.JCheckBox();
+        jCheckBox28 = new javax.swing.JCheckBox();
+        jCheckBox29 = new javax.swing.JCheckBox();
+        jCheckBox30 = new javax.swing.JCheckBox();
+        jCheckBox31 = new javax.swing.JCheckBox();
+        jLabel113 = new javax.swing.JLabel();
+        jLabel114 = new javax.swing.JLabel();
+        controlPanel = new javax.swing.JPanel();
+        jButton18 = new javax.swing.JButton();
+        jButton19 = new javax.swing.JButton();
+        jButton20 = new javax.swing.JButton();
+        jButton21 = new javax.swing.JButton();
+        jButton22 = new javax.swing.JButton();
+        jButton23 = new javax.swing.JButton();
+        jButton24 = new javax.swing.JButton();
+        jButton25 = new javax.swing.JButton();
+        jButton26 = new javax.swing.JButton();
+        jButton27 = new javax.swing.JButton();
+        jButton28 = new javax.swing.JButton();
+        windowPanel = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
+        jToggleButton2 = new javax.swing.JToggleButton();
+        jToggleButton1 = new javax.swing.JToggleButton();
+        jSlider1 = new javax.swing.JSlider();
+        jLabel4 = new javax.swing.JLabel();
+        trackPanel = new javax.swing.JPanel();
+        jInternalFrame1 = new javax.swing.JInternalFrame();
+        track1Info = new javax.swing.JPanel();
+        jButton4 = new javax.swing.JButton();
+        jToggleButton3 = new javax.swing.JToggleButton();
+        jToggleButton4 = new javax.swing.JToggleButton();
+        panSlider1 = new javax.swing.JSlider();
+        volSlider1 = new javax.swing.JSlider();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        track1Wave = new javax.swing.JPanel();
+        jInternalFrame2 = new javax.swing.JInternalFrame();
+        track2Info = new javax.swing.JPanel();
+        jButton5 = new javax.swing.JButton();
+        jToggleButton5 = new javax.swing.JToggleButton();
+        jToggleButton6 = new javax.swing.JToggleButton();
+        panSlider2 = new javax.swing.JSlider();
+        volSlider2 = new javax.swing.JSlider();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        track2Wave = new javax.swing.JPanel();
+        jInternalFrame3 = new javax.swing.JInternalFrame();
+        track3Info = new javax.swing.JPanel();
+        jButton6 = new javax.swing.JButton();
+        jToggleButton7 = new javax.swing.JToggleButton();
+        jToggleButton8 = new javax.swing.JToggleButton();
+        panSlider3 = new javax.swing.JSlider();
+        volSlider3 = new javax.swing.JSlider();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        track3Wave = new javax.swing.JPanel();
+        jInternalFrame4 = new javax.swing.JInternalFrame();
+        track4Info = new javax.swing.JPanel();
+        jButton7 = new javax.swing.JButton();
+        jToggleButton9 = new javax.swing.JToggleButton();
+        jToggleButton10 = new javax.swing.JToggleButton();
+        panSlider4 = new javax.swing.JSlider();
+        volSlider4 = new javax.swing.JSlider();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        track4Wave = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jPanel4 = new javax.swing.JPanel();
+        transportPanel = new javax.swing.JPanel();
+        jButton9 = new javax.swing.JButton();
+        jButton13 = new javax.swing.JButton();
+        jButton14 = new javax.swing.JButton();
+        jButton15 = new javax.swing.JButton();
+        jButton16 = new javax.swing.JButton();
+        jButton17 = new javax.swing.JButton();
+        jProgressBar1 = new javax.swing.JProgressBar();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenu10 = new javax.swing.JMenu();
+        jMenuItem20 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItem6 = new javax.swing.JMenuItem();
+        jMenuItem7 = new javax.swing.JMenuItem();
+        jMenuItem8 = new javax.swing.JMenuItem();
+        jMenuItem9 = new javax.swing.JMenuItem();
+        jMenu11 = new javax.swing.JMenu();
+        jMenuItem21 = new javax.swing.JMenuItem();
+        jMenuItem22 = new javax.swing.JMenuItem();
+        jMenuItem23 = new javax.swing.JMenuItem();
+        jMenuItem24 = new javax.swing.JMenuItem();
+        jMenuItem10 = new javax.swing.JMenuItem();
+        jMenuItem11 = new javax.swing.JMenuItem();
+        jMenuItem12 = new javax.swing.JMenuItem();
+        jMenuItem13 = new javax.swing.JMenuItem();
+        jMenuItem14 = new javax.swing.JMenuItem();
+        jMenuItem15 = new javax.swing.JMenuItem();
+        jMenuItem16 = new javax.swing.JMenuItem();
+        jMenuItem17 = new javax.swing.JMenuItem();
+        jMenuItem18 = new javax.swing.JMenuItem();
+        jMenuItem19 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        jMenuItem25 = new javax.swing.JMenuItem();
+        jMenuItem26 = new javax.swing.JMenuItem();
+        jMenuItem27 = new javax.swing.JMenuItem();
+        jMenuItem28 = new javax.swing.JMenuItem();
+        jMenuItem29 = new javax.swing.JMenuItem();
+        jMenuItem30 = new javax.swing.JMenuItem();
+        jMenuItem31 = new javax.swing.JMenuItem();
+        jMenu12 = new javax.swing.JMenu();
+        jMenuItem37 = new javax.swing.JMenuItem();
+        jMenuItem38 = new javax.swing.JMenuItem();
+        jMenuItem39 = new javax.swing.JMenuItem();
+        jMenuItem40 = new javax.swing.JMenuItem();
+        jMenuItem32 = new javax.swing.JMenuItem();
+        jMenu13 = new javax.swing.JMenu();
+        jMenuItem41 = new javax.swing.JMenuItem();
+        jMenuItem42 = new javax.swing.JMenuItem();
+        jMenuItem43 = new javax.swing.JMenuItem();
+        jMenuItem44 = new javax.swing.JMenuItem();
+        jMenu14 = new javax.swing.JMenu();
+        jMenuItem45 = new javax.swing.JMenuItem();
+        jMenuItem46 = new javax.swing.JMenuItem();
+        jMenuItem47 = new javax.swing.JMenuItem();
+        jMenuItem48 = new javax.swing.JMenuItem();
+        jMenuItem49 = new javax.swing.JMenuItem();
+        jMenuItem50 = new javax.swing.JMenuItem();
+        jMenuItem51 = new javax.swing.JMenuItem();
+        jMenuItem52 = new javax.swing.JMenuItem();
+        jMenuItem53 = new javax.swing.JMenuItem();
+        jMenu15 = new javax.swing.JMenu();
+        jMenuItem54 = new javax.swing.JMenuItem();
+        jMenuItem55 = new javax.swing.JMenuItem();
+        jMenu18 = new javax.swing.JMenu();
+        jMenuItem56 = new javax.swing.JMenuItem();
+        jMenuItem57 = new javax.swing.JMenuItem();
+        jMenuItem58 = new javax.swing.JMenuItem();
+        jMenuItem59 = new javax.swing.JMenuItem();
+        jMenuItem60 = new javax.swing.JMenuItem();
+        jMenuItem61 = new javax.swing.JMenuItem();
+        jMenuItem33 = new javax.swing.JMenuItem();
+        jMenu16 = new javax.swing.JMenu();
+        jMenuItem62 = new javax.swing.JMenuItem();
+        jMenuItem63 = new javax.swing.JMenuItem();
+        jMenuItem64 = new javax.swing.JMenuItem();
+        jMenuItem65 = new javax.swing.JMenuItem();
+        jMenuItem34 = new javax.swing.JMenuItem();
+        jMenuItem35 = new javax.swing.JMenuItem();
+        jMenu17 = new javax.swing.JMenu();
+        jMenuItem66 = new javax.swing.JMenuItem();
+        jMenuItem67 = new javax.swing.JMenuItem();
+        jMenuItem36 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
+        jMenuItem68 = new javax.swing.JMenuItem();
+        jMenuItem69 = new javax.swing.JMenuItem();
+        jMenuItem70 = new javax.swing.JMenuItem();
+        jMenuItem71 = new javax.swing.JMenuItem();
+        jMenuItem72 = new javax.swing.JMenuItem();
+        jMenuItem73 = new javax.swing.JMenuItem();
+        jMenuItem74 = new javax.swing.JMenuItem();
+        jMenuItem75 = new javax.swing.JMenuItem();
+        jMenuItem76 = new javax.swing.JMenuItem();
+        jMenuItem77 = new javax.swing.JMenuItem();
+        jMenuItem78 = new javax.swing.JMenuItem();
+        jMenuItem79 = new javax.swing.JMenuItem();
+        jMenuItem80 = new javax.swing.JMenuItem();
+        jMenuItem81 = new javax.swing.JMenuItem();
+        jMenu19 = new javax.swing.JMenu();
+        jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
+        jCheckBoxMenuItem2 = new javax.swing.JCheckBoxMenuItem();
+        jCheckBoxMenuItem3 = new javax.swing.JCheckBoxMenuItem();
+        jCheckBoxMenuItem4 = new javax.swing.JCheckBoxMenuItem();
+        jCheckBoxMenuItem5 = new javax.swing.JCheckBoxMenuItem();
+        jCheckBoxMenuItem6 = new javax.swing.JCheckBoxMenuItem();
+        jCheckBoxMenuItem7 = new javax.swing.JCheckBoxMenuItem();
+        jCheckBoxMenuItem8 = new javax.swing.JCheckBoxMenuItem();
+        jCheckBoxMenuItem9 = new javax.swing.JCheckBoxMenuItem();
+        jCheckBoxMenuItem10 = new javax.swing.JCheckBoxMenuItem();
+        jCheckBoxMenuItem11 = new javax.swing.JCheckBoxMenuItem();
+        jMenuItem82 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem83 = new javax.swing.JMenuItem();
+        jMenuItem84 = new javax.swing.JMenuItem();
+        jMenuItem85 = new javax.swing.JMenuItem();
+        jMenuItem86 = new javax.swing.JMenuItem();
+        jMenuItem87 = new javax.swing.JMenuItem();
+        jMenuItem88 = new javax.swing.JMenuItem();
+        jMenuItem89 = new javax.swing.JMenuItem();
+        jMenuItem90 = new javax.swing.JMenuItem();
+        jCheckBoxMenuItem12 = new javax.swing.JCheckBoxMenuItem();
+        jCheckBoxMenuItem13 = new javax.swing.JCheckBoxMenuItem();
+        jCheckBoxMenuItem14 = new javax.swing.JCheckBoxMenuItem();
+        jMenuItem91 = new javax.swing.JMenuItem();
+        jMenuItem92 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
+        jMenu20 = new javax.swing.JMenu();
+        jMenuItem104 = new javax.swing.JMenuItem();
+        jMenuItem105 = new javax.swing.JMenuItem();
+        jMenuItem106 = new javax.swing.JMenuItem();
+        jMenuItem107 = new javax.swing.JMenuItem();
+        jMenuItem93 = new javax.swing.JMenuItem();
+        jMenuItem94 = new javax.swing.JMenuItem();
+        jMenuItem95 = new javax.swing.JMenuItem();
+        jMenuItem96 = new javax.swing.JMenuItem();
+        jMenuItem97 = new javax.swing.JMenuItem();
+        jMenuItem98 = new javax.swing.JMenuItem();
+        jMenuItem99 = new javax.swing.JMenuItem();
+        jMenu21 = new javax.swing.JMenu();
+        jMenuItem108 = new javax.swing.JMenuItem();
+        jMenuItem109 = new javax.swing.JMenuItem();
+        jMenuItem110 = new javax.swing.JMenuItem();
+        jMenuItem111 = new javax.swing.JMenuItem();
+        jMenuItem112 = new javax.swing.JMenuItem();
+        jMenuItem113 = new javax.swing.JMenuItem();
+        jMenuItem114 = new javax.swing.JMenuItem();
+        jMenu22 = new javax.swing.JMenu();
+        jMenuItem115 = new javax.swing.JMenuItem();
+        jMenuItem116 = new javax.swing.JMenuItem();
+        jMenuItem117 = new javax.swing.JMenuItem();
+        jMenuItem118 = new javax.swing.JMenuItem();
+        jMenuItem119 = new javax.swing.JMenuItem();
+        jMenuItem100 = new javax.swing.JMenuItem();
+        jMenuItem101 = new javax.swing.JMenuItem();
+        jMenuItem102 = new javax.swing.JMenuItem();
+        jMenuItem103 = new javax.swing.JMenuItem();
+        jMenu23 = new javax.swing.JMenu();
+        jMenuItem120 = new javax.swing.JMenuItem();
+        jMenuItem121 = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
+        jMenuItem122 = new javax.swing.JMenuItem();
+        jMenuItem123 = new javax.swing.JMenuItem();
+        jMenuItem124 = new javax.swing.JMenuItem();
+        jMenuItem125 = new javax.swing.JMenuItem();
+        jMenuItem126 = new javax.swing.JMenuItem();
+        jMenuItem127 = new javax.swing.JMenuItem();
+        jMenuItem128 = new javax.swing.JMenuItem();
+        jMenuItem129 = new javax.swing.JMenuItem();
+        jMenuItem130 = new javax.swing.JMenuItem();
         jMenu7 = new javax.swing.JMenu();
+        jMenuItem131 = new javax.swing.JMenuItem();
+        jMenu24 = new javax.swing.JMenu();
+        jMenu25 = new javax.swing.JMenu();
+        jMenu26 = new javax.swing.JMenu();
+        jMenu27 = new javax.swing.JMenu();
+        jMenu28 = new javax.swing.JMenu();
+        jMenu29 = new javax.swing.JMenu();
+        jMenu30 = new javax.swing.JMenu();
+        jMenu31 = new javax.swing.JMenu();
         jMenu8 = new javax.swing.JMenu();
+        jMenuItem132 = new javax.swing.JMenuItem();
+        jMenuItem133 = new javax.swing.JMenuItem();
+        jMenuItem134 = new javax.swing.JMenuItem();
+        jMenuItem135 = new javax.swing.JMenuItem();
+        jMenuItem136 = new javax.swing.JMenuItem();
+        jMenuItem137 = new javax.swing.JMenuItem();
+        jMenuItem138 = new javax.swing.JMenuItem();
+        jMenuItem139 = new javax.swing.JMenuItem();
+        jMenuItem140 = new javax.swing.JMenuItem();
         jMenu9 = new javax.swing.JMenu();
+        jMenuItem141 = new javax.swing.JMenuItem();
+        jMenuItem142 = new javax.swing.JMenuItem();
+        jMenuItem143 = new javax.swing.JMenuItem();
+        jMenuItem144 = new javax.swing.JMenuItem();
+        jMenuItem145 = new javax.swing.JMenuItem();
+        jMenuItem146 = new javax.swing.JMenuItem();
+        jMenuItem147 = new javax.swing.JMenuItem();
+        jMenuItem148 = new javax.swing.JMenuItem();
+
+        jDialog1.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        jDialog1.setTitle("Audacity Quick Start");
+        jDialog1.setAlwaysOnTop(true);
+        jDialog1.setBounds(new java.awt.Rectangle(800, 400, 0, 0));
+        jDialog1.setMinimumSize(new java.awt.Dimension(400, 400));
+        jDialog1.setModal(true);
+        jDialog1.getContentPane().setLayout(new java.awt.GridBagLayout());
+
+        jScrollPane3.setMinimumSize(new java.awt.Dimension(100, 23));
+        jScrollPane3.setPreferredSize(new java.awt.Dimension(200, 150));
+
+        jList2.setPreferredSize(new java.awt.Dimension(150, 150));
+        jScrollPane3.setViewportView(jList2);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.gridheight = 6;
+        jDialog1.getContentPane().add(jScrollPane3, gridBagConstraints);
+
+        jRadioButton4.setText("Create Blank Project");
+        jRadioButton4.setMaximumSize(new java.awt.Dimension(100, 23));
+        jRadioButton4.setMinimumSize(new java.awt.Dimension(100, 23));
+        jRadioButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton4ActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 2;
+        jDialog1.getContentPane().add(jRadioButton4, gridBagConstraints);
+
+        jRadioButton5.setText("Load Recent Project");
+        jRadioButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton5ActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 2;
+        jDialog1.getContentPane().add(jRadioButton5, gridBagConstraints);
+
+        jRadioButton6.setText("Load Project");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        jDialog1.getContentPane().add(jRadioButton6, gridBagConstraints);
+
+        jButton2.setText("OK");
+        jButton2.setMaximumSize(new java.awt.Dimension(65, 23));
+        jButton2.setMinimumSize(new java.awt.Dimension(65, 23));
+        jButton2.setPreferredSize(new java.awt.Dimension(65, 23));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 10;
+        jDialog1.getContentPane().add(jButton2, gridBagConstraints);
+
+        jButton3.setText("Cancel");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 6;
+        gridBagConstraints.gridy = 10;
+        jDialog1.getContentPane().add(jButton3, gridBagConstraints);
+
+        jButton1.setText("jButton1");
+
+        ScreenShot.setTitle("Screen Shot Window");
+        ScreenShot.setMinimumSize(new java.awt.Dimension(800, 640));
+        ScreenShot.getContentPane().setLayout(null);
+
+        jLabel21.setText("Choose location to save files");
+        ScreenShot.getContentPane().add(jLabel21);
+        jLabel21.setBounds(0, 0, 180, 16);
+
+        jLabel22.setText("Save images to:");
+        ScreenShot.getContentPane().add(jLabel22);
+        jLabel22.setBounds(0, 30, 100, 16);
+
+        jScrollPane1.setViewportView(jEditorPane1);
+
+        ScreenShot.getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(100, 20, 290, 30);
+
+        jButton8.setText("Choose...");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+        ScreenShot.getContentPane().add(jButton8);
+        jButton8.setBounds(400, 20, 90, 28);
+        ScreenShot.getContentPane().add(jSeparator1);
+        jSeparator1.setBounds(0, 70, 800, 10);
+
+        jLabel23.setText("Capture Entire window or screen");
+        ScreenShot.getContentPane().add(jLabel23);
+        jLabel23.setBounds(0, 80, 190, 16);
+
+        jButton10.setText("Resize Small");
+        ScreenShot.getContentPane().add(jButton10);
+        jButton10.setBounds(20, 170, 101, 28);
+
+        jButton11.setText("Resize Large");
+        ScreenShot.getContentPane().add(jButton11);
+        jButton11.setBounds(130, 170, 101, 28);
+
+        jButton12.setText("Blue Background");
+        ScreenShot.getContentPane().add(jButton12);
+        jButton12.setBounds(240, 170, 122, 28);
+
+        jButton29.setText("White Background");
+        ScreenShot.getContentPane().add(jButton29);
+        jButton29.setBounds(370, 170, 128, 28);
+
+        jLabel24.setText("Background and Size");
+        ScreenShot.getContentPane().add(jLabel24);
+        jLabel24.setBounds(0, 150, 120, 16);
+
+        jButton30.setText("Capture Window Only");
+        ScreenShot.getContentPane().add(jButton30);
+        jButton30.setBounds(30, 110, 150, 28);
+
+        jButton31.setText("Capture Full Window");
+        ScreenShot.getContentPane().add(jButton31);
+        jButton31.setBounds(190, 110, 150, 28);
+
+        jButton32.setText("Capture Screen Only");
+        ScreenShot.getContentPane().add(jButton32);
+        jButton32.setBounds(350, 110, 150, 28);
+
+        jButton33.setText("Capture Full Screen");
+        ScreenShot.getContentPane().add(jButton33);
+        jButton33.setBounds(510, 110, 140, 28);
+
+        jCheckBox1.setText("Wait 5 seconds and capture frontmost window/dialog");
+        ScreenShot.getContentPane().add(jCheckBox1);
+        jCheckBox1.setBounds(140, 210, 320, 18);
+
+        jLabel25.setText("Capture part of a project window");
+        ScreenShot.getContentPane().add(jLabel25);
+        jLabel25.setBounds(0, 250, 180, 16);
+
+        jButton34.setText("All Toolbars");
+        ScreenShot.getContentPane().add(jButton34);
+        jButton34.setBounds(20, 270, 93, 28);
+
+        jButton35.setText("Selection Bar");
+        ScreenShot.getContentPane().add(jButton35);
+        jButton35.setBounds(120, 270, 110, 28);
+
+        jButton36.setText("Tools");
+        ScreenShot.getContentPane().add(jButton36);
+        jButton36.setBounds(240, 270, 59, 28);
+
+        jButton37.setText("Transport");
+        ScreenShot.getContentPane().add(jButton37);
+        jButton37.setBounds(310, 270, 90, 28);
+
+        jButton38.setText("Mixer");
+        ScreenShot.getContentPane().add(jButton38);
+        jButton38.setBounds(410, 270, 56, 28);
+
+        jButton39.setText("Edit");
+        ScreenShot.getContentPane().add(jButton39);
+        jButton39.setBounds(500, 270, 49, 28);
+
+        jButton40.setText("Meter");
+        ScreenShot.getContentPane().add(jButton40);
+        jButton40.setBounds(590, 270, 58, 28);
+
+        jButton41.setText("Ruler");
+        ScreenShot.getContentPane().add(jButton41);
+        jButton41.setBounds(680, 270, 58, 28);
+
+        jLabel26.setText("Scale");
+        ScreenShot.getContentPane().add(jLabel26);
+        jLabel26.setBounds(0, 330, 31, 16);
+
+        jButton42.setText("One Sec");
+        ScreenShot.getContentPane().add(jButton42);
+        jButton42.setBounds(20, 350, 75, 28);
+
+        jButton43.setText("Ten Sec");
+        ScreenShot.getContentPane().add(jButton43);
+        jButton43.setBounds(110, 350, 73, 28);
+
+        jButton44.setText("One Min");
+        ScreenShot.getContentPane().add(jButton44);
+        jButton44.setBounds(200, 350, 73, 28);
+
+        jButton45.setText("Five Min");
+        ScreenShot.getContentPane().add(jButton45);
+        jButton45.setBounds(290, 350, 72, 28);
+
+        jScrollPane2.setViewportView(jEditorPane2);
+
+        ScreenShot.getContentPane().add(jScrollPane2);
+        jScrollPane2.setBounds(60, 410, 118, 30);
+
+        jLabel27.setText("Or Custom Scale Time");
+        ScreenShot.getContentPane().add(jLabel27);
+        jLabel27.setBounds(0, 390, 130, 16);
+
+        jLabel28.setText("Value:");
+        ScreenShot.getContentPane().add(jLabel28);
+        jLabel28.setBounds(20, 420, 41, 16);
+
+        About_Audacity.setTitle("About Audacity");
+        About_Audacity.setMinimumSize(new java.awt.Dimension(800, 640));
+        About_Audacity.setName("About Audacity"); // NOI18N
+        About_Audacity.getContentPane().setLayout(null);
+
+        jTabbedPane2.setMinimumSize(new java.awt.Dimension(640, 480));
+        jTabbedPane2.setPreferredSize(new java.awt.Dimension(800, 640));
+
+        jPanel1.setPreferredSize(new java.awt.Dimension(800, 640));
+        jPanel1.setLayout(null);
+
+        jLabel29.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/audacity_logo_r_450wide_whitebg.jpg"))); // NOI18N
+        jPanel1.add(jLabel29);
+        jLabel29.setBounds(0, 0, 1030, 163);
+
+        jTextArea4.setColumns(20);
+        jTextArea4.setRows(5);
+        jTextArea4.setText("Audacity 2.1.2\nfree, open source, cross-platform software for recording and editing sounds\nhttp://audacityteam.org/\nAudacity is a free program written by a worldwide team of volunteer developers. \nAudacity is available for Windows, Mac, and GNU/Linux (and other Unix-like systems).\nIf you find a bug or have a suggestion for us, please write to our feedback address. \nFor help, view the tips and tricks on our wiki or visit our forum.\nCredits\n\n\t\tAudacity Developers\n\n\t\t\tRichard Ash\n\t\t\tJames Crook\n\t\t\tRoger Dannenberg - co-founder\n\t\t\tBenjamin Drung\n\t\t\tVaughan Johnson\n\t\t\tPaul Licameli\n\t\t\tLeland Lucius\n\t\t\tMartyn Shaw\n\n\n\t\tAudacity Support Team\n\n\t\t\tGale Andrews - quality assurance\n\t\t\tChristian Brochec\n\t\t\tSteve Daulton\n\t\t\tGreg Kozikowski\n\t\t\tPeter Sampson\n\t\t\tBill Wharrie\n\n\n\t\tEmeritus Developers\n\n\t\t\tMatt Brubeck\n\t\t\tMichael Chinen\n\t\t\tAl Dimond\n\t\t\tJoshua Haberman\n\t\t\tRuslan Ijbulatov\n\t\t\tDominic Mazzoni - co-founder\n\t\t\tMarkus Meyer\n\t\t\tMonty Montgomery\n\t\t\tShane Mueller\n\n\n\t\tEmeritus Team Members\n\n\t\t\tTony Oetzmann\n\t\t\tAlexandre Prokoudine\n\n\n\t\tOther Contributors\n\n\t\t\tLynn Allan\n\t\t\tDavid Avery\n\t\t\tDavid Bailes\n\t\t\tWilliam Bland\n\t\t\tSami Boukortt\n\t\t\tJeremy R. Brown\n\t\t\tAlex S. Brown\n\t\t\tChris Cannam\n\t\t\tCory Cook\n\t\t\tCraig DeForest\n\t\t\tMitch Golden\n\t\t\tBrian Gunlogson\n\t\t\tAndrew Hallendorff\n\t\t\tDaniel Horgan\n\t\t\tDavid Hostetler\n\t\t\tSteve Jolly\n\t\t\tSteven Jones\n\t\t\tArun Kishore\n\t\t\tPaul Livesey\n\t\t\tHarvey Lubin\n\t\t\tGreg Mekkes\n\t\t\tAbe Milde\n\t\t\tPaul Nasca\n\t\t\tClayton Otey\n\t\t\tAndré Pinto\n\t\t\tMark Phillips\n\t\t\tJean Claude Risset\n\t\t\tEdgar-RFT\n\t\t\tAugustus Saunders\n\t\t\tBenjamin Schwartz\n\t\t\tDavid R. Sky\n\t\t\tRob Sykes\n\t\t\tMike Underwood\n\t\t\tPhilip Van Baren\n\t\t\tSalvo Ventura\n\t\t\tJun Wan\n\t\t\tDaniel Winzen\n\t\t\tTom Woodhams\n\t\t\tWing Yu\n\n\n\t\tAudacity is based on code from the following projects:\n\n\t\t\texpat\n\t\t\tFLAC\n\t\t\tLAME\n\t\t\tlibmad\n\t\t\tlibsoxr, by Rob Sykes\n\t\t\tlilv, serd, sord, and sratom, by David Robillard\n\t\t\tmsinttypes, by Alexander Chemeris\n\t\t\tlibsndfile\n\t\t\tNyquist\n\t\t\tOgg Vorbis\n\t\t\tPortAudio\n\t\t\tportsmf\n\t\t\tsbsms, by Clayton Otey\n\t\t\tSoundTouch, by Olli Parviainen\n\t\t\tTwoLAME\n\t\t\tVamp\n\t\t\twxWidgets\n\n\n\t\tSpecial thanks:\n\n\t\t\tDave Beydler\n\t\t\tBrian Cameron\n\t\t\tJason Cohen\n\t\t\tDave Fancella\n\t\t\tSteve Harris\n\t\t\tDaniel James\n\t\t\tDaniil Kolpakov\n\t\t\tRobert Leidle\n\t\t\tLogan Lewis\n\t\t\tDavid Luff\n\t\t\tJason Pepas\n\t\t\tJonathan Ryshpan\n\t\t\tMichael Schwendt\n\t\t\tPatrick Shirkey\n\t\t\tTuomas Suutari\n\t\t\tMark Tomlinson\n\t\t\tDavid Topper\n\t\t\tRudy Trubitt\n\t\t\tStreetIQ.com\n\t\t\tUmixIt Technologies, LLC\n\t\t\tVerilogix, Inc.\n\n\t\tAudacity® software is copyright© 1999-2015 Audacity Team.\n\t\tThe name Audacity® is a registered trademark of Dominic Mazzoni.");
+        jScrollPane4.setViewportView(jTextArea4);
+
+        jPanel1.add(jScrollPane4);
+        jScrollPane4.setBounds(0, 168, 1030, 600);
+
+        jTabbedPane2.addTab("Audacity", jPanel1);
+
+        jPanel5.setLayout(null);
+
+        jTextArea3.setColumns(20);
+        jTextArea3.setRows(5);
+        jTextArea3.setText("\t\tBuild Information\n\nFile Format Support\nlibmad\t(MP3 Importing)\t\t\tEnabled\nlibvorbis\t(Ogg Vorbis Import and Export)\t\tEnabled\nlibid3tag\t(ID3 tag support)\t\tEnabled\nlibflac\t(FLAC import and export)\t\tEnabled\nlibtwolame\t(MP2 export)\t\t\tEnabled\nQuickTime\t(Import via QuickTime)\t\tDisabled\nffmpeg\t(FFmpeg Import/Export)\t\tEnabled\ngstreamer\t(Import via GStreamer)\t\tDisabled\n\n\nCore Libraries\nlibsoxr\t(Sample rate conversion)\t\tEnabled\nPortAudio\t(Audio playback and recording)\t\tv19\nwxWidgets\t(Cross-platform GUI library)\t\t3.0.2\n\n\nFeatures\nNyquist\t(Plug-in support)\t\tEnabled\nLADSPA\t(Plug-in support)\t\tEnabled\nVamp\t(Plug-in support)\t\tEnabled\nAudio Units\t(Plug-in support)\t\tDisabled\nVST\t(Plug-in support)\t\tEnabled\nLV2\t(Plug-in support)\t\tEnabled\nPortMixer\t(Sound card mixer support)\t\tEnabled\nSoundTouch\t(Pitch and Tempo Change support)\tEnabled\nSBSMS\t(Extreme Pitch and Tempo Change support)\tEnabled\n\n\nBuild Information\nProgram build date: \tJan 9 2016\nCommit Id:\t\t53b8fd5 of Fri Jan 8 22:05:48 2016 +0000\nBuild type:\t\tRelease build\nSettings folder: \t\tC:\\Users\\Kai Tong Teoh\\AppData\\Roaming\\Audacity");
+        jScrollPane5.setViewportView(jTextArea3);
+
+        jPanel5.add(jScrollPane5);
+        jScrollPane5.setBounds(3, 8, 1030, 760);
+
+        jTabbedPane2.addTab("Build Information", jPanel5);
+
+        jPanel7.setLayout(null);
+
+        jTextArea2.setColumns(20);
+        jTextArea2.setRows(5);
+        jTextArea2.setText("\t\t\t\tGNU GENERAL PUBLIC LICENSE \n\t\t\t\tVersion 2, June 1991 \nCopyright (C) 1989, 1991 Free Software Foundation, Inc. 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA\nEveryone is permitted to copy and distribute verbatim copies of this license document, but changing it is not allowed. \n\n\t\t\t\tPreamble \n\nThe licenses for most software are designed to take away your freedom to share and change it.\nBy contrast, the GNU General Public License is intended to guarantee your freedom to share and change free software--to make sure the software is free for all its users.\nThis General Public License applies to most of the Free Software Foundation's software and to any other program whose authors commit to using it. \n(Some other Free Software Foundation software is covered by the GNU Library General Public License instead.) You can apply it to your programs, too. \n\nWhen we speak of free software, we are referring to freedom, not price.\nOur General Public Licenses are designed to make sure that you have the freedom to distribute copies of free software (and charge for this service if you wish),\nthat you receive source code or can get it if you want it, that you can change the software or use pieces of it in new free programs; and that you know you can do these things. \n\nTo protect your rights, we need to make restrictions that forbid anyone to deny you these rights or to ask you to surrender the rights.\nThese restrictions translate to certain responsibilities for you if you distribute copies of the software, or if you modify it. \n\nFor example, if you distribute copies of such a program, whether gratis or for a fee, you must give the recipients all the rights that you have.\nYou must make sure that they, too, receive or can get the source code. And you must show them these terms so they know their rights. \n\nWe protect your rights with two steps: (1) copyright the software, and (2) offer you this license which gives you legal permission to copy, distribute and/or modify the software. \n\nAlso, for each author's protection and ours, we want to make certain that everyone understands that there is no warranty for this free software.\nIf the software is modified by someone else and passed on, we want its recipients to know that what they have is not the original, \nso that any problems introduced by others will not reflect on the original authors' reputations. \n\nFinally, any free program is threatened constantly by software patents.\nWe wish to avoid the danger that redistributors of a free program will individually obtain patent licenses, in effect making the program proprietary.\nTo prevent this, we have made it clear that any patent must be licensed for everyone's free use or not licensed at all. \n\nThe precise terms and conditions for copying, distribution and modification follow. \n\n\n\t\t\tGNU GENERAL PUBLIC LICENSE \n\t\tTERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION \n\n0. This License applies to any program or other work which contains a notice placed by the copyright holder saying it may be distributed under the terms of this General Public License. \nThe \"Program\", below, refers to any such program or work, and a \"work based on the Program\" means either the Program or any derivative work under copyright law: that is to say, a work containing the Program or a portion of it, either verbatim or with modifications and/or translated into another language. \n(Hereinafter, translation is included without limitation in the term \"modification\".) Each licensee is addressed as \"you\". \n\n\tActivities other than copying, distribution and modification are not covered by this License; they are outside its scope. \n\tThe act of running the Program is not restricted, and the output from the Program is covered only if its contents constitute a work based on the Program (independent of having been made by running the Program). Whether that is true depends on what the Program does. \n\n1. You may copy and distribute verbatim copies of the Program's source code as you receive it, in any medium, provided that you conspicuously and appropriately publish on each copy an appropriate copyright notice and disclaimer of warranty; \nkeep intact all the notices that refer to this License and to the absence of any warranty; \nand give any other recipients of the Program a copy of this License along with the Program. \n\n\tYou may charge a fee for the physical act of transferring a copy, and you may at your option offer warranty protection in exchange for a fee. \n\n2. You may modify your copy or copies of the Program or any portion of it, thus forming a work based on the Program, and copy and distribute such modifications or work under the terms of Section 1 above, provided that you also meet all of these conditions: \n\n\ta) You must cause the modified files to carry prominent notices stating that you changed the files and the date of any change. \n\tb) You must cause any work that you distribute or publish, that in whole or in part contains or is derived from the Program or any part thereof, to be licensed as a whole at no charge to all third parties under the terms of this License. \n\tc) If the modified program normally reads commands interactively when run, you must cause it, when started running for such interactive use in the most ordinary way, to print or display an announcement including an appropriate copyright notice and a notice that there is no warranty (or else, saying that you provide a warranty) and that users may redistribute the program under these conditions, and telling the user how to view a copy of this License. \n\t(Exception: if the Program itself is interactive but does not normally print such an announcement, \tyour work based on the Program is not required to print an announcement.) \n\n\tThese requirements apply to the modified work as a whole. If identifiable sections of that work are not derived from the Program, and can be reasonably considered independent and separate works in themselves, then this License, and its terms, do not apply to those sections when you distribute them as separate works. But when you distribute the same sections as part of a whole which is a work based on the Program, \n\tthe distribution of the whole must be on the terms of this License, whose permissions for other licensees extend to the entire whole, and thus to each and every part regardless of who wrote it. \n\n\tThus, it is not the intent of this section to claim rights or contest your rights to work written entirely by you; rather, the intent is to exercise the right to control the distribution of derivative or collective works based on the Program. \n\tIn addition, mere aggregation of another work not based on the Program with the Program (or with a work based on the Program) on a volume of a storage or distribution medium does not bring the other work under the scope of this License. \n\n3. You may copy and distribute the Program (or a work based on it, under Section 2) in object code or executable form under the terms of Sections 1 and 2 above provided that you also do one of the following: \n\n\ta) Accompany it with the complete corresponding machine-readable source code, which must be distributed under the terms of Sections 1 and 2 above on a medium customarily used for software interchange; or, \n\tb) Accompany it with a written offer, valid for at least three years, to give any third party, for a charge no more than your cost of physically performing source distribution, a complete machine-readable copy of the corresponding source code, to be distributed under the terms of Sections 1 and 2 above on a medium customarily used for software interchange; or, \n\tc) Accompany it with the information you received as to the offer to distribute corresponding source code. (This alternative is allowed only for noncommercial distribution and only if you received the program in object code or executable form with such an offer, in accord with Subsection b above.) \n\n\tThe source code for a work means the preferred form of the work for making modifications to it. For an executable work, complete source code means all the source code for all modules it contains, plus any associated interface definition files, plus the scripts used to control compilation and installation of the executable. \n\tHowever, as a special exception, the source code distributed need not include anything that is normally distributed (in either source or binary form) with the major components (compiler, kernel, and so on) of the operating system on which the executable runs, unless that component itself accompanies the executable. \n\tIf distribution of executable or object code is made by offering access to copy from a designated place, then offering equivalent access to copy the source code from the same place counts as distribution of the source code, even though third parties are not compelled to copy the source along with the object code. \n\n4. You may not copy, modify, sublicense, or distribute the Program except as expressly provided under this License. Any attempt otherwise to copy, modify, sublicense or distribute the Program is void, and will automatically terminate your rights under this License. However, parties who have received copies, or rights, from you under this License will not have their licenses terminated so long as such parties remain in full compliance. \n\n5. You are not required to accept this License, since you have not signed it. However, nothing else grants you permission to modify or distribute the Program or its derivative works. These actions are prohibited by law if you do not accept this License. Therefore, by modifying or distributing the Program (or any work based on the Program), you indicate your acceptance of this License to do so, and all its terms and conditions for copying, distributing or modifying the Program or works based on it. \n\n6. Each time you redistribute the Program (or any work based on the Program), the recipient automatically receives a license from the original licensor to copy, distribute or modify the Program subject to these terms and conditions. You may not impose any further restrictions on the recipients' exercise of the rights granted herein. You are not responsible for enforcing compliance by third parties to this License. \n\n7. If, as a consequence of a court judgment or allegation of patent infringement or for any other reason (not limited to patent issues), conditions are imposed on you (whether by court order, agreement or otherwise) that contradict the conditions of this License, they do not excuse you from the conditions of this License. \nIf you cannot distribute so as to satisfy simultaneously your obligations under this License and any other pertinent obligations, then as a consequence you may not distribute the Program at all. \nFor example, if a patent license would not permit royalty-free redistribution of the Program by all those who receive copies directly or indirectly through you, then the only way you could satisfy both it and this License would be to refrain entirely from distribution of the Program. \n\n\tIf any portion of this section is held invalid or unenforceable under any particular circumstance, the balance of the section is intended to apply and the section as a whole is intended to apply in other circumstances. \n\tIt is not the purpose of this section to induce you to infringe any patents or other property right claims or to contest validity of any such claims; this section has the sole purpose of protecting the integrity of the free software distribution system, which is implemented by public license practices. \n\tMany people have made generous contributions to the wide range of software distributed through that system in reliance on consistent application of that system; it is up to the author/donor to decide if he or she is willing to distribute software through any other system and a licensee cannot impose that choice. \n\n\tThis section is intended to make thoroughly clear what is believed to be a consequence of the rest of this License. \n\n8. If the distribution and/or use of the Program is restricted in certain countries either by patents or by copyrighted interfaces, the original copyright holder who places the Program under this License may add an explicit geographical distribution limitation excluding those countries, so that distribution is permitted only in or among countries not thus excluded. \nIn such case, this License incorporates the limitation as if written in the body of this License. \n\n9. The Free Software Foundation may publish revised and/or new versions of the General Public License from time to time. Such new versions will be similar in spirit to the present version, but may differ in detail to address new problems or concerns. \n\n\tEach version is given a distinguishing version number. If the Program specifies a version number of this License which applies to it and \"any later version\", you have the option of following the terms and conditions either of that version or of any later version published by the Free Software Foundation. If the Program does not specify a version number of this License, you may choose any version ever published by the Free Software Foundation. \n\n10. If you wish to incorporate parts of the Program into other free programs whose distribution conditions are different, write to the author to ask for permission. For software which is copyrighted by the Free Software Foundation, write to the Free Software Foundation; we sometimes make exceptions for this. Our decision will be guided by the two goals of preserving the free status of all derivatives of our free software and of promoting the sharing and reuse of software generally. \n\n\tNO WARRANTY \n\n11. BECAUSE THE PROGRAM IS LICENSED FREE OF CHARGE, THERE IS NO WARRANTY FOR THE PROGRAM, TO THE EXTENT PERMITTED BY APPLICABLE LAW. EXCEPT WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT HOLDERS AND/OR OTHER PARTIES PROVIDE THE PROGRAM \"AS IS\" WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE PROGRAM IS WITH YOU. SHOULD THE PROGRAM PROVE DEFECTIVE, YOU ASSUME THE COST OF ALL NECESSARY SERVICING, REPAIR OR CORRECTION. \n\n12. IN NO EVENT UNLESS REQUIRED BY APPLICABLE LAW OR AGREED TO IN WRITING WILL ANY COPYRIGHT HOLDER, OR ANY OTHER PARTY WHO MAY MODIFY AND/OR REDISTRIBUTE THE PROGRAM AS PERMITTED ABOVE, BE LIABLE TO YOU FOR DAMAGES, INCLUDING ANY GENERAL, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES ARISING OUT OF THE USE OR INABILITY TO USE THE PROGRAM (INCLUDING BUT NOT LIMITED TO LOSS OF DATA OR DATA BEING RENDERED INACCURATE OR LOSSES SUSTAINED BY YOU OR THIRD PARTIES OR A FAILURE OF THE PROGRAM TO OPERATE WITH ANY OTHER PROGRAMS), EVEN IF SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. ");
+        jScrollPane6.setViewportView(jTextArea2);
+
+        jPanel7.add(jScrollPane6);
+        jScrollPane6.setBounds(-10, 0, 810, 610);
+
+        jTabbedPane2.addTab("GPL License", jPanel7);
+
+        About_Audacity.getContentPane().add(jTabbedPane2);
+        jTabbedPane2.setBounds(0, 0, 1030, 800);
+
+        CheckDependency.setTitle("Dependency Check");
+        CheckDependency.setMinimumSize(new java.awt.Dimension(640, 480));
+        CheckDependency.getContentPane().setLayout(null);
+
+        jLabel31.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel31.setForeground(new java.awt.Color(51, 0, 204));
+        jLabel31.setText("Your Project is currently self-contained; it does not depend on any external audio file.");
+        CheckDependency.getContentPane().add(jLabel31);
+        jLabel31.setBounds(0, 0, 740, 30);
+
+        jLabel30.setText("If you change the project to a state that has external dependencies on imported files, it will no longer be self-contained.");
+        CheckDependency.getContentPane().add(jLabel30);
+        jLabel30.setBounds(0, 30, 730, 30);
+
+        jLabel32.setText("If you then Save without copying those files in, you may lose data.");
+        CheckDependency.getContentPane().add(jLabel32);
+        jLabel32.setBounds(0, 60, 740, 16);
+
+        EditMetaData.setTitle("Edit Metadata Tags");
+        EditMetaData.setMinimumSize(new java.awt.Dimension(800, 640));
+        EditMetaData.setSize(new java.awt.Dimension(800, 640));
+        EditMetaData.getContentPane().setLayout(null);
+
+        jLabel33.setText("Enter value into the following rows");
+        EditMetaData.getContentPane().add(jLabel33);
+        jLabel33.setBounds(0, 0, 820, 16);
+
+        jLabel35.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel35.setText("Comments");
+        jLabel35.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        EditMetaData.getContentPane().add(jLabel35);
+        jLabel35.setBounds(0, 240, 120, 30);
+
+        jLabel36.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel36.setText("Tag");
+        jLabel36.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        EditMetaData.getContentPane().add(jLabel36);
+        jLabel36.setBounds(0, 40, 120, 20);
+
+        jLabel37.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel37.setText("Artist Name");
+        jLabel37.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        EditMetaData.getContentPane().add(jLabel37);
+        jLabel37.setBounds(0, 60, 120, 30);
+
+        jLabel38.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel38.setText("Track Title");
+        jLabel38.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        EditMetaData.getContentPane().add(jLabel38);
+        jLabel38.setBounds(0, 90, 120, 30);
+
+        jLabel39.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel39.setText("Album Title");
+        jLabel39.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        EditMetaData.getContentPane().add(jLabel39);
+        jLabel39.setBounds(0, 120, 120, 30);
+
+        jLabel40.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel40.setText("Track Number");
+        jLabel40.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        EditMetaData.getContentPane().add(jLabel40);
+        jLabel40.setBounds(0, 150, 120, 30);
+
+        jLabel41.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel41.setText("Year");
+        jLabel41.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        EditMetaData.getContentPane().add(jLabel41);
+        jLabel41.setBounds(0, 180, 120, 30);
+
+        jLabel42.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel42.setText("Genre");
+        jLabel42.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        EditMetaData.getContentPane().add(jLabel42);
+        jLabel42.setBounds(0, 210, 120, 30);
+
+        jLabel43.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel43.setText("Value");
+        jLabel43.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        EditMetaData.getContentPane().add(jLabel43);
+        jLabel43.setBounds(120, 40, 690, 20);
+
+        jButton46.setText("Cancel");
+        jButton46.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton46ActionPerformed(evt);
+            }
+        });
+        EditMetaData.getContentPane().add(jButton46);
+        jButton46.setBounds(710, 360, 80, 28);
+
+        jButton47.setText("Add");
+        EditMetaData.getContentPane().add(jButton47);
+        jButton47.setBounds(20, 310, 49, 28);
+
+        jButton48.setText("Remove");
+        EditMetaData.getContentPane().add(jButton48);
+        jButton48.setBounds(70, 310, 80, 28);
+
+        jButton49.setText("Clear");
+        jButton49.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton49ActionPerformed(evt);
+            }
+        });
+        EditMetaData.getContentPane().add(jButton49);
+        jButton49.setBounds(150, 310, 80, 28);
+
+        jButton50.setText("Okay");
+        jButton50.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton50ActionPerformed(evt);
+            }
+        });
+        EditMetaData.getContentPane().add(jButton50);
+        jButton50.setBounds(620, 360, 80, 28);
+        EditMetaData.getContentPane().add(jTextField1);
+        jTextField1.setBounds(120, 240, 680, 30);
+        EditMetaData.getContentPane().add(jTextField2);
+        jTextField2.setBounds(120, 60, 680, 30);
+        EditMetaData.getContentPane().add(jTextField3);
+        jTextField3.setBounds(120, 90, 680, 30);
+        EditMetaData.getContentPane().add(jTextField4);
+        jTextField4.setBounds(120, 120, 680, 30);
+        EditMetaData.getContentPane().add(jTextField5);
+        jTextField5.setBounds(120, 150, 680, 30);
+        EditMetaData.getContentPane().add(jTextField6);
+        jTextField6.setBounds(120, 180, 680, 30);
+        EditMetaData.getContentPane().add(jTextField7);
+        jTextField7.setBounds(120, 210, 680, 30);
+
+        Chirp.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        Chirp.setTitle("Chirp");
+        Chirp.setMinimumSize(new java.awt.Dimension(600, 600));
+        Chirp.getContentPane().setLayout(null);
+
+        jLabel34.setText("Waveform:");
+        Chirp.getContentPane().add(jLabel34);
+        jLabel34.setBounds(0, 0, 70, 16);
+
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        Chirp.getContentPane().add(jComboBox2);
+        jComboBox2.setBounds(110, 130, 210, 20);
+
+        jLabel44.setText("Duration:");
+        Chirp.getContentPane().add(jLabel44);
+        jLabel44.setBounds(0, 190, 90, 16);
+
+        jLabel45.setText("Frequency (Hz):");
+        Chirp.getContentPane().add(jLabel45);
+        jLabel45.setBounds(0, 50, 90, 16);
+
+        jLabel46.setText("Amplitude(0-1):");
+        Chirp.getContentPane().add(jLabel46);
+        jLabel46.setBounds(0, 90, 90, 16);
+
+        jLabel47.setText("Interpolation:");
+        Chirp.getContentPane().add(jLabel47);
+        jLabel47.setBounds(0, 130, 90, 16);
+
+        jLabel48.setText("Start");
+        Chirp.getContentPane().add(jLabel48);
+        jLabel48.setBounds(140, 30, 25, 16);
+
+        jLabel49.setText("End");
+        Chirp.getContentPane().add(jLabel49);
+        jLabel49.setBounds(260, 30, 22, 16);
+
+        jScrollPane7.setViewportView(jTextPane1);
+
+        Chirp.getContentPane().add(jScrollPane7);
+        jScrollPane7.setBounds(230, 90, 90, 30);
+
+        jScrollPane8.setViewportView(jTextPane2);
+
+        Chirp.getContentPane().add(jScrollPane8);
+        jScrollPane8.setBounds(110, 50, 90, 30);
+
+        jScrollPane9.setViewportView(jTextPane3);
+
+        Chirp.getContentPane().add(jScrollPane9);
+        jScrollPane9.setBounds(230, 50, 90, 30);
+
+        jScrollPane10.setViewportView(jTextPane4);
+
+        Chirp.getContentPane().add(jScrollPane10);
+        jScrollPane10.setBounds(110, 90, 90, 30);
+
+        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        Chirp.getContentPane().add(jComboBox4);
+        jComboBox4.setBounds(110, 0, 210, 20);
+
+        jComboBox5.setForeground(new java.awt.Color(0, 0, 255));
+        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        Chirp.getContentPane().add(jComboBox5);
+        jComboBox5.setBounds(110, 190, 210, 26);
+
+        jButton51.setText("Cancel");
+        jButton51.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton51ActionPerformed(evt);
+            }
+        });
+        Chirp.getContentPane().add(jButton51);
+        jButton51.setBounds(280, 240, 80, 28);
+
+        jButton52.setText("Manage");
+        Chirp.getContentPane().add(jButton52);
+        jButton52.setBounds(0, 240, 72, 28);
+
+        jButton53.setText("Preview");
+        Chirp.getContentPane().add(jButton53);
+        jButton53.setBounds(80, 240, 80, 28);
+
+        jButton54.setText("Okay");
+        Chirp.getContentPane().add(jButton54);
+        jButton54.setBounds(180, 240, 80, 28);
+
+        DTMF.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        DTMF.setTitle("DTMF Tones");
+        DTMF.setMinimumSize(new java.awt.Dimension(600, 600));
+        DTMF.getContentPane().setLayout(null);
+
+        jLabel50.setText("Silence Duration:");
+        DTMF.getContentPane().add(jLabel50);
+        jLabel50.setBounds(30, 240, 130, 16);
+        DTMF.getContentPane().add(jFormattedTextField1);
+        jFormattedTextField1.setBounds(120, 0, 200, 28);
+
+        jLabel51.setText("DTMF Sequence:");
+        DTMF.getContentPane().add(jLabel51);
+        jLabel51.setBounds(20, 10, 100, 16);
+
+        jLabel52.setText("Amplitude (0-1):");
+        DTMF.getContentPane().add(jLabel52);
+        jLabel52.setBounds(20, 50, 100, 16);
+
+        jLabel53.setText("Duration:");
+        DTMF.getContentPane().add(jLabel53);
+        jLabel53.setBounds(20, 90, 100, 16);
+        DTMF.getContentPane().add(jSlider2);
+        jSlider2.setBounds(180, 140, 70, 21);
+
+        jLabel54.setText("0");
+        DTMF.getContentPane().add(jLabel54);
+        jLabel54.setBounds(170, 140, 48, 16);
+
+        jLabel55.setText("1000");
+        DTMF.getContentPane().add(jLabel55);
+        jLabel55.setBounds(250, 140, 28, 16);
+
+        jLabel56.setText("Tone/Silence Ratio");
+        DTMF.getContentPane().add(jLabel56);
+        jLabel56.setBounds(20, 140, 130, 16);
+
+        jLabel57.setText("Duty Cycle:");
+        DTMF.getContentPane().add(jLabel57);
+        jLabel57.setBounds(30, 180, 130, 16);
+
+        jLabel58.setText("Tone Duration:");
+        DTMF.getContentPane().add(jLabel58);
+        jLabel58.setBounds(30, 210, 130, 16);
+
+        jLabel59.setText("1788ms");
+        DTMF.getContentPane().add(jLabel59);
+        jLabel59.setBounds(190, 240, 48, 16);
+
+        jLabel60.setText("55.0%");
+        DTMF.getContentPane().add(jLabel60);
+        jLabel60.setBounds(190, 180, 35, 16);
+
+        jLabel61.setText("2185ms");
+        DTMF.getContentPane().add(jLabel61);
+        jLabel61.setBounds(190, 210, 48, 16);
+
+        jButton55.setText("Okay");
+        jButton55.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton55ActionPerformed(evt);
+            }
+        });
+        DTMF.getContentPane().add(jButton55);
+        jButton55.setBounds(200, 280, 55, 28);
+
+        jButton56.setText("Cancel");
+        jButton56.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton56ActionPerformed(evt);
+            }
+        });
+        DTMF.getContentPane().add(jButton56);
+        jButton56.setBounds(260, 280, 70, 28);
+
+        Noise.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        Noise.setTitle("Noise");
+        Noise.setMinimumSize(new java.awt.Dimension(600, 600));
+        Noise.getContentPane().setLayout(null);
+
+        jLabel62.setText("Noise Type:");
+        Noise.getContentPane().add(jLabel62);
+        jLabel62.setBounds(40, 30, 80, 16);
+
+        jLabel63.setText("Amplitude (0-1):");
+        Noise.getContentPane().add(jLabel63);
+        jLabel63.setBounds(40, 80, 100, 16);
+
+        jLabel64.setText("Duration:");
+        Noise.getContentPane().add(jLabel64);
+        jLabel64.setBounds(40, 130, 90, 16);
+
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        Noise.getContentPane().add(jComboBox3);
+        jComboBox3.setBounds(170, 120, 130, 26);
+
+        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        Noise.getContentPane().add(jComboBox6);
+        jComboBox6.setBounds(170, 30, 130, 26);
+
+        jScrollPane11.setViewportView(jTextPane5);
+
+        Noise.getContentPane().add(jScrollPane11);
+        jScrollPane11.setBounds(170, 70, 130, 30);
+
+        jButton57.setText("Okay");
+        jButton57.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton57ActionPerformed(evt);
+            }
+        });
+        Noise.getContentPane().add(jButton57);
+        jButton57.setBounds(210, 210, 55, 28);
+
+        jButton58.setText("Cancel");
+        jButton58.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton58ActionPerformed(evt);
+            }
+        });
+        Noise.getContentPane().add(jButton58);
+        jButton58.setBounds(270, 210, 70, 28);
+
+        Silence.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        Silence.setTitle("Silence");
+        Silence.setMinimumSize(new java.awt.Dimension(400, 400));
+        Silence.getContentPane().setLayout(null);
+
+        jLabel65.setText("Duration");
+        Silence.getContentPane().add(jLabel65);
+        jLabel65.setBounds(0, 0, 60, 16);
+
+        jComboBox7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        Silence.getContentPane().add(jComboBox7);
+        jComboBox7.setBounds(80, 0, 210, 26);
+
+        jButton59.setText("Cancel");
+        jButton59.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton59ActionPerformed(evt);
+            }
+        });
+        Silence.getContentPane().add(jButton59);
+        jButton59.setBounds(290, 170, 70, 28);
+
+        jButton60.setText("Okay");
+        jButton60.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton60ActionPerformed(evt);
+            }
+        });
+        Silence.getContentPane().add(jButton60);
+        jButton60.setBounds(230, 170, 55, 28);
+
+        Tone.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        Tone.setTitle("Tone");
+        Tone.setMinimumSize(new java.awt.Dimension(600, 600));
+        Tone.getContentPane().setLayout(null);
+
+        jLabel66.setText("Amplitude (0-1):");
+        Tone.getContentPane().add(jLabel66);
+        jLabel66.setBounds(0, 150, 100, 16);
+
+        jLabel67.setText("Waveform:");
+        Tone.getContentPane().add(jLabel67);
+        jLabel67.setBounds(0, 0, 80, 16);
+
+        jLabel68.setText("Duration:");
+        Tone.getContentPane().add(jLabel68);
+        jLabel68.setBounds(0, 50, 70, 16);
+
+        jLabel69.setText("Frequency (Hz):");
+        Tone.getContentPane().add(jLabel69);
+        jLabel69.setBounds(0, 100, 100, 16);
+
+        jComboBox8.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        Tone.getContentPane().add(jComboBox8);
+        jComboBox8.setBounds(150, 40, 180, 26);
+
+        jComboBox9.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        Tone.getContentPane().add(jComboBox9);
+        jComboBox9.setBounds(150, 0, 180, 26);
+
+        jScrollPane12.setViewportView(jTextPane6);
+
+        Tone.getContentPane().add(jScrollPane12);
+        jScrollPane12.setBounds(150, 150, 180, 30);
+
+        jScrollPane13.setViewportView(jTextPane7);
+
+        Tone.getContentPane().add(jScrollPane13);
+        jScrollPane13.setBounds(150, 100, 180, 30);
+
+        jButton61.setText("Okay");
+        jButton61.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton61ActionPerformed(evt);
+            }
+        });
+        Tone.getContentPane().add(jButton61);
+        jButton61.setBounds(230, 230, 55, 28);
+
+        jButton62.setText("Cancel");
+        jButton62.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton62ActionPerformed(evt);
+            }
+        });
+        Tone.getContentPane().add(jButton62);
+        jButton62.setBounds(290, 230, 70, 28);
+
+        ClickTrack.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        ClickTrack.setTitle("Click Track");
+        ClickTrack.setMinimumSize(new java.awt.Dimension(800, 640));
+        ClickTrack.getContentPane().setLayout(null);
+
+        jLabel70.setText("Midi pitch off weak click:");
+        ClickTrack.getContentPane().add(jLabel70);
+        jLabel70.setBounds(0, 410, 270, 16);
+
+        jLabel71.setText("Action Choice:");
+        ClickTrack.getContentPane().add(jLabel71);
+        jLabel71.setBounds(0, 0, 90, 16);
+
+        jLabel72.setText("Tempo [beats per minute]:");
+        ClickTrack.getContentPane().add(jLabel72);
+        jLabel72.setBounds(0, 40, 150, 16);
+
+        jLabel73.setText("Beats per minute [bar]:");
+        ClickTrack.getContentPane().add(jLabel73);
+        jLabel73.setBounds(0, 80, 150, 16);
+
+        jLabel74.setText("Number of measures [bar]:");
+        ClickTrack.getContentPane().add(jLabel74);
+        jLabel74.setBounds(0, 120, 150, 16);
+
+        jLabel75.setText("Optional click track duration [minutes seconds]:");
+        ClickTrack.getContentPane().add(jLabel75);
+        jLabel75.setBounds(0, 160, 270, 16);
+
+        jLabel76.setText("Individual click duration [miliseconds]:");
+        ClickTrack.getContentPane().add(jLabel76);
+        jLabel76.setBounds(0, 200, 270, 16);
+
+        jLabel77.setText("Start time offset [seconds]:");
+        ClickTrack.getContentPane().add(jLabel77);
+        jLabel77.setBounds(0, 240, 270, 16);
+
+        jLabel78.setText("Click sound:");
+        ClickTrack.getContentPane().add(jLabel78);
+        jLabel78.setBounds(0, 280, 270, 16);
+
+        jLabel79.setText("Noise click resonance - discernable pitch [q]:");
+        ClickTrack.getContentPane().add(jLabel79);
+        jLabel79.setBounds(0, 330, 270, 16);
+
+        jLabel80.setText("Midi pitch off strong click:");
+        ClickTrack.getContentPane().add(jLabel80);
+        jLabel80.setBounds(0, 370, 270, 16);
+
+        jComboBox10.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        ClickTrack.getContentPane().add(jComboBox10);
+        jComboBox10.setBounds(380, 270, 380, 26);
+
+        jScrollPane14.setViewportView(jTextPane8);
+
+        ClickTrack.getContentPane().add(jScrollPane14);
+        jScrollPane14.setBounds(380, 150, 320, 30);
+        ClickTrack.getContentPane().add(jSlider3);
+        jSlider3.setBounds(490, 400, 200, 21);
+
+        jScrollPane15.setViewportView(jTextPane9);
+
+        ClickTrack.getContentPane().add(jScrollPane15);
+        jScrollPane15.setBounds(380, 30, 100, 30);
+
+        jScrollPane16.setViewportView(jTextPane10);
+
+        ClickTrack.getContentPane().add(jScrollPane16);
+        jScrollPane16.setBounds(380, 70, 100, 30);
+
+        jScrollPane17.setViewportView(jTextPane11);
+
+        ClickTrack.getContentPane().add(jScrollPane17);
+        jScrollPane17.setBounds(380, 400, 100, 30);
+
+        jScrollPane18.setViewportView(jTextPane12);
+
+        ClickTrack.getContentPane().add(jScrollPane18);
+        jScrollPane18.setBounds(380, 110, 100, 30);
+
+        jScrollPane19.setViewportView(jTextPane13);
+
+        ClickTrack.getContentPane().add(jScrollPane19);
+        jScrollPane19.setBounds(380, 190, 100, 30);
+
+        jScrollPane20.setViewportView(jTextPane14);
+
+        ClickTrack.getContentPane().add(jScrollPane20);
+        jScrollPane20.setBounds(380, 230, 100, 30);
+
+        jScrollPane21.setViewportView(jTextPane15);
+
+        ClickTrack.getContentPane().add(jScrollPane21);
+        jScrollPane21.setBounds(380, 320, 100, 30);
+
+        jScrollPane22.setViewportView(jTextPane16);
+
+        ClickTrack.getContentPane().add(jScrollPane22);
+        jScrollPane22.setBounds(380, 360, 100, 30);
+        ClickTrack.getContentPane().add(jSlider4);
+        jSlider4.setBounds(490, 40, 200, 21);
+        ClickTrack.getContentPane().add(jSlider5);
+        jSlider5.setBounds(490, 70, 200, 21);
+        ClickTrack.getContentPane().add(jSlider6);
+        jSlider6.setBounds(490, 110, 200, 21);
+        ClickTrack.getContentPane().add(jSlider7);
+        jSlider7.setBounds(490, 190, 200, 21);
+
+        jComboBox11.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        ClickTrack.getContentPane().add(jComboBox11);
+        jComboBox11.setBounds(380, 0, 380, 26);
+        ClickTrack.getContentPane().add(jSlider8);
+        jSlider8.setBounds(490, 230, 200, 21);
+        ClickTrack.getContentPane().add(jSlider9);
+        jSlider9.setBounds(490, 320, 200, 21);
+        ClickTrack.getContentPane().add(jSlider10);
+        jSlider10.setBounds(490, 360, 200, 21);
+
+        jLabel82.setText("18 - 116");
+        ClickTrack.getContentPane().add(jLabel82);
+        jLabel82.setBounds(700, 400, 120, 16);
+
+        jLabel83.setText("30-300 beats/minute");
+        ClickTrack.getContentPane().add(jLabel83);
+        jLabel83.setBounds(700, 40, 120, 16);
+
+        jLabel84.setText("1-20 beats/measure");
+        ClickTrack.getContentPane().add(jLabel84);
+        jLabel84.setBounds(700, 70, 120, 16);
+
+        jLabel85.setText("1-1000 bars");
+        ClickTrack.getContentPane().add(jLabel85);
+        jLabel85.setBounds(700, 110, 120, 16);
+
+        jLabel86.setText("Whole numbers only");
+        ClickTrack.getContentPane().add(jLabel86);
+        jLabel86.setBounds(700, 160, 120, 16);
+
+        jLabel87.setText("1-100 ms");
+        ClickTrack.getContentPane().add(jLabel87);
+        jLabel87.setBounds(700, 190, 120, 16);
+
+        jLabel88.setText("0-30 seconds");
+        ClickTrack.getContentPane().add(jLabel88);
+        jLabel88.setBounds(700, 230, 120, 16);
+
+        jLabel89.setText("1 - 20");
+        ClickTrack.getContentPane().add(jLabel89);
+        jLabel89.setBounds(700, 320, 120, 16);
+
+        jLabel90.setText("18 - 116");
+        ClickTrack.getContentPane().add(jLabel90);
+        jLabel90.setBounds(700, 360, 120, 16);
+
+        jButton63.setText("Okay");
+        jButton63.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton63ActionPerformed(evt);
+            }
+        });
+        ClickTrack.getContentPane().add(jButton63);
+        jButton63.setBounds(610, 480, 55, 28);
+
+        jButton64.setText("Cancel");
+        jButton64.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton64ActionPerformed(evt);
+            }
+        });
+        ClickTrack.getContentPane().add(jButton64);
+        jButton64.setBounds(670, 480, 70, 28);
+
+        Pluck.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        Pluck.setTitle("Pluck");
+        Pluck.setMinimumSize(new java.awt.Dimension(600, 600));
+        Pluck.getContentPane().setLayout(null);
+
+        jLabel81.setText("Fade out type:");
+        Pluck.getContentPane().add(jLabel81);
+        jLabel81.setBounds(0, 0, 90, 16);
+
+        jComboBox12.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        Pluck.getContentPane().add(jComboBox12);
+        jComboBox12.setBounds(170, 0, 320, 26);
+
+        jLabel91.setText("Pluck MIDI Pitch:");
+        Pluck.getContentPane().add(jLabel91);
+        jLabel91.setBounds(0, 40, 150, 16);
+
+        jScrollPane23.setViewportView(jTextPane17);
+
+        Pluck.getContentPane().add(jScrollPane23);
+        jScrollPane23.setBounds(170, 40, 100, 30);
+        Pluck.getContentPane().add(jSlider11);
+        jSlider11.setBounds(290, 40, 200, 21);
+
+        jLabel92.setText("Durations [seconds]:");
+        Pluck.getContentPane().add(jLabel92);
+        jLabel92.setBounds(0, 80, 150, 16);
+
+        jScrollPane24.setViewportView(jTextPane18);
+
+        Pluck.getContentPane().add(jScrollPane24);
+        jScrollPane24.setBounds(170, 80, 100, 30);
+        Pluck.getContentPane().add(jSlider12);
+        jSlider12.setBounds(290, 80, 200, 21);
+
+        jButton65.setText("Okay");
+        jButton65.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton65ActionPerformed(evt);
+            }
+        });
+        Pluck.getContentPane().add(jButton65);
+        jButton65.setBounds(350, 190, 55, 28);
+
+        jButton66.setText("Cancel");
+        jButton66.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton66ActionPerformed(evt);
+            }
+        });
+        Pluck.getContentPane().add(jButton66);
+        jButton66.setBounds(410, 190, 70, 28);
+
+        ResetDrum.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        ResetDrum.setTitle("Reset Drum");
+        ResetDrum.setMinimumSize(new java.awt.Dimension(600, 600));
+        ResetDrum.getContentPane().setLayout(null);
+
+        jLabel93.setText("Frequency (Hz):");
+        ResetDrum.getContentPane().add(jLabel93);
+        jLabel93.setBounds(0, 40, 150, 16);
+
+        jScrollPane25.setViewportView(jTextPane19);
+
+        ResetDrum.getContentPane().add(jScrollPane25);
+        jScrollPane25.setBounds(190, 30, 100, 30);
+        ResetDrum.getContentPane().add(jSlider13);
+        jSlider13.setBounds(310, 40, 200, 21);
+        ResetDrum.getContentPane().add(jSlider14);
+        jSlider14.setBounds(310, 70, 200, 21);
+
+        jScrollPane26.setViewportView(jTextPane20);
+
+        ResetDrum.getContentPane().add(jScrollPane26);
+        jScrollPane26.setBounds(190, 70, 100, 30);
+
+        jLabel94.setText("Decay (seconds):");
+        ResetDrum.getContentPane().add(jLabel94);
+        jLabel94.setBounds(0, 80, 150, 16);
+
+        jLabel95.setText("Width of noise band (Hz):");
+        ResetDrum.getContentPane().add(jLabel95);
+        jLabel95.setBounds(0, 160, 180, 16);
+
+        jScrollPane27.setViewportView(jTextPane21);
+
+        ResetDrum.getContentPane().add(jScrollPane27);
+        jScrollPane27.setBounds(190, 110, 100, 30);
+        ResetDrum.getContentPane().add(jSlider15);
+        jSlider15.setBounds(310, 110, 200, 21);
+        ResetDrum.getContentPane().add(jSlider16);
+        jSlider16.setBounds(310, 190, 200, 21);
+
+        jScrollPane28.setViewportView(jTextPane22);
+
+        ResetDrum.getContentPane().add(jScrollPane28);
+        jScrollPane28.setBounds(190, 190, 100, 30);
+
+        jLabel96.setText("Amount of noise in mix (percent):");
+        ResetDrum.getContentPane().add(jLabel96);
+        jLabel96.setBounds(0, 200, 270, 16);
+
+        jLabel97.setText("Amplitude (0-1):");
+        ResetDrum.getContentPane().add(jLabel97);
+        jLabel97.setBounds(0, 240, 270, 16);
+
+        jScrollPane29.setViewportView(jTextPane23);
+
+        ResetDrum.getContentPane().add(jScrollPane29);
+        jScrollPane29.setBounds(190, 230, 100, 30);
+        ResetDrum.getContentPane().add(jSlider17);
+        jSlider17.setBounds(310, 230, 200, 21);
+
+        jLabel98.setText("Center frequency of noise (Hz):");
+        ResetDrum.getContentPane().add(jLabel98);
+        jLabel98.setBounds(0, 120, 180, 16);
+
+        jScrollPane30.setViewportView(jTextPane24);
+
+        ResetDrum.getContentPane().add(jScrollPane30);
+        jScrollPane30.setBounds(190, 150, 100, 30);
+        ResetDrum.getContentPane().add(jSlider18);
+        jSlider18.setBounds(310, 150, 200, 21);
+
+        jButton67.setText("Okay");
+        jButton67.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton67ActionPerformed(evt);
+            }
+        });
+        ResetDrum.getContentPane().add(jButton67);
+        jButton67.setBounds(380, 290, 55, 28);
+
+        jButton68.setText("Cancel");
+        jButton68.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton68ActionPerformed(evt);
+            }
+        });
+        ResetDrum.getContentPane().add(jButton68);
+        jButton68.setBounds(440, 290, 70, 28);
+
+        AudioDeviceInfo.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        AudioDeviceInfo.setTitle("Audio Device Info");
+        AudioDeviceInfo.setMinimumSize(new java.awt.Dimension(600, 600));
+        AudioDeviceInfo.getContentPane().setLayout(null);
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jTextArea1.setText("==============================\nDefault recording device number: 1\nDefault playback device number: 3\n==============================\nDevice ID: 0\nDevice name: Microsoft Sound Mapper - Input\nHost name: MME\nRecording channels: 2\nPlayback channels: 0\nLow Recording Latency: 0.090000\nLow Playback Latency: 0.090000\nHigh Recording Latency: 0.180000\nHigh Playback Latency: 0.180000\nSupported Rates:\n==============================\nDevice ID: 1\nDevice name: Microphone (Intel SST Audio Dev\nHost name: MME\nRecording channels: 2\nPlayback channels: 0\nLow Recording Latency: 0.090000\nLow Playback Latency: 0.090000\nHigh Recording Latency: 0.180000\nHigh Playback Latency: 0.180000\nSupported Rates:\n==============================\nDevice ID: 2\nDevice name: Microsoft Sound Mapper - Output\nHost name: MME\nRecording channels: 0\nPlayback channels: 2\nLow Recording Latency: 0.090000\nLow Playback Latency: 0.090000\nHigh Recording Latency: 0.180000\nHigh Playback Latency: 0.180000\nSupported Rates:\n    8000\n    9600\n    11025\n    12000\n    15000\n    16000\n    22050\n    24000\n    32000\n    44100\n    48000\n    88200\n    96000\n    176400\n    192000\n    352800\n    384000\n==============================\nDevice ID: 3\nDevice name: Speakers (Intel SST Audio Devic\nHost name: MME\nRecording channels: 0\nPlayback channels: 2\nLow Recording Latency: 0.090000\nLow Playback Latency: 0.090000\nHigh Recording Latency: 0.180000\nHigh Playback Latency: 0.180000\nSupported Rates:\n    8000\n    9600\n    11025\n    12000\n    15000\n    16000\n    22050\n    24000\n    32000\n    44100\n    48000\n    88200\n    96000\n    176400\n    192000\n    352800\n    384000\n==============================\nDevice ID: 4\nDevice name: Primary Sound Capture Driver\nHost name: Windows DirectSound\nRecording channels: 2\nPlayback channels: 0\nLow Recording Latency: 0.120000\nLow Playback Latency: 0.000000\nHigh Recording Latency: 0.240000\nHigh Playback Latency: 0.000000\nSupported Rates:\n==============================\nDevice ID: 5\nDevice name: Microphone (Intel SST Audio Device (WDM))\nHost name: Windows DirectSound\nRecording channels: 2\nPlayback channels: 0\nLow Recording Latency: 0.120000\nLow Playback Latency: 0.000000\nHigh Recording Latency: 0.240000\nHigh Playback Latency: 0.000000\nSupported Rates:\n==============================\nDevice ID: 6\nDevice name: Primary Sound Driver\nHost name: Windows DirectSound\nRecording channels: 0\nPlayback channels: 2\nLow Recording Latency: 0.000000\nLow Playback Latency: 0.120000\nHigh Recording Latency: 0.000000\nHigh Playback Latency: 0.240000\nSupported Rates:\n    8000\n    9600\n    11025\n    12000\n    15000\n    16000\n    22050\n    24000\n    32000\n    44100\n    48000\n    88200\n    96000\n    176400\n    192000\n==============================\nDevice ID: 7\nDevice name: Speakers (Intel SST Audio Device (WDM))\nHost name: Windows DirectSound\nRecording channels: 0\nPlayback channels: 2\nLow Recording Latency: 0.000000\nLow Playback Latency: 0.120000\nHigh Recording Latency: 0.000000\nHigh Playback Latency: 0.240000\nSupported Rates:\n    8000\n    9600\n    11025\n    12000\n    15000\n    16000\n    22050\n    24000\n    32000\n    44100\n    48000\n    88200\n    96000\n    176400\n    192000\n==============================\nDevice ID: 8\nDevice name: Speakers (Intel SST Audio Device (WDM))\nHost name: Windows WASAPI\nRecording channels: 0\nPlayback channels: 2\nLow Recording Latency: 0.000000\nLow Playback Latency: 0.003000\nHigh Recording Latency: 0.000000\nHigh Playback Latency: 0.010000\nSupported Rates:\n    48000\n==============================\nDevice ID: 9\nDevice name: Speakers (Intel SST Audio Device (WDM)) (loopback)\nHost name: Windows WASAPI\nRecording channels: 2\nPlayback channels: 0\nLow Recording Latency: 0.003000\nLow Playback Latency: 0.000000\nHigh Recording Latency: 0.010000\nHigh Playback Latency: 0.000000\nSupported Rates:\n==============================\nDevice ID: 10\nDevice name: Microphone (Intel SST Audio Device (WDM))\nHost name: Windows WASAPI\nRecording channels: 2\nPlayback channels: 0\nLow Recording Latency: 0.003000\nLow Playback Latency: 0.000000\nHigh Recording Latency: 0.010000\nHigh Playback Latency: 0.000000\nSupported Rates:\n==============================\nSelected recording device: 1 - Microphone (Intel SST Audio Dev\nSelected playback device: 3 - Speakers (Intel SST Audio Devic\nSupported Rates:\n    8000\n    9600\n    11025\n    12000\n    15000\n    16000\n    22050\n    24000\n    32000\n    44100\n    48000\n    88200\n    96000\n    176400\n    192000\n    352800\n    384000\n==============================\nAvailable mixers:\n==============================\nAvailable recording sources:\n0 - Master\n==============================\nAvailable playback volumes:\n0 - PCM\n==============================\nRecording volume is native\nPlayback volume is native\n");
+        jScrollPane31.setViewportView(jTextArea1);
+
+        AudioDeviceInfo.getContentPane().add(jScrollPane31);
+        jScrollPane31.setBounds(0, 0, 400, 300);
+
+        jButton69.setText("Cancel");
+        jButton69.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton69ActionPerformed(evt);
+            }
+        });
+        AudioDeviceInfo.getContentPane().add(jButton69);
+        jButton69.setBounds(330, 320, 70, 28);
+
+        jButton70.setText("Okay");
+        jButton70.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton70ActionPerformed(evt);
+            }
+        });
+        AudioDeviceInfo.getContentPane().add(jButton70);
+        jButton70.setBounds(270, 320, 55, 28);
+
+        AudacityLog.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        AudacityLog.setTitle("Audacity Log");
+        AudacityLog.setMinimumSize(new java.awt.Dimension(600, 600));
+        AudacityLog.getContentPane().setLayout(null);
+
+        jTextArea5.setColumns(20);
+        jTextArea5.setRows(5);
+        jTextArea5.setText("15:29:20: Audacity 2.1.2\n15:29:20: Trying to load FFmpeg libraries...\n15:29:20: Trying to load FFmpeg libraries from system paths. File name is 'avformat-55.dll'.\n15:29:20: Looking up PATH environment variable...\n15:29:20: PATH = 'C:\\Program Files\\Java\\jdk1.8.0_102\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Bitvise SSH Client;C:\\Users\\Kai Tong Teoh\\AppData\\Local\\Programs\\Python\\Python35-32\\Scripts\\;C:\\Users\\Kai Tong Teoh\\AppData\\Local\\Programs\\Python\\Python35-32\\;C:\\Users\\Kai Tong Teoh\\AppData\\Local\\Microsoft\\WindowsApps;'\n15:29:20: Checking that '' is in PATH...\n15:29:20: FFmpeg directory is in PATH.\n15:29:20: Checking for monolithic avformat from 'avformat-55.dll'.\n15:29:20: Error: Failed to load shared library 'avformat-55.dll' (error 126: the specified module could not be found.)\n15:29:20: Loading avutil from ''.\n15:29:20: Error: Failed to load shared library '.dll' (error 126: the specified module could not be found.)\n15:29:20: Loading avcodec from ''.\n15:29:20: Error: Failed to load shared library '.dll' (error 126: the specified module could not be found.)\n15:29:20: Loading avformat from 'avformat-55.dll'.\n15:29:20: Error: Failed to load shared library 'avformat-55.dll' (error 126: the specified module could not be found.)\n15:29:20: Error: Failed to load FFmpeg libraries.\n15:29:20: Error: Failed to find compatible FFmpeg libraries.\n17:08:05: File name is C:\\Users\\Kai Tong Teoh\\Desktop\\HCIPrototype1\\24355_Akatsuki-no-Kuruma-Piano.mp3\n17:08:05: Mime type is *\n17:08:05: Opening with libsndfile\n17:08:05: Opening with libmad\n17:08:05: Open(C:\\Users\\Kai Tong Teoh\\Desktop\\HCIPrototype1\\24355_Akatsuki-no-Kuruma-Piano.mp3) succeeded\n23:14:44: Attempting to load LAME from system search paths\n23:14:44: Loading LAME from lame_enc.dll\n23:14:44: Error: Failed to load shared library 'lame_enc.dll' (error 126: the specified module could not be found.)\n23:14:44: load failed\n23:14:44: Attempting to load LAME from builtin path\n23:14:44: LAME registry key does not exist.\n23:14:44: Library path is: \n23:14:44: Loading LAME from lame_enc.dll\n23:14:44: Error: Failed to load shared library 'lame_enc.dll' (error 126: the specified module could not be found.)\n23:14:44: load failed\n23:14:44: (Maybe) ask user for library\n23:14:44: Failed to locate LAME library\n");
+        jScrollPane32.setViewportView(jTextArea5);
+
+        AudacityLog.getContentPane().add(jScrollPane32);
+        jScrollPane32.setBounds(0, 0, 570, 370);
+
+        jButton71.setText("Okay");
+        jButton71.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton71ActionPerformed(evt);
+            }
+        });
+        AudacityLog.getContentPane().add(jButton71);
+        jButton71.setBounds(450, 380, 55, 28);
+
+        jButton72.setText("Cancel");
+        jButton72.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton72ActionPerformed(evt);
+            }
+        });
+        AudacityLog.getContentPane().add(jButton72);
+        jButton72.setBounds(510, 380, 70, 28);
+
+        Debug.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        Debug.setTitle("Debug Report\"Audacity\"");
+        Debug.setMinimumSize(new java.awt.Dimension(700, 700));
+        Debug.getContentPane().setLayout(null);
+
+        jLabel99.setText("please uncheck them and they will be removed from the report.");
+        Debug.getContentPane().add(jLabel99);
+        jLabel99.setBounds(10, 130, 500, 16);
+
+        jLabel100.setText("Debug Report Preview:");
+        Debug.getContentPane().add(jLabel100);
+        jLabel100.setBounds(0, 0, 130, 16);
+
+        jLabel101.setText("A debug report has been generated in the directory");
+        Debug.getContentPane().add(jLabel101);
+        jLabel101.setBounds(20, 30, 290, 16);
+
+        jLabel102.setText("\"C:\\Users\\Kai Tong Teoh\\AppData\\Local\\Temp\\Audacity\"");
+        Debug.getContentPane().add(jLabel102);
+        jLabel102.setBounds(190, 70, 360, 16);
+
+        jLabel103.setText("Thank you and we're sorry for this inconvenience!");
+        Debug.getContentPane().add(jLabel103);
+        jLabel103.setBounds(180, 230, 530, 16);
+
+        jLabel104.setText("The report contains the files listed below. If any of these files contains private information,");
+        Debug.getContentPane().add(jLabel104);
+        jLabel104.setBounds(10, 110, 500, 16);
+
+        jLabel105.setText("If you wish to suppress this debug report completely, please choose the \"Cancel\" button,");
+        Debug.getContentPane().add(jLabel105);
+        jLabel105.setBounds(10, 170, 500, 16);
+
+        jLabel106.setText("but be warned that it may hinder improving the program, so if at all possible please do continue.");
+        Debug.getContentPane().add(jLabel106);
+        jLabel106.setBounds(10, 190, 530, 16);
+
+        jCheckBox2.setText("log.txt (Audacity log)");
+        Debug.getContentPane().add(jCheckBox2);
+        jCheckBox2.setBounds(10, 380, 270, 18);
+
+        jCheckBox3.setText("Audacity.xml (process context description)");
+        Debug.getContentPane().add(jCheckBox3);
+        jCheckBox3.setBounds(10, 280, 270, 18);
+
+        jCheckBox4.setText("audacity.cfg (Audacity configuration)");
+        Debug.getContentPane().add(jCheckBox4);
+        jCheckBox4.setBounds(10, 300, 270, 18);
+
+        jCheckBox5.setText("pluginregistry.cfg (Plugin registry)");
+        Debug.getContentPane().add(jCheckBox5);
+        jCheckBox5.setBounds(10, 320, 270, 18);
+
+        jCheckBox6.setText("pluginsettings.cfg (Plugin settings)");
+        Debug.getContentPane().add(jCheckBox6);
+        jCheckBox6.setBounds(10, 340, 270, 18);
+
+        jCheckBox7.setText("audiodev.txt (Audio Device Info)");
+        Debug.getContentPane().add(jCheckBox7);
+        jCheckBox7.setBounds(10, 360, 270, 18);
+
+        jLabel107.setText("If you have any additional information pertaining to this bug report, please enter here:");
+        Debug.getContentPane().add(jLabel107);
+        jLabel107.setBounds(10, 430, 480, 16);
+
+        jScrollPane33.setViewportView(jTextPane25);
+
+        Debug.getContentPane().add(jScrollPane33);
+        jScrollPane33.setBounds(10, 450, 470, 80);
+
+        jButton73.setText("Okay");
+        jButton73.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton73ActionPerformed(evt);
+            }
+        });
+        Debug.getContentPane().add(jButton73);
+        jButton73.setBounds(490, 540, 55, 28);
+
+        jButton74.setText("Cancel");
+        jButton74.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton74ActionPerformed(evt);
+            }
+        });
+        Debug.getContentPane().add(jButton74);
+        jButton74.setBounds(550, 540, 70, 28);
+
+        PluginEffect.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        PluginEffect.setTitle("Add/Remove Plugins");
+        PluginEffect.setMinimumSize(new java.awt.Dimension(300, 300));
+        PluginEffect.getContentPane().setLayout(null);
+
+        jLabel109.setText("Name");
+        PluginEffect.getContentPane().add(jLabel109);
+        jLabel109.setBounds(50, 0, 34, 16);
+
+        jLabel110.setText("State");
+        PluginEffect.getContentPane().add(jLabel110);
+        jLabel110.setBounds(10, 0, 55, 16);
+
+        jCheckBox8.setSelected(true);
+        jCheckBox8.setText("Other");
+        jCheckBox8.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCheckBox8ItemStateChanged(evt);
+            }
+        });
+        PluginEffect.getContentPane().add(jCheckBox8);
+        jCheckBox8.setBounds(20, 170, 87, 18);
+
+        jCheckBox9.setSelected(true);
+        jCheckBox9.setText("EQ");
+        jCheckBox9.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCheckBox9ItemStateChanged(evt);
+            }
+        });
+        PluginEffect.getContentPane().add(jCheckBox9);
+        jCheckBox9.setBounds(20, 30, 39, 18);
+
+        jCheckBox10.setSelected(true);
+        jCheckBox10.setText("Dynamics");
+        jCheckBox10.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCheckBox10ItemStateChanged(evt);
+            }
+        });
+        PluginEffect.getContentPane().add(jCheckBox10);
+        jCheckBox10.setBounds(20, 50, 87, 18);
+
+        jCheckBox11.setSelected(true);
+        jCheckBox11.setText("Pitch Shift");
+        jCheckBox11.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCheckBox11ItemStateChanged(evt);
+            }
+        });
+        PluginEffect.getContentPane().add(jCheckBox11);
+        jCheckBox11.setBounds(20, 70, 87, 18);
+
+        jCheckBox12.setSelected(true);
+        jCheckBox12.setText("Reverb");
+        jCheckBox12.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCheckBox12ItemStateChanged(evt);
+            }
+        });
+        PluginEffect.getContentPane().add(jCheckBox12);
+        jCheckBox12.setBounds(20, 90, 87, 18);
+
+        jCheckBox13.setSelected(true);
+        jCheckBox13.setText("Delay");
+        jCheckBox13.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCheckBox13ItemStateChanged(evt);
+            }
+        });
+        PluginEffect.getContentPane().add(jCheckBox13);
+        jCheckBox13.setBounds(20, 110, 87, 18);
+
+        jCheckBox14.setSelected(true);
+        jCheckBox14.setText("Modulation");
+        jCheckBox14.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCheckBox14ItemStateChanged(evt);
+            }
+        });
+        PluginEffect.getContentPane().add(jCheckBox14);
+        jCheckBox14.setBounds(20, 130, 87, 20);
+
+        jCheckBox15.setSelected(true);
+        jCheckBox15.setText("Harmonies");
+        jCheckBox15.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCheckBox15ItemStateChanged(evt);
+            }
+        });
+        PluginEffect.getContentPane().add(jCheckBox15);
+        jCheckBox15.setBounds(20, 150, 87, 18);
+
+        jButton75.setText("Okay");
+        jButton75.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton75ActionPerformed(evt);
+            }
+        });
+        PluginEffect.getContentPane().add(jButton75);
+        jButton75.setBounds(10, 210, 55, 28);
+
+        jButton76.setText("Cancel");
+        jButton76.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton76ActionPerformed(evt);
+            }
+        });
+        PluginEffect.getContentPane().add(jButton76);
+        jButton76.setBounds(70, 210, 70, 28);
+
+        PluginAnalyze.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        PluginAnalyze.setTitle("Add/Remove Plugins");
+        PluginAnalyze.setMinimumSize(new java.awt.Dimension(300, 300));
+        PluginAnalyze.getContentPane().setLayout(null);
+
+        jLabel111.setText("Name");
+        PluginAnalyze.getContentPane().add(jLabel111);
+        jLabel111.setBounds(50, 0, 34, 16);
+
+        jLabel112.setText("State");
+        PluginAnalyze.getContentPane().add(jLabel112);
+        jLabel112.setBounds(10, 0, 55, 16);
+
+        jCheckBox16.setSelected(true);
+        jCheckBox16.setText("Sound Finder");
+        jCheckBox16.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCheckBox16ItemStateChanged(evt);
+            }
+        });
+        PluginAnalyze.getContentPane().add(jCheckBox16);
+        jCheckBox16.setBounds(20, 170, 130, 18);
+
+        jCheckBox17.setSelected(true);
+        jCheckBox17.setText("Contrast");
+        jCheckBox17.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCheckBox17ItemStateChanged(evt);
+            }
+        });
+        PluginAnalyze.getContentPane().add(jCheckBox17);
+        jCheckBox17.setBounds(20, 30, 80, 18);
+
+        jCheckBox18.setSelected(true);
+        jCheckBox18.setText("Plot Spectrum");
+        jCheckBox18.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCheckBox18ItemStateChanged(evt);
+            }
+        });
+        PluginAnalyze.getContentPane().add(jCheckBox18);
+        jCheckBox18.setBounds(20, 50, 130, 18);
+
+        jCheckBox19.setSelected(true);
+        jCheckBox19.setText("Find Clipping");
+        jCheckBox19.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCheckBox19ItemStateChanged(evt);
+            }
+        });
+        PluginAnalyze.getContentPane().add(jCheckBox19);
+        jCheckBox19.setBounds(20, 70, 130, 18);
+
+        jCheckBox20.setSelected(true);
+        jCheckBox20.setText("Beat Finder");
+        jCheckBox20.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCheckBox20ItemStateChanged(evt);
+            }
+        });
+        PluginAnalyze.getContentPane().add(jCheckBox20);
+        jCheckBox20.setBounds(20, 90, 130, 18);
+
+        jCheckBox21.setSelected(true);
+        jCheckBox21.setText("Regular Interval Labels");
+        jCheckBox21.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCheckBox21ItemStateChanged(evt);
+            }
+        });
+        PluginAnalyze.getContentPane().add(jCheckBox21);
+        jCheckBox21.setBounds(20, 110, 180, 18);
+
+        jCheckBox22.setSelected(true);
+        jCheckBox22.setText("Sample Data Export");
+        jCheckBox22.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCheckBox22ItemStateChanged(evt);
+            }
+        });
+        PluginAnalyze.getContentPane().add(jCheckBox22);
+        jCheckBox22.setBounds(20, 130, 170, 20);
+
+        jCheckBox23.setSelected(true);
+        jCheckBox23.setText("Silence Finder");
+        jCheckBox23.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCheckBox23ItemStateChanged(evt);
+            }
+        });
+        PluginAnalyze.getContentPane().add(jCheckBox23);
+        jCheckBox23.setBounds(20, 150, 170, 18);
+
+        jButton77.setText("Okay");
+        jButton77.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton77ActionPerformed(evt);
+            }
+        });
+        PluginAnalyze.getContentPane().add(jButton77);
+        jButton77.setBounds(10, 210, 55, 28);
+
+        jButton78.setText("Cancel");
+        jButton78.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton78ActionPerformed(evt);
+            }
+        });
+        PluginAnalyze.getContentPane().add(jButton78);
+        jButton78.setBounds(70, 210, 70, 28);
+
+        PluginGenerate.getContentPane().setLayout(null);
+
+        jButton79.setText("Cancel");
+        jButton79.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton79ActionPerformed(evt);
+            }
+        });
+        PluginGenerate.getContentPane().add(jButton79);
+        jButton79.setBounds(70, 210, 70, 28);
+
+        jButton80.setText("Okay");
+        jButton80.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton80ActionPerformed(evt);
+            }
+        });
+        PluginGenerate.getContentPane().add(jButton80);
+        jButton80.setBounds(10, 210, 55, 28);
+
+        jCheckBox24.setSelected(true);
+        jCheckBox24.setText("Pluck");
+        jCheckBox24.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCheckBox24ItemStateChanged(evt);
+            }
+        });
+        PluginGenerate.getContentPane().add(jCheckBox24);
+        jCheckBox24.setBounds(20, 150, 170, 18);
+
+        jCheckBox25.setSelected(true);
+        jCheckBox25.setText("Click Track");
+        jCheckBox25.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCheckBox25ItemStateChanged(evt);
+            }
+        });
+        PluginGenerate.getContentPane().add(jCheckBox25);
+        jCheckBox25.setBounds(20, 130, 170, 20);
+
+        jCheckBox26.setSelected(true);
+        jCheckBox26.setText("Tone");
+        jCheckBox26.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCheckBox26ItemStateChanged(evt);
+            }
+        });
+        PluginGenerate.getContentPane().add(jCheckBox26);
+        jCheckBox26.setBounds(20, 110, 180, 18);
+
+        jCheckBox27.setSelected(true);
+        jCheckBox27.setText("Silence");
+        jCheckBox27.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCheckBox27ItemStateChanged(evt);
+            }
+        });
+        PluginGenerate.getContentPane().add(jCheckBox27);
+        jCheckBox27.setBounds(20, 90, 130, 18);
+
+        jCheckBox28.setSelected(true);
+        jCheckBox28.setText("Noise");
+        jCheckBox28.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCheckBox28ItemStateChanged(evt);
+            }
+        });
+        PluginGenerate.getContentPane().add(jCheckBox28);
+        jCheckBox28.setBounds(20, 70, 130, 18);
+
+        jCheckBox29.setSelected(true);
+        jCheckBox29.setText("DTMF Tones");
+        jCheckBox29.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCheckBox29ItemStateChanged(evt);
+            }
+        });
+        PluginGenerate.getContentPane().add(jCheckBox29);
+        jCheckBox29.setBounds(20, 50, 130, 18);
+
+        jCheckBox30.setSelected(true);
+        jCheckBox30.setText("Chirp");
+        jCheckBox30.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCheckBox30ItemStateChanged(evt);
+            }
+        });
+        PluginGenerate.getContentPane().add(jCheckBox30);
+        jCheckBox30.setBounds(20, 30, 80, 18);
+
+        jCheckBox31.setSelected(true);
+        jCheckBox31.setText("Risset Drum");
+        jCheckBox31.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCheckBox31ItemStateChanged(evt);
+            }
+        });
+        PluginGenerate.getContentPane().add(jCheckBox31);
+        jCheckBox31.setBounds(20, 170, 130, 18);
+
+        jLabel113.setText("State");
+        PluginGenerate.getContentPane().add(jLabel113);
+        jLabel113.setBounds(10, 0, 55, 16);
+
+        jLabel114.setText("Name");
+        PluginGenerate.getContentPane().add(jLabel114);
+        jLabel114.setBounds(50, 0, 34, 16);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Audacity");
         setBackground(new java.awt.Color(204, 204, 204));
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setMinimumSize(new java.awt.Dimension(1500, 750));
+        java.awt.GridBagLayout layout = new java.awt.GridBagLayout();
+        layout.columnWidths = new int[] {50};
+        getContentPane().setLayout(layout);
 
-        jScrollBar2.setOrientation(javax.swing.JScrollBar.HORIZONTAL);
+        controlPanel.setMaximumSize(new java.awt.Dimension(700, 500));
+        controlPanel.setMinimumSize(new java.awt.Dimension(700, 100));
+        controlPanel.setPreferredSize(new java.awt.Dimension(700, 275));
+        controlPanel.setLayout(new java.awt.GridBagLayout());
+
+        jButton18.setMaximumSize(new java.awt.Dimension(50, 50));
+        jButton18.setMinimumSize(new java.awt.Dimension(50, 50));
+        jButton18.setPreferredSize(new java.awt.Dimension(50, 50));
+        jButton18.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton18MouseEntered(evt);
+            }
+        });
+        jButton18.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton18ActionPerformed(evt);
+            }
+        });
+        controlPanel.add(jButton18, new java.awt.GridBagConstraints());
+
+        jButton19.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton19.setMaximumSize(new java.awt.Dimension(50, 50));
+        jButton19.setMinimumSize(new java.awt.Dimension(50, 50));
+        jButton19.setPreferredSize(new java.awt.Dimension(50, 50));
+        jButton19.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton19MouseEntered(evt);
+            }
+        });
+        controlPanel.add(jButton19, new java.awt.GridBagConstraints());
+
+        jButton20.setMaximumSize(new java.awt.Dimension(50, 50));
+        jButton20.setMinimumSize(new java.awt.Dimension(50, 50));
+        jButton20.setPreferredSize(new java.awt.Dimension(50, 50));
+        jButton20.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton20MouseEntered(evt);
+            }
+        });
+        jButton20.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton20ActionPerformed(evt);
+            }
+        });
+        controlPanel.add(jButton20, new java.awt.GridBagConstraints());
+
+        jButton21.setMaximumSize(new java.awt.Dimension(50, 50));
+        jButton21.setMinimumSize(new java.awt.Dimension(50, 50));
+        jButton21.setPreferredSize(new java.awt.Dimension(50, 50));
+        jButton21.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton21MouseEntered(evt);
+            }
+        });
+        jButton21.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton21ActionPerformed(evt);
+            }
+        });
+        controlPanel.add(jButton21, new java.awt.GridBagConstraints());
+
+        jButton22.setMaximumSize(new java.awt.Dimension(50, 50));
+        jButton22.setMinimumSize(new java.awt.Dimension(50, 50));
+        jButton22.setPreferredSize(new java.awt.Dimension(50, 50));
+        jButton22.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton22MouseEntered(evt);
+            }
+        });
+        controlPanel.add(jButton22, new java.awt.GridBagConstraints());
+
+        jButton23.setMaximumSize(new java.awt.Dimension(50, 50));
+        jButton23.setMinimumSize(new java.awt.Dimension(50, 50));
+        jButton23.setPreferredSize(new java.awt.Dimension(50, 50));
+        jButton23.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton23MouseEntered(evt);
+            }
+        });
+        jButton23.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton23ActionPerformed(evt);
+            }
+        });
+        controlPanel.add(jButton23, new java.awt.GridBagConstraints());
+
+        jButton24.setMaximumSize(new java.awt.Dimension(50, 50));
+        jButton24.setMinimumSize(new java.awt.Dimension(50, 50));
+        jButton24.setPreferredSize(new java.awt.Dimension(50, 50));
+        jButton24.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton24MouseEntered(evt);
+            }
+        });
+        jButton24.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton24ActionPerformed(evt);
+            }
+        });
+        controlPanel.add(jButton24, new java.awt.GridBagConstraints());
+
+        jButton25.setMaximumSize(new java.awt.Dimension(50, 50));
+        jButton25.setMinimumSize(new java.awt.Dimension(50, 50));
+        jButton25.setPreferredSize(new java.awt.Dimension(50, 50));
+        jButton25.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton25MouseEntered(evt);
+            }
+        });
+        controlPanel.add(jButton25, new java.awt.GridBagConstraints());
+
+        jButton26.setMaximumSize(new java.awt.Dimension(50, 50));
+        jButton26.setMinimumSize(new java.awt.Dimension(50, 50));
+        jButton26.setPreferredSize(new java.awt.Dimension(50, 50));
+        jButton26.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton26MouseEntered(evt);
+            }
+        });
+        jButton26.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton26ActionPerformed(evt);
+            }
+        });
+        controlPanel.add(jButton26, new java.awt.GridBagConstraints());
+
+        jButton27.setMaximumSize(new java.awt.Dimension(50, 50));
+        jButton27.setMinimumSize(new java.awt.Dimension(50, 50));
+        jButton27.setPreferredSize(new java.awt.Dimension(50, 50));
+        jButton27.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton27MouseEntered(evt);
+            }
+        });
+        controlPanel.add(jButton27, new java.awt.GridBagConstraints());
+
+        jButton28.setMaximumSize(new java.awt.Dimension(50, 50));
+        jButton28.setMinimumSize(new java.awt.Dimension(50, 50));
+        jButton28.setPreferredSize(new java.awt.Dimension(50, 50));
+        jButton28.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton28MouseEntered(evt);
+            }
+        });
+        jButton28.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton28ActionPerformed(evt);
+            }
+        });
+        controlPanel.add(jButton28, new java.awt.GridBagConstraints());
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        getContentPane().add(controlPanel, gridBagConstraints);
+
+        windowPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        windowPanel.setMaximumSize(new java.awt.Dimension(550, 150));
+        windowPanel.setMinimumSize(new java.awt.Dimension(520, 160));
+        windowPanel.setPreferredSize(new java.awt.Dimension(375, 152));
+        windowPanel.setLayout(new java.awt.GridBagLayout());
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel2.setText("TIME :");
+
+        jLabel3.setText("1:00:35");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 3;
+        windowPanel.add(jPanel3, gridBagConstraints);
+
+        jPanel6.setPreferredSize(new java.awt.Dimension(215, 104));
+
+        jToggleButton2.setText("Beats");
+        jToggleButton2.setToolTipText("Beats");
+        jToggleButton2.setMaximumSize(new java.awt.Dimension(25, 25));
+        jToggleButton2.setMinimumSize(new java.awt.Dimension(20, 20));
+        jToggleButton2.setPreferredSize(new java.awt.Dimension(20, 20));
+        jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton2ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1.setText("Time");
+        jToggleButton1.setToolTipText("Seconds/Minutes");
+        jToggleButton1.setMaximumSize(new java.awt.Dimension(25, 25));
+        jToggleButton1.setMinimumSize(new java.awt.Dimension(20, 20));
+        jToggleButton1.setPreferredSize(new java.awt.Dimension(20, 20));
+        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jToggleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20))
+        );
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 4;
+        windowPanel.add(jPanel6, gridBagConstraints);
+
+        jSlider1.setMajorTickSpacing(1);
+        jSlider1.setMaximum(3);
+        jSlider1.setPaintLabels(true);
+        jSlider1.setPaintTicks(true);
+        jSlider1.setToolTipText("Playback Speed");
+        jSlider1.setValue(1);
+        jSlider1.setMaximumSize(new java.awt.Dimension(200, 35));
+        jSlider1.setMinimumSize(new java.awt.Dimension(150, 35));
+        jSlider1.setPreferredSize(new java.awt.Dimension(275, 40));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 8;
+        gridBagConstraints.gridheight = 2;
+        windowPanel.add(jSlider1, gridBagConstraints);
+
+        jLabel4.setText("Speed");
+        jLabel4.setToolTipText("Playback Speed");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridheight = 2;
+        windowPanel.add(jLabel4, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 0;
+        getContentPane().add(windowPanel, gridBagConstraints);
+
+        trackPanel.setMinimumSize(new java.awt.Dimension(1900, 700));
+        trackPanel.setPreferredSize(new java.awt.Dimension(1500, 500));
+        trackPanel.setLayout(new java.awt.GridLayout(4, 0, 1, 0));
+
+        jInternalFrame1.setVisible(true);
+        java.awt.GridBagLayout jInternalFrame1Layout = new java.awt.GridBagLayout();
+        jInternalFrame1Layout.rowWeights = new double[] {150.0, 0.0};
+        jInternalFrame1.getContentPane().setLayout(jInternalFrame1Layout);
+
+        track1Info.setPreferredSize(new java.awt.Dimension(150, 150));
+
+        jButton4.setToolTipText("Close");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton3.setText("S");
+        jToggleButton3.setToolTipText("Solo");
+        jToggleButton3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jToggleButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton3ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton4.setText("M");
+        jToggleButton4.setToolTipText("Mute");
+        jToggleButton4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        volSlider1.setOrientation(javax.swing.JSlider.VERTICAL);
+        volSlider1.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                volSlider1StateChanged(evt);
+            }
+        });
+
+        jLabel5.setText("Vol");
+
+        jLabel6.setText("L");
+
+        jLabel7.setText("R");
+        jLabel7.setPreferredSize(new java.awt.Dimension(5, 14));
+
+        jLabel18.setText("jLabel18");
+        jLabel18.setMaximumSize(new java.awt.Dimension(45, 14));
+        jLabel18.setMinimumSize(new java.awt.Dimension(45, 14));
+        jLabel18.setPreferredSize(new java.awt.Dimension(45, 14));
+
+        javax.swing.GroupLayout track1InfoLayout = new javax.swing.GroupLayout(track1Info);
+        track1Info.setLayout(track1InfoLayout);
+        track1InfoLayout.setHorizontalGroup(
+            track1InfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(track1InfoLayout.createSequentialGroup()
+                .addGroup(track1InfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(volSlider1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 7, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addGroup(track1InfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(track1InfoLayout.createSequentialGroup()
+                        .addComponent(jToggleButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jToggleButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(panSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 7, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(track1InfoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37))
+        );
+        track1InfoLayout.setVerticalGroup(
+            track1InfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, track1InfoLayout.createSequentialGroup()
+                .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(track1InfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(track1InfoLayout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addGap(1, 1, 1)
+                        .addGroup(track1InfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(volSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(track1InfoLayout.createSequentialGroup()
+                                .addGap(33, 33, 33)
+                                .addGroup(track1InfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jToggleButton4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jToggleButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(track1InfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(panSlider1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                    .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24))
+        );
+
+        jInternalFrame1.getContentPane().add(track1Info, new java.awt.GridBagConstraints());
+
+        track1Wave.setMinimumSize(new java.awt.Dimension(1750, 150));
+        track1Wave.setPreferredSize(new java.awt.Dimension(1750, 150));
+        track1Wave.setLayout(new java.awt.GridLayout(1, 0));
+        jInternalFrame1.getContentPane().add(track1Wave, new java.awt.GridBagConstraints());
+
+        trackPanel.add(jInternalFrame1);
+        try {
+            jInternalFrame1.setMaximum(true);
+        } catch (java.beans.PropertyVetoException e1) {
+            e1.printStackTrace();
+        }
+
+        jInternalFrame2.setVisible(true);
+        java.awt.GridBagLayout jInternalFrame2Layout = new java.awt.GridBagLayout();
+        jInternalFrame2Layout.rowWeights = new double[] {150.0, 0.0};
+        jInternalFrame2.getContentPane().setLayout(jInternalFrame2Layout);
+
+        track2Info.setPreferredSize(new java.awt.Dimension(150, 150));
+
+        jButton5.setToolTipText("Close");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton5.setText("S");
+        jToggleButton5.setToolTipText("Solo");
+        jToggleButton5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jToggleButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton5ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton6.setText("M");
+        jToggleButton6.setToolTipText("Mute");
+        jToggleButton6.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        volSlider2.setOrientation(javax.swing.JSlider.VERTICAL);
+        volSlider2.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                volSlider2StateChanged(evt);
+            }
+        });
+
+        jLabel8.setText("Vol");
+
+        jLabel9.setText("L");
+
+        jLabel10.setText("R");
+        jLabel10.setPreferredSize(new java.awt.Dimension(5, 14));
+
+        jLabel19.setText("jLabel19");
+        jLabel19.setMaximumSize(new java.awt.Dimension(45, 14));
+        jLabel19.setMinimumSize(new java.awt.Dimension(45, 14));
+        jLabel19.setPreferredSize(new java.awt.Dimension(45, 14));
+
+        javax.swing.GroupLayout track2InfoLayout = new javax.swing.GroupLayout(track2Info);
+        track2Info.setLayout(track2InfoLayout);
+        track2InfoLayout.setHorizontalGroup(
+            track2InfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(track2InfoLayout.createSequentialGroup()
+                .addGroup(track2InfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(track2InfoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel8)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(track2InfoLayout.createSequentialGroup()
+                        .addGroup(track2InfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(volSlider2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(track2InfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(track2InfoLayout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 7, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, 0)
+                                .addGroup(track2InfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(track2InfoLayout.createSequentialGroup()
+                                        .addComponent(jToggleButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jToggleButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(panSlider2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 7, Short.MAX_VALUE))
+                            .addGroup(track2InfoLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))))
+                .addContainerGap())
+        );
+        track2InfoLayout.setVerticalGroup(
+            track2InfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, track2InfoLayout.createSequentialGroup()
+                .addGroup(track2InfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(track2InfoLayout.createSequentialGroup()
+                        .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                    .addGroup(track2InfoLayout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addComponent(jLabel8)
+                .addGap(1, 1, 1)
+                .addGroup(track2InfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(volSlider2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(track2InfoLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(track2InfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jToggleButton6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jToggleButton5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(track2InfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(panSlider2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(24, 24, 24))
+        );
+
+        jInternalFrame2.getContentPane().add(track2Info, new java.awt.GridBagConstraints());
+
+        track2Wave.setMinimumSize(new java.awt.Dimension(1750, 150));
+        track2Wave.setPreferredSize(new java.awt.Dimension(1750, 150));
+        track2Wave.setLayout(new java.awt.GridLayout(1, 0));
+        jInternalFrame2.getContentPane().add(track2Wave, new java.awt.GridBagConstraints());
+
+        trackPanel.add(jInternalFrame2);
+
+        jInternalFrame3.setVisible(true);
+        java.awt.GridBagLayout jInternalFrame3Layout = new java.awt.GridBagLayout();
+        jInternalFrame3Layout.rowWeights = new double[] {150.0, 0.0};
+        jInternalFrame3.getContentPane().setLayout(jInternalFrame3Layout);
+
+        track3Info.setPreferredSize(new java.awt.Dimension(150, 150));
+
+        jButton6.setToolTipText("Close");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton7.setText("S");
+        jToggleButton7.setToolTipText("Solo");
+        jToggleButton7.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jToggleButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton7ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton8.setText("M");
+        jToggleButton8.setToolTipText("Mute");
+        jToggleButton8.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        volSlider3.setOrientation(javax.swing.JSlider.VERTICAL);
+        volSlider3.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                volSlider3StateChanged(evt);
+            }
+        });
+
+        jLabel11.setText("Vol");
+
+        jLabel12.setText("L");
+
+        jLabel13.setText("R");
+        jLabel13.setPreferredSize(new java.awt.Dimension(5, 14));
+
+        jLabel17.setText("jLabel17");
+        jLabel17.setMaximumSize(new java.awt.Dimension(45, 14));
+        jLabel17.setMinimumSize(new java.awt.Dimension(45, 14));
+        jLabel17.setPreferredSize(new java.awt.Dimension(45, 14));
+
+        javax.swing.GroupLayout track3InfoLayout = new javax.swing.GroupLayout(track3Info);
+        track3Info.setLayout(track3InfoLayout);
+        track3InfoLayout.setHorizontalGroup(
+            track3InfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(track3InfoLayout.createSequentialGroup()
+                .addGroup(track3InfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(track3InfoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel11)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(track3InfoLayout.createSequentialGroup()
+                        .addGroup(track3InfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(volSlider3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(track3InfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(track3InfoLayout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 7, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, 0)
+                                .addGroup(track3InfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(track3InfoLayout.createSequentialGroup()
+                                        .addComponent(jToggleButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jToggleButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(panSlider3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 7, Short.MAX_VALUE))
+                            .addGroup(track3InfoLayout.createSequentialGroup()
+                                .addGap(28, 28, 28)
+                                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))))
+                .addContainerGap())
+        );
+        track3InfoLayout.setVerticalGroup(
+            track3InfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, track3InfoLayout.createSequentialGroup()
+                .addGroup(track3InfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(track3InfoLayout.createSequentialGroup()
+                        .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                    .addGroup(track3InfoLayout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addComponent(jLabel11)
+                .addGap(1, 1, 1)
+                .addGroup(track3InfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(volSlider3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(track3InfoLayout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addGroup(track3InfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jToggleButton8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jToggleButton7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(track3InfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(panSlider3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(24, 24, 24))
+        );
+
+        jInternalFrame3.getContentPane().add(track3Info, new java.awt.GridBagConstraints());
+
+        track3Wave.setMinimumSize(new java.awt.Dimension(1750, 150));
+        track3Wave.setPreferredSize(new java.awt.Dimension(1750, 150));
+        track3Wave.setLayout(new java.awt.GridLayout(1, 0));
+        jInternalFrame3.getContentPane().add(track3Wave, new java.awt.GridBagConstraints());
+
+        trackPanel.add(jInternalFrame3);
+
+        jInternalFrame4.setVisible(true);
+        java.awt.GridBagLayout jInternalFrame4Layout = new java.awt.GridBagLayout();
+        jInternalFrame4Layout.rowWeights = new double[] {150.0, 0.0};
+        jInternalFrame4.getContentPane().setLayout(jInternalFrame4Layout);
+
+        track4Info.setPreferredSize(new java.awt.Dimension(150, 150));
+
+        jButton7.setToolTipText("Close");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton9.setText("S");
+        jToggleButton9.setToolTipText("Solo");
+        jToggleButton9.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jToggleButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton9ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton10.setText("M");
+        jToggleButton10.setToolTipText("Mute");
+        jToggleButton10.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        volSlider4.setOrientation(javax.swing.JSlider.VERTICAL);
+        volSlider4.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                volSlider4StateChanged(evt);
+            }
+        });
+
+        jLabel14.setText("Vol");
+
+        jLabel15.setText("L");
+
+        jLabel16.setText("R");
+        jLabel16.setPreferredSize(new java.awt.Dimension(5, 14));
+
+        jLabel20.setText("jLabel20");
+        jLabel20.setMaximumSize(new java.awt.Dimension(45, 14));
+        jLabel20.setMinimumSize(new java.awt.Dimension(45, 14));
+        jLabel20.setPreferredSize(new java.awt.Dimension(45, 14));
+
+        javax.swing.GroupLayout track4InfoLayout = new javax.swing.GroupLayout(track4Info);
+        track4Info.setLayout(track4InfoLayout);
+        track4InfoLayout.setHorizontalGroup(
+            track4InfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(track4InfoLayout.createSequentialGroup()
+                .addGroup(track4InfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(track4InfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(volSlider4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(track4InfoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel14)))
+                .addGroup(track4InfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(track4InfoLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 7, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addGroup(track4InfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(track4InfoLayout.createSequentialGroup()
+                                .addComponent(jToggleButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jToggleButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(panSlider4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 7, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(track4InfoLayout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+        );
+        track4InfoLayout.setVerticalGroup(
+            track4InfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, track4InfoLayout.createSequentialGroup()
+                .addGroup(track4InfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(track4InfoLayout.createSequentialGroup()
+                        .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel14)
+                        .addGap(1, 1, 1))
+                    .addGroup(track4InfoLayout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(track4InfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(volSlider4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(track4InfoLayout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addGroup(track4InfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jToggleButton10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jToggleButton9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(track4InfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(panSlider4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(24, 24, 24))
+        );
+
+        jInternalFrame4.getContentPane().add(track4Info, new java.awt.GridBagConstraints());
+
+        track4Wave.setMinimumSize(new java.awt.Dimension(1750, 150));
+        track4Wave.setPreferredSize(new java.awt.Dimension(1750, 150));
+        track4Wave.setLayout(new java.awt.GridLayout(1, 0));
+        jInternalFrame4.getContentPane().add(track4Wave, new java.awt.GridBagConstraints());
+
+        trackPanel.add(jInternalFrame4);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 3;
+        getContentPane().add(trackPanel, gridBagConstraints);
+
+        jPanel2.setMaximumSize(new java.awt.Dimension(700, 100));
+        jPanel2.setMinimumSize(new java.awt.Dimension(700, 100));
+        jPanel2.setPreferredSize(new java.awt.Dimension(1500, 275));
+
+        jLabel1.setText("Output Devices");
+
+        jComboBox1.setToolTipText("");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(246, 246, 246)
+                .addComponent(jLabel1)
+                .addGap(45, 45, 45)
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(1046, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(218, Short.MAX_VALUE))
+        );
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 0;
+        getContentPane().add(jPanel2, gridBagConstraints);
+
+        jPanel4.setMaximumSize(new java.awt.Dimension(1500, 500));
+        jPanel4.setMinimumSize(new java.awt.Dimension(816, 100));
+        jPanel4.setPreferredSize(new java.awt.Dimension(1500, 275));
+        jPanel4.setLayout(new java.awt.GridLayout(1, 3));
+
+        transportPanel.setMaximumSize(new java.awt.Dimension(500, 500));
+        transportPanel.setMinimumSize(new java.awt.Dimension(272, 100));
+        transportPanel.setPreferredSize(new java.awt.Dimension(500, 275));
+        transportPanel.setLayout(new java.awt.GridBagLayout());
+
+        jButton9.setPreferredSize(new java.awt.Dimension(65, 65));
+        jButton9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton9MouseEntered(evt);
+            }
+        });
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
+        transportPanel.add(jButton9, new java.awt.GridBagConstraints());
+
+        jButton13.setPreferredSize(new java.awt.Dimension(65, 65));
+        jButton13.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton13MouseEntered(evt);
+            }
+        });
+        jButton13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton13ActionPerformed(evt);
+            }
+        });
+        transportPanel.add(jButton13, new java.awt.GridBagConstraints());
+
+        jButton14.setPreferredSize(new java.awt.Dimension(65, 65));
+        jButton14.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton14MouseEntered(evt);
+            }
+        });
+        jButton14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton14ActionPerformed(evt);
+            }
+        });
+        transportPanel.add(jButton14, new java.awt.GridBagConstraints());
+
+        jButton15.setPreferredSize(new java.awt.Dimension(65, 65));
+        jButton15.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton15MouseEntered(evt);
+            }
+        });
+        jButton15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton15ActionPerformed(evt);
+            }
+        });
+        transportPanel.add(jButton15, new java.awt.GridBagConstraints());
+
+        jButton16.setPreferredSize(new java.awt.Dimension(65, 65));
+        jButton16.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton16MouseEntered(evt);
+            }
+        });
+        transportPanel.add(jButton16, new java.awt.GridBagConstraints());
+
+        jButton17.setMaximumSize(new java.awt.Dimension(57, 19));
+        jButton17.setMinimumSize(new java.awt.Dimension(57, 19));
+        jButton17.setPreferredSize(new java.awt.Dimension(65, 65));
+        jButton17.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton17MouseEntered(evt);
+            }
+        });
+        jButton17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton17ActionPerformed(evt);
+            }
+        });
+        transportPanel.add(jButton17, new java.awt.GridBagConstraints());
+
+        jPanel4.add(transportPanel);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 4;
+        getContentPane().add(jPanel4, gridBagConstraints);
+
+        jProgressBar1.setPreferredSize(new java.awt.Dimension(1000, 20));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 3;
+        getContentPane().add(jProgressBar1, gridBagConstraints);
 
         jMenu1.setBackground(new java.awt.Color(204, 204, 204));
         jMenu1.setText("File");
+
+        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem2.setText("New");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem2);
+
+        jMenuItem3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem3.setText("Open...");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem3);
+
+        jMenu10.setText("Recent Files");
+
+        jMenuItem20.setText("Clear");
+        jMenu10.add(jMenuItem20);
+
+        jMenu1.add(jMenu10);
+
+        jMenuItem5.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_W, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem5.setText("Close");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem5);
+
+        jMenuItem4.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem4.setText("Save Project");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem4);
+
+        jMenuItem6.setText("Save Project As...");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem6);
+
+        jMenuItem7.setText("Save Compressed Copy of Project...");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem7);
+
+        jMenuItem8.setText("Check Dependencies...");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem8ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem8);
+
+        jMenuItem9.setText("Edit Metadata...");
+        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem9ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem9);
+
+        jMenu11.setText("Import");
+
+        jMenuItem21.setText("Audio...");
+        jMenuItem21.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem21ActionPerformed(evt);
+            }
+        });
+        jMenu11.add(jMenuItem21);
+
+        jMenuItem22.setText("Labels...");
+        jMenu11.add(jMenuItem22);
+
+        jMenuItem23.setText("MIDI...");
+        jMenu11.add(jMenuItem23);
+
+        jMenuItem24.setText("Raw Data...");
+        jMenu11.add(jMenuItem24);
+
+        jMenu1.add(jMenu11);
+
+        jMenuItem10.setText("Export Audio...");
+        jMenuItem10.setEnabled(false);
+        jMenu1.add(jMenuItem10);
+
+        jMenuItem11.setText("Export Selected Audio...");
+        jMenuItem11.setEnabled(false);
+        jMenu1.add(jMenuItem11);
+
+        jMenuItem12.setText("Export Labels...");
+        jMenuItem12.setEnabled(false);
+        jMenu1.add(jMenuItem12);
+
+        jMenuItem13.setText("Export Multiple...");
+        jMenuItem13.setEnabled(false);
+        jMenuItem13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem13ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem13);
+
+        jMenuItem14.setText("Export MIDI...");
+        jMenuItem14.setEnabled(false);
+        jMenu1.add(jMenuItem14);
+
+        jMenuItem15.setText("Apply Chain...");
+        jMenu1.add(jMenuItem15);
+
+        jMenuItem16.setText("Edit Chains...");
+        jMenu1.add(jMenuItem16);
+
+        jMenuItem17.setText("Page Setup...");
+        jMenuItem17.setEnabled(false);
+        jMenu1.add(jMenuItem17);
+
+        jMenuItem18.setText("Print...");
+        jMenuItem18.setEnabled(false);
+        jMenu1.add(jMenuItem18);
+
+        jMenuItem19.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Q, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem19.setText("Exit");
+        jMenuItem19.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem19ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem19);
+
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Edit");
+
+        jMenuItem25.setText("Undo");
+        jMenu2.add(jMenuItem25);
+
+        jMenuItem26.setText("Redo");
+        jMenu2.add(jMenuItem26);
+
+        jMenuItem27.setText("Cut");
+        jMenu2.add(jMenuItem27);
+
+        jMenuItem28.setText("Delete");
+        jMenu2.add(jMenuItem28);
+
+        jMenuItem29.setText("Copy");
+        jMenu2.add(jMenuItem29);
+
+        jMenuItem30.setText("Paste");
+        jMenu2.add(jMenuItem30);
+
+        jMenuItem31.setText("Duplicate");
+        jMenu2.add(jMenuItem31);
+
+        jMenu12.setText("Remove Special");
+
+        jMenuItem37.setText("Split Cut");
+        jMenu12.add(jMenuItem37);
+
+        jMenuItem38.setText("Split Delete");
+        jMenu12.add(jMenuItem38);
+
+        jMenuItem39.setText("Silence Audio");
+        jMenu12.add(jMenuItem39);
+
+        jMenuItem40.setText("Trim Audio");
+        jMenu12.add(jMenuItem40);
+
+        jMenu2.add(jMenu12);
+
+        jMenuItem32.setText("Paste Text to New Label");
+        jMenu2.add(jMenuItem32);
+
+        jMenu13.setText("Clip Boundaries");
+
+        jMenuItem41.setText("Split");
+        jMenu13.add(jMenuItem41);
+
+        jMenuItem42.setText("Split New");
+        jMenu13.add(jMenuItem42);
+
+        jMenuItem43.setText("Join");
+        jMenu13.add(jMenuItem43);
+
+        jMenuItem44.setText("Detach at Silences");
+        jMenu13.add(jMenuItem44);
+
+        jMenu2.add(jMenu13);
+
+        jMenu14.setText("Labeled Audio");
+
+        jMenuItem45.setText("Cut");
+        jMenu14.add(jMenuItem45);
+
+        jMenuItem46.setText("Delete");
+        jMenu14.add(jMenuItem46);
+
+        jMenuItem47.setText("Split Cut");
+        jMenu14.add(jMenuItem47);
+
+        jMenuItem48.setText("Split Delete");
+        jMenu14.add(jMenuItem48);
+
+        jMenuItem49.setText("Silence Audio");
+        jMenu14.add(jMenuItem49);
+
+        jMenuItem50.setText("Copy");
+        jMenu14.add(jMenuItem50);
+
+        jMenuItem51.setText("Split");
+        jMenu14.add(jMenuItem51);
+
+        jMenuItem52.setText("Join");
+        jMenu14.add(jMenuItem52);
+
+        jMenuItem53.setText("Detach at Silences");
+        jMenu14.add(jMenuItem53);
+
+        jMenu2.add(jMenu14);
+
+        jMenu15.setText("Select");
+
+        jMenuItem54.setText("Add");
+        jMenu15.add(jMenuItem54);
+
+        jMenuItem55.setText("None");
+        jMenu15.add(jMenuItem55);
+
+        jMenu18.setText("Spectral");
+        jMenu15.add(jMenu18);
+
+        jMenuItem56.setText("Left at Playback Position");
+        jMenu15.add(jMenuItem56);
+
+        jMenuItem57.setText("Right at Playback Position");
+        jMenu15.add(jMenuItem57);
+
+        jMenuItem58.setText("Track Start to Cursor");
+        jMenu15.add(jMenuItem58);
+
+        jMenuItem59.setText("Cursor to Track End");
+        jMenu15.add(jMenuItem59);
+
+        jMenuItem60.setText("In All Tracks");
+        jMenu15.add(jMenuItem60);
+
+        jMenuItem61.setText("In All Sync-Locked Tracks");
+        jMenu15.add(jMenuItem61);
+
+        jMenu2.add(jMenu15);
+
+        jMenuItem33.setText("Find Zero Crossings");
+        jMenu2.add(jMenuItem33);
+
+        jMenu16.setText("Move Cursor");
+
+        jMenuItem62.setText("to Selection Start");
+        jMenu16.add(jMenuItem62);
+
+        jMenuItem63.setText("to Selection End");
+        jMenu16.add(jMenuItem63);
+
+        jMenuItem64.setText("to Track Start");
+        jMenu16.add(jMenuItem64);
+
+        jMenuItem65.setText("to Track End");
+        jMenu16.add(jMenuItem65);
+
+        jMenu2.add(jMenu16);
+
+        jMenuItem34.setText("Region Save");
+        jMenu2.add(jMenuItem34);
+
+        jMenuItem35.setText("Region Restore");
+        jMenu2.add(jMenuItem35);
+
+        jMenu17.setText("Play Region");
+
+        jMenuItem66.setText("Lock");
+        jMenu17.add(jMenuItem66);
+
+        jMenuItem67.setText("Unlock");
+        jMenu17.add(jMenuItem67);
+
+        jMenu2.add(jMenu17);
+
+        jMenuItem36.setText("Preferences...");
+        jMenu2.add(jMenuItem36);
+
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("View");
+
+        jMenuItem68.setText("Zoom In");
+        jMenu3.add(jMenuItem68);
+
+        jMenuItem69.setText("Zoom Normal");
+        jMenu3.add(jMenuItem69);
+
+        jMenuItem70.setText("Zoom Out");
+        jMenu3.add(jMenuItem70);
+
+        jMenuItem71.setText("Zoom to Selection");
+        jMenu3.add(jMenuItem71);
+
+        jMenuItem72.setText("Fit in Window");
+        jMenu3.add(jMenuItem72);
+
+        jMenuItem73.setText("Fit Vertically");
+        jMenu3.add(jMenuItem73);
+
+        jMenuItem74.setText("Go to Selection Start");
+        jMenu3.add(jMenuItem74);
+
+        jMenuItem75.setText("Go to Selection End");
+        jMenu3.add(jMenuItem75);
+
+        jMenuItem76.setText("Collapse All Tracks");
+        jMenu3.add(jMenuItem76);
+
+        jMenuItem77.setText("Expand All Tracks");
+        jMenu3.add(jMenuItem77);
+
+        jMenuItem78.setText("Show Clipping");
+        jMenu3.add(jMenuItem78);
+
+        jMenuItem79.setText("History...");
+        jMenu3.add(jMenuItem79);
+
+        jMenuItem80.setText("Karaoke...");
+        jMenu3.add(jMenuItem80);
+
+        jMenuItem81.setText("Mixer Board...");
+        jMenu3.add(jMenuItem81);
+
+        jMenu19.setText("Toolbars");
+
+        jCheckBoxMenuItem1.setSelected(true);
+        jCheckBoxMenuItem1.setText("Device Toolbar");
+        jMenu19.add(jCheckBoxMenuItem1);
+
+        jCheckBoxMenuItem2.setSelected(true);
+        jCheckBoxMenuItem2.setText("Edit Toolbar");
+        jMenu19.add(jCheckBoxMenuItem2);
+
+        jCheckBoxMenuItem3.setSelected(true);
+        jCheckBoxMenuItem3.setText("Combined Meter Toolbar");
+        jMenu19.add(jCheckBoxMenuItem3);
+
+        jCheckBoxMenuItem4.setSelected(true);
+        jCheckBoxMenuItem4.setText("Recording Meter Toolbar");
+        jMenu19.add(jCheckBoxMenuItem4);
+
+        jCheckBoxMenuItem5.setSelected(true);
+        jCheckBoxMenuItem5.setText("Playback Meter Toolbar");
+        jMenu19.add(jCheckBoxMenuItem5);
+
+        jCheckBoxMenuItem6.setSelected(true);
+        jCheckBoxMenuItem6.setText("Mixer Toolbar");
+        jMenu19.add(jCheckBoxMenuItem6);
+
+        jCheckBoxMenuItem7.setSelected(true);
+        jCheckBoxMenuItem7.setText("Selection Toolbar");
+        jMenu19.add(jCheckBoxMenuItem7);
+
+        jCheckBoxMenuItem8.setSelected(true);
+        jCheckBoxMenuItem8.setText("Spectral Selection Toolbar");
+        jMenu19.add(jCheckBoxMenuItem8);
+
+        jCheckBoxMenuItem9.setSelected(true);
+        jCheckBoxMenuItem9.setText("Tools Toolbar");
+        jMenu19.add(jCheckBoxMenuItem9);
+
+        jCheckBoxMenuItem10.setSelected(true);
+        jCheckBoxMenuItem10.setText("Transcription Toolbar");
+        jMenu19.add(jCheckBoxMenuItem10);
+
+        jCheckBoxMenuItem11.setSelected(true);
+        jCheckBoxMenuItem11.setText("Transport Toolbar");
+        jMenu19.add(jCheckBoxMenuItem11);
+
+        jMenuItem82.setText("Reset Toolbars");
+        jMenu19.add(jMenuItem82);
+
+        jMenu3.add(jMenu19);
+
         jMenuBar1.add(jMenu3);
 
         jMenu4.setText("Transport");
+
+        jMenuItem1.setText("Play/Stop");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItem1);
+
+        jMenuItem83.setText("Play/Stop and Set Cursor");
+        jMenu4.add(jMenuItem83);
+
+        jMenuItem84.setText("Loop Play");
+        jMenu4.add(jMenuItem84);
+
+        jMenuItem85.setText("Pause");
+        jMenu4.add(jMenuItem85);
+
+        jMenuItem86.setText("Skip to Start");
+        jMenu4.add(jMenuItem86);
+
+        jMenuItem87.setText("Skip to End");
+        jMenu4.add(jMenuItem87);
+
+        jMenuItem88.setText("Record");
+        jMenu4.add(jMenuItem88);
+
+        jMenuItem89.setText("Timer Record...");
+        jMenu4.add(jMenuItem89);
+
+        jMenuItem90.setText("Append Record");
+        jMenu4.add(jMenuItem90);
+
+        jCheckBoxMenuItem12.setSelected(true);
+        jCheckBoxMenuItem12.setText("Overdub (on/off)");
+        jMenu4.add(jCheckBoxMenuItem12);
+
+        jCheckBoxMenuItem13.setSelected(true);
+        jCheckBoxMenuItem13.setText("Software Playthrough (on/off)");
+        jMenu4.add(jCheckBoxMenuItem13);
+
+        jCheckBoxMenuItem14.setSelected(true);
+        jCheckBoxMenuItem14.setText("Sound Activated Recording (on/off)");
+        jMenu4.add(jCheckBoxMenuItem14);
+
+        jMenuItem91.setText("Sound Activation Level...");
+        jMenu4.add(jMenuItem91);
+
+        jMenuItem92.setText("Rescan Audio Devices");
+        jMenu4.add(jMenuItem92);
+
         jMenuBar1.add(jMenu4);
 
         jMenu5.setText("Tracks");
+
+        jMenu20.setText("Add New");
+
+        jMenuItem104.setText("Mono Track");
+        jMenu20.add(jMenuItem104);
+
+        jMenuItem105.setText("Stereo Track");
+        jMenu20.add(jMenuItem105);
+
+        jMenuItem106.setText("Label Track");
+        jMenu20.add(jMenuItem106);
+
+        jMenuItem107.setText("Time Track");
+        jMenu20.add(jMenuItem107);
+
+        jMenu5.add(jMenu20);
+
+        jMenuItem93.setText("Stereo Track to Mono");
+        jMenu5.add(jMenuItem93);
+
+        jMenuItem94.setText("Mix and Render");
+        jMenu5.add(jMenuItem94);
+
+        jMenuItem95.setText("Mix and Render to New Track");
+        jMenu5.add(jMenuItem95);
+
+        jMenuItem96.setText("Resample...");
+        jMenu5.add(jMenuItem96);
+
+        jMenuItem97.setText("Remove Tracks");
+        jMenu5.add(jMenuItem97);
+
+        jMenuItem98.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem98.setText("Mute All Tracks");
+        jMenuItem98.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem98ActionPerformed(evt);
+            }
+        });
+        jMenu5.add(jMenuItem98);
+
+        jMenuItem99.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem99.setText("Unmute All Tracks");
+        jMenuItem99.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem99ActionPerformed(evt);
+            }
+        });
+        jMenu5.add(jMenuItem99);
+
+        jMenu21.setText("Align Tracks");
+
+        jMenuItem108.setText("Align End to End");
+        jMenu21.add(jMenuItem108);
+
+        jMenuItem109.setText("Align Together");
+        jMenu21.add(jMenuItem109);
+
+        jMenuItem110.setText("Start to Zero");
+        jMenu21.add(jMenuItem110);
+
+        jMenuItem111.setText("Start to Cursor/Selection Start");
+        jMenu21.add(jMenuItem111);
+
+        jMenuItem112.setText("Start to Selection End");
+        jMenu21.add(jMenuItem112);
+
+        jMenuItem113.setText("End to Cursor/Selection Start");
+        jMenu21.add(jMenuItem113);
+
+        jMenuItem114.setText("End to Selection End");
+        jMenu21.add(jMenuItem114);
+
+        jMenu5.add(jMenu21);
+
+        jMenu22.setText("Move Selection when Aligning");
+
+        jMenuItem115.setText("Start to Zero");
+        jMenu22.add(jMenuItem115);
+
+        jMenuItem116.setText("Start to Cursor/Selection Start");
+        jMenu22.add(jMenuItem116);
+
+        jMenuItem117.setText("Start to Selection End");
+        jMenu22.add(jMenuItem117);
+
+        jMenuItem118.setText("End to Cursor/Selection Start");
+        jMenu22.add(jMenuItem118);
+
+        jMenuItem119.setText("End to Selection End");
+        jMenu22.add(jMenuItem119);
+
+        jMenu5.add(jMenu22);
+
+        jMenuItem100.setText("Sync-Lock Tracks");
+        jMenu5.add(jMenuItem100);
+
+        jMenuItem101.setText("Add Label at Selection");
+        jMenu5.add(jMenuItem101);
+
+        jMenuItem102.setText("Add Labal at Playback Position");
+        jMenu5.add(jMenuItem102);
+
+        jMenuItem103.setText("Edit Labels...");
+        jMenu5.add(jMenuItem103);
+
+        jMenu23.setText("Sort Tracks");
+
+        jMenuItem120.setText("by Start Time");
+        jMenu23.add(jMenuItem120);
+
+        jMenuItem121.setText("by Name");
+        jMenu23.add(jMenuItem121);
+
+        jMenu5.add(jMenu23);
+
         jMenuBar1.add(jMenu5);
 
         jMenu6.setText("Generate");
+
+        jMenuItem122.setText("Add/Remove Plugins...");
+        jMenuItem122.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem122ActionPerformed(evt);
+            }
+        });
+        jMenu6.add(jMenuItem122);
+
+        jMenuItem123.setText("Chirp...");
+        jMenuItem123.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem123ActionPerformed(evt);
+            }
+        });
+        jMenu6.add(jMenuItem123);
+
+        jMenuItem124.setText("DTMF Tones...");
+        jMenuItem124.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem124ActionPerformed(evt);
+            }
+        });
+        jMenu6.add(jMenuItem124);
+
+        jMenuItem125.setText("Noise...");
+        jMenuItem125.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem125ActionPerformed(evt);
+            }
+        });
+        jMenu6.add(jMenuItem125);
+
+        jMenuItem126.setText("Silence...");
+        jMenuItem126.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem126ActionPerformed(evt);
+            }
+        });
+        jMenu6.add(jMenuItem126);
+
+        jMenuItem127.setText("Tone...");
+        jMenuItem127.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem127ActionPerformed(evt);
+            }
+        });
+        jMenu6.add(jMenuItem127);
+
+        jMenuItem128.setText("Click Track...");
+        jMenuItem128.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem128ActionPerformed(evt);
+            }
+        });
+        jMenu6.add(jMenuItem128);
+
+        jMenuItem129.setText("Pluck...");
+        jMenuItem129.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem129ActionPerformed(evt);
+            }
+        });
+        jMenu6.add(jMenuItem129);
+
+        jMenuItem130.setText("Risset Drum...");
+        jMenuItem130.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem130ActionPerformed(evt);
+            }
+        });
+        jMenu6.add(jMenuItem130);
+
         jMenuBar1.add(jMenu6);
 
         jMenu7.setText("Effect");
+
+        jMenuItem131.setText("Add/Remove Plugins...");
+        jMenuItem131.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem131ActionPerformed(evt);
+            }
+        });
+        jMenu7.add(jMenuItem131);
+
+        jMenu24.setText("EQ");
+        jMenu7.add(jMenu24);
+
+        jMenu25.setText("Dynamics");
+        jMenu7.add(jMenu25);
+
+        jMenu26.setText("Pitch Shift");
+        jMenu7.add(jMenu26);
+
+        jMenu27.setText("Reverb");
+        jMenu7.add(jMenu27);
+
+        jMenu28.setText("Delay");
+        jMenu7.add(jMenu28);
+
+        jMenu29.setText("Modulation");
+        jMenu7.add(jMenu29);
+
+        jMenu30.setText("Harmonies");
+        jMenu7.add(jMenu30);
+
+        jMenu31.setText("Other");
+        jMenu7.add(jMenu31);
+
         jMenuBar1.add(jMenu7);
 
         jMenu8.setText("Analyse");
+
+        jMenuItem132.setText("Add/Remove Plugins...");
+        jMenuItem132.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem132ActionPerformed(evt);
+            }
+        });
+        jMenu8.add(jMenuItem132);
+
+        jMenuItem133.setText("Contrast...");
+        jMenu8.add(jMenuItem133);
+
+        jMenuItem134.setText("Plot Spectrum...");
+        jMenu8.add(jMenuItem134);
+
+        jMenuItem135.setText("Find Clipping...");
+        jMenuItem135.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem135ActionPerformed(evt);
+            }
+        });
+        jMenu8.add(jMenuItem135);
+
+        jMenuItem136.setText("Beat Finder...");
+        jMenuItem136.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem136ActionPerformed(evt);
+            }
+        });
+        jMenu8.add(jMenuItem136);
+
+        jMenuItem137.setText("Regular Interval Labels...");
+        jMenu8.add(jMenuItem137);
+
+        jMenuItem138.setText("Sample Data Export...");
+        jMenu8.add(jMenuItem138);
+
+        jMenuItem139.setText("Silence Finder...");
+        jMenu8.add(jMenuItem139);
+
+        jMenuItem140.setText("Sound Finder...");
+        jMenu8.add(jMenuItem140);
+
         jMenuBar1.add(jMenu8);
 
         jMenu9.setText("Help");
+        jMenu9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu9ActionPerformed(evt);
+            }
+        });
+
+        jMenuItem141.setText("Quick Help");
+        jMenuItem141.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem141ActionPerformed(evt);
+            }
+        });
+        jMenu9.add(jMenuItem141);
+
+        jMenuItem142.setText("Manual");
+        jMenuItem142.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem142ActionPerformed(evt);
+            }
+        });
+        jMenu9.add(jMenuItem142);
+
+        jMenuItem143.setText("Screenshot Tools...");
+        jMenuItem143.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem143ActionPerformed(evt);
+            }
+        });
+        jMenu9.add(jMenuItem143);
+
+        jMenuItem144.setText("Check for Updates...");
+        jMenuItem144.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem144ActionPerformed(evt);
+            }
+        });
+        jMenu9.add(jMenuItem144);
+
+        jMenuItem145.setText("Audio Device Info...");
+        jMenuItem145.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem145ActionPerformed(evt);
+            }
+        });
+        jMenu9.add(jMenuItem145);
+
+        jMenuItem146.setText("Show Log...");
+        jMenuItem146.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem146ActionPerformed(evt);
+            }
+        });
+        jMenu9.add(jMenuItem146);
+
+        jMenuItem147.setText("Generate Support Data...");
+        jMenuItem147.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem147ActionPerformed(evt);
+            }
+        });
+        jMenu9.add(jMenuItem147);
+
+        jMenuItem148.setText("About Audacity...");
+        jMenuItem148.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem148ActionPerformed(evt);
+            }
+        });
+        jMenu9.add(jMenuItem148);
+
         jMenuBar1.add(jMenu9);
 
         setJMenuBar(jMenuBar1);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(145, Short.MAX_VALUE)
-                .addComponent(jScrollBar2, javax.swing.GroupLayout.PREFERRED_SIZE, 720, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(85, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollBar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(74, 74, 74))
-        );
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem135ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem135ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem135ActionPerformed
+
+    private void jMenuItem136ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem136ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem136ActionPerformed
+
+    private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
+        try {
+            audioObject.setPlayback(true);
+            jButton14.setEnabled(true);
+            audioObject.getAudioStream().reset();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_jButton15ActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton17ActionPerformed
+    
+    private void subMenuActionPerformed(java.awt.event.ActionEvent evt, String file) {
+        try {
+            FileInputStream fIn = new FileInputStream(file);
+            InputStream bufferedIn = new BufferedInputStream(fIn);
+            audioObject.setAudioStream(AudioSystem.getAudioInputStream(bufferedIn));
+            audioObject.setLoaded(true);
+
+            TrackFrame track = new TrackFrame();
+            track.setAudioToDisplay(audioObject.getAudioStream());
+
+            track1Wave.add(track);
+            
+            trackCount++;
+            setVisible(true);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
+        //Create an audio stream from the target file
+        try {
+                
+            //Make sure a track is loaded and it is at the start   
+            if (audioObject.isLoaded()) {
+                jButton15.setEnabled(true);
+                jButton14.setEnabled(false);
+                audioObject.playAudio(); 
+            }
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_jButton14ActionPerformed
+
+    private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
+        java.awt.Cursor timeShift = new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR);
+        setCursor(timeShift);
+    }//GEN-LAST:event_jButton18ActionPerformed
+
+    private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton20ActionPerformed
+
+    private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
+        java.awt.Cursor timeShift = new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR);
+        setCursor(timeShift);
+    }//GEN-LAST:event_jButton21ActionPerformed
+
+    private void jButton23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton23ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton23ActionPerformed
+
+    private void jButton24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton24ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton24ActionPerformed
+
+    private void jButton26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton26ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton26ActionPerformed
+
+    private void jButton28ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton28ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton28ActionPerformed
+
+    private void jButton19MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton19MouseEntered
+
+        jButton19.setToolTipText("Zoom-In");
+    }//GEN-LAST:event_jButton19MouseEntered
+
+    private void jButton22MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton22MouseEntered
+
+        jButton22.setToolTipText("Zoom-Out");
+    }//GEN-LAST:event_jButton22MouseEntered
+
+    private void jButton27MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton27MouseEntered
+
+        jButton27.setToolTipText("Undo");
+    }//GEN-LAST:event_jButton27MouseEntered
+
+    private void jButton28MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton28MouseEntered
+
+        jButton28.setToolTipText("Redo");
+    }//GEN-LAST:event_jButton28MouseEntered
+
+    private void jButton24MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton24MouseEntered
+
+        jButton24.setToolTipText("Paste");
+    }//GEN-LAST:event_jButton24MouseEntered
+
+    private void jButton25MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton25MouseEntered
+
+        jButton25.setToolTipText("Copy");
+    }//GEN-LAST:event_jButton25MouseEntered
+
+    private void jButton26MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton26MouseEntered
+
+        jButton26.setToolTipText("Cut");
+    }//GEN-LAST:event_jButton26MouseEntered
+
+    private void jButton20MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton20MouseEntered
+
+        jButton20.setToolTipText("Draw Tool");
+    }//GEN-LAST:event_jButton20MouseEntered
+
+    private void jButton18MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton18MouseEntered
+
+        jButton18.setToolTipText("Select Tool");
+    }//GEN-LAST:event_jButton18MouseEntered
+
+    private void jButton23MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton23MouseEntered
+
+        jButton23.setToolTipText("Multi-Tool Mode");
+    }//GEN-LAST:event_jButton23MouseEntered
+
+    private void jButton21MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton21MouseEntered
+
+        jButton21.setToolTipText("Time-Shift Tool");
+    }//GEN-LAST:event_jButton21MouseEntered
+
+    private void jButton14MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton14MouseEntered
+        jButton14.setToolTipText("Play");
+    }//GEN-LAST:event_jButton14MouseEntered
+
+    private void jButton15MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton15MouseEntered
+        jButton15.setToolTipText("Stop");
+    }//GEN-LAST:event_jButton15MouseEntered
+
+    private void jButton17MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton17MouseEntered
+        jButton17.setToolTipText("Record");
+    }//GEN-LAST:event_jButton17MouseEntered
+
+    private void jButton16MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton16MouseEntered
+        jButton16.setToolTipText("Forward");
+    }//GEN-LAST:event_jButton16MouseEntered
+
+    private void jButton13MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton13MouseEntered
+        jButton13.setToolTipText("Pause");
+    }//GEN-LAST:event_jButton13MouseEntered
+
+    private void jButton9MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton9MouseEntered
+        jButton9.setToolTipText("Previous");
+    }//GEN-LAST:event_jButton9MouseEntered
+
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+        jLabel3.setText("1:00:20");
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
+
+    private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
+        jLabel3.setText("4 | 1 | 1");
+    }//GEN-LAST:event_jToggleButton2ActionPerformed
+    
+    //PLAY BUTTON
+    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
+        try {
+             audioObject.getAudioStream().mark(audioObject.getAudioStream().available());   
+                
+            if (audioObject.isLoaded()) {
+                jButton15.setEnabled(true);
+                jButton14.setEnabled(false);
+                audioObject.playAudio(); 
+            }
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_jButton13ActionPerformed
+    
+    private void jRadioButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButton5ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jRadioButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton4ActionPerformed
+        //Create new Project
+        jDialog1.dispose();
+    }//GEN-LAST:event_jRadioButton4ActionPerformed
+
+    private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // Close Track window
+        javax.swing.JOptionPane warning = new javax.swing.JOptionPane();
+        //Custom button text
+        Object[] options = {"Yes", "No"};
+        int n = javax.swing.JOptionPane.showOptionDialog(null, "Do you wish to close the track? ",
+        "Close Track Warning", javax.swing.JOptionPane.YES_NO_CANCEL_OPTION, javax.swing.JOptionPane.QUESTION_MESSAGE,
+        null, options, options[2]);
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jToggleButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton5ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jToggleButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton7ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jToggleButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton9ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton9ActionPerformed
+
+    private void jMenu9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu9ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenu9ActionPerformed
+
+    // Method that open the quick help page for audacity
+    private void jMenuItem141ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem141ActionPerformed
+    URI uri = null;
+    try {
+            uri = new URI("http://manual.audacityteam.org/quick_help.html");
+        }
+    catch (URISyntaxException ex) {
+            Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
+        if (desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
+            try {
+                desktop.browse(uri);
+            } catch (Exception e) {
+            e.printStackTrace();
+            }
+        }
+    }//GEN-LAST:event_jMenuItem141ActionPerformed
+
+    // Method that open the manual for audacity
+    private void jMenuItem142ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem142ActionPerformed
+    URI uri = null;
+    try {
+            uri = new URI("http://manual.audacityteam.org");
+        }
+    catch (URISyntaxException ex) {
+            Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
+        if (desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
+            try {
+                desktop.browse(uri);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }//GEN-LAST:event_jMenuItem142ActionPerformed
+
+    // Method that open the "About Audacity" window
+    private void jMenuItem148ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem148ActionPerformed
+    About_Audacity.setVisible(true);
+    }//GEN-LAST:event_jMenuItem148ActionPerformed
+
+    // Method that open the "Screenshot Tool" window
+    private void jMenuItem143ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem143ActionPerformed
+        ScreenShot.setVisible(true);
+    }//GEN-LAST:event_jMenuItem143ActionPerformed
+
+    private void jMenuItem144ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem144ActionPerformed
+     URI uri = null;
+    try {
+            uri = new URI("http://www.audacityteam.org/download/?from_ver=2.1.2");
+        }
+    catch (URISyntaxException ex) {
+            Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
+        if (desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
+            try {
+                desktop.browse(uri);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }//GEN-LAST:event_jMenuItem144ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        //NewWindow newWindow = new NewWindow();
+        //newWindow.setVisible(true);
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton50ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton50ActionPerformed
+        EditMetaData.dispose();
+    }//GEN-LAST:event_jButton50ActionPerformed
+
+    private void jMenuItem98ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem98ActionPerformed
+        muteControl(true);
+    }//GEN-LAST:event_jMenuItem98ActionPerformed
+
+    private void jMenuItem99ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem99ActionPerformed
+        muteControl(false);
+    }//GEN-LAST:event_jMenuItem99ActionPerformed
+
+    private void jButton49ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton49ActionPerformed
+        jTextField1.setText(" ");
+        jTextField2.setText(" ");
+        jTextField3.setText(" ");
+        jTextField4.setText(" ");
+        jTextField5.setText(" ");
+        jTextField6.setText(" ");
+    }//GEN-LAST:event_jButton49ActionPerformed
+
+    private void jButton51ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton51ActionPerformed
+        Chirp.dispose();
+    }//GEN-LAST:event_jButton51ActionPerformed
+
+    private void jMenuItem123ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem123ActionPerformed
+        Chirp.setVisible(true);
+    }//GEN-LAST:event_jMenuItem123ActionPerformed
+
+    private void jButton46ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton46ActionPerformed
+        EditMetaData.dispose();
+    }//GEN-LAST:event_jButton46ActionPerformed
+
+    private void jButton56ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton56ActionPerformed
+        DTMF.dispose();
+    }//GEN-LAST:event_jButton56ActionPerformed
+
+    private void jButton55ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton55ActionPerformed
+        DTMF.dispose();
+    }//GEN-LAST:event_jButton55ActionPerformed
+
+    private void jMenuItem124ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem124ActionPerformed
+        DTMF.setVisible(true);
+    }//GEN-LAST:event_jMenuItem124ActionPerformed
+
+    private void jButton57ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton57ActionPerformed
+        Noise.dispose();
+    }//GEN-LAST:event_jButton57ActionPerformed
+
+    private void jButton58ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton58ActionPerformed
+        Noise.dispose();
+    }//GEN-LAST:event_jButton58ActionPerformed
+
+    private void jMenuItem125ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem125ActionPerformed
+        Noise.setVisible(true);
+    }//GEN-LAST:event_jMenuItem125ActionPerformed
+
+    private void jButton59ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton59ActionPerformed
+        Silence.dispose();
+    }//GEN-LAST:event_jButton59ActionPerformed
+
+    private void jButton60ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton60ActionPerformed
+        Silence.dispose();
+    }//GEN-LAST:event_jButton60ActionPerformed
+
+    private void jMenuItem126ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem126ActionPerformed
+        Silence.setVisible(true);
+    }//GEN-LAST:event_jMenuItem126ActionPerformed
+
+    private void jButton61ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton61ActionPerformed
+        Tone.dispose();
+    }//GEN-LAST:event_jButton61ActionPerformed
+
+    private void jButton62ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton62ActionPerformed
+        Tone.dispose();
+    }//GEN-LAST:event_jButton62ActionPerformed
+
+    private void jMenuItem127ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem127ActionPerformed
+        Tone.setVisible(true);
+    }//GEN-LAST:event_jMenuItem127ActionPerformed
+
+    private void jButton63ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton63ActionPerformed
+        ClickTrack.dispose();
+    }//GEN-LAST:event_jButton63ActionPerformed
+
+    private void jButton64ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton64ActionPerformed
+        ClickTrack.dispose();
+    }//GEN-LAST:event_jButton64ActionPerformed
+
+    private void jMenuItem128ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem128ActionPerformed
+        ClickTrack.setVisible(true);
+    }//GEN-LAST:event_jMenuItem128ActionPerformed
+
+    private void jButton65ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton65ActionPerformed
+        Pluck.dispose();
+    }//GEN-LAST:event_jButton65ActionPerformed
+
+    private void jButton66ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton66ActionPerformed
+        Pluck.dispose();
+    }//GEN-LAST:event_jButton66ActionPerformed
+
+    private void jMenuItem129ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem129ActionPerformed
+        Pluck.setVisible(true);
+    }//GEN-LAST:event_jMenuItem129ActionPerformed
+
+    private void jButton67ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton67ActionPerformed
+        ResetDrum.dispose();
+    }//GEN-LAST:event_jButton67ActionPerformed
+
+    private void jButton68ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton68ActionPerformed
+        ResetDrum.dispose();
+    }//GEN-LAST:event_jButton68ActionPerformed
+
+    private void jMenuItem130ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem130ActionPerformed
+        ResetDrum.setVisible(true);
+    }//GEN-LAST:event_jMenuItem130ActionPerformed
+
+    private void jButton69ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton69ActionPerformed
+        AudioDeviceInfo.dispose();
+    }//GEN-LAST:event_jButton69ActionPerformed
+
+    private void jButton70ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton70ActionPerformed
+        AudioDeviceInfo.dispose();
+    }//GEN-LAST:event_jButton70ActionPerformed
+
+    private void jMenuItem145ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem145ActionPerformed
+        AudioDeviceInfo.setVisible(true);
+    }//GEN-LAST:event_jMenuItem145ActionPerformed
+
+    private void jButton71ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton71ActionPerformed
+        AudacityLog.dispose();
+    }//GEN-LAST:event_jButton71ActionPerformed
+
+    private void jButton72ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton72ActionPerformed
+        AudacityLog.dispose();
+    }//GEN-LAST:event_jButton72ActionPerformed
+
+    private void jMenuItem146ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem146ActionPerformed
+        AudacityLog.setVisible(true);
+    }//GEN-LAST:event_jMenuItem146ActionPerformed
+
+    private void jButton73ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton73ActionPerformed
+        Debug.dispose();
+    }//GEN-LAST:event_jButton73ActionPerformed
+
+    private void jButton74ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton74ActionPerformed
+        Debug.dispose();
+    }//GEN-LAST:event_jButton74ActionPerformed
+
+    private void jMenuItem147ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem147ActionPerformed
+        Debug.setVisible(true);
+    }//GEN-LAST:event_jMenuItem147ActionPerformed
+
+    private void jButton75ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton75ActionPerformed
+        PluginEffect.dispose();
+    }//GEN-LAST:event_jButton75ActionPerformed
+
+    private void jButton76ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton76ActionPerformed
+        PluginEffect.dispose();
+    }//GEN-LAST:event_jButton76ActionPerformed
+
+    private void jMenuItem131ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem131ActionPerformed
+        PluginEffect.setVisible(true);
+    }//GEN-LAST:event_jMenuItem131ActionPerformed
+
+    /* this event changes the jMenu7, to simulate when we remove plug-ins */
+    private void jCheckBox9ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCheckBox9ItemStateChanged
+        if (evt.getStateChange() == ItemEvent.DESELECTED)
+        {
+            jMenu7.remove(jMenu24);
+            SwingUtilities.updateComponentTreeUI(jMenu7);
+        }
+        else if(evt.getStateChange() == ItemEvent.SELECTED)
+        {
+            jMenu7.add(jMenu24);
+            SwingUtilities.updateComponentTreeUI(jMenu7);
+        }
+    }//GEN-LAST:event_jCheckBox9ItemStateChanged
+
+    /* this event changes the jMenu7, to simulate when we remove plug-ins */
+    private void jCheckBox10ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCheckBox10ItemStateChanged
+        if (evt.getStateChange() == ItemEvent.DESELECTED)
+        {
+            jMenu7.remove(jMenu25);
+            SwingUtilities.updateComponentTreeUI(jMenu7);
+        }
+        else if(evt.getStateChange() == ItemEvent.SELECTED)
+        {
+            jMenu7.add(jMenu25);
+            SwingUtilities.updateComponentTreeUI(jMenu7);
+        }
+    }//GEN-LAST:event_jCheckBox10ItemStateChanged
+
+    /* this event changes the jMenu7, to simulate when we remove plug-ins */
+    private void jCheckBox11ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCheckBox11ItemStateChanged
+        if (evt.getStateChange() == ItemEvent.DESELECTED)
+        {
+            jMenu7.remove(jMenu26);
+            SwingUtilities.updateComponentTreeUI(jMenu7);
+        }
+        else if(evt.getStateChange() == ItemEvent.SELECTED)
+        {
+            jMenu7.add(jMenu26);
+            SwingUtilities.updateComponentTreeUI(jMenu7);
+        }
+    }//GEN-LAST:event_jCheckBox11ItemStateChanged
+
+    /* this event changes the jMenu7, to simulate when we remove plug-ins */
+    private void jCheckBox12ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCheckBox12ItemStateChanged
+        if (evt.getStateChange() == ItemEvent.DESELECTED)
+        {
+            jMenu7.remove(jMenu27);
+            SwingUtilities.updateComponentTreeUI(jMenu7);
+        }
+        else if(evt.getStateChange() == ItemEvent.SELECTED)
+        {
+            jMenu7.add(jMenu27);
+            SwingUtilities.updateComponentTreeUI(jMenu7);
+        }
+    }//GEN-LAST:event_jCheckBox12ItemStateChanged
+
+    /* this event changes the jMenu7, to simulate when we remove plug-ins */
+    private void jCheckBox13ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCheckBox13ItemStateChanged
+        if (evt.getStateChange() == ItemEvent.DESELECTED)
+        {
+            jMenu7.remove(jMenu28);
+            SwingUtilities.updateComponentTreeUI(jMenu7);
+        }
+        else if(evt.getStateChange() == ItemEvent.SELECTED)
+        {
+            jMenu7.add(jMenu28);
+            SwingUtilities.updateComponentTreeUI(jMenu7);
+        }
+    }//GEN-LAST:event_jCheckBox13ItemStateChanged
+
+    /* this event changes the jMenu7, to simulate when we remove plug-ins */
+    private void jCheckBox14ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCheckBox14ItemStateChanged
+        if (evt.getStateChange() == ItemEvent.DESELECTED)
+        {
+            jMenu7.remove(jMenu29);
+            SwingUtilities.updateComponentTreeUI(jMenu7);
+        }
+        else if(evt.getStateChange() == ItemEvent.SELECTED)
+        {
+            jMenu7.add(jMenu29);
+            SwingUtilities.updateComponentTreeUI(jMenu7);
+        }
+    }//GEN-LAST:event_jCheckBox14ItemStateChanged
+
+    /* this event changes the jMenu7, to simulate when we remove plug-ins */
+    private void jCheckBox15ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCheckBox15ItemStateChanged
+        if (evt.getStateChange() == ItemEvent.DESELECTED)
+        {
+            jMenu7.remove(jMenu30);
+            SwingUtilities.updateComponentTreeUI(jMenu7);
+        }
+        else if(evt.getStateChange() == ItemEvent.SELECTED)
+        {
+            jMenu7.add(jMenu30);
+            SwingUtilities.updateComponentTreeUI(jMenu7);
+        }
+    }//GEN-LAST:event_jCheckBox15ItemStateChanged
+
+    private void jCheckBox8ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCheckBox8ItemStateChanged
+        if (evt.getStateChange() == ItemEvent.DESELECTED)
+        {
+            jMenu7.remove(jMenu31);
+            SwingUtilities.updateComponentTreeUI(jMenu7);
+        }
+        else if(evt.getStateChange() == ItemEvent.SELECTED)
+        {
+            jMenu7.add(jMenu31);
+            SwingUtilities.updateComponentTreeUI(jMenu7);
+        }
+    }//GEN-LAST:event_jCheckBox8ItemStateChanged
+
+    private void jCheckBox16ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCheckBox16ItemStateChanged
+        if (evt.getStateChange() == ItemEvent.DESELECTED)
+        {
+            jMenu8.remove(jMenuItem133);
+            SwingUtilities.updateComponentTreeUI(jMenu8);
+        }
+        else if(evt.getStateChange() == ItemEvent.SELECTED)
+        {
+            jMenu8.add(jMenuItem133);
+            SwingUtilities.updateComponentTreeUI(jMenu8);
+        }
+    }//GEN-LAST:event_jCheckBox16ItemStateChanged
+
+    private void jCheckBox17ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCheckBox17ItemStateChanged
+        if (evt.getStateChange() == ItemEvent.DESELECTED)
+        {
+            jMenu8.remove(jMenuItem134);
+            SwingUtilities.updateComponentTreeUI(jMenu8);
+        }
+        else if(evt.getStateChange() == ItemEvent.SELECTED)
+        {
+            jMenu8.add(jMenuItem134);
+            SwingUtilities.updateComponentTreeUI(jMenu8);
+        }
+    }//GEN-LAST:event_jCheckBox17ItemStateChanged
+
+    private void jCheckBox18ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCheckBox18ItemStateChanged
+        if (evt.getStateChange() == ItemEvent.DESELECTED)
+        {
+            jMenu8.remove(jMenuItem135);
+            SwingUtilities.updateComponentTreeUI(jMenu8);
+        }
+        else if(evt.getStateChange() == ItemEvent.SELECTED)
+        {
+            jMenu8.add(jMenuItem135);
+            SwingUtilities.updateComponentTreeUI(jMenu8);
+        }
+    }//GEN-LAST:event_jCheckBox18ItemStateChanged
+
+    private void jCheckBox19ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCheckBox19ItemStateChanged
+        if (evt.getStateChange() == ItemEvent.DESELECTED)
+        {
+            jMenu8.remove(jMenuItem136);
+            SwingUtilities.updateComponentTreeUI(jMenu8);
+        }
+        else if(evt.getStateChange() == ItemEvent.SELECTED)
+        {
+            jMenu8.add(jMenuItem136);
+            SwingUtilities.updateComponentTreeUI(jMenu8);
+        }
+    }//GEN-LAST:event_jCheckBox19ItemStateChanged
+
+    private void jCheckBox20ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCheckBox20ItemStateChanged
+        if (evt.getStateChange() == ItemEvent.DESELECTED)
+        {
+            jMenu8.remove(jMenuItem137);
+            SwingUtilities.updateComponentTreeUI(jMenu8);
+        }
+        else if(evt.getStateChange() == ItemEvent.SELECTED)
+        {
+            jMenu8.add(jMenuItem137);
+            SwingUtilities.updateComponentTreeUI(jMenu8);
+        }
+    }//GEN-LAST:event_jCheckBox20ItemStateChanged
+
+    private void jCheckBox21ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCheckBox21ItemStateChanged
+        if (evt.getStateChange() == ItemEvent.DESELECTED)
+        {
+            jMenu8.remove(jMenuItem138);
+            SwingUtilities.updateComponentTreeUI(jMenu8);
+        }
+        else if(evt.getStateChange() == ItemEvent.SELECTED)
+        {
+            jMenu8.add(jMenuItem138);
+            SwingUtilities.updateComponentTreeUI(jMenu8);
+        }
+    }//GEN-LAST:event_jCheckBox21ItemStateChanged
+
+    private void jCheckBox22ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCheckBox22ItemStateChanged
+        if (evt.getStateChange() == ItemEvent.DESELECTED)
+        {
+            jMenu8.remove(jMenuItem139);
+            SwingUtilities.updateComponentTreeUI(jMenu8);
+        }
+        else if(evt.getStateChange() == ItemEvent.SELECTED)
+        {
+            jMenu8.add(jMenuItem139);
+            SwingUtilities.updateComponentTreeUI(jMenu8);
+        }
+    }//GEN-LAST:event_jCheckBox22ItemStateChanged
+
+    private void jCheckBox23ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCheckBox23ItemStateChanged
+        if (evt.getStateChange() == ItemEvent.DESELECTED)
+        {
+            jMenu8.remove(jMenuItem140);
+            SwingUtilities.updateComponentTreeUI(jMenu8);
+        }
+        else if(evt.getStateChange() == ItemEvent.SELECTED)
+        {
+            jMenu8.add(jMenuItem140);
+            SwingUtilities.updateComponentTreeUI(jMenu8);
+        }
+    }//GEN-LAST:event_jCheckBox23ItemStateChanged
+
+    private void jButton77ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton77ActionPerformed
+        PluginAnalyze.dispose();
+    }//GEN-LAST:event_jButton77ActionPerformed
+
+    private void jButton78ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton78ActionPerformed
+        PluginAnalyze.dispose();
+    }//GEN-LAST:event_jButton78ActionPerformed
+
+    private void jMenuItem132ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem132ActionPerformed
+        PluginAnalyze.setVisible(true);
+    }//GEN-LAST:event_jMenuItem132ActionPerformed
+
+    private void jButton79ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton79ActionPerformed
+        PluginGenerate.dispose();
+    }//GEN-LAST:event_jButton79ActionPerformed
+
+    private void jButton80ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton80ActionPerformed
+        PluginGenerate.dispose();
+    }//GEN-LAST:event_jButton80ActionPerformed
+
+    private void jCheckBox24ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCheckBox24ItemStateChanged
+        if (evt.getStateChange() == ItemEvent.DESELECTED)
+        {
+            jMenu6.remove(jMenuItem123);
+            SwingUtilities.updateComponentTreeUI(jMenu6);
+        }
+        else if(evt.getStateChange() == ItemEvent.SELECTED)
+        {
+            jMenu6.add(jMenuItem123);
+            SwingUtilities.updateComponentTreeUI(jMenu6);
+        }
+    }//GEN-LAST:event_jCheckBox24ItemStateChanged
+
+    private void jCheckBox25ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCheckBox25ItemStateChanged
+        if (evt.getStateChange() == ItemEvent.DESELECTED)
+        {
+            jMenu6.remove(jMenuItem124);
+            SwingUtilities.updateComponentTreeUI(jMenu6);
+        }
+        else if(evt.getStateChange() == ItemEvent.SELECTED)
+        {
+            jMenu6.add(jMenuItem124);
+            SwingUtilities.updateComponentTreeUI(jMenu6);
+        }
+    }//GEN-LAST:event_jCheckBox25ItemStateChanged
+
+    private void jCheckBox26ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCheckBox26ItemStateChanged
+        if (evt.getStateChange() == ItemEvent.DESELECTED)
+        {
+            jMenu6.remove(jMenuItem125);
+            SwingUtilities.updateComponentTreeUI(jMenu6);
+        }
+        else if(evt.getStateChange() == ItemEvent.SELECTED)
+        {
+            jMenu6.add(jMenuItem125);
+            SwingUtilities.updateComponentTreeUI(jMenu6);
+        }
+    }//GEN-LAST:event_jCheckBox26ItemStateChanged
+
+    private void jCheckBox27ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCheckBox27ItemStateChanged
+        if (evt.getStateChange() == ItemEvent.DESELECTED)
+        {
+            jMenu6.remove(jMenuItem126);
+            SwingUtilities.updateComponentTreeUI(jMenu6);
+        }
+        else if(evt.getStateChange() == ItemEvent.SELECTED)
+        {
+            jMenu6.add(jMenuItem126);
+            SwingUtilities.updateComponentTreeUI(jMenu6);
+        }
+    }//GEN-LAST:event_jCheckBox27ItemStateChanged
+
+    private void jCheckBox28ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCheckBox28ItemStateChanged
+        if (evt.getStateChange() == ItemEvent.DESELECTED)
+        {
+            jMenu6.remove(jMenuItem127);
+            SwingUtilities.updateComponentTreeUI(jMenu6);
+        }
+        else if(evt.getStateChange() == ItemEvent.SELECTED)
+        {
+            jMenu6.add(jMenuItem127);
+            SwingUtilities.updateComponentTreeUI(jMenu6);
+        }
+    }//GEN-LAST:event_jCheckBox28ItemStateChanged
+
+    private void jCheckBox29ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCheckBox29ItemStateChanged
+        if (evt.getStateChange() == ItemEvent.DESELECTED)
+        {
+            jMenu6.remove(jMenuItem128);
+            SwingUtilities.updateComponentTreeUI(jMenu6);
+        }
+        else if(evt.getStateChange() == ItemEvent.SELECTED)
+        {
+            jMenu6.add(jMenuItem128);
+            SwingUtilities.updateComponentTreeUI(jMenu6);
+        }
+    }//GEN-LAST:event_jCheckBox29ItemStateChanged
+
+    private void jCheckBox30ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCheckBox30ItemStateChanged
+        if (evt.getStateChange() == ItemEvent.DESELECTED)
+        {
+            jMenu6.remove(jMenuItem129);
+            SwingUtilities.updateComponentTreeUI(jMenu6);
+        }
+        else if(evt.getStateChange() == ItemEvent.SELECTED)
+        {
+            jMenu6.add(jMenuItem129);
+            SwingUtilities.updateComponentTreeUI(jMenu6);
+        }
+    }//GEN-LAST:event_jCheckBox30ItemStateChanged
+
+    private void jCheckBox31ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCheckBox31ItemStateChanged
+        if (evt.getStateChange() == ItemEvent.DESELECTED)
+        {
+            jMenu6.remove(jMenuItem130);
+            SwingUtilities.updateComponentTreeUI(jMenu6);
+        }
+        else if(evt.getStateChange() == ItemEvent.SELECTED)
+        {
+            jMenu6.add(jMenuItem130);
+            SwingUtilities.updateComponentTreeUI(jMenu6);
+        }
+    }//GEN-LAST:event_jCheckBox31ItemStateChanged
+
+    private void jMenuItem122ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem122ActionPerformed
+        PluginGenerate.setVisible(true);
+    }//GEN-LAST:event_jMenuItem122ActionPerformed
+
+    private void volSlider1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_volSlider1StateChanged
+        JSlider source = (JSlider) evt.getSource();
+        
+         int value = (int)source.getValue();
+         volumeControl((float)value);            
+    }//GEN-LAST:event_volSlider1StateChanged
+
+    private void volSlider2StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_volSlider2StateChanged
+        JSlider source = (JSlider) evt.getSource();
+        
+         int value = (int)source.getValue();
+         volumeControl((float)value); 
+    }//GEN-LAST:event_volSlider2StateChanged
+
+    private void volSlider3StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_volSlider3StateChanged
+        JSlider source = (JSlider) evt.getSource();
+        
+         int value = (int)source.getValue();
+         volumeControl((float)value); 
+    }//GEN-LAST:event_volSlider3StateChanged
+
+    private void volSlider4StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_volSlider4StateChanged
+        JSlider source = (JSlider) evt.getSource();
+        
+         int value = (int)source.getValue();
+         volumeControl((float)value); 
+    }//GEN-LAST:event_volSlider4StateChanged
+
+    private void jMenuItem19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem19ActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_jMenuItem19ActionPerformed
+
+    private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem13ActionPerformed
+
+    private void jMenuItem21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem21ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem21ActionPerformed
+
+    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+        EditMetaData.setVisible(true);
+    }//GEN-LAST:event_jMenuItem9ActionPerformed
+
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+        CheckDependency.setVisible(true);
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
+
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        FileFilter filter1 = new FileNameExtensionFilter("Audacity Projects", "aup");
+
+        Save.addChoosableFileFilter(filter1);
+
+        int returnVal = fileOpen.showSaveDialog(this);
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        FileFilter filter1 = new FileNameExtensionFilter("Audacity Projects", "aup");
+
+        Save.addChoosableFileFilter(filter1);
+
+        int returnVal = fileOpen.showSaveDialog(this);
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+
+        FileFilter filter1 = new FileNameExtensionFilter("Audacity Projects", "aup");
+
+        Save.addChoosableFileFilter(filter1);
+
+        int returnVal = fileOpen.showSaveDialog(this);
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    // Method that simulate the "Close" operation of Audacity's "Close"
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        NewJFrame w = new NewJFrame();
+        w.setVisible(true);
+        w.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        this.dispose();
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        /* Event action for opening an audio track (WAV File)*/
+        FileFilter filter1 = new FileNameExtensionFilter("Audacity Projects", "aup");
+        FileFilter filter2 = new FileNameExtensionFilter("FLAC Files", "flac");
+        FileFilter filter3 = new FileNameExtensionFilter("MP3 Files", "mp3");
+        FileFilter filter4 = new FileNameExtensionFilter("WAV Files", "wav");
+
+        fileOpen.addChoosableFileFilter(filter1);
+        fileOpen.addChoosableFileFilter(filter2);
+        fileOpen.addChoosableFileFilter(filter3);
+        fileOpen.addChoosableFileFilter(filter4);
+
+        int returnVal = fileOpen.showOpenDialog(this);
+        try {
+            //Checks if the user has selected OK and then gets the file and stores it
+            //in a FILE object
+            if (returnVal == javax.swing.JFileChooser.APPROVE_OPTION) {
+                java.io.File file = fileOpen.getSelectedFile();
+                String filename = file.toString();
+                String trackname = file.getName();
+                //Create an audio stream from the target file
+                FileInputStream fIn = new FileInputStream(filename);
+                InputStream bufferedIn = new BufferedInputStream(fIn);
+                audioObject.setAudioStream(AudioSystem.getAudioInputStream(bufferedIn));
+                audioObject.setLoaded(true);
+
+                TrackFrame track = new TrackFrame();
+                track.setAudioToDisplay(audioObject.getAudioStream());
+
+                waveArray[trackCount].add(track, 0);
+                labelArray[trackCount].setText(trackname);
+                labelArray[trackCount].setToolTipText(trackname);
+                trackArray[trackCount].setVisible(true);
+                waveArray[trackCount].setVisible(true);
+
+                trackArray[trackCount].pack();
+                //Add File to recently used
+                javax.swing.JMenuItem recent = new javax.swing.JMenuItem(filename);
+                jMenu10.add(recent);
+                recent.addActionListener(new java.awt.event.ActionListener() {
+                    public void actionPerformed(java.awt.event.ActionEvent evt) {
+                        subMenuActionPerformed(evt,filename);
+                    }
+                });
+            }
+            trackCount++;
+
+            audioObject.getAudioStream().reset();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    // Method that open another NEWJFrame window
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        NewJFrame newWindow = new NewJFrame();
+        newWindow.setVisible(true);
+        newWindow.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void muteControl(boolean value)
+    {
+        Mixer.Info[] mixers = AudioSystem.getMixerInfo();
+        //System.out.println("There are " + mixers.length + " mixer info objects");
+        for (Mixer.Info mixerInfo : mixers) {
+            //System.out.println("mixer name: " + mixerInfo.getName());
+            Mixer mixer = AudioSystem.getMixer(mixerInfo);
+            Line.Info[] lineInfos = mixer.getTargetLineInfo(); // target, not source  
+            //changes all the volumes
+            
+            
+            for (Line.Info lineInfo : lineInfos) {
+                //System.out.println("  Line.Info: " + lineInfo);
+                Line line = null;
+                boolean opened = true;
+                try {
+                    line = mixer.getLine(lineInfo);
+                    opened = line.isOpen() || line instanceof Clip;
+                    if (!opened) {
+                        line.open();
+                    }
+                    BooleanControl volCtrl = (BooleanControl) line.getControl(BooleanControl.Type.MUTE);
+                    //System.out.println(volCtrl.getMinimum());
+                    volCtrl.setValue(value);
+                    //System.out.println("    volCtrl.getValue() = " + volCtrl.getValue());
+                } catch (LineUnavailableException e) {
+                    e.printStackTrace();
+                } catch (IllegalArgumentException iaEx) {
+                    //System.out.println("  -!-  " + iaEx);
+                } finally {
+                    if (line != null && !opened) {
+                        line.close();
+                    }
+                }
+            }
+        }
+    }
+    
+    /* The volume controller, after researching, it seems that I need to account for each possible Platform due to
+        java's cross-platform library, therefore I needed to use the native API control to do those volume changing
+        having the for loop for both mixer and line are to ensure that I successfully change the volume regardless
+        of the platform,be it Windows or MAC OS X etc.
+    */
+    private void volumeControl(float value)
+    {
+        if(value > 1.0) // only accept value less than 1.0 and more than 0.0
+            value = value / 100;
+        else if ( value < 0.0)
+            value = 0.5f;
+        //System.out.println("Checking the value: " + value);
+        Mixer.Info[] mixers = AudioSystem.getMixerInfo();
+        //System.out.println("There are " + mixers.length + " mixer info objects");
+        for (Mixer.Info mixerInfo : mixers) {
+            //System.out.println("mixer name: " + mixerInfo.getName());
+            //System.out.println("Checking the value inside mixer: " + value);
+            Mixer mixer = AudioSystem.getMixer(mixerInfo);
+            Line.Info[] lineInfos = mixer.getTargetLineInfo(); // target, not source  
+            //changes all the volumes
+            
+            
+            for (Line.Info lineInfo : lineInfos) {
+                //System.out.println("  Line.Info: " + lineInfo);
+                //System.out.println("Checking the value inside line: " + value);
+                Line line = null;
+                boolean opened = true;
+                try {
+                    line = mixer.getLine(lineInfo);
+                    opened = line.isOpen() || line instanceof Clip;
+                    if (!opened) {
+                        line.open();
+                    }
+                    FloatControl volCtrl = (FloatControl) line.getControl(FloatControl.Type.VOLUME);
+                    //System.out.println("Minimum = " + volCtrl.getMinimum());
+                    //System.out.println("Checking the value before setting it: " + value);
+                    volCtrl.setValue(value);
+                    //System.out.println("    volCtrl.getValue() = " + volCtrl.getValue());
+                } catch (LineUnavailableException e) {
+                    e.printStackTrace();
+                } catch (IllegalArgumentException iaEx) {
+                    //System.out.println("  -!-  " + iaEx);
+                } finally {
+                    if (line != null && !opened) {
+                        line.close();
+                    }
+                }
+            }
+        }
+     }            
+    
+    //Method that 
+    private static java.util.ArrayList<Object> getMixers() {
+        
+        java.util.ArrayList<Object> list = new java.util.ArrayList<Object>();
+        for (javax.sound.sampled.Mixer.Info mi : AudioSystem.getMixerInfo()) {
+            list.add(mi.getName());
+        }
+        return list;
+    }
     /**
      * @param args the command line arguments
      */
@@ -127,15 +4977,324 @@ public class NewJFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new NewJFrame().setVisible(true);
+                NewJFrame frame = new NewJFrame();
+
+                frame.setExtendedState(MAXIMIZED_BOTH);
+                frame.setVisible(true);
+                
             }
+            //
         });
+        
+     
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JFrame About_Audacity;
+    private javax.swing.JDialog AudacityLog;
+    private javax.swing.JDialog AudioDeviceInfo;
+    private javax.swing.JDialog CheckDependency;
+    private javax.swing.JDialog Chirp;
+    private javax.swing.JDialog ClickTrack;
+    private javax.swing.JDialog DTMF;
+    private javax.swing.JDialog Debug;
+    private javax.swing.JDialog EditMetaData;
+    private javax.swing.JDialog Noise;
+    private javax.swing.JDialog Pluck;
+    private javax.swing.JDialog PluginAnalyze;
+    private javax.swing.JDialog PluginEffect;
+    private javax.swing.JDialog PluginGenerate;
+    private javax.swing.JDialog ResetDrum;
+    private javax.swing.JFileChooser Save;
+    private javax.swing.JDialog ScreenShot;
+    private javax.swing.JDialog Silence;
+    private javax.swing.JDialog Tone;
+    private javax.swing.JPanel controlPanel;
+    private javax.swing.JFileChooser fileOpen;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
+    private javax.swing.JButton jButton11;
+    private javax.swing.JButton jButton12;
+    private javax.swing.JButton jButton13;
+    private javax.swing.JButton jButton14;
+    private javax.swing.JButton jButton15;
+    private javax.swing.JButton jButton16;
+    private javax.swing.JButton jButton17;
+    private javax.swing.JButton jButton18;
+    private javax.swing.JButton jButton19;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton20;
+    private javax.swing.JButton jButton21;
+    private javax.swing.JButton jButton22;
+    private javax.swing.JButton jButton23;
+    private javax.swing.JButton jButton24;
+    private javax.swing.JButton jButton25;
+    private javax.swing.JButton jButton26;
+    private javax.swing.JButton jButton27;
+    private javax.swing.JButton jButton28;
+    private javax.swing.JButton jButton29;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton30;
+    private javax.swing.JButton jButton31;
+    private javax.swing.JButton jButton32;
+    private javax.swing.JButton jButton33;
+    private javax.swing.JButton jButton34;
+    private javax.swing.JButton jButton35;
+    private javax.swing.JButton jButton36;
+    private javax.swing.JButton jButton37;
+    private javax.swing.JButton jButton38;
+    private javax.swing.JButton jButton39;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton40;
+    private javax.swing.JButton jButton41;
+    private javax.swing.JButton jButton42;
+    private javax.swing.JButton jButton43;
+    private javax.swing.JButton jButton44;
+    private javax.swing.JButton jButton45;
+    private javax.swing.JButton jButton46;
+    private javax.swing.JButton jButton47;
+    private javax.swing.JButton jButton48;
+    private javax.swing.JButton jButton49;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton50;
+    private javax.swing.JButton jButton51;
+    private javax.swing.JButton jButton52;
+    private javax.swing.JButton jButton53;
+    private javax.swing.JButton jButton54;
+    private javax.swing.JButton jButton55;
+    private javax.swing.JButton jButton56;
+    private javax.swing.JButton jButton57;
+    private javax.swing.JButton jButton58;
+    private javax.swing.JButton jButton59;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton60;
+    private javax.swing.JButton jButton61;
+    private javax.swing.JButton jButton62;
+    private javax.swing.JButton jButton63;
+    private javax.swing.JButton jButton64;
+    private javax.swing.JButton jButton65;
+    private javax.swing.JButton jButton66;
+    private javax.swing.JButton jButton67;
+    private javax.swing.JButton jButton68;
+    private javax.swing.JButton jButton69;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton70;
+    private javax.swing.JButton jButton71;
+    private javax.swing.JButton jButton72;
+    private javax.swing.JButton jButton73;
+    private javax.swing.JButton jButton74;
+    private javax.swing.JButton jButton75;
+    private javax.swing.JButton jButton76;
+    private javax.swing.JButton jButton77;
+    private javax.swing.JButton jButton78;
+    private javax.swing.JButton jButton79;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton80;
+    private javax.swing.JButton jButton9;
+    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JCheckBox jCheckBox10;
+    private javax.swing.JCheckBox jCheckBox11;
+    private javax.swing.JCheckBox jCheckBox12;
+    private javax.swing.JCheckBox jCheckBox13;
+    private javax.swing.JCheckBox jCheckBox14;
+    private javax.swing.JCheckBox jCheckBox15;
+    private javax.swing.JCheckBox jCheckBox16;
+    private javax.swing.JCheckBox jCheckBox17;
+    private javax.swing.JCheckBox jCheckBox18;
+    private javax.swing.JCheckBox jCheckBox19;
+    private javax.swing.JCheckBox jCheckBox2;
+    private javax.swing.JCheckBox jCheckBox20;
+    private javax.swing.JCheckBox jCheckBox21;
+    private javax.swing.JCheckBox jCheckBox22;
+    private javax.swing.JCheckBox jCheckBox23;
+    private javax.swing.JCheckBox jCheckBox24;
+    private javax.swing.JCheckBox jCheckBox25;
+    private javax.swing.JCheckBox jCheckBox26;
+    private javax.swing.JCheckBox jCheckBox27;
+    private javax.swing.JCheckBox jCheckBox28;
+    private javax.swing.JCheckBox jCheckBox29;
+    private javax.swing.JCheckBox jCheckBox3;
+    private javax.swing.JCheckBox jCheckBox30;
+    private javax.swing.JCheckBox jCheckBox31;
+    private javax.swing.JCheckBox jCheckBox4;
+    private javax.swing.JCheckBox jCheckBox5;
+    private javax.swing.JCheckBox jCheckBox6;
+    private javax.swing.JCheckBox jCheckBox7;
+    private javax.swing.JCheckBox jCheckBox8;
+    private javax.swing.JCheckBox jCheckBox9;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem10;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem11;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem12;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem13;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem14;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem2;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem3;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem4;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem5;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem6;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem7;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem8;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem9;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox10;
+    private javax.swing.JComboBox<String> jComboBox11;
+    private javax.swing.JComboBox<String> jComboBox12;
+    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> jComboBox3;
+    private javax.swing.JComboBox<String> jComboBox4;
+    private javax.swing.JComboBox<String> jComboBox5;
+    private javax.swing.JComboBox<String> jComboBox6;
+    private javax.swing.JComboBox<String> jComboBox7;
+    private javax.swing.JComboBox<String> jComboBox8;
+    private javax.swing.JComboBox<String> jComboBox9;
+    private javax.swing.JDialog jDialog1;
+    private javax.swing.JEditorPane jEditorPane1;
+    private javax.swing.JEditorPane jEditorPane2;
+    private javax.swing.JFormattedTextField jFormattedTextField1;
+    private javax.swing.JInternalFrame jInternalFrame1;
+    private javax.swing.JInternalFrame jInternalFrame2;
+    private javax.swing.JInternalFrame jInternalFrame3;
+    private javax.swing.JInternalFrame jInternalFrame4;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel100;
+    private javax.swing.JLabel jLabel101;
+    private javax.swing.JLabel jLabel102;
+    private javax.swing.JLabel jLabel103;
+    private javax.swing.JLabel jLabel104;
+    private javax.swing.JLabel jLabel105;
+    private javax.swing.JLabel jLabel106;
+    private javax.swing.JLabel jLabel107;
+    private javax.swing.JLabel jLabel109;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel110;
+    private javax.swing.JLabel jLabel111;
+    private javax.swing.JLabel jLabel112;
+    private javax.swing.JLabel jLabel113;
+    private javax.swing.JLabel jLabel114;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel42;
+    private javax.swing.JLabel jLabel43;
+    private javax.swing.JLabel jLabel44;
+    private javax.swing.JLabel jLabel45;
+    private javax.swing.JLabel jLabel46;
+    private javax.swing.JLabel jLabel47;
+    private javax.swing.JLabel jLabel48;
+    private javax.swing.JLabel jLabel49;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel50;
+    private javax.swing.JLabel jLabel51;
+    private javax.swing.JLabel jLabel52;
+    private javax.swing.JLabel jLabel53;
+    private javax.swing.JLabel jLabel54;
+    private javax.swing.JLabel jLabel55;
+    private javax.swing.JLabel jLabel56;
+    private javax.swing.JLabel jLabel57;
+    private javax.swing.JLabel jLabel58;
+    private javax.swing.JLabel jLabel59;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel60;
+    private javax.swing.JLabel jLabel61;
+    private javax.swing.JLabel jLabel62;
+    private javax.swing.JLabel jLabel63;
+    private javax.swing.JLabel jLabel64;
+    private javax.swing.JLabel jLabel65;
+    private javax.swing.JLabel jLabel66;
+    private javax.swing.JLabel jLabel67;
+    private javax.swing.JLabel jLabel68;
+    private javax.swing.JLabel jLabel69;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel70;
+    private javax.swing.JLabel jLabel71;
+    private javax.swing.JLabel jLabel72;
+    private javax.swing.JLabel jLabel73;
+    private javax.swing.JLabel jLabel74;
+    private javax.swing.JLabel jLabel75;
+    private javax.swing.JLabel jLabel76;
+    private javax.swing.JLabel jLabel77;
+    private javax.swing.JLabel jLabel78;
+    private javax.swing.JLabel jLabel79;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel80;
+    private javax.swing.JLabel jLabel81;
+    private javax.swing.JLabel jLabel82;
+    private javax.swing.JLabel jLabel83;
+    private javax.swing.JLabel jLabel84;
+    private javax.swing.JLabel jLabel85;
+    private javax.swing.JLabel jLabel86;
+    private javax.swing.JLabel jLabel87;
+    private javax.swing.JLabel jLabel88;
+    private javax.swing.JLabel jLabel89;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabel90;
+    private javax.swing.JLabel jLabel91;
+    private javax.swing.JLabel jLabel92;
+    private javax.swing.JLabel jLabel93;
+    private javax.swing.JLabel jLabel94;
+    private javax.swing.JLabel jLabel95;
+    private javax.swing.JLabel jLabel96;
+    private javax.swing.JLabel jLabel97;
+    private javax.swing.JLabel jLabel98;
+    private javax.swing.JLabel jLabel99;
+    private javax.swing.JList<String> jList2;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu10;
+    private javax.swing.JMenu jMenu11;
+    private javax.swing.JMenu jMenu12;
+    private javax.swing.JMenu jMenu13;
+    private javax.swing.JMenu jMenu14;
+    private javax.swing.JMenu jMenu15;
+    private javax.swing.JMenu jMenu16;
+    private javax.swing.JMenu jMenu17;
+    private javax.swing.JMenu jMenu18;
+    private javax.swing.JMenu jMenu19;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu20;
+    private javax.swing.JMenu jMenu21;
+    private javax.swing.JMenu jMenu22;
+    private javax.swing.JMenu jMenu23;
+    private javax.swing.JMenu jMenu24;
+    private javax.swing.JMenu jMenu25;
+    private javax.swing.JMenu jMenu26;
+    private javax.swing.JMenu jMenu27;
+    private javax.swing.JMenu jMenu28;
+    private javax.swing.JMenu jMenu29;
     private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu30;
+    private javax.swing.JMenu jMenu31;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
@@ -143,7 +5302,283 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu8;
     private javax.swing.JMenu jMenu9;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JScrollBar jScrollBar1;
-    private javax.swing.JScrollBar jScrollBar2;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem10;
+    private javax.swing.JMenuItem jMenuItem100;
+    private javax.swing.JMenuItem jMenuItem101;
+    private javax.swing.JMenuItem jMenuItem102;
+    private javax.swing.JMenuItem jMenuItem103;
+    private javax.swing.JMenuItem jMenuItem104;
+    private javax.swing.JMenuItem jMenuItem105;
+    private javax.swing.JMenuItem jMenuItem106;
+    private javax.swing.JMenuItem jMenuItem107;
+    private javax.swing.JMenuItem jMenuItem108;
+    private javax.swing.JMenuItem jMenuItem109;
+    private javax.swing.JMenuItem jMenuItem11;
+    private javax.swing.JMenuItem jMenuItem110;
+    private javax.swing.JMenuItem jMenuItem111;
+    private javax.swing.JMenuItem jMenuItem112;
+    private javax.swing.JMenuItem jMenuItem113;
+    private javax.swing.JMenuItem jMenuItem114;
+    private javax.swing.JMenuItem jMenuItem115;
+    private javax.swing.JMenuItem jMenuItem116;
+    private javax.swing.JMenuItem jMenuItem117;
+    private javax.swing.JMenuItem jMenuItem118;
+    private javax.swing.JMenuItem jMenuItem119;
+    private javax.swing.JMenuItem jMenuItem12;
+    private javax.swing.JMenuItem jMenuItem120;
+    private javax.swing.JMenuItem jMenuItem121;
+    private javax.swing.JMenuItem jMenuItem122;
+    private javax.swing.JMenuItem jMenuItem123;
+    private javax.swing.JMenuItem jMenuItem124;
+    private javax.swing.JMenuItem jMenuItem125;
+    private javax.swing.JMenuItem jMenuItem126;
+    private javax.swing.JMenuItem jMenuItem127;
+    private javax.swing.JMenuItem jMenuItem128;
+    private javax.swing.JMenuItem jMenuItem129;
+    private javax.swing.JMenuItem jMenuItem13;
+    private javax.swing.JMenuItem jMenuItem130;
+    private javax.swing.JMenuItem jMenuItem131;
+    private javax.swing.JMenuItem jMenuItem132;
+    private javax.swing.JMenuItem jMenuItem133;
+    private javax.swing.JMenuItem jMenuItem134;
+    private javax.swing.JMenuItem jMenuItem135;
+    private javax.swing.JMenuItem jMenuItem136;
+    private javax.swing.JMenuItem jMenuItem137;
+    private javax.swing.JMenuItem jMenuItem138;
+    private javax.swing.JMenuItem jMenuItem139;
+    private javax.swing.JMenuItem jMenuItem14;
+    private javax.swing.JMenuItem jMenuItem140;
+    private javax.swing.JMenuItem jMenuItem141;
+    private javax.swing.JMenuItem jMenuItem142;
+    private javax.swing.JMenuItem jMenuItem143;
+    private javax.swing.JMenuItem jMenuItem144;
+    private javax.swing.JMenuItem jMenuItem145;
+    private javax.swing.JMenuItem jMenuItem146;
+    private javax.swing.JMenuItem jMenuItem147;
+    private javax.swing.JMenuItem jMenuItem148;
+    private javax.swing.JMenuItem jMenuItem15;
+    private javax.swing.JMenuItem jMenuItem16;
+    private javax.swing.JMenuItem jMenuItem17;
+    private javax.swing.JMenuItem jMenuItem18;
+    private javax.swing.JMenuItem jMenuItem19;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem20;
+    private javax.swing.JMenuItem jMenuItem21;
+    private javax.swing.JMenuItem jMenuItem22;
+    private javax.swing.JMenuItem jMenuItem23;
+    private javax.swing.JMenuItem jMenuItem24;
+    private javax.swing.JMenuItem jMenuItem25;
+    private javax.swing.JMenuItem jMenuItem26;
+    private javax.swing.JMenuItem jMenuItem27;
+    private javax.swing.JMenuItem jMenuItem28;
+    private javax.swing.JMenuItem jMenuItem29;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem30;
+    private javax.swing.JMenuItem jMenuItem31;
+    private javax.swing.JMenuItem jMenuItem32;
+    private javax.swing.JMenuItem jMenuItem33;
+    private javax.swing.JMenuItem jMenuItem34;
+    private javax.swing.JMenuItem jMenuItem35;
+    private javax.swing.JMenuItem jMenuItem36;
+    private javax.swing.JMenuItem jMenuItem37;
+    private javax.swing.JMenuItem jMenuItem38;
+    private javax.swing.JMenuItem jMenuItem39;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem40;
+    private javax.swing.JMenuItem jMenuItem41;
+    private javax.swing.JMenuItem jMenuItem42;
+    private javax.swing.JMenuItem jMenuItem43;
+    private javax.swing.JMenuItem jMenuItem44;
+    private javax.swing.JMenuItem jMenuItem45;
+    private javax.swing.JMenuItem jMenuItem46;
+    private javax.swing.JMenuItem jMenuItem47;
+    private javax.swing.JMenuItem jMenuItem48;
+    private javax.swing.JMenuItem jMenuItem49;
+    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem50;
+    private javax.swing.JMenuItem jMenuItem51;
+    private javax.swing.JMenuItem jMenuItem52;
+    private javax.swing.JMenuItem jMenuItem53;
+    private javax.swing.JMenuItem jMenuItem54;
+    private javax.swing.JMenuItem jMenuItem55;
+    private javax.swing.JMenuItem jMenuItem56;
+    private javax.swing.JMenuItem jMenuItem57;
+    private javax.swing.JMenuItem jMenuItem58;
+    private javax.swing.JMenuItem jMenuItem59;
+    private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem60;
+    private javax.swing.JMenuItem jMenuItem61;
+    private javax.swing.JMenuItem jMenuItem62;
+    private javax.swing.JMenuItem jMenuItem63;
+    private javax.swing.JMenuItem jMenuItem64;
+    private javax.swing.JMenuItem jMenuItem65;
+    private javax.swing.JMenuItem jMenuItem66;
+    private javax.swing.JMenuItem jMenuItem67;
+    private javax.swing.JMenuItem jMenuItem68;
+    private javax.swing.JMenuItem jMenuItem69;
+    private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem jMenuItem70;
+    private javax.swing.JMenuItem jMenuItem71;
+    private javax.swing.JMenuItem jMenuItem72;
+    private javax.swing.JMenuItem jMenuItem73;
+    private javax.swing.JMenuItem jMenuItem74;
+    private javax.swing.JMenuItem jMenuItem75;
+    private javax.swing.JMenuItem jMenuItem76;
+    private javax.swing.JMenuItem jMenuItem77;
+    private javax.swing.JMenuItem jMenuItem78;
+    private javax.swing.JMenuItem jMenuItem79;
+    private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenuItem jMenuItem80;
+    private javax.swing.JMenuItem jMenuItem81;
+    private javax.swing.JMenuItem jMenuItem82;
+    private javax.swing.JMenuItem jMenuItem83;
+    private javax.swing.JMenuItem jMenuItem84;
+    private javax.swing.JMenuItem jMenuItem85;
+    private javax.swing.JMenuItem jMenuItem86;
+    private javax.swing.JMenuItem jMenuItem87;
+    private javax.swing.JMenuItem jMenuItem88;
+    private javax.swing.JMenuItem jMenuItem89;
+    private javax.swing.JMenuItem jMenuItem9;
+    private javax.swing.JMenuItem jMenuItem90;
+    private javax.swing.JMenuItem jMenuItem91;
+    private javax.swing.JMenuItem jMenuItem92;
+    private javax.swing.JMenuItem jMenuItem93;
+    private javax.swing.JMenuItem jMenuItem94;
+    private javax.swing.JMenuItem jMenuItem95;
+    private javax.swing.JMenuItem jMenuItem96;
+    private javax.swing.JMenuItem jMenuItem97;
+    private javax.swing.JMenuItem jMenuItem98;
+    private javax.swing.JMenuItem jMenuItem99;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JProgressBar jProgressBar1;
+    private javax.swing.JRadioButton jRadioButton4;
+    private javax.swing.JRadioButton jRadioButton5;
+    private javax.swing.JRadioButton jRadioButton6;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane10;
+    private javax.swing.JScrollPane jScrollPane11;
+    private javax.swing.JScrollPane jScrollPane12;
+    private javax.swing.JScrollPane jScrollPane13;
+    private javax.swing.JScrollPane jScrollPane14;
+    private javax.swing.JScrollPane jScrollPane15;
+    private javax.swing.JScrollPane jScrollPane16;
+    private javax.swing.JScrollPane jScrollPane17;
+    private javax.swing.JScrollPane jScrollPane18;
+    private javax.swing.JScrollPane jScrollPane19;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane20;
+    private javax.swing.JScrollPane jScrollPane21;
+    private javax.swing.JScrollPane jScrollPane22;
+    private javax.swing.JScrollPane jScrollPane23;
+    private javax.swing.JScrollPane jScrollPane24;
+    private javax.swing.JScrollPane jScrollPane25;
+    private javax.swing.JScrollPane jScrollPane26;
+    private javax.swing.JScrollPane jScrollPane27;
+    private javax.swing.JScrollPane jScrollPane28;
+    private javax.swing.JScrollPane jScrollPane29;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane30;
+    private javax.swing.JScrollPane jScrollPane31;
+    private javax.swing.JScrollPane jScrollPane32;
+    private javax.swing.JScrollPane jScrollPane33;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JScrollPane jScrollPane9;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSlider jSlider1;
+    private javax.swing.JSlider jSlider10;
+    private javax.swing.JSlider jSlider11;
+    private javax.swing.JSlider jSlider12;
+    private javax.swing.JSlider jSlider13;
+    private javax.swing.JSlider jSlider14;
+    private javax.swing.JSlider jSlider15;
+    private javax.swing.JSlider jSlider16;
+    private javax.swing.JSlider jSlider17;
+    private javax.swing.JSlider jSlider18;
+    private javax.swing.JSlider jSlider2;
+    private javax.swing.JSlider jSlider3;
+    private javax.swing.JSlider jSlider4;
+    private javax.swing.JSlider jSlider5;
+    private javax.swing.JSlider jSlider6;
+    private javax.swing.JSlider jSlider7;
+    private javax.swing.JSlider jSlider8;
+    private javax.swing.JSlider jSlider9;
+    private javax.swing.JTabbedPane jTabbedPane2;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea jTextArea2;
+    private javax.swing.JTextArea jTextArea3;
+    private javax.swing.JTextArea jTextArea4;
+    private javax.swing.JTextArea jTextArea5;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField jTextField7;
+    private javax.swing.JTextPane jTextPane1;
+    private javax.swing.JTextPane jTextPane10;
+    private javax.swing.JTextPane jTextPane11;
+    private javax.swing.JTextPane jTextPane12;
+    private javax.swing.JTextPane jTextPane13;
+    private javax.swing.JTextPane jTextPane14;
+    private javax.swing.JTextPane jTextPane15;
+    private javax.swing.JTextPane jTextPane16;
+    private javax.swing.JTextPane jTextPane17;
+    private javax.swing.JTextPane jTextPane18;
+    private javax.swing.JTextPane jTextPane19;
+    private javax.swing.JTextPane jTextPane2;
+    private javax.swing.JTextPane jTextPane20;
+    private javax.swing.JTextPane jTextPane21;
+    private javax.swing.JTextPane jTextPane22;
+    private javax.swing.JTextPane jTextPane23;
+    private javax.swing.JTextPane jTextPane24;
+    private javax.swing.JTextPane jTextPane25;
+    private javax.swing.JTextPane jTextPane3;
+    private javax.swing.JTextPane jTextPane4;
+    private javax.swing.JTextPane jTextPane5;
+    private javax.swing.JTextPane jTextPane6;
+    private javax.swing.JTextPane jTextPane7;
+    private javax.swing.JTextPane jTextPane8;
+    private javax.swing.JTextPane jTextPane9;
+    private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JToggleButton jToggleButton10;
+    private javax.swing.JToggleButton jToggleButton2;
+    private javax.swing.JToggleButton jToggleButton3;
+    private javax.swing.JToggleButton jToggleButton4;
+    private javax.swing.JToggleButton jToggleButton5;
+    private javax.swing.JToggleButton jToggleButton6;
+    private javax.swing.JToggleButton jToggleButton7;
+    private javax.swing.JToggleButton jToggleButton8;
+    private javax.swing.JToggleButton jToggleButton9;
+    private javax.swing.JSlider panSlider1;
+    private javax.swing.JSlider panSlider2;
+    private javax.swing.JSlider panSlider3;
+    private javax.swing.JSlider panSlider4;
+    private javax.swing.JPanel track1Info;
+    private javax.swing.JPanel track1Wave;
+    private javax.swing.JPanel track2Info;
+    private javax.swing.JPanel track2Wave;
+    private javax.swing.JPanel track3Info;
+    private javax.swing.JPanel track3Wave;
+    private javax.swing.JPanel track4Info;
+    private javax.swing.JPanel track4Wave;
+    private javax.swing.JPanel trackPanel;
+    private javax.swing.JPanel transportPanel;
+    private javax.swing.JSlider volSlider1;
+    private javax.swing.JSlider volSlider2;
+    private javax.swing.JSlider volSlider3;
+    private javax.swing.JSlider volSlider4;
+    private javax.swing.JPanel windowPanel;
     // End of variables declaration//GEN-END:variables
 }
