@@ -26,8 +26,8 @@ public class TrackFrame extends JPanel {
         audioInfo = new AudioInfo(audioInputStream);
         //Creating a channel display for each channel
         for (int t = 0; t < audioInfo.getNumberOfChannels(); t++){
-                SingleWaveformPanel waveformPanel
-                        = new SingleWaveformPanel(audioInfo, t);
+                SingleWaveFormPanel waveformPanel
+                        = new SingleWaveFormPanel(audioInfo, t);
                 singleChannelWaveformPanels.add(waveformPanel);
                 javax.swing.JComponent p = createChannelDisplay(waveformPanel);
                 p.setSize(new java.awt.Dimension(2000, 100));
@@ -35,7 +35,7 @@ public class TrackFrame extends JPanel {
         }
     }
     //Creates each display for a channel
-    private JComponent createChannelDisplay(SingleWaveformPanel waveformPanel) {
+    private JComponent createChannelDisplay(SingleWaveFormPanel waveformPanel) {
 
         JPanel panel = new JPanel(new BorderLayout());
         panel.add(waveformPanel, BorderLayout.CENTER);

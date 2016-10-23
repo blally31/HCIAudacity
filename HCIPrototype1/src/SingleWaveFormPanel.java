@@ -8,7 +8,7 @@ import java.awt.*;
  * Time: 9:16:15 PM
  * To change this template use File | Settings | File Templates.
  */
-public class SingleWaveformPanel extends JPanel {
+public class SingleWaveFormPanel extends JPanel {
     protected static final Color BACKGROUND_COLOR = Color.white;
     protected static final Color REFERENCE_LINE_COLOR = Color.black;
     protected static final Color WAVEFORM_COLOR = Color.blue;
@@ -17,7 +17,7 @@ public class SingleWaveformPanel extends JPanel {
     private AudioInfo helper;
     private int channelIndex;
 
-    public SingleWaveformPanel(AudioInfo helper, int channelIndex) {
+    public SingleWaveFormPanel(AudioInfo helper, int channelIndex) {
         this.helper = helper;
         this.channelIndex = channelIndex;
         setBackground(BACKGROUND_COLOR);

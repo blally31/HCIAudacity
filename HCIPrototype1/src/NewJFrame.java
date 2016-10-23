@@ -25,6 +25,7 @@ import javax.sound.sampled.Mixer;
 import javax.sound.sampled.Port;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
+import javax.swing.JSlider;
 import javax.swing.SwingUtilities;
 /**
  *
@@ -515,7 +516,6 @@ public class NewJFrame extends javax.swing.JFrame {
         jMenuItem17 = new javax.swing.JMenuItem();
         jMenuItem18 = new javax.swing.JMenuItem();
         jMenuItem19 = new javax.swing.JMenuItem();
-        jMenuItem149 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem25 = new javax.swing.JMenuItem();
         jMenuItem26 = new javax.swing.JMenuItem();
@@ -2489,6 +2489,11 @@ public class NewJFrame extends javax.swing.JFrame {
         jToggleButton4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         volSlider1.setOrientation(javax.swing.JSlider.VERTICAL);
+        volSlider1.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                volSlider1StateChanged(evt);
+            }
+        });
 
         jLabel5.setText("Vol");
 
@@ -2596,6 +2601,11 @@ public class NewJFrame extends javax.swing.JFrame {
         jToggleButton6.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         volSlider2.setOrientation(javax.swing.JSlider.VERTICAL);
+        volSlider2.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                volSlider2StateChanged(evt);
+            }
+        });
 
         jLabel8.setText("Vol");
 
@@ -2707,6 +2717,11 @@ public class NewJFrame extends javax.swing.JFrame {
         jToggleButton8.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         volSlider3.setOrientation(javax.swing.JSlider.VERTICAL);
+        volSlider3.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                volSlider3StateChanged(evt);
+            }
+        });
 
         jLabel11.setText("Vol");
 
@@ -2818,6 +2833,11 @@ public class NewJFrame extends javax.swing.JFrame {
         jToggleButton10.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         volSlider4.setOrientation(javax.swing.JSlider.VERTICAL);
+        volSlider4.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                volSlider4StateChanged(evt);
+            }
+        });
 
         jLabel14.setText("Vol");
 
@@ -3184,14 +3204,6 @@ public class NewJFrame extends javax.swing.JFrame {
             }
         });
         jMenu1.add(jMenuItem19);
-
-        jMenuItem149.setText("Testing");
-        jMenuItem149.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem149ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMenuItem149);
 
         jMenuBar1.add(jMenu1);
 
@@ -3866,21 +3878,6 @@ public class NewJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
-    // Method that open another NEWJFrame window
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-       NewJFrame newWindow = new NewJFrame();
-       newWindow.setVisible(true);
-       newWindow.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
-
-    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
-        CheckDependency.setVisible(true);
-    }//GEN-LAST:event_jMenuItem8ActionPerformed
-
-    private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem13ActionPerformed
-
     private void jMenuItem135ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem135ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem135ActionPerformed
@@ -3907,61 +3904,6 @@ public class NewJFrame extends javax.swing.JFrame {
     private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton17ActionPerformed
-
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        /* Event action for opening an audio track (WAV File)*/
-        FileFilter filter1 = new FileNameExtensionFilter("Audacity Projects", "aup");
-        FileFilter filter2 = new FileNameExtensionFilter("FLAC Files", "flac");
-        FileFilter filter3 = new FileNameExtensionFilter("MP3 Files", "mp3");
-        FileFilter filter4 = new FileNameExtensionFilter("WAV Files", "wav");
-
-        fileOpen.addChoosableFileFilter(filter1);
-        fileOpen.addChoosableFileFilter(filter2);
-        fileOpen.addChoosableFileFilter(filter3);
-        fileOpen.addChoosableFileFilter(filter4);
-        
-        
-        int returnVal = fileOpen.showOpenDialog(this);
-        try {
-            //Checks if the user has selected OK and then gets the file and stores it
-            //in a FILE object
-            if (returnVal == javax.swing.JFileChooser.APPROVE_OPTION) {
-                java.io.File file = fileOpen.getSelectedFile();
-                String filename = file.toString();
-                String trackname = file.getName();
-                //Create an audio stream from the target file
-                FileInputStream fIn = new FileInputStream(filename);
-                InputStream bufferedIn = new BufferedInputStream(fIn);
-                audioObject.setAudioStream(AudioSystem.getAudioInputStream(bufferedIn));
-                audioObject.setLoaded(true);
-               
-                TrackFrame track = new TrackFrame();
-                track.setAudioToDisplay(audioObject.getAudioStream());
-                    	
-                waveArray[trackCount].add(track, 0);
-                labelArray[trackCount].setText(trackname);
-                labelArray[trackCount].setToolTipText(trackname);
-                trackArray[trackCount].setVisible(true);
-                waveArray[trackCount].setVisible(true);
-                
-                trackArray[trackCount].pack();
-                //Add File to recently used
-                javax.swing.JMenuItem recent = new javax.swing.JMenuItem(filename);
-                jMenu10.add(recent);
-                recent.addActionListener(new java.awt.event.ActionListener() {
-                    public void actionPerformed(java.awt.event.ActionEvent evt) {
-                        subMenuActionPerformed(evt,filename);
-                    }
-                });
-            }
-            trackCount++;
-                
-            audioObject.getAudioStream().reset();
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
     
     private void subMenuActionPerformed(java.awt.event.ActionEvent evt, String file) {
         try {
@@ -4131,10 +4073,6 @@ public class NewJFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton13ActionPerformed
     
-    private void jMenuItem19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem19ActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_jMenuItem19ActionPerformed
-
     private void jRadioButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButton5ActionPerformed
@@ -4233,14 +4171,6 @@ public class NewJFrame extends javax.swing.JFrame {
     About_Audacity.setVisible(true);
     }//GEN-LAST:event_jMenuItem148ActionPerformed
 
-    // Method that simulate the "Close" operation of Audacity's "Close"
-    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-       NewJFrame w = new NewJFrame();
-       w.setVisible(true);
-       w.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-       this.dispose();
-    }//GEN-LAST:event_jMenuItem5ActionPerformed
-
     // Method that open the "Screenshot Tool" window
     private void jMenuItem143ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem143ActionPerformed
         ScreenShot.setVisible(true);
@@ -4273,19 +4203,6 @@ public class NewJFrame extends javax.swing.JFrame {
         EditMetaData.dispose();
     }//GEN-LAST:event_jButton50ActionPerformed
 
-    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
-        EditMetaData.setVisible(true);
-    }//GEN-LAST:event_jMenuItem9ActionPerformed
-
-    private void jMenuItem21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem21ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem21ActionPerformed
-
-    private void jMenuItem149ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem149ActionPerformed
-         
-        volumeControl(0.2f);
-    }//GEN-LAST:event_jMenuItem149ActionPerformed
-
     private void jMenuItem98ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem98ActionPerformed
         muteControl(true);
     }//GEN-LAST:event_jMenuItem98ActionPerformed
@@ -4314,35 +4231,6 @@ public class NewJFrame extends javax.swing.JFrame {
     private void jButton46ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton46ActionPerformed
         EditMetaData.dispose();
     }//GEN-LAST:event_jButton46ActionPerformed
-
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-                                               
- 
-        FileFilter filter1 = new FileNameExtensionFilter("Audacity Projects", "aup");
-
-        Save.addChoosableFileFilter(filter1);
-        
-        
-        int returnVal = fileOpen.showSaveDialog(this);
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
-
-    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
-         FileFilter filter1 = new FileNameExtensionFilter("Audacity Projects", "aup");
-
-        Save.addChoosableFileFilter(filter1);
-        
-        
-        int returnVal = fileOpen.showSaveDialog(this);
-    }//GEN-LAST:event_jMenuItem6ActionPerformed
-
-    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
-         FileFilter filter1 = new FileNameExtensionFilter("Audacity Projects", "aup");
-
-        Save.addChoosableFileFilter(filter1);
-        
-        
-        int returnVal = fileOpen.showSaveDialog(this);
-    }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     private void jButton56ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton56ActionPerformed
         DTMF.dispose();
@@ -4819,6 +4707,148 @@ public class NewJFrame extends javax.swing.JFrame {
         PluginGenerate.setVisible(true);
     }//GEN-LAST:event_jMenuItem122ActionPerformed
 
+    private void volSlider1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_volSlider1StateChanged
+        JSlider source = (JSlider) evt.getSource();
+        
+         int value = (int)source.getValue();
+         volumeControl((float)value);            
+    }//GEN-LAST:event_volSlider1StateChanged
+
+    private void volSlider2StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_volSlider2StateChanged
+        JSlider source = (JSlider) evt.getSource();
+        
+         int value = (int)source.getValue();
+         volumeControl((float)value); 
+    }//GEN-LAST:event_volSlider2StateChanged
+
+    private void volSlider3StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_volSlider3StateChanged
+        JSlider source = (JSlider) evt.getSource();
+        
+         int value = (int)source.getValue();
+         volumeControl((float)value); 
+    }//GEN-LAST:event_volSlider3StateChanged
+
+    private void volSlider4StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_volSlider4StateChanged
+        JSlider source = (JSlider) evt.getSource();
+        
+         int value = (int)source.getValue();
+         volumeControl((float)value); 
+    }//GEN-LAST:event_volSlider4StateChanged
+
+    private void jMenuItem19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem19ActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_jMenuItem19ActionPerformed
+
+    private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem13ActionPerformed
+
+    private void jMenuItem21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem21ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem21ActionPerformed
+
+    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+        EditMetaData.setVisible(true);
+    }//GEN-LAST:event_jMenuItem9ActionPerformed
+
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+        CheckDependency.setVisible(true);
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
+
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        FileFilter filter1 = new FileNameExtensionFilter("Audacity Projects", "aup");
+
+        Save.addChoosableFileFilter(filter1);
+
+        int returnVal = fileOpen.showSaveDialog(this);
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        FileFilter filter1 = new FileNameExtensionFilter("Audacity Projects", "aup");
+
+        Save.addChoosableFileFilter(filter1);
+
+        int returnVal = fileOpen.showSaveDialog(this);
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+
+        FileFilter filter1 = new FileNameExtensionFilter("Audacity Projects", "aup");
+
+        Save.addChoosableFileFilter(filter1);
+
+        int returnVal = fileOpen.showSaveDialog(this);
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    // Method that simulate the "Close" operation of Audacity's "Close"
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        NewJFrame w = new NewJFrame();
+        w.setVisible(true);
+        w.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        this.dispose();
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        /* Event action for opening an audio track (WAV File)*/
+        FileFilter filter1 = new FileNameExtensionFilter("Audacity Projects", "aup");
+        FileFilter filter2 = new FileNameExtensionFilter("FLAC Files", "flac");
+        FileFilter filter3 = new FileNameExtensionFilter("MP3 Files", "mp3");
+        FileFilter filter4 = new FileNameExtensionFilter("WAV Files", "wav");
+
+        fileOpen.addChoosableFileFilter(filter1);
+        fileOpen.addChoosableFileFilter(filter2);
+        fileOpen.addChoosableFileFilter(filter3);
+        fileOpen.addChoosableFileFilter(filter4);
+
+        int returnVal = fileOpen.showOpenDialog(this);
+        try {
+            //Checks if the user has selected OK and then gets the file and stores it
+            //in a FILE object
+            if (returnVal == javax.swing.JFileChooser.APPROVE_OPTION) {
+                java.io.File file = fileOpen.getSelectedFile();
+                String filename = file.toString();
+                String trackname = file.getName();
+                //Create an audio stream from the target file
+                FileInputStream fIn = new FileInputStream(filename);
+                InputStream bufferedIn = new BufferedInputStream(fIn);
+                audioObject.setAudioStream(AudioSystem.getAudioInputStream(bufferedIn));
+                audioObject.setLoaded(true);
+
+                TrackFrame track = new TrackFrame();
+                track.setAudioToDisplay(audioObject.getAudioStream());
+
+                waveArray[trackCount].add(track, 0);
+                labelArray[trackCount].setText(trackname);
+                labelArray[trackCount].setToolTipText(trackname);
+                trackArray[trackCount].setVisible(true);
+                waveArray[trackCount].setVisible(true);
+
+                trackArray[trackCount].pack();
+                //Add File to recently used
+                javax.swing.JMenuItem recent = new javax.swing.JMenuItem(filename);
+                jMenu10.add(recent);
+                recent.addActionListener(new java.awt.event.ActionListener() {
+                    public void actionPerformed(java.awt.event.ActionEvent evt) {
+                        subMenuActionPerformed(evt,filename);
+                    }
+                });
+            }
+            trackCount++;
+
+            audioObject.getAudioStream().reset();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    // Method that open another NEWJFrame window
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        NewJFrame newWindow = new NewJFrame();
+        newWindow.setVisible(true);
+        newWindow.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
     private void muteControl(boolean value)
     {
         Mixer.Info[] mixers = AudioSystem.getMixerInfo();
@@ -4864,10 +4894,16 @@ public class NewJFrame extends javax.swing.JFrame {
     */
     private void volumeControl(float value)
     {
+        if(value > 1.0) // only accept value less than 1.0 and more than 0.0
+            value = value / 100;
+        else if ( value < 0.0)
+            value = 0.5f;
+        //System.out.println("Checking the value: " + value);
         Mixer.Info[] mixers = AudioSystem.getMixerInfo();
         //System.out.println("There are " + mixers.length + " mixer info objects");
         for (Mixer.Info mixerInfo : mixers) {
             //System.out.println("mixer name: " + mixerInfo.getName());
+            //System.out.println("Checking the value inside mixer: " + value);
             Mixer mixer = AudioSystem.getMixer(mixerInfo);
             Line.Info[] lineInfos = mixer.getTargetLineInfo(); // target, not source  
             //changes all the volumes
@@ -4875,6 +4911,7 @@ public class NewJFrame extends javax.swing.JFrame {
             
             for (Line.Info lineInfo : lineInfos) {
                 //System.out.println("  Line.Info: " + lineInfo);
+                //System.out.println("Checking the value inside line: " + value);
                 Line line = null;
                 boolean opened = true;
                 try {
@@ -4884,13 +4921,14 @@ public class NewJFrame extends javax.swing.JFrame {
                         line.open();
                     }
                     FloatControl volCtrl = (FloatControl) line.getControl(FloatControl.Type.VOLUME);
-                    //System.out.println(volCtrl.getMinimum());
+                    //System.out.println("Minimum = " + volCtrl.getMinimum());
+                    //System.out.println("Checking the value before setting it: " + value);
                     volCtrl.setValue(value);
                     //System.out.println("    volCtrl.getValue() = " + volCtrl.getValue());
                 } catch (LineUnavailableException e) {
                     e.printStackTrace();
                 } catch (IllegalArgumentException iaEx) {
-                    System.out.println("  -!-  " + iaEx);
+                    //System.out.println("  -!-  " + iaEx);
                 } finally {
                     if (line != null && !opened) {
                         line.close();
@@ -5319,7 +5357,6 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem146;
     private javax.swing.JMenuItem jMenuItem147;
     private javax.swing.JMenuItem jMenuItem148;
-    private javax.swing.JMenuItem jMenuItem149;
     private javax.swing.JMenuItem jMenuItem15;
     private javax.swing.JMenuItem jMenuItem16;
     private javax.swing.JMenuItem jMenuItem17;
